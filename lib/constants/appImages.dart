@@ -1,0 +1,30 @@
+class AppImages {
+  static const String onboardScreenImage1 = 'assets/images/Image1.png';
+  static const String onboardScreenImage2 = 'assets/images/Image2.png';
+  static const String onboardScreenImage3 = 'assets/images/Image3.png';
+  static const String onboardScreenImage4 = 'assets/images/Image4.png';
+  static const String smallBusImage = 'assets/images/Vector.png';
+  static const String smallWhiteBus = 'assets/images/whiteBus.png';
+  static const String map = 'assets/images/Maps.png';
+  static const String logo = 'assets/images/logozik.png';
+  static const String backGroundImage = 'assets/images/ziklog.png';
+  static const String chooseScreenImage = 'assets/images/Illustration.png';
+  static const String homePageImage = 'assets/images/ompg.png';
+  static const String menuBar = 'assets/images/mBar.png';
+  static const String close = 'assets/images/close.png';
+  static const String timeImage = 'assets/images/tim.png';
+  static const String referAFriendImg = 'assets/images/referafriend.png';
+  static const String backImg = 'assets/images/back.png';
+  static const String packageImg = 'assets/images/pakag.png';
+  static const String locatnImg = 'assets/images/oval.png';
+  static const String pickUp = 'assets/images/ic_current.png';
+  static const String pickUpVan = 'assets/images/bus.png';
+  static const String downArrw = 'assets/images/arw.png';
+  static const String callICon = 'assets/images/Call.png';
+  static const String messageICon = 'assets/images/Message.png';
+  static const String visalogo = 'assets/images/visalogo.png';
+  static const String mastercardLogo = 'assets/images/mastercardlogo.png';
+  static const String successAlertImage = 'assets/images/successmark.png';
+  static const String failedAlertImage = 'assets/images/Failed.png';
+  static const String uploadIcon = 'assets/images/uploadIcon.png';
+}
