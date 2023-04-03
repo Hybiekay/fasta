@@ -1,13 +1,13 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../controllers/drivers_controller.dart';
 import 'package:ziklogistics/constants/appImages.dart';
 import 'package:ziklogistics/constants/appocolor.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/global_components/dialogAlert.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/meunScreen.dart';
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
-
+// ignore_for_file: use_build_context_synchronously
 
 class dispatcherRequsetCard extends StatelessWidget {
   final String name;
@@ -17,8 +17,9 @@ class dispatcherRequsetCard extends StatelessWidget {
   final String size;
   final String withe;
   final String pickUp;
-  final String  dropOff;
+  final String dropOff;
   final String scheduleTime;
+  final String packAgeId;
   bool isScahedule;
   dispatcherRequsetCard({
     Key? key,
@@ -31,6 +32,7 @@ class dispatcherRequsetCard extends StatelessWidget {
     required this.pickUp,
     required this.dropOff,
     required this.scheduleTime,
+    required this.packAgeId,
     this.isScahedule = false,
   }) : super(key: key);
 
@@ -168,8 +170,7 @@ class dispatcherRequsetCard extends StatelessWidget {
                         ),
                       ),
                       isScahedule
-                          ? TextPreviwe(
-                              type: "Scheduled", value: scheduleTime)
+                          ? TextPreviwe(type: "Scheduled", value: scheduleTime)
                           : const Divider()
                     ],
                   ),
@@ -262,7 +263,7 @@ class dispatcherRequsetCard extends StatelessWidget {
           SizedBox(
             height: 25.h,
           ),
-          botButton(isScahedule: isScahedule),
+          botButton(isScahedule: isScahedule, packAgeId: packAgeId),
           const SizedBox(
             height: 15,
           )
@@ -273,8 +274,10 @@ class dispatcherRequsetCard extends StatelessWidget {
 }
 
 class botButton extends StatelessWidget {
+  final String packAgeId;
   const botButton({
     Key? key,
+    required this.packAgeId,
     required this.isScahedule,
   }) : super(key: key);
 
@@ -282,13 +285,17 @@ class botButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DriverController driverController = Get.put(DriverController());
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           TextButton(
-              onPressed: () {
+              onPressed: () async {
+                await driverController.rejectPackage(packageId: packAgeId);
+
                 failedShowDialod(
                   context: context,
                   value:
@@ -317,17 +324,15 @@ class botButton extends StatelessWidget {
                     backgroundColor: AppColor.whiteColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                onPressed: () {
+                onPressed: () async {
+                  await driverController.acceptPackage(packageId: packAgeId);
                   successShowDialod(
                     context: context,
                     value: isScahedule
                         ? "You have confirmed to deliver this sheduled package. Go for pickup at the time scheduled"
                         : "You have confirmed to deliver this package. Go for pickup in 5 mins.",
                     onPressed: () {
-                      Navigator.pop(context);
-                      Navigator.of(context).pushNamed(
-                        DispatcherMeunScreen.routeName,
-                      );
+                      Get.offAllNamed(DispatcherMeunScreen.routeName);
                     },
                   );
                 },

@@ -31,20 +31,29 @@ class Completedlist extends StatelessWidget {
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
-                final data = snapshot.data[index];
+                final data = snapshot.data['data'][index];
                 return HistoryCard(
+                  chatPressed: () {},
                   trackPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(ComleteTaskDetail.routeName);
+                    Get.to(() => ComleteTaskDetail(
+                          name: data["name"],
+                          size: data["size"].toString(),
+                          weight: data["weight"].toString(),
+                          dropOffAdress: data["dropoff_address"],
+                          pickUpAdress: data["pickup_address"],
+                          distance: data["dropoff_object"],
+                          price: data["price"],
+                          time: data["pickup_object"],
+                        ));
                   },
                   name: data["name"],
-                  time: "${data["createdAt"]}",
+                  time: DateTime.parse(data['createdAt']),
                   track: "Completed Progress",
                 );
               },
             );
           }
-          return NodataCard(content: "Data Is loading Request");
+          return const NodataCard(content: "Data Is loading Request");
         },
       ),
     );

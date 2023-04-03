@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class RequestCard extends StatelessWidget {
@@ -32,7 +31,7 @@ class RequestCard extends StatelessWidget {
             child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                         color: Color.fromRGBO(0, 0, 0, 0.10000000149011612),
                         offset: Offset(0, -5),
@@ -46,8 +45,8 @@ class RequestCard extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, top: 10),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10, top: 10),
                             child: CircleAvatar(),
                           ),
                           Text(
@@ -97,7 +96,7 @@ class RequestCard extends StatelessWidget {
                                         color: AppColor.whiteColor),
                                   ),
                                 ]),
-                            SizedBox(width: 30),
+                            const SizedBox(width: 30),
                             Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

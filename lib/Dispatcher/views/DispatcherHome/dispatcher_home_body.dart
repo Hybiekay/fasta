@@ -102,15 +102,15 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                       return GestureDetector(
                         onTap: () {
                           Get.to(() => PrivewHome(
-                                name: item["name"],
-                                price: item["price"],
-                                time: item["dropoff_object"],
-                                distance: item["dropoff_object"],
-                                size: item["size"],
-                                withe: item[""],
+                                name: item["name"].toString(),
+                                price: item["price"].toString(),
+                                time: item["dropoff_object"].toString(),
+                                distance: item["dropoff_object"].toString(),
+                                size: item["size"].toString(),
+                                withe: item["width"].toString(),
                                 pickUp: item["pickup_address"],
                                 dropOff: item["dropoff_address"],
-                                isScahedule: item["schedule_object"],
+                                isScahedule: false,
                                 scheduleTime:
                                     "${item["scheduled_date"]} ${item["scheduled_time"]}",
                                 packageId: item["id"],

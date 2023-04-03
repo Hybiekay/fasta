@@ -129,7 +129,7 @@ class DriverController extends GetxController {
     }
   }
 
-  Future acceptPackage(String packageId) async {
+  Future acceptPackage({required String packageId}) async {
     try {
       final data = await _apiController.acceptPackage(
           token: otoken, packageId: packageId);
@@ -141,7 +141,7 @@ class DriverController extends GetxController {
     }
   }
 
-  Future rejectPackage(String packageId) async {
+  Future rejectPackage({required String packageId}) async {
     try {
       final data = await _apiController.rejectPackage(
           token: otoken, packageId: packageId);
@@ -153,11 +153,13 @@ class DriverController extends GetxController {
     }
   }
 
-  Future changePackageStatus(String packageId, String status) async {
+  Future changePackageStatus(
+      {required String packageId, required String status}) async {
     try {
       final data = await _apiController.changePackageStatus(
           token: otoken, packageId: packageId, status: status);
       return data;
+      
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());

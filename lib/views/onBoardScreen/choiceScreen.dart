@@ -13,7 +13,6 @@ import 'package:ziklogistics/components/Widget/OnBoadPageSelection.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_Screen.dart';
 // ignore_for_file: file_names
 
-
 class ChoiceScreen extends StatelessWidget {
   static const String routeName = '/ChioceScreen';
   const ChoiceScreen({super.key});
@@ -73,12 +72,15 @@ class ChoiceScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
+                          Get.to(() => const LoginScreen());
                           final data = await Storage.getData();
                           custormerName = json.decode(data);
+                          print(CustomersUserModel.name);
                           if (CustomersUserModel.name == null &&
                               CustomersModel.token == null) {
                             Get.to(() => const OnBoardPages());
-                          } else if (CustomersModel.token == null &&
+                          }
+                          if (CustomersModel.token == null &&
                               CustomersUserModel.name != null) {
                             Get.to(() => const LoginScreen());
                           } else {
@@ -113,19 +115,24 @@ class ChoiceScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
+                          Get.to(() => const DispatcherLoginScreen());
+
                           final data = await DStorage.getDriverData();
                           print("this is   $data");
                           driverData = json.decode(data);
-                            print("this is   $data");
-                          if (DriverUserModel.name == null) {
-                            Get.to(() => const DispatcherOnBoardPages());
-                          } else if (DriverUserModel.name != null &&
-                              DriverUserModel.nin != null &&
-                              DriverModel().token == null) {
-                            Get.to(() => const DispatcherLoginScreen());
-                          } else {
-                            Get.to(() => const DispatcherHome());
-                          }
+                          print("this is   $data");
+                          // if (DriverUserModel.name == null) {
+                          //   print("DriverUserModel.name is null login in");
+                          //   Get.to(() => const DispatcherOnBoardPages());
+                          // } else if (DriverUserModel.name != null &&
+                          //     DriverUserModel.nin != null &&
+                          //     DriverModel().token == null) {
+                          //   print("DriverUserModel. is null login in");
+
+                          //   Get.to(() => const DispatcherLoginScreen());
+                          // } else {
+                          //   Get.to(() => const DispatcherHome());
+                          // }
                         },
                         child: const Text(
                           'Sign up as a Dispatcher',

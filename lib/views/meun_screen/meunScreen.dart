@@ -1,51 +1,46 @@
+import 'package:get/get.dart';
 import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
+import 'package:ziklogistics/views/meun_screen/comletes_Detail_screen.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class MeunScreen extends StatefulWidget {
   static const String routeName = '/meunScreen';
-  const MeunScreen({super.key});
+  final String packageId;
+  final String time;
+  final String name;
+  final String pickUpAdress;
+  final String dropOffAdress;
+  final String price;
+  final String distance;
+  final double pickupLat;
+  final double pickupLon;
+  final double dropoffLat;
+  final double dropoffLon;
+  final String size;
+  final String weight;
+  const MeunScreen({
+    Key? key,
+    required this.packageId,
+    required this.time,
+    required this.name,
+    required this.pickUpAdress,
+    required this.dropOffAdress,
+    required this.price,
+    required this.distance,
+    required this.pickupLat,
+    required this.pickupLon,
+    required this.dropoffLat,
+    required this.dropoffLon,
+    required this.size,
+    required this.weight,
+  }) : super(key: key);
 
   @override
   State<MeunScreen> createState() => _MeunScreenState();
 }
 
 class _MeunScreenState extends State<MeunScreen> {
-  static const LatLng sourceLoaction = LatLng(7.1864, 3.4331);
-  static const LatLng destinationLoaction = LatLng(7.2235, 3.4403);
-
-  List<LatLng> polyCoordinates = [];
-
-
-  void getPolyPoint() async {
-    PolylinePoints polylinePoints = PolylinePoints();
-    PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      AppApis.googlemapApi,
-      PointLatLng(sourceLoaction.longitude, sourceLoaction.longitude),
-      PointLatLng(
-        destinationLoaction.latitude,
-        destinationLoaction.longitude,
-      ),
-    );
-
-    if (result.points.isNotEmpty) {
-      for (var point in result.points) {
-        setState(() {
-          polyCoordinates.add(
-            LatLng(point.latitude, point.longitude),
-          );
-        });
-      }
-      setState(() {});
-    }
-  }
-
-  @override
-  void initState() {
-    getPolyPoint();
-
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +53,15 @@ class _MeunScreenState extends State<MeunScreen> {
               child: Container(
                   color: Colors.amber,
                   width: MediaQuery.of(context).size.width,
-                  child: 
-                     Map(
-                        
-                          destinationLoaction: destinationLoaction,
-                          sourceLoaction: sourceLoaction,
-                          polyCoordinates: polyCoordinates,
-                        ))),
+                  child: Map(
+                    destinationLoaction:
+                        LatLng(widget.dropoffLat, widget.dropoffLon),
+                    sourceLoaction: LatLng(widget.pickupLat, widget.pickupLon),
+                    polyCoordinates: [
+                      LatLng(widget.dropoffLat, widget.dropoffLon),
+                      LatLng(widget.pickupLat, widget.pickupLon),
+                    ],
+                  ))),
 
           Positioned(
             top: 50,
@@ -119,7 +116,10 @@ class _MeunScreenState extends State<MeunScreen> {
                       const SizedBox(
                         height: 15,
                       ),
-                      const TotalItemBar(amount: "",distants: "",time: ""),
+                      TotalItemBar(
+                          amount: widget.pickUpAdress,
+                          distants: widget.distance,
+                          time: widget.time),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 10),
@@ -161,7 +161,21 @@ class _MeunScreenState extends State<MeunScreen> {
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10))),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                         Get.to(() => ComleteTaskDetail(
+                                          name: widget.name,
+                                          size: widget.size,
+                                          weight: widget.weight,
+                                          time: widget.time,
+                                          price: widget.price,
+                                          pickUpAdress: widget.pickUpAdress,
+                                          distance: widget.distance,
+                                          dropOffAdress: widget.dropOffAdress,
+                                        ));
+
+
+
+                                  },
                                   child: const Text("Details",
                                       style: TextStyle(
                                           color: AppColor.mainColor,

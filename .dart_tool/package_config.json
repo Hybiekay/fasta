@@ -296,6 +296,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.5",
       "packageUri": "lib/",
@@ -470,7 +476,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-02T22:45:34.137575Z",
+  "generated": "2023-04-03T11:40:23.439348Z",
   "generator": "pub",
   "generatorVersion": "2.19.5"
 }

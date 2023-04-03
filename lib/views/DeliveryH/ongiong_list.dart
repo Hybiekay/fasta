@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:ziklogistics/chat/chatScreen.dart';
 import '../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
 import 'package:ziklogistics/views/meun_screen/meunScreen.dart';
@@ -31,13 +32,31 @@ class Ongoinglist extends StatelessWidget {
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
-                final data = snapshot.data[index];
+                final data = snapshot.data['data'][index];
+                ;
                 return HistoryCard(
+                  chatPressed: (){
+                   Get.to(() => ChatScreen());
+                  },
                   trackPressed: () {
-                    Navigator.of(context).pushNamed(MeunScreen.routeName);
+                    Get.to(() => MeunScreen(
+                          name: data["name"],
+                          size: data["size"].toString(),
+                          weight: data["weight"].toString(),
+                          dropOffAdress: data["dropoff_address"],
+                          pickUpAdress: data["pickup_address"],
+                          distance: data["dropoff_object"],
+                          packageId: data["id"],
+                          price: data["price"],
+                          time: data["pickup_object"],
+                          pickupLon: double.parse(data["pickup_lon"]),
+                          pickupLat: double.parse(data["pickup_lat"]),
+                          dropoffLon: double.parse(data["dropoff_lon"]),
+                          dropoffLat: double.parse(data["dropoff_lat"]),
+                        ));
                   },
                   name: data["name"],
-                  time: "${data["createdAt"]}",
+                  time: DateTime.parse(data['createdAt']),
                   track: "Update Ongoing Progress",
                 );
               },

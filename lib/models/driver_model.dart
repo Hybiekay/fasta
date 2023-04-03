@@ -9,7 +9,7 @@ class DriverModel {
 }
 
 class DriverUserModel {
-  static String? id = driverData["user"]["id"];
+  static String id = driverData["user"]["id"];
   static String? name = driverData["user"]["name"];
   static String? email = driverData["user"]["email"];
   static String? status = driverData["user"]["status"];

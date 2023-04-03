@@ -196,6 +196,7 @@ class DriverApiController extends GetxController {
       "status": {status}
     });
     print(response.body);
+    print(response.statusCode);
     final data = json.decode(response.body);
     return data;
   }

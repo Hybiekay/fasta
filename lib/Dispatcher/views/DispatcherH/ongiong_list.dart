@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../../chat/chatScreen.dart';
 import '../../../controllers/drivers_controller.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
@@ -30,14 +31,31 @@ class DispatcherOngoinglist extends StatelessWidget {
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
-                final data = snapshot.data[index];
+                final data = snapshot.data['data'][index];
+
                 return HistoryCard(
-                  trackPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(DispatcherMeunScreen.routeName);
+                  chatPressed: () {
+                    Get.to(() => ChatScreen());
                   },
-                  name: data["name"],
-                  time: "${data["createdAt"]}",
+                  trackPressed: () {
+                    Get.to(() => DispatcherMeunScreen(
+                          name: data["name"],
+                          size: data["size"].toString(),
+                          weight: data["weight"].toString(),
+                          dropOffAdress: data["dropoff_address"],
+                          pickUpAdress: data["pickup_address"],
+                          distance: data["dropoff_object"],
+                          packageId: data["id"],
+                          price: data["price"],
+                          time: data["pickup_object"],
+                          pickupLon: double.parse(data["pickup_lon"]),
+                          pickupLat: double.parse(data["pickup_lat"]),
+                          dropoffLon: double.parse(data["dropoff_lon"]),
+                          dropoffLat: double.parse(data["dropoff_lat"]),
+                        ));
+                  },
+                  name: data['name'],
+                  time: DateTime.parse(data['createdAt']),
                   track: "Update Ongoing Progress",
                 );
               },

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/constants/appImages.dart';
@@ -5,9 +6,10 @@ import 'package:ziklogistics/constants/appocolor.dart';
 
 class HistoryCard extends StatelessWidget {
   String name;
-  String time;
+  DateTime time;
   String track;
   VoidCallback trackPressed;
+  VoidCallback chatPressed;
 
   HistoryCard({
     Key? key,
@@ -15,6 +17,7 @@ class HistoryCard extends StatelessWidget {
     required this.time,
     required this.track,
     required this.trackPressed,
+    required this.chatPressed,
   }) : super(key: key);
 
   @override
@@ -26,7 +29,6 @@ class HistoryCard extends StatelessWidget {
               color: AppColor.whiteColor,
               borderRadius: BorderRadius.circular(12)),
           height: 100,
-          width: MediaQuery.of(context).size.width * 0.8,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +52,7 @@ class HistoryCard extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    time,
+                    DateFormat('yyyy-MM-dd HH:mm:ss').format(time),
                     style: GoogleFonts.dmSans(
                         color: AppColor.mainColor,
                         fontSize: 15,
@@ -76,9 +78,11 @@ class HistoryCard extends StatelessWidget {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset(AppImages.messageICon),
+                      GestureDetector(
+                          onTap: chatPressed,
+                          child: Image.asset(AppImages.messageICon)),
                       const SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
                       Image.asset(AppImages.callICon),
                     ]),

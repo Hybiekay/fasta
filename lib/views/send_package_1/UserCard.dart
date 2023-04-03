@@ -1,4 +1,4 @@
-import 'package:ziklogistics/views/chat/chatScreen.dart';
+import 'package:ziklogistics/chat/chatScreen.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class UserCard extends StatelessWidget {
