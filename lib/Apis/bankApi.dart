@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
+
 
 class BankApi {
   Future paymentInit({
@@ -62,24 +62,7 @@ class BankApi {
     return data;
   }
 
-  PaymentCard _getCardFromUI(
-    
-  ) {
-    // Using just the must-required parameters.
-    return PaymentCard(
-      number: "",
-      cvc: "",
-      expiryMonth: 0,
-      expiryYear: 0,
-    );
-  }
+  
 
-  _chargeCard(String accessCode) async {
-    var charge = Charge()
-      ..accessCode = accessCode
-      ..card = _getCardFromUI();
 
-  //   final response = await plugin.chargeCard(context, charge: charge);
-  //   // Use the response
-   }
 }

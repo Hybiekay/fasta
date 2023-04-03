@@ -22,25 +22,28 @@ class DispatcherOngoinglist extends StatelessWidget {
         ),
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasData && (snapshot.data["data"] as List).length < 1) {
+            return NodataCard(content: "You don't Have Ongoing Request");
+          } else if (snapshot.hasData &&
+              (snapshot.data["data"] as List).length >= 1) {
             print(snapshot.data);
-            final data = snapshot.data;
             return ListView.builder(
-              itemCount: snapshot.data["data"].length,
+              itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
+                final data = snapshot.data[index];
                 return HistoryCard(
                   trackPressed: () {
                     Navigator.of(context)
                         .pushNamed(DispatcherMeunScreen.routeName);
                   },
-                  name: "",
-                  time: "04.12.2021 • 20:30",
+                  name: data["name"],
+                  time: "${data["createdAt"]}",
                   track: "Update Ongoing Progress",
                 );
               },
             );
           }
-          return NodataCard(content: "You don't Have Ongoing Request");
+          return NodataCard(content: "Data Is loading Request");
         },
       ),
     );

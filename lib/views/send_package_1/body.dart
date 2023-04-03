@@ -217,6 +217,7 @@ class _BtubuttonState extends State<Btubutton> {
             totalPrice = price.toInt();
           }
           final package = await userController.createPackage(
+            distance: kg.toInt().toString(),
             time: time,
             size: int.parse(widget.approxSizeController.text),
             width: int.parse(widget.approxWeightController.text),

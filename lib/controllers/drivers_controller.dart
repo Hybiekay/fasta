@@ -103,13 +103,14 @@ class DriverController extends GetxController {
     }
   }
 
-  Future getAllRequest() async {
+  Future<List<dynamic>> getAllRequest() async {
     try {
       final data = await _apiController.getAllRequt(token: otoken);
-      final stream = Stream.fromFuture(data);
-      print("this is the body ${stream}");
-      return data;
+      // final stream = Stream.fromFuture(data);
+      // print("this is the body ${stream}");
+      return data as List;
     } catch (e) {
+      rethrow;
       if (kDebugMode) {
         print(e.toString());
       }
@@ -173,6 +174,7 @@ class DriverController extends GetxController {
       if (kDebugMode) {
         print(e.toString());
       }
+      rethrow;
     }
   }
 

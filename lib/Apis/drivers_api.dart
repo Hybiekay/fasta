@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_Screen.dart';
 
 // ignore_for_file: avoid_print
 class DriverApiController extends GetxController {
@@ -106,18 +107,10 @@ class DriverApiController extends GetxController {
     final result = await response.send();
     final resultData = await result.stream.toBytes();
     final data = String.fromCharCodes(resultData);
-    print(data);
 
-    // final response = http.post(verifyOtpUrl, headers: {
-    //   'Authorization': 'Bearer $token',
-    // }, body: {
-    //   "bvn": bvn,
-    //   "nin": nin,
-    //   "name": name,
-    //   "dobImage": dobImage,
-    //   "ninImage": dobImage,
-    //   "bvnImage": bvnImage,
-    // });
+    DStorage.saveDriverData(data);
+    print(data);
+    return json.decode(data);
   }
 
   Future getAllRequt({
@@ -132,7 +125,11 @@ class DriverApiController extends GetxController {
       },
     );
     print("this is the body ${response.body}");
-    final data = json.decode(response.body);
+
+    final data = json.decode(response.body) as List;
+    if (response.statusCode == 401) {
+      Get.to(() => DispatcherLoginScreen());
+    }
     return data;
   }
 
@@ -141,7 +138,7 @@ class DriverApiController extends GetxController {
     required String packageId,
   }) async {
     final getAllRequtOtpUrl =
-        Uri.parse("${AppApis.endPoint}driver/get-dispatch-requests/$packageId");
+        Uri.parse("${AppApis.endPoint}driver/get-dispatch-request/$packageId");
     final response = await http.get(
       getAllRequtOtpUrl,
       headers: {

@@ -47,7 +47,8 @@ dependencies:
   geocoding: ^2.1.0
   geolocator: ^9.0.2
   image_picker: ^0.8.7+1  
-  flutter_paystack: ^1.0.7
+  # flutter_paystack: ^1.0.7
+  http_interceptor: ^1.0.2
 
 
 dev_dependencies:

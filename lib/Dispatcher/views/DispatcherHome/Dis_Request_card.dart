@@ -5,13 +5,33 @@ import 'package:ziklogistics/constants/appocolor.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/global_components/dialogAlert.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/meunScreen.dart';
-// ignore_for_file: must_be_immutable
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
+
 
 class dispatcherRequsetCard extends StatelessWidget {
+  final String name;
+  final String distance;
+  final String time;
+  final String price;
+  final String size;
+  final String withe;
+  final String pickUp;
+  final String  dropOff;
+  final String scheduleTime;
   bool isScahedule;
   dispatcherRequsetCard({
-    this.isScahedule = false,
     Key? key,
+    required this.name,
+    required this.distance,
+    required this.time,
+    required this.price,
+    required this.size,
+    required this.withe,
+    required this.pickUp,
+    required this.dropOff,
+    required this.scheduleTime,
+    this.isScahedule = false,
   }) : super(key: key);
 
   @override
@@ -51,7 +71,7 @@ class dispatcherRequsetCard extends StatelessWidget {
                           children: [
                             const CircleAvatar(),
                             Text(
-                              "Opeyemi Akinyemi",
+                              name,
                               style: GoogleFonts.dmSans(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
@@ -82,7 +102,7 @@ class dispatcherRequsetCard extends StatelessWidget {
                                   height: 9.h,
                                 ),
                                 Text(
-                                  "15.2 km",
+                                  "$distance km",
                                   style: GoogleFonts.dmSans(
                                     color: AppColor.whiteColor,
                                     fontSize: 15.sp,
@@ -108,7 +128,7 @@ class dispatcherRequsetCard extends StatelessWidget {
                                   height: 9.h,
                                 ),
                                 Text(
-                                  "82 Min",
+                                  "$time Min",
                                   style: GoogleFonts.dmSans(
                                     color: AppColor.whiteColor,
                                     fontSize: 15.sp,
@@ -134,7 +154,7 @@ class dispatcherRequsetCard extends StatelessWidget {
                                   height: 9.h,
                                 ),
                                 Text(
-                                  "₦20,005.00",
+                                  "₦ $price",
                                   overflow: TextOverflow.fade,
                                   style: GoogleFonts.dmSans(
                                     color: AppColor.whiteColor,
@@ -149,7 +169,7 @@ class dispatcherRequsetCard extends StatelessWidget {
                       ),
                       isScahedule
                           ? TextPreviwe(
-                              type: "Scheduled", value: "15/07/2022 - 5:44 PM")
+                              type: "Scheduled", value: scheduleTime)
                           : const Divider()
                     ],
                   ),
@@ -190,14 +210,14 @@ class dispatcherRequsetCard extends StatelessWidget {
                         children: [
                           TextPreviwe(
                             type: "Approx. size",
-                            value: "//\\??",
+                            value: size,
                           ),
                           const SizedBox(
                             width: 30,
                           ),
                           TextPreviwe(
                             type: "Approx. size",
-                            value: "//\\??",
+                            value: withe,
                           )
                         ],
                       ),
@@ -206,11 +226,11 @@ class dispatcherRequsetCard extends StatelessWidget {
                       ),
                       TextPreviwe(
                         type: "Pick-up location",
-                        value: "//\\??",
+                        value: pickUp,
                       ),
                       TextPreviwe(
                         type: "Drop-off location",
-                        value: "//\\??",
+                        value: dropOff,
                       ),
                       const SizedBox(
                         height: 10,

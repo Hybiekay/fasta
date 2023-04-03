@@ -65,6 +65,7 @@ class CustomerController extends GetxController {
   Future createPackage(
       {required String userName,
       required String discription,
+      required String distance,
       required int size,
       required int width,
       required String price,
@@ -80,6 +81,7 @@ class CustomerController extends GetxController {
       String scheduleddate = "isNotSchedule"}) async {
     try {
       final package = await _apiController.sendAPackage(
+          distance: distance,
           time: time,
           token: Otoken,
           userName: userName,
@@ -107,10 +109,10 @@ class CustomerController extends GetxController {
     }
   }
 
-  Future getHistory({required String packageId}) async {
+  Future getHistory({required String status}) async {
     try {
       final data = await _apiController.getCustomerHistory(
-        packageId: packageId,
+       status:status ,
         token: Otoken,
       );
       return data;
@@ -135,17 +137,18 @@ class CustomerController extends GetxController {
     }
   }
 
-  Future getListOfDelivery({required String status}) async {
+  Future<List> getListOfDelivery({required String status}) async {
     try {
       final data = await _apiController.getCustomerListOfDelivery(
         status: status,
         token: Otoken,
       );
-      return data;
+      return data as List;
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
       }
+      rethrow;
     }
   }
 

@@ -116,6 +116,7 @@ class ChoiceScreen extends StatelessWidget {
                           final data = await DStorage.getDriverData();
                           print("this is   $data");
                           driverData = json.decode(data);
+                            print("this is   $data");
                           if (DriverUserModel.name == null) {
                             Get.to(() => const DispatcherOnBoardPages());
                           } else if (DriverUserModel.name != null &&

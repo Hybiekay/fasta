@@ -109,6 +109,7 @@ class UserApiController extends GetxController {
     required String dropoffLat,
     required String dropoffLon,
     required String dropoffAdress,
+    required String distance,
     required double time,
     required bool isSchedule,
     required String scheduleddate,
@@ -132,7 +133,7 @@ class UserApiController extends GetxController {
       "dropoff_lat": dropoffLat,
       "dropoff_lon": dropoffLon,
       "dropoff_address": dropoffAdress,
-      "dropoff_object": {'time': time},
+      "dropoff_object": {'time': time, "distance": distance},
       "scheduled_date": scheduleddate,
       "scheduled_time": scheduledTime,
       "schedule_object": isSchedule,
@@ -151,9 +152,10 @@ class UserApiController extends GetxController {
 
   Future getCustomerHistory({
     required String token,
-    required String packageId,
+    required String status,
   }) async {
-    final url = Uri.parse("${AppApis.endPoint}customer/history");
+    final url =
+        Uri.parse("${AppApis.endPoint}customer/history-grouped?status=$status");
     final response = await http.get(
       url,
       headers: {

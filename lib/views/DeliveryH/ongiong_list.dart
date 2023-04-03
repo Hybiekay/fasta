@@ -15,30 +15,37 @@ class Ongoinglist extends StatelessWidget {
     final CustomerController userController = Get.put(CustomerController());
 
     return SizedBox(
-        height: MediaQuery.of(context).size.height * 0.72,
-        width: MediaQuery.of(context).size.width * 0.85,
-        child: FutureBuilder(
-          future: userController.getListOfDelivery(status: "ongoing"),
-          // initialData: InitialData,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data["data"].length,
-                itemBuilder: (context, index) {
-                  return HistoryCard(
-                    trackPressed: () {
-                      Navigator.of(context).pushNamed(MeunScreen.routeName);
-                    },
-                    name: "Bosemide Akim",
-                    time: "04.12.2021 • 20:30",
-                    track: "Completed Successfully",
-                  );
-                },
-              );
-            }
-            return const NodataCard(
-                content: "No Ongoing Package \nMake Your New Request");
-          },
-        ));
+      height: MediaQuery.of(context).size.height * 0.72,
+      width: MediaQuery.of(context).size.width * 0.85,
+      child: FutureBuilder(
+        future: userController.getHistory(
+          status: "ongoing",
+        ),
+        // initialData: InitialData,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData && (snapshot.data["data"] as List).length < 1) {
+            return NodataCard(content: "You don't Have Ongoing Request");
+          } else if (snapshot.hasData &&
+              (snapshot.data["data"] as List).length >= 1) {
+            print(snapshot.data);
+            return ListView.builder(
+              itemCount: (snapshot.data["data"] as List).length,
+              itemBuilder: (context, index) {
+                final data = snapshot.data[index];
+                return HistoryCard(
+                  trackPressed: () {
+                    Navigator.of(context).pushNamed(MeunScreen.routeName);
+                  },
+                  name: data["name"],
+                  time: "${data["createdAt"]}",
+                  track: "Update Ongoing Progress",
+                );
+              },
+            );
+          }
+          return NodataCard(content: "Data Is loading Request");
+        },
+      ),
+    );
   }
 }

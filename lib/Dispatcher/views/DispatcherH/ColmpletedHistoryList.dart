@@ -17,35 +17,35 @@ class DispatcherCompletedlist extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.72,
       width: MediaQuery.of(context).size.width * 0.85,
       child: FutureBuilder(
-          future: driverController.getHistory("completed"),
-          // initialData: InitialData,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
+        future: driverController.getHistory(
+          "completed",
+        ),
+        // initialData: InitialData,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData && (snapshot.data["data"] as List).length < 1) {
+            return NodataCard(content: "You don't Have Completed Request");
+          } else if (snapshot.hasData &&
+              (snapshot.data["data"] as List).length >= 1) {
             print(snapshot.data);
-
-            if (snapshot.data["data"].toList < 1 && snapshot.data) {
-              return NodataCard(
-                content: "You have not completed request \nyet!",
-              );
-            } else if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data["data"].length,
-                itemBuilder: (context, index) {
-                  return HistoryCard(
-                    trackPressed: () {
-                      Navigator.of(context)
-                          .pushNamed(DispatcherComleteTaskDetail.routeName);
-                    },
-                    name: "Suwebayt Opemipo",
-                    time: "04.12.2021 • 20:30",
-                    track: "Completed Successfully",
-                  );
-                },
-              );
-            }
-            return NodataCard(
-              content: "You have not completed request \nyet!",
+            return ListView.builder(
+              itemCount: (snapshot.data["data"] as List).length,
+              itemBuilder: (context, index) {
+                final data = snapshot.data[index];
+                return HistoryCard(
+                  trackPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(DispatcherComleteTaskDetail.routeName);
+                  },
+                  name: data["name"],
+                  time: "${data["createdAt"]}",
+                  track: "Completed Progress",
+                );
+              },
             );
-          }),
+          }
+          return NodataCard(content: "Data Is loading Request");
+        },
+      ),
     );
   }
 }

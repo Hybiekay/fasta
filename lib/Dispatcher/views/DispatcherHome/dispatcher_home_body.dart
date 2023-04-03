@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherdrawer/drawer.dart';
+import 'package:ziklogistics/Dispatcher/views/DispatcherHome/homePreview.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/Dis_Request_card.dart';
 
 class DispatcherHomeBody extends StatefulWidget {
@@ -85,81 +86,39 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
           )),
         ),
         Expanded(
-          child: Container(
-              height: MediaQuery.of(context).size.height * 0.68.h,
-              color: AppColor.mainColor,
-              child: FutureBuilder(
-                  future: driverController.getAllRequest(),
-                  // initialData:
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    print(snapshot.data);
-                    return Container();
-                  })
-              //   return NodataCard(content: "You have no request \nyet!");
-              // } else if (snapshot.hasError) {
-              //   return NodataCard(
-              //       content: "Request Is Loading  \nCheck you Connetion!");
-              // }
-
-              // return ListView.builder(
-              //   itemCount: snapshot.data.length,
-              //   itemBuilder: (context, index) {
-              //     return RequestCard(
-              //       name: 'Opeyemi Akinyemi',
-              //       distance: '15.2 km',
-              //       price: '₦20,005.00',
-              //       time: "82",
-              //     );
-              //   },
-              // );
-              // }),
-              // child: SingleChildScrollView(
-              //   child: Column(
-              //     children: [
-              //       SizedBox(
-              //         height: 20.h,
-              //       ),
-              //       Container(
-              //         width: MediaQuery.of(context).size.width.w,
-              //         color: AppColor.mainColor,
-              //         child: isrequested
-              //             ? dispatcherRequsetCard()
-              //             : Column(
-              //                 mainAxisAlignment: MainAxisAlignment.center,
-              //                 crossAxisAlignment: CrossAxisAlignment.center,
-              //                 children: [
-              //                   SizedBox(
-              //                     height: 25.h,
-              //                   ),
-              //                   Image.asset(
-              //                     AppImages.homePageImage,
-              //                     width: 300.w,
-              //                     height: 158.h,
-              //                     filterQuality: FilterQuality.high,
-              //                   ),
-              //                   SizedBox(
-              //                     height: 25.h,
-              //                   ),
-              //                   Padding(
-              //                       padding: const EdgeInsets.symmetric(
-              //                           vertical: 30, horizontal: 30),
-              //                       child: Text(
-              //                         "You have no request \nyet!",
-              //                         textAlign: TextAlign.center,
-              //                         style: GoogleFonts.dmSans(
-              //                           fontSize: 30,
-              //                           color: AppColor.whiteColor,
-              //                           fontWeight: FontWeight.w700,
-              //                         ),
-              //                       ))
-              //                 ],
-              //               ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              ),
-        )
+            child: Container(
+          height: MediaQuery.of(context).size.height * 0.68.h,
+          color: AppColor.mainColor,
+          child: FutureBuilder<List<dynamic>>(
+              future: driverController.getAllRequest(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData && snapshot.data.length < 1) {
+                  return NodataCard(content: "You have No Request \nyet");
+                } else if (snapshot.hasData && snapshot.data.length >= 1) {
+                  return ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      final item = snapshot.data![index];
+                      return GestureDetector(
+                        onTap: () {
+                          Get.to(() => PrivewHome(
+                            
+                                packageId: item["id"],
+                              ));
+                        },
+                        child: RequestCard(
+                          name: item["name"],
+                          price: item["price"],
+                          time: item["dropoff_object"] ?? '20',
+                          distance: item["dropoff_object"] ?? "82",
+                        ),
+                      );
+                    },
+                  );
+                }
+                return NodataCard(content: "You have No Request \nyet");
+              }),
+        ))
       ],
     );
   }

@@ -234,17 +234,15 @@ class _DispatcherVerificationScreenState
                                 print(
                                     " this is your number${driverData["user"]["phone"]}");
                                 if (statusCode == '201' &&
-                                        DriverUserModel.name == "name" ||
+                                        DriverUserModel.accountNumber == null ||
                                     DriverUserModel.name == null) {
                                   Get.to(() => DRegisterScreen(
                                         phoneNum: widget.phoneNumber,
                                       ));
                                 }
-                                if (DriverUserModel.isCompletedRegistration ==
-                                        true ||
-                                    DriverUserModel.bvn != null) {
-                                  Get.to(() => const DispatcherHome(),
-                                      arguments: {DriverUserModel});
+                                else if (DriverUserModel.isCompletedRegistration ==
+                                        false ||
+                                    DriverUserModel.bvn == null) {
                                   Get.to(
                                     () => const DriverForm(),
                                   );

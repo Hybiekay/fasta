@@ -134,6 +134,7 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
                 totalPrice = price.toInt();
               }
               final data = await userController.createPackage(
+                  distance: kg.toInt().toString(),
                   time: time,
                   size: int.parse(widget.size),
                   width: int.parse(widget.width),
