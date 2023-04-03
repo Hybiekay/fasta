@@ -93,7 +93,7 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
               future: driverController.getAllRequest(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData && snapshot.data.length < 1) {
-                  return NodataCard(content: "You have No Request \nyet");
+                  return const NodataCard(content: "You have No Request \nyet");
                 } else if (snapshot.hasData && snapshot.data.length >= 1) {
                   return ListView.builder(
                     itemCount: snapshot.data.length,
@@ -102,7 +102,17 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                       return GestureDetector(
                         onTap: () {
                           Get.to(() => PrivewHome(
-                            
+                                name: item["name"],
+                                price: item["price"],
+                                time: item["dropoff_object"],
+                                distance: item["dropoff_object"],
+                                size: item["size"],
+                                withe: item[""],
+                                pickUp: item["pickup_address"],
+                                dropOff: item["dropoff_address"],
+                                isScahedule: item["schedule_object"],
+                                scheduleTime:
+                                    "${item["scheduled_date"]} ${item["scheduled_time"]}",
                                 packageId: item["id"],
                               ));
                         },
