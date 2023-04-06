@@ -44,14 +44,6 @@ class GoogleApi {
           Geolocator.distanceBetween(startLat, startLng, endLat, endLng);
       double time = (distanceInMeters / 60) * 0.20;
       double dtime = (distanceInMeters / 1000) * 0.20;
-      double total = time + dtime;
-      double amount = total * 700;
-      if (kDebugMode) {
-        print(amount);
-      }
-      if (kDebugMode) {
-        print(dtime);
-      }
 
       if (kDebugMode) {
         print("this is the distance $distanceInMeters");

@@ -54,6 +54,7 @@ class _MeunScreenState extends State<MeunScreen> {
                   color: Colors.amber,
                   width: MediaQuery.of(context).size.width,
                   child: Map(
+                    destricption: "",
                     destinationLoaction:
                         LatLng(widget.dropoffLat, widget.dropoffLon),
                     sourceLoaction: LatLng(widget.pickupLat, widget.pickupLon),

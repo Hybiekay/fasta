@@ -35,7 +35,11 @@ class DispatcherOngoinglist extends StatelessWidget {
 
                 return HistoryCard(
                   chatPressed: () {
-                    Get.to(() => ChatScreen());
+                    Get.to(() => ChatScreen(
+                          friendName: data["name"],
+                          userName: "my name",
+                          uid: data["userId"],
+                        ));
                   },
                   trackPressed: () {
                     Get.to(() => DispatcherMeunScreen(

@@ -8,14 +8,14 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 class CustomerController extends GetxController {
   late final UserApiController _apiController;
 
-  late String Otoken;
+  late String otoken;
   @override
   void onInit() async {
-    super.onInit();
-
+    otoken = await Storage.getToken();
     _apiController = UserApiController();
 
-    Otoken = await Storage.getToken();
+    super.onInit();
+    print("Init $otoken");
   }
 
   Future<void> loginUser(String email, String phoneNumber) async {
@@ -52,7 +52,7 @@ class CustomerController extends GetxController {
       final data = await _apiController.updateCostumerName(
         phoneNumber: phoneNumber,
         name: name,
-        token: Otoken,
+        token: otoken,
       );
       return data;
     } catch (e) {
@@ -68,6 +68,8 @@ class CustomerController extends GetxController {
       required String distance,
       required int size,
       required int width,
+      required int height,
+      required int weight,
       required String price,
       required String pickupAdrress,
       required String pickupLat,
@@ -75,15 +77,17 @@ class CustomerController extends GetxController {
       required String dropoffAdress,
       required String dropoffLat,
       required String dropoffLon,
-      required double time,
+      required String time,
       required bool isSchedule,
       String scheduledTime = "isNotSchedule",
       String scheduleddate = "isNotSchedule"}) async {
     try {
       final package = await _apiController.sendAPackage(
+          height: height,
+          weight: weight,
           distance: distance,
           time: time,
-          token: Otoken,
+          token: otoken,
           userName: userName,
           discription: discription,
           size: size,
@@ -112,8 +116,8 @@ class CustomerController extends GetxController {
   Future getHistory({required String status}) async {
     try {
       final data = await _apiController.getCustomerHistory(
-       status:status ,
-        token: Otoken,
+        status: status,
+        token: otoken,
       );
       return data;
     } catch (e) {
@@ -127,7 +131,7 @@ class CustomerController extends GetxController {
     try {
       final data = await _apiController.getCustomerGetPackage(
         packageId: packageId,
-        token: Otoken,
+        token: otoken,
       );
       return data;
     } catch (e) {
@@ -141,7 +145,7 @@ class CustomerController extends GetxController {
     try {
       final data = await _apiController.getCustomerListOfDelivery(
         status: status,
-        token: Otoken,
+        token: otoken,
       );
       return data as List;
     } catch (e) {
@@ -155,7 +159,7 @@ class CustomerController extends GetxController {
   Future getCardDelivery({required String status}) async {
     try {
       final data = await BankApi.getCards(
-        token: Otoken,
+        token: otoken,
       );
       return data;
     } catch (e) {

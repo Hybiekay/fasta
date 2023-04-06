@@ -134,8 +134,10 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
                 totalPrice = price.toInt();
               }
               final data = await userController.createPackage(
+                  height: 10,
+                  weight: 20,
                   distance: kg.toInt().toString(),
-                  time: time,
+                  time: "9",
                   size: int.parse(widget.size),
                   width: int.parse(widget.width),
                   price: totalPrice.toString(),
@@ -155,7 +157,7 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => SearchingDispatcher(
-                            packageId: data["id"],
+                            // packageId: data["id"],
                             dateTime: "${date.year}/${date.month}/${date.day} ",
                             time: "${time.toInt()}",
                             price: "${totalPrice.toInt()}",

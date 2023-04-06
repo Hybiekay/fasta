@@ -33,10 +33,14 @@ class Ongoinglist extends StatelessWidget {
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
                 final data = snapshot.data['data'][index];
-                ;
+
                 return HistoryCard(
-                  chatPressed: (){
-                   Get.to(() => ChatScreen());
+                  chatPressed: () {
+                    Get.to(() => ChatScreen(
+                          friendName: data["name"],
+                          userName: "my name",
+                          uid: data["userId"],
+                        ));
                   },
                   trackPressed: () {
                     Get.to(() => MeunScreen(
@@ -55,7 +59,7 @@ class Ongoinglist extends StatelessWidget {
                           dropoffLat: double.parse(data["dropoff_lat"]),
                         ));
                   },
-                  name: data["name"],
+                  name: data['name'],
                   time: DateTime.parse(data['createdAt']),
                   track: "Update Ongoing Progress",
                 );

@@ -11,9 +11,10 @@ class DriverController extends GetxController {
   late String otoken;
   @override
   void onInit() async {
+    otoken = await DStorage.getDriverToken();
+    otoken = await DStorage.getDriverToken();
     super.onInit();
     _apiController = DriverApiController();
-    otoken = await DStorage.getDriverToken();
   }
 
   Future loginUser(String email, String phoneNumber) async {
@@ -159,7 +160,6 @@ class DriverController extends GetxController {
       final data = await _apiController.changePackageStatus(
           token: otoken, packageId: packageId, status: status);
       return data;
-      
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());

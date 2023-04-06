@@ -224,7 +224,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                               } else {
                                 if (CustomersUserModel.name != "name" &&
                                     statusCode == "201") {
-                                  Get.to(() => const CostomerHome(),
+                                  Get.offAll(() => const CostomerHome(),
                                       arguments: {CustomersUserModel});
                                 } else {
                                   if (statusCode == "403") {

@@ -72,9 +72,10 @@ class ChoiceScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
-                          Get.to(() => const LoginScreen());
+                          // Get.to(() => const LoginScreen());
                           final data = await Storage.getData();
                           custormerName = json.decode(data);
+                          // Get.to(() => const CostomerHome());
                           print(CustomersUserModel.name);
                           if (CustomersUserModel.name == null &&
                               CustomersModel.token == null) {

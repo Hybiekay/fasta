@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import '../../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
-import 'package:ziklogistics/global_components/form_field.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driverform.dart';
 
 class DRegisterScreen extends StatefulWidget {
@@ -97,9 +95,9 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Container(
-                  padding: EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   margin:
-                      EdgeInsets.symmetric(horizontal: 5).copyWith(right: 15),
+                      const EdgeInsets.symmetric(horizontal: 5).copyWith(right: 15),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColor.backgroundsecondary),
                     color: AppColor.mainColor,
@@ -182,7 +180,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                         acountNumCon.clear();
                         bankNameCon.clear();
                         fullNameCon.clear();
-                        Get.to(() => DriverForm());
+                        Get.to(() => const DriverForm());
                       },
                       value: "Complete")
                   : inActiveButtonComp(value: "Complete"),

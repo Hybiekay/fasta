@@ -1,3 +1,4 @@
+
 // class RegistrationData {
 //   String message;
 //   Data data;
@@ -73,3 +74,4 @@
 //     year = json['year'];
 //   }
 // }
+

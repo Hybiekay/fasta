@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'views/home/home.dart';
+import 'views/tesingScreen.dart';
 import 'package:flutter/material.dart';
 import 'views/onBoardScreen/choiceScreen.dart';
 import 'package:ziklogistics/routes/routes.dart';
@@ -17,23 +18,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-  // late final DriverApiController _apiController;
+    // late final DriverApiController _apiController;
 
     return ScreenUtilInit(
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
-            title: 'ZikLogistics',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(),
-            initialRoute: ChoiceScreen.routeName,
-            routes: routes,
-            // home:
-            //     // CostomerHome()
-            //     DispatcherHome()
-            // // DRegisterScreen(phoneNum: ""),
-          );
+              title: 'ZikLogistics',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(),
+              initialRoute: ChoiceScreen.routeName,
+              routes: routes,
+              // home: MyWidget()
+              //     // CostomerHome()
+              //     DispatcherHome()
+              // // DRegisterScreen(phoneNum: ""),
+              );
         });
   }
 }

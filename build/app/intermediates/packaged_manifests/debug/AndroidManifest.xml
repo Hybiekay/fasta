@@ -5,7 +5,7 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="20"
+        android:minSdkVersion="21"
         android:targetSdkVersion="33" />
     <!--
          The INTERNET permission is required for development. Specifically,
@@ -74,6 +74,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD_voMGhyyWw5v56_3EzE6IQPtNnor1rDs" />
 
+        <activity
+            android:name="co.paystack.flutterpaystack.AuthActivity"
+            android:theme="@style/Paystack.Dialog" />
+
         <service
             android:name="com.baseflow.geolocator.GeolocatorLocationService"
             android:enabled="true"
@@ -108,6 +112,18 @@
         <uses-library
             android:name="androidx.window.sidecar"
             android:required="false" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.example.ziklogistics.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
 </manifest>

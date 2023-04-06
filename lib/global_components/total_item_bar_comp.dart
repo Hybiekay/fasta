@@ -46,7 +46,7 @@ class TotalItemBar extends StatelessWidget {
                     height: 9.h,
                   ),
                   Text(
-                    "$distants km",
+                    distants,
                     style: GoogleFonts.dmSans(
                       color: AppColor.mainColor,
                       fontSize: 15.sp,
@@ -72,7 +72,7 @@ class TotalItemBar extends StatelessWidget {
                     height: 9.h,
                   ),
                   Text(
-                    "$time Min",
+                    time,
                     style: GoogleFonts.dmSans(
                       color: AppColor.mainColor,
                       fontSize: 15.sp,

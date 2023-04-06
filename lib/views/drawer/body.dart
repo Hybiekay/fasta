@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../constants/appImages.dart';
 import '../../constants/appocolor.dart';
@@ -5,22 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/controllers/storage.dart';
 import 'package:ziklogistics/models/customersModel.dart';
 import 'package:ziklogistics/views/drawer/btn_comp.dart';
+import 'package:ziklogistics/views/auth/login_Screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/views/DeliveryH/delivery_history.dart';
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-class Body extends StatefulWidget {
+class Body extends StatelessWidget {
   Body({super.key});
-
-  @override
-  State<Body> createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +43,7 @@ class _BodyState extends State<Body> {
                 Row(
                   children: [
                     Text(
-                      CustomersUserModel.name!,
+                      CustomersUserModel.name ?? "Login Again",
                       style: GoogleFonts.dmSans(
                         color: AppColor.mainColor,
                         fontSize: 20.sp,
@@ -117,6 +109,24 @@ class _BodyState extends State<Body> {
                 ),
                 title: Text(
                   'Contact',
+                  style: GoogleFonts.dmSans(
+                    color: AppColor.whiteColor,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Get.offAll(() => LoginScreen());
+                },
+                leading: Image.asset(
+                  AppImages.referAFriendImg,
+                  width: 20.w,
+                  height: 20.h,
+                ),
+                title: Text(
+                  'Log Out',
                   style: GoogleFonts.dmSans(
                     color: AppColor.whiteColor,
                     fontSize: 15.sp,

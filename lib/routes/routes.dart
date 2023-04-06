@@ -24,7 +24,6 @@ final Map<String, WidgetBuilder> routes = {
   SendPackage_1.routeName: (context) => const SendPackage_1(),
   LoginScreen.routeName: (context) => const LoginScreen(),
   Deliveryhistory.routeName: (context) => const Deliveryhistory(),
-  ChatScreen.routeName: (context) => const ChatScreen(),
   DispatcherLoginScreen.routeName: (context) => const DispatcherLoginScreen(),
   DispatcherHome.routeName: (context) => const DispatcherHome(),
   DispatcherDrawerScreen.routeName: (context) => const DispatcherDrawerScreen(),

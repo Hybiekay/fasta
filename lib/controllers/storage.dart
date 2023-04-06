@@ -29,8 +29,6 @@ class Storage {
     return res;
   }
 
-
-
   static Future saveStatusCode(String statusCode) async {
     await _secureStorage.write(key: _keyStatus, value: statusCode);
   }

@@ -8,13 +8,13 @@ class SearchingDispatcher extends StatefulWidget {
   final LatLng dLocation;
   final bool isSchedule;
   final String dateTime;
-  final String packageId;
+  // final String packageId;
   static const String routeName = '/searchingDispatcher';
 
   const SearchingDispatcher(
       {super.key,
       required this.time,
-      required this.packageId,
+      // required this.packageId,
       required this.price,
       required this.distance,
       this.dateTime = "not Schedele",
@@ -29,7 +29,11 @@ class SearchingDispatcher extends StatefulWidget {
 class _SearchingDispatcherState extends State<SearchingDispatcher> {
   bool isFind = false;
 
-  @override
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +43,7 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
           // image just for test
           Positioned(
             child: Map(
+              destricption: "",
                 polyCoordinates: [widget.dLocation, widget.sLocation],
                 sourceLoaction: widget.sLocation,
                 destinationLoaction: widget.dLocation),
@@ -141,7 +146,7 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => ChoicePayment(
-                                          packageId: widget.packageId,
+                                          packageId: " widget.packageId",
                                           distants: widget.distance,
                                           amount: widget.price,
                                           time: widget.time,

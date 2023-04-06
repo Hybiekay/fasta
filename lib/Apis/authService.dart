@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/storage.dart';
+import 'package:ziklogistics/views/auth/login_Screen.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 // ignore_for_file: file_names
 
@@ -50,9 +51,12 @@ class UserApiController extends GetxController {
         print(response.statusCode);
         print(response.body);
       }
-      Storage.saveStatusCode("${response.statusCode}");
       Storage.saveData(response.body);
+      Storage.saveStatusCode("${response.statusCode}");
+
       final data = json.decode(response.body);
+      Storage.saveToken(data["token"]);
+      print(data['token']);
       return data;
     } else {
       if (kDebugMode) {
@@ -102,6 +106,8 @@ class UserApiController extends GetxController {
     required String discription,
     required int size,
     required int width,
+    required int weight,
+    required int height,
     required String price,
     required String pickupLat,
     required String pickupLon,
@@ -110,7 +116,7 @@ class UserApiController extends GetxController {
     required String dropoffLon,
     required String dropoffAdress,
     required String distance,
-    required double time,
+    required String time,
     required bool isSchedule,
     required String scheduleddate,
     required String scheduledTime,
@@ -126,17 +132,19 @@ class UserApiController extends GetxController {
       "description": discription,
       "size": size,
       "width": width,
+      "weight": weight,
+      "height": height,
       "pickup_lat": pickupLat,
       "pickup_lon": pickupLon,
       "pickup_address": pickupAdrress,
-      "pickup_object": distance,
       "dropoff_lat": dropoffLat,
       "dropoff_lon": dropoffLon,
       "dropoff_address": dropoffAdress,
-      "dropoff_object": time,
+      "isScheduled": isSchedule,
       "scheduled_date": scheduleddate,
       "scheduled_time": scheduledTime,
-      "schedule_object": isSchedule,
+      "distance": distance,
+      "duration": time,
       "price": price,
       "month": month,
       "year": year,
@@ -146,6 +154,11 @@ class UserApiController extends GetxController {
       print(response.body);
       print(response.body);
     }
+    if (response.statusCode == 401) {
+      Get.to(() => const LoginScreen());
+    }
+    print(response.body);
+
     final data = json.decode(response.body);
     return data;
   }
@@ -164,6 +177,9 @@ class UserApiController extends GetxController {
     );
     if (kDebugMode) {
       print(response.body);
+      if (response.statusCode == 401) {
+        Get.to(() => const LoginScreen());
+      }
     }
     return json.decode(response.body);
   }
@@ -173,14 +189,20 @@ class UserApiController extends GetxController {
     required String packageId,
   }) async {
     final url = Uri.parse("${AppApis.endPoint}customer/history");
-    final response = await http.get(
+    final response = await http.post(
       url,
       headers: {
         'Authorization': 'Bearer $token',
       },
+      body: {
+        "id": packageId
+      }
     );
     if (kDebugMode) {
       print(response.body);
+    }
+    if (response.statusCode == 401) {
+      Get.to(() => const LoginScreen());
     }
     return json.decode(response.body);
   }
@@ -201,6 +223,9 @@ class UserApiController extends GetxController {
     if (kDebugMode) {
       print(response.body);
     }
+    if (response.statusCode == 401) {
+      Get.to(() => const LoginScreen());
+    }
     return json.decode(response.body);
   }
 
@@ -218,6 +243,9 @@ class UserApiController extends GetxController {
     );
     if (kDebugMode) {
       print(response.body);
+    }
+    if (response.statusCode == 401) {
+      Get.to(() => const LoginScreen());
     }
     return json.decode(response.body);
   }

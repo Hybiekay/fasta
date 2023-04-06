@@ -8,11 +8,13 @@ class Map extends StatelessWidget {
     required this.polyCoordinates,
     required this.sourceLoaction,
     required this.destinationLoaction,
+    required this.destricption,
   });
 
   final List<LatLng> polyCoordinates;
   final LatLng sourceLoaction;
   final LatLng destinationLoaction;
+  final String destricption;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +36,16 @@ class Map extends StatelessWidget {
               width: 3)
         },
         markers: {
-          
           Marker(
-            markerId: const MarkerId("source"),
-            position: sourceLoaction,
+              markerId: const MarkerId("source"),
+              position: sourceLoaction,
+              infoWindow:
+                  InfoWindow(title: "Pick Up Area", snippet: destricption)),
+          Marker(
+            markerId: const MarkerId("destination"),
+            position: destinationLoaction,
+            infoWindow: InfoWindow(title: "Drop Off"),
           ),
-          Marker(
-              markerId: const MarkerId("destination"),
-              position: destinationLoaction)
         },
       ),
     );

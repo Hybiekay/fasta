@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ziklogistics/constants/appocolor.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class ChatScreen extends StatelessWidget {
   static const String routeName = '/chatScreen';
-  const ChatScreen({super.key});
+  final String uid;
+  final String userName;
+  final String friendName;
+
+  const ChatScreen({
+    Key? key,
+    required this.uid,
+    required this.userName,
+    required this.friendName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +27,8 @@ class ChatScreen extends StatelessWidget {
               },
               child: const Icon(Icons.arrow_back_ios)),
           backgroundColor: AppColor.mainColor,
-          title: const Text(
-            "Bosemide Akim",
+          title: Text(
+            friendName,
           ),
           actions: const [
             Icon(Icons.search),
