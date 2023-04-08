@@ -1,13 +1,27 @@
-var response;
+import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
-class ApiMapModel {
-  static double? startLocationLon = response["start_location"]['lon'];
-  static double? startLocationLat = response["start_location"]["lat"];
-  static double? endLocationLat = response["end_location"]["lat"];
-  static double? endLocationLon = response["end_location"]["lat"];
-  static var boundNe = response["bound_ne"];
-  static var boundSw = response["bound_sw"];
-  static String? distance = response["distance"];
-  static String? time = response["duration"];
-  static var polyLine = response["duration"];
+class GoogleResponseModel {
+  final Map<String, dynamic> boundNE;
+  final Map<String, dynamic> boundSW;
+  final double startLocationLat;
+  final double startLocationLon;
+  final double endLocationLat;
+  final double endLocationLon;
+  final String distance;
+  final String duration;
+  final List<Map<String, dynamic>> polylineDecode;
+
+  GoogleResponseModel({
+    required this.boundNE,
+    required this.boundSW,
+    required this.startLocationLat,
+    required this.startLocationLon,
+    required this.endLocationLat,
+    required this.endLocationLon,
+    required this.distance,
+    required this.duration,
+    required this.polylineDecode,
+  });
 }

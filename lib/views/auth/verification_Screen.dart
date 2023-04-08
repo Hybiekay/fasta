@@ -221,17 +221,15 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                 Get.to(() => CustomerRegisterScreen(
                                       phonenum: widget.phoneNumber,
                                     ));
+                              } else if (CustomersUserModel.name != "name" &&
+                                  statusCode == "201") {
+                                Get.offAll(() => const CostomerHome(),
+                                    arguments: {CustomersUserModel});
                               } else {
-                                if (CustomersUserModel.name != "name" &&
-                                    statusCode == "201") {
-                                  Get.offAll(() => const CostomerHome(),
-                                      arguments: {CustomersUserModel});
-                                } else {
-                                  if (statusCode == "403") {
-                                    setState(() {
-                                      isInCorrect = true;
-                                    });
-                                  }
+                                if (statusCode == "403") {
+                                  setState(() {
+                                    isInCorrect = true;
+                                  });
                                 }
                               }
 

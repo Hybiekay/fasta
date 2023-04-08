@@ -134,16 +134,9 @@ class _BodyState extends State<Body> {
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
                             onTap: () async {
-                              response = await Location.getdirection(
+                              await Location.getdirection(
                                   origin: pickUpController.text,
                                   destination: dropOffController.text);
-                              double amount =
-                                  (int.parse(approxWeightController.text) *
-                                          double.parse(
-                                              ApiMapModel.distance ?? "00")) *
-                                      20;
-
-                              print("this is Amount $amount");
                             },
                             autocorrect: true,
                             controller: disController,
@@ -162,8 +155,9 @@ class _BodyState extends State<Body> {
                     ),
                     TotalItemBar(
                       amount: "99929299292",
-                      distants: "${ApiMapModel.distance}",
-                      time: "${ApiMapModel.time}",
+                      distants: "0", //"${ApiMapModel.distance}",
+                      time: '',
+                      //"${ApiMapModel.time}",
                     ),
                   ],
                 ),
@@ -176,12 +170,12 @@ class _BodyState extends State<Body> {
               polyLine: polyLine,
               boundNe: boundNe,
               boundSw: boundSw,
-              distance: ApiMapModel.distance ?? " 0",
+              distance: "d", //ApiMapModel.distance ?? " 0",
               duration: time,
-              startLocationLat: ApiMapModel.startLocationLon ?? 0,
-              startLocationLon: ApiMapModel.startLocationLat ?? 0,
-              endLocationLat: ApiMapModel.endLocationLat ?? 0,
-              endLocationLon: ApiMapModel.endLocationLon ?? 0,
+              startLocationLat: 0, //ApiMapModel.startLocationLon ?? 0,
+              startLocationLon: 0, //ApiMapModel.startLocationLat ?? 0,
+              endLocationLat: 0, //ApiMapModel.endLocationLat ?? 0,
+              endLocationLon: 0, //ApiMapModel.endLocationLon ?? 0,
               approxSizeController: approxSizeController,
               approxWeightController: approxWeightController,
               pickUpController: pickUpController,
@@ -199,8 +193,8 @@ class _BodyState extends State<Body> {
 }
 
 class Btubutton extends StatelessWidget {
-  final String distance;
-  final String duration;
+  final String? distance;
+  final String? duration;
   var boundNe;
   var boundSw;
   var polyLine;

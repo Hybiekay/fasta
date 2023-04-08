@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:ziklogistics/Apis/drivers_api.dart';
-import 'package:ziklogistics/controllers/storage.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
