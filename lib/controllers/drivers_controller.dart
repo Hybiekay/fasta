@@ -111,9 +111,6 @@ class DriverController extends GetxController {
       return data as List;
     } catch (e) {
       rethrow;
-      if (kDebugMode) {
-        print(e.toString());
-      }
     }
   }
 

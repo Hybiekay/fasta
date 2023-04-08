@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driverform.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
 
 class DRegisterScreen extends StatefulWidget {
   final String phoneNum;
@@ -47,7 +47,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                   color: AppColor.whiteColor,
                 ),
               ),
-              formfied(
+              Formfied(
                 emailController: fullNameCon,
                 hintText: 'Full Name',
               ),
@@ -60,7 +60,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                   color: AppColor.whiteColor,
                 ),
               ),
-              formfied(
+              Formfied(
                   emailController: bankNameCon,
                   hintText: "Bank Name",
                   keyboardType: TextInputType.name),
@@ -73,7 +73,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                   color: AppColor.whiteColor,
                 ),
               ),
-              formfied(
+              Formfied(
                 emailController: acountNumCon,
                 hintText: "Account Number",
                 keyboardType: TextInputType.number,
@@ -87,7 +87,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                   color: AppColor.whiteColor,
                 ),
               ),
-              formfied(
+              Formfied(
                 emailController: acountNameCon,
                 hintText: 'Account Name',
               ),
@@ -96,8 +96,8 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                 alignment: Alignment.bottomLeft,
                 child: Container(
                   padding: const EdgeInsets.only(left: 20),
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 5).copyWith(right: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 5)
+                      .copyWith(right: 15),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColor.backgroundsecondary),
                     color: AppColor.mainColor,
@@ -168,7 +168,6 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
               isComplete
                   ? ButtonComp(
                       onPressed: () async {
-                        
                         await driverController.updateName(
                             name: fullNameCon.text,
                             phoneNumber: widget.phoneNum,

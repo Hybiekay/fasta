@@ -1,9 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import '../../components/Widget/slider.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import '../../components/Widget/Slider.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import '../../components/Widget/slider.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
 
-import '../../components/Widget/Slider.dart';
 
 class OnboardingScreen2 extends StatelessWidget {
   const OnboardingScreen2({super.key});

@@ -1,12 +1,8 @@
 import 'package:get/get.dart';
-import 'views/home/home.dart';
-import 'views/tesingScreen.dart';
 import 'package:flutter/material.dart';
 import 'views/onBoardScreen/choiceScreen.dart';
 import 'package:ziklogistics/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/d_register_screen.dart';
 
 void main() {
   runApp(const MyApp());

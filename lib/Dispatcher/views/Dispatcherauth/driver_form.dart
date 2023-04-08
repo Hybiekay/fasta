@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:ziklogistics/models/models.dart';
 import '../../../controllers/drivers_controller.dart';
 import '../../../global_components/ziklogistics.dart';
-import 'package:ziklogistics/components/pickImage.dart';
-import 'package:ziklogistics/global_components/form_field.dart';
+import 'package:ziklogistics/components/pick_image.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 
 class DriverForm extends StatefulWidget {
@@ -65,7 +64,7 @@ class _DriverFormState extends State<DriverForm> {
                   color: AppColor.whiteColor,
                 ),
               ),
-              formfied(
+              Formfied(
                   emailController: fullNameCon,
                   hintText: "Full Name",
                   keyboardType: TextInputType.number),
@@ -78,7 +77,7 @@ class _DriverFormState extends State<DriverForm> {
                   color: AppColor.whiteColor,
                 ),
               ),
-              formfied(
+              Formfied(
                   emailController: bvNumCon,
                   hintText: "BVN Number",
                   keyboardType: TextInputType.number),
@@ -91,7 +90,7 @@ class _DriverFormState extends State<DriverForm> {
                   color: AppColor.whiteColor,
                 ),
               ),
-              formfied(
+              Formfied(
                 emailController: ninCon,
                 hintText: "NIN Number",
                 keyboardType: TextInputType.number,

@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore_for_file: sort_child_properties_last, prefer_const_constructors
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
 
 class DisBtnComp extends StatelessWidget {
   VoidCallback onPressed;

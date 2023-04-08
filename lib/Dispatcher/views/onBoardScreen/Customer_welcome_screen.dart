@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_Screen.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 
 class DispatcherWelcomeScreen extends StatelessWidget {
   static const String routeName = '/ChioceScreen';

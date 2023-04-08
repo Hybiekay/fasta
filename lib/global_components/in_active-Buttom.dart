@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore_for_file: sort_child_properties_last, prefer_const_constructors
 

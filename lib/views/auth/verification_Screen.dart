@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ziklogistics/views/home/home.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
 import 'package:ziklogistics/controllers/storage.dart';
-import 'package:ziklogistics/models/customersModel.dart';
+import 'package:ziklogistics/models/customers_model.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/auth/registration_Screen.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';

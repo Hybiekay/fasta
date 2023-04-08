@@ -2,11 +2,9 @@ import 'dart:ui';
 import 'package:get/get.dart';
 import '../../Apis/google_api.dart';
 import 'package:get/instance_manager.dart';
-import 'package:ziklogistics/models/apiModel.dart';
-import 'package:ziklogistics/models/customersModel.dart';
+import 'package:ziklogistics/models/customers_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
-import 'package:ziklogistics/views/send_package_1/getlocation.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 // ignore_for_file: use_build_context_synchronously
@@ -29,17 +27,11 @@ class _BodyState extends State<Body> {
     final dropOffController = TextEditingController();
     final disController = TextEditingController();
     final widtController = TextEditingController();
-    final lengthController = TextEditingController();
     final heightController = TextEditingController();
-    var distance = '';
     var time = '';
     var boundNe = '';
     var boundSw = '';
     var polyLine = '';
-    var startLocationLat = 0.0;
-    var startLocationLon = 0.0;
-    var endLocationLat = 0.0;
-    var endLocationLon = 0.0;
 
     return SingleChildScrollView(
       child: Padding(
@@ -53,7 +45,7 @@ class _BodyState extends State<Body> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    headerWidget(subTitle: 'Send A Package'),
+                    HeaderWidget(subTitle: 'Send A Package'),
                     SizedBox(height: 10.h),
                     Text(
                       'Input package details',
@@ -97,11 +89,7 @@ class _BodyState extends State<Body> {
                       height: 10.h,
                     ),
                     InputPackagedetails(
-                        onPressed: () async {
-                          var Response = await Location.getdirection(
-                              origin: pickUpController.text,
-                              destination: dropOffController.text);
-                        },
+                        onPressed: () {},
                         textField3: "Drop-off location for the package",
                         textField4: "",
                         val3: dropOffController,
@@ -119,11 +107,7 @@ class _BodyState extends State<Body> {
                       height: 8.h,
                     ),
                     GestureDetector(
-                      onTap: () async {
-                        var Response = await Location.getdirection(
-                            origin: pickUpController.text,
-                            destination: dropOffController.text);
-                      },
+                      onTap: () {},
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
@@ -265,8 +249,9 @@ class Btubutton extends StatelessWidget {
       Spacer(),
       GestureDetector(
         onTap: () async {
-          print(startLocationLat);
-          print(startLocationLon);
+          if (kDebugMode) {
+            print(startLocationLat);
+          }
           print(endLocationLon);
           print(endLocationLat);
           print(duration);

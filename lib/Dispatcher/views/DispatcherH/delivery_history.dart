@@ -1,10 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'swicht.dart';
 import 'package:flutter/material.dart';
-
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/global_components/headerbar.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'Swicht.dart';
+
 
 class DispatcherDeliveryhistory extends StatelessWidget {
   static const String routeName = '/dispatcherdeliveryhistory';
@@ -20,7 +20,7 @@ class DispatcherDeliveryhistory extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         color: AppColor.mainColor,
         child: Column(children: [
-          headerWidget(subTitle: 'Delivery History'),
+          HeaderWidget(subTitle: 'Delivery History'),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.06,
           ),

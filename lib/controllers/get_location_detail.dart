@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:ziklogistics/models/apiModel.dart';
+import 'package:ziklogistics/models/google_api_model.dart';
 
-class MyController extends GetxController {
+class TripController extends GetxController {
   Rx<GoogleResponseModel> response = GoogleResponseModel(
     boundNE: {},
     boundSW: {},

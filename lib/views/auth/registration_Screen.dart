@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'package:ziklogistics/models/models.dart';
 import 'package:ziklogistics/views/home/home.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';

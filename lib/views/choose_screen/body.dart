@@ -1,14 +1,14 @@
+import 'package:flutter/material.dart';
+import '../../constants/app_color.dart';
+import '../../constants/app_images.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../global_components/button_component.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/extensions/custom_extension.dart';
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
 
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/extensions/custom_extension.dart';
 
-import '../../global_components/button_component.dart';
-import '../../constants/appImages.dart';
-import '../../constants/appocolor.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});

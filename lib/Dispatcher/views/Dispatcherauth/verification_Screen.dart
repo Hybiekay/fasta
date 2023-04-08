@@ -5,8 +5,10 @@ import 'package:ziklogistics/models/driver_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driverform.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/d_register_screen.dart';
+
+
 
 class DispatcherVerificationScreen extends StatefulWidget {
   static const String routeName = '/vericationScreen';
@@ -137,7 +139,6 @@ class _DispatcherVerificationScreenState
                               }
                             },
                             onSaved: (newValue2) async {
-                              String otp = await DStorage.getDriverOtp();
                               setState(() {
                                 code = ('$code$newValue2');
                               });
@@ -231,8 +232,10 @@ class _DispatcherVerificationScreenState
                                 }
 
                                 driverData = json.decode(data);
-                                print(
+                                if (kDebugMode) {
+                                  print(
                                     " this is your number${driverData["user"]["phone"]}");
+                                }
                                 if (statusCode == '201' &&
                                         DriverUserModel.accountNumber == null ||
                                     DriverUserModel.name == null) {

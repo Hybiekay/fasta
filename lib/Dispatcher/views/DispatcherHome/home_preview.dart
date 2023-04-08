@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import '../../../controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherdrawer/drawer.dart';
-import 'package:ziklogistics/Dispatcher/views/DispatcherHome/Dis_Request_card.dart';
+import 'package:ziklogistics/Dispatcher/views/DispatcherHome/dis_request_card.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class PrivewHome extends StatefulWidget {

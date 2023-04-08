@@ -1,6 +1,6 @@
 import 'Swicht.dart';
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/global_components/headerbar.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
@@ -19,7 +19,7 @@ class Deliveryhistory extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         color: AppColor.mainColor,
         child: Column(children: [
-          headerWidget(subTitle: 'Delivery History'),
+          HeaderWidget(subTitle: 'Delivery History'),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.06,
           ),

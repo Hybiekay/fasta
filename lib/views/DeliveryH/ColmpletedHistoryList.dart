@@ -23,10 +23,10 @@ class Completedlist extends StatelessWidget {
         ),
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData && (snapshot.data["data"] as List).length < 1) {
-            return NodataCard(content: "You don't Have Ongoing Request");
+          if (snapshot.hasData && (snapshot.data["data"] as List).isEmpty) {
+            return const NodataCard(content: "You don't Have Ongoing Request");
           } else if (snapshot.hasData &&
-              (snapshot.data["data"] as List).length >= 1) {
+              (snapshot.data["data"] as List).isNotEmpty) {
             print(snapshot.data);
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,

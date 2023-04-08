@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_Screen.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 
 // ignore_for_file: avoid_print
 class DriverApiController extends GetxController {

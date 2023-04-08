@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
-import 'package:ziklogistics/views/DeliveryH/ColmpletedHistoryList.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/views/DeliveryH/ongiong_list.dart';
+import 'package:ziklogistics/views/DeliveryH/ColmpletedHistoryList.dart';
 
 class ongoingComleteSwicth extends StatefulWidget {
   const ongoingComleteSwicth({

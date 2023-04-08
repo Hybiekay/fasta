@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/models/driver_model.dart';
+import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherdrawer/btn_comp.dart';

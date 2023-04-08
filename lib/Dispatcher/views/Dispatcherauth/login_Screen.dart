@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'verification_Screen.dart';
+import 'verification_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/global_components/form_field.dart';
 import 'package:ziklogistics/controllers/drivers_controller.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
@@ -138,7 +138,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.03,
                   ),
-                  formfied(
+                  Formfied(
                     emailController: emailController,
                     hintText: 'Email',
                   ),

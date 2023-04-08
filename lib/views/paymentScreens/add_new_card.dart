@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../constants/appocolor.dart';
+import '../../constants/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/global_components/button_component.dart';
 
@@ -62,7 +62,7 @@ class BottomCard extends StatefulWidget {
 }
 
 class _BottomCardState extends State<BottomCard> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // String _cardNumber;
   // String _expiryMonth;

@@ -4,13 +4,13 @@ import '../../models/models.dart';
 import 'package:flutter/material.dart';
 import '../../controllers/controllers.dart';
 import 'package:ziklogistics/views/home/home.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/views/auth/login_Screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
-import 'package:ziklogistics/components/Widget/OnBoadPageSelection.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_Screen.dart';
+import 'package:ziklogistics/components/Widget/on_boad_page_selection.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 // ignore_for_file: file_names
 
 class ChoiceScreen extends StatelessWidget {

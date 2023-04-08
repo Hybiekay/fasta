@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appImages.dart';
+import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/global_components/button_component.dart';
 
 successShowDialod({

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../views/onBoardScreen/Customer_welcome_screen.dart';
+import '../../views/onBoardScreen/customer_welcome_screen.dart';
 import 'package:ziklogistics/views/onBoardScreen/onboardScreen.dart';
 import 'package:ziklogistics/views/onBoardScreen/onboardScreen2.dart';
 import 'package:ziklogistics/views/onBoardScreen/onboardScreen3.dart';
-import 'package:ziklogistics/Dispatcher/views/onBoardScreen/Customer_welcome_screen.dart';
+import 'package:ziklogistics/Dispatcher/views/onBoardScreen/customer_welcome_screen.dart';
 // ignore: duplicate_ignore
 // ignore: file_names
 // ignore_for_file: file_names

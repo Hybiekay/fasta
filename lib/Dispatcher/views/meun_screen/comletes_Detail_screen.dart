@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
-import 'package:ziklogistics/global_components/packAgePreviwe.dart';
-import 'package:ziklogistics/global_components/total_item_bar_comp.dart';
+import 'package:ziklogistics/global_components/ziklogistics.dart';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class DispatcherComleteTaskDetail extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class ChatScreen extends StatelessWidget {

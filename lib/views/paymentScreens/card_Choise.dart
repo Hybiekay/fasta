@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/global_components/headerbar.dart';
 import 'package:ziklogistics/views/meun_screen/meunScreen.dart';
-import 'package:ziklogistics/global_components/dialogAlert.dart';
-import 'package:ziklogistics/global_components/inActiveButtom.dart';
+import 'package:ziklogistics/global_components/dialog_alert.dart';
 import 'package:ziklogistics/views/paymentScreens/add_new_card.dart';
+import 'package:ziklogistics/global_components/in_active-Buttom.dart';
 import 'package:ziklogistics/global_components/button_component.dart';
 import 'package:ziklogistics/global_components/total_item_bar_comp.dart';
 import 'package:ziklogistics/views/paymentScreens/bank_history_card.dart';
@@ -48,7 +48,7 @@ class _CardChoiceState extends State<CardChoice> {
         color: AppColor.mainColor,
         child: Column(
           children: [
-            headerWidget(subTitle: "Payment"),
+            HeaderWidget(subTitle: "Payment"),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),

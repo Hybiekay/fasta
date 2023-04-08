@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import '../../../chat/chatScreen.dart';
+import '../../../chat/chat_screen.dart';
 import '../../../controllers/drivers_controller.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
-import 'package:ziklogistics/Dispatcher/views/meun_screen/meunScreen.dart';
+import 'package:ziklogistics/Dispatcher/views/meun_screen/meun_screen.dart';
 
 class DispatcherOngoinglist extends StatelessWidget {
   const DispatcherOngoinglist({
@@ -22,10 +22,10 @@ class DispatcherOngoinglist extends StatelessWidget {
         ),
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData && (snapshot.data["data"] as List).length < 1) {
-            return NodataCard(content: "You don't Have Ongoing Request");
+          if (snapshot.hasData && (snapshot.data["data"] as List).isEmpty) {
+            return const NodataCard(content: "You don't Have Ongoing Request");
           } else if (snapshot.hasData &&
-              (snapshot.data["data"] as List).length >= 1) {
+              (snapshot.data["data"] as List).isNotEmpty) {
             print(snapshot.data);
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
@@ -64,7 +64,7 @@ class DispatcherOngoinglist extends StatelessWidget {
               },
             );
           }
-          return NodataCard(content: "Data Is loading Request");
+          return const NodataCard(content: "Data Is loading Request");
         },
       ),
     );

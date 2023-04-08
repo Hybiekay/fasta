@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../meun_screen/meun_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../controllers/drivers_controller.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ziklogistics/global_components/dialogAlert.dart';
-import 'package:ziklogistics/Dispatcher/views/meun_screen/meunScreen.dart';
+import 'package:ziklogistics/global_components/dialog_alert.dart';
+
 // ignore_for_file: use_build_context_synchronously
 
 class dispatcherRequsetCard extends StatelessWidget {

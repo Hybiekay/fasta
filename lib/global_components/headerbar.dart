@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/extensions/custom_extension.dart';
 
-class headerWidget extends StatelessWidget {
+class HeaderWidget extends StatelessWidget {
   String subTitle;
-  headerWidget({Key? key, required this.subTitle}) : super(key: key);
+  HeaderWidget({Key? key, required this.subTitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

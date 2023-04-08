@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/constants/appImages.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/constants/app_color.dart';
+import 'package:ziklogistics/constants/app_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PackagedetailsSize extends StatelessWidget {
@@ -28,7 +28,7 @@ class PackagedetailsSize extends StatelessWidget {
                 Row(children: [
                   Image.asset(AppImages.packageImg,
                       width: 20.w, height: 19.99.h),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -42,7 +42,7 @@ class PackagedetailsSize extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       SizedBox(
@@ -58,7 +58,7 @@ class PackagedetailsSize extends StatelessWidget {
                     ],
                   )
                 ]),
-                Divider(
+                const Divider(
                   color: AppColor.mainColor,
                   thickness: 3.0,
                   indent: 40,
@@ -69,7 +69,7 @@ class PackagedetailsSize extends StatelessWidget {
                     width: 20.w,
                     height: 19.99.h,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -83,7 +83,7 @@ class PackagedetailsSize extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
@@ -96,7 +96,7 @@ class PackagedetailsSize extends StatelessWidget {
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w400),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],
@@ -133,7 +133,7 @@ class Packagedetailslocation extends StatelessWidget {
               children: [
                 Row(children: [
                   Image.asset(AppImages.pickUp, width: 20.w, height: 19.99.h),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -148,7 +148,7 @@ class Packagedetailslocation extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       SizedBox(
@@ -164,7 +164,7 @@ class Packagedetailslocation extends StatelessWidget {
                     ],
                   )
                 ]),
-                Divider(
+                const Divider(
                   color: AppColor.mainColor,
                   thickness: 3.0,
                   indent: 40,
@@ -175,7 +175,7 @@ class Packagedetailslocation extends StatelessWidget {
                     width: 20.w,
                     height: 19.99.h,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -189,7 +189,7 @@ class Packagedetailslocation extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
@@ -202,7 +202,7 @@ class Packagedetailslocation extends StatelessWidget {
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w400),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],

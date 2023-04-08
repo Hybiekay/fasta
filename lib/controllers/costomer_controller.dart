@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:ziklogistics/Apis/bankApi.dart';
-import 'package:ziklogistics/Apis/authService.dart';
+import 'package:ziklogistics/Apis/bank_api.dart';
+import 'package:ziklogistics/Apis/auth_service.dart';
 import 'package:ziklogistics/controllers/storage.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 // ignore: unused_import

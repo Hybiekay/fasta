@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import '../drawer/drawer.dart';
 import 'package:flutter/material.dart';
-import '../../constants/appImages.dart';
-import '../../constants/appocolor.dart';
+import '../../constants/app_color.dart';
+import '../../constants/app_images.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../global_components/button_component.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +27,7 @@ class CostomerHomeBody extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => DrawerScreen());
+                    Get.to(() => const DrawerScreen());
                     // Navigator.of(context).pushNamed(DrawerScreen.routeName);
                   },
                   child: Image.asset(
@@ -83,7 +83,7 @@ class CostomerHomeBody extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                 child: ButtonComp(
                     onPressed: () {
-                      Navigator.of(context).pushNamed(SendPackage_1.routeName);
+                      Navigator.of(context).pushNamed(SendPackage1.routeName);
                     },
                     value: 'Send A Package'),
               )

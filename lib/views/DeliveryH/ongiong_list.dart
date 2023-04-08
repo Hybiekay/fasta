@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
-import 'package:ziklogistics/chat/chatScreen.dart';
 import '../../global_components/ziklogistics.dart';
+import 'package:ziklogistics/chat/chat_screen.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
 import 'package:ziklogistics/views/meun_screen/meunScreen.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
@@ -24,10 +23,10 @@ class Ongoinglist extends StatelessWidget {
         ),
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData && (snapshot.data["data"] as List).length < 1) {
-            return NodataCard(content: "You don't Have Ongoing Request");
+          if (snapshot.hasData && (snapshot.data["data"] as List).isEmpty) {
+            return const NodataCard(content: "You don't Have Ongoing Request");
           } else if (snapshot.hasData &&
-              (snapshot.data["data"] as List).length >= 1) {
+              (snapshot.data["data"] as List).isNotEmpty) {
             print(snapshot.data);
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
@@ -66,7 +65,7 @@ class Ongoinglist extends StatelessWidget {
               },
             );
           }
-          return NodataCard(content: "Data Is loading Request");
+          return const NodataCard(content: "Data Is loading Request");
         },
       ),
     );

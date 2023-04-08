@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import '../../../controllers/controllers.dart';
 import '../../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
-import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_Detail_screen.dart';
+import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_detail_screen.dart';
 
 class DispatcherCompletedlist extends StatelessWidget {
   const DispatcherCompletedlist({
@@ -22,10 +21,10 @@ class DispatcherCompletedlist extends StatelessWidget {
         ),
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData && (snapshot.data["data"] as List).length < 1) {
-            return NodataCard(content: "You don't Have Completed Request");
+          if (snapshot.hasData && (snapshot.data["data"] as List).isEmpty) {
+            return const NodataCard(content: "You don't Have Completed Request");
           } else if (snapshot.hasData &&
-              (snapshot.data["data"] as List).length >= 1) {
+              (snapshot.data["data"] as List).isNotEmpty) {
             print(snapshot.data);
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
@@ -55,7 +54,7 @@ class DispatcherCompletedlist extends StatelessWidget {
               },
             );
           }
-          return NodataCard(content: "Data Is loading Request");
+          return const NodataCard(content: "Data Is loading Request");
         },
       ),
     );

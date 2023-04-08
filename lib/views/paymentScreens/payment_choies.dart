@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../../models/customersModel.dart';
+import '../../models/customers_model.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/chat/chatScreen.dart';
-import 'package:ziklogistics/constants/appocolor.dart';
+import 'package:ziklogistics/chat/chat_screen.dart';
+import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/global_components/headerbar.dart';
-import 'package:ziklogistics/views/paymentScreens/card_Choise.dart';
+import 'package:ziklogistics/views/paymentScreens/card_choise.dart';
 import 'package:ziklogistics/global_components/button_component.dart';
 
 class ChoicePayment extends StatelessWidget {
@@ -33,7 +33,7 @@ class ChoicePayment extends StatelessWidget {
         color: AppColor.mainColor,
         child: Column(
           children: [
-            headerWidget(subTitle: "Payment"),
+            HeaderWidget(subTitle: "Payment"),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.09,
             ),

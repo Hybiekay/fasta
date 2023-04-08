@@ -1,8 +1,8 @@
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-class formfied extends StatelessWidget {
-  const formfied({
+class Formfied extends StatelessWidget {
+  const Formfied({
     Key? key,
     this.keyboardType = TextInputType.name,
     required this.hintText,

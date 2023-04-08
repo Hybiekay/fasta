@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 
 class GoogleResponseModel {
   final Map<String, dynamic> boundNE;

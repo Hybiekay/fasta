@@ -1,10 +1,9 @@
 import 'dart:convert';
-import 'dart:convert';
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/Apis/Constant/api_conastants.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+
+// ignore: unused_import
 
 class Location {
   static Future<Map<String, dynamic>> getdirection(
@@ -30,6 +29,7 @@ class Location {
       "polyline_decode": PolylinePoints()
           .decodePolyline(data["routes"][0]["overview_polyline"]["points"])
     };
+    //TripController.
     print(result);
     return result;
   }
