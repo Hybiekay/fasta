@@ -24,7 +24,8 @@ class Completedlist extends StatelessWidget {
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData && (snapshot.data["data"] as List).isEmpty) {
-            return const NodataCard(content: "You don't Have Ongoing Request");
+            return const NodataCard(
+                content: "You don't Have Completed Request");
           } else if (snapshot.hasData &&
               (snapshot.data["data"] as List).isNotEmpty) {
             print(snapshot.data);

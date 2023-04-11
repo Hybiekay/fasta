@@ -96,15 +96,16 @@ class MakePayment {
           );
 
 
-      print("Respose $response");
+      
 
       if (response.status == true) {
         print("Transation Succesfull");
+        print("Respose $response");
 
         BankApi.paymentVerify(reference: refrenceCode, accessCode: accessCode);
       } else {
         print("Trasation Unseccsfull");
-        failedShowDialod(
+         failedShowDialod(
             context: context,
             value: "Your transcation Is Uns ",
             onPressed: () {});

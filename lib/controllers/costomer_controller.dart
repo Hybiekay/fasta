@@ -62,25 +62,26 @@ class CustomerController extends GetxController {
     }
   }
 
-  Future createPackage(
-      {required String userName,
-      required String discription,
-      required String distance,
-      required int size,
-      required int width,
-      required int height,
-      required int weight,
-      required String price,
-      required String pickupAdrress,
-      required String pickupLat,
-      required String pickupLon,
-      required String dropoffAdress,
-      required String dropoffLat,
-      required String dropoffLon,
-      required String time,
-      required bool isSchedule,
-      String scheduledTime = "isNotSchedule",
-      String scheduleddate = "isNotSchedule"}) async {
+  Future createPackage({
+    required String userName,
+    required String discription,
+    required String distance,
+    required int size,
+    required int width,
+    required int height,
+    required int weight,
+    required String price,
+    required String pickupAdrress,
+    required String pickupLat,
+    required String pickupLon,
+    required String dropoffAdress,
+    required String dropoffLat,
+    required String dropoffLon,
+    required String time,
+    required bool isSchedule,
+    String scheduledTime = "isNotSchedule",
+    String scheduleddate = "isNotSchedule",
+  }) async {
     try {
       final package = await _apiController.sendAPackage(
           height: height,
@@ -104,12 +105,9 @@ class CustomerController extends GetxController {
           scheduledTime: scheduledTime,
           month: "${DateTime.now().month}",
           year: "${DateTime.now().year}");
-
       return package;
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+      print(e);
     }
   }
 

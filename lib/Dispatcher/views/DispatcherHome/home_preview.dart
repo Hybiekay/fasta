@@ -117,7 +117,7 @@ class _PrivewHomeState extends State<PrivewHome> {
                 future: driverController.getSingleRequest(widget.packageId),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
-                    return dispatcherRequsetCard(
+                    return DispatcherRequsetCard(
                       name: widget.name,
                       size: widget.size,
                       price: widget.price,

@@ -182,7 +182,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                         Get.to(() => const DriverForm());
                       },
                       value: "Complete")
-                  : inActiveButtonComp(value: "Complete"),
+                  : InActiveButtonComp(value: "Complete"),
               const SizedBox(height: 20),
             ],
           ),

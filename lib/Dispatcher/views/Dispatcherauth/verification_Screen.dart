@@ -266,9 +266,7 @@ class _DispatcherVerificationScreenState
                                   } else if (value.isEmpty ||
                                       con4.value == '') {
                                     FocusScope.of(context).previousFocus();
-                                    FocusScope.of(context).previousFocus();
-                                    FocusScope.of(context).previousFocus();
-                                    FocusScope.of(context).previousFocus();
+                                 
                                   }
                                 }
                               }

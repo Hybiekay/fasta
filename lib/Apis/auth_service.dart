@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/storage.dart';
-import 'package:ziklogistics/views/auth/login_Screen.dart';
+import 'package:ziklogistics/models/create_package.dart';
+import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
+
 // ignore_for_file: file_names
 
 class UserApiController extends GetxController {
@@ -100,6 +102,28 @@ class UserApiController extends GetxController {
     }
   }
 
+  CreatePackageRequest request = CreatePackageRequest(
+      name: "Ademola ibukun",
+      description: "This is description",
+      size: 10,
+      weight: 10,
+      width: 10,
+      height: 10,
+      pickupLat: "437843784",
+      pickupLon: "7832721",
+      pickupAddress: "sg",
+      dropoffLat: "string",
+      dropoffLon: "string",
+      dropoffAddress: "string",
+      scheduledDate: "string",
+      scheduledTime: "string",
+      isScheduled: true,
+      price: "1000",
+      distance: "102",
+      duration: "10",
+      month: "string",
+      year: "string");
+
   Future sendAPackage({
     required String token,
     required String userName,
@@ -123,16 +147,15 @@ class UserApiController extends GetxController {
     required String month,
     required String year,
   }) async {
+    print(request.toJson());
     final createPackageUrl =
-        Uri.parse("${AppApis.endPoint}/customer/create-package");
-    final response = await http.post(createPackageUrl, headers: {
-      'Authorization': 'Bearer $token'
-    }, body: {
+        Uri.parse("${AppApis.endPoint}customer/create-package");
+    final body = {
       "name": userName,
       "description": discription,
       "size": size,
-      "width": width,
       "weight": weight,
+      "width": width,
       "height": height,
       "pickup_lat": pickupLat,
       "pickup_lon": pickupLon,
@@ -140,27 +163,40 @@ class UserApiController extends GetxController {
       "dropoff_lat": dropoffLat,
       "dropoff_lon": dropoffLon,
       "dropoff_address": dropoffAdress,
-      "isScheduled": isSchedule,
       "scheduled_date": scheduleddate,
       "scheduled_time": scheduledTime,
+      "isScheduled": isSchedule,
+      "price": price,
       "distance": distance,
       "duration": time,
-      "price": price,
       "month": month,
-      "year": year,
-    });
+      "year": year
+    };
 
-    if (kDebugMode) {
-      print(response.body);
-      print(response.body);
-    }
-    if (response.statusCode == 401) {
-      Get.to(() => const LoginScreen());
-    }
-    print(response.body);
+    try {
+      final response = await http.post(
+        createPackageUrl,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode(body),
+      );
 
-    final data = json.decode(response.body);
-    return data;
+      if (response.statusCode == 201) {
+        print('POST request success! Response: ${response.body}');
+        // Do something with the response
+        final data = json.decode(response.body);
+        // print("this  is data ${data["data"]["id"]}");
+        return data;
+      } else {
+        print('POST request failed. Status code: ${response.body}');
+        // Handle the error
+      }
+    } catch (e) {
+      print('Error sending POST request: $e');
+      // Handle the exception
+    }
   }
 
   Future getCustomerHistory({
@@ -189,15 +225,11 @@ class UserApiController extends GetxController {
     required String packageId,
   }) async {
     final url = Uri.parse("${AppApis.endPoint}customer/history");
-    final response = await http.post(
-      url,
-      headers: {
-        'Authorization': 'Bearer $token',
-      },
-      body: {
-        "id": packageId
-      }
-    );
+    final response = await http.post(url, headers: {
+      'Authorization': 'Bearer $token',
+    }, body: {
+      "id": packageId
+    });
     if (kDebugMode) {
       print(response.body);
     }

@@ -7,9 +7,6 @@ class SendPackage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.mainColor,
-      body: Body(),
-    );
+    return Body();
   }
 }

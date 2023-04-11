@@ -1,4 +1,3 @@
-
 class GoogleResponseModel {
   final Map<String, dynamic> boundNE;
   final Map<String, dynamic> boundSW;
@@ -8,7 +7,7 @@ class GoogleResponseModel {
   final double endLocationLon;
   final String distance;
   final String duration;
-  final List<Map<String, dynamic>> polylineDecode;
+  final dynamic polylineDecode;
 
   GoogleResponseModel({
     required this.boundNE,

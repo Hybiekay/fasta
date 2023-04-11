@@ -53,15 +53,14 @@ class _MeunScreenState extends State<MeunScreen> {
               child: Container(
                   color: Colors.amber,
                   width: MediaQuery.of(context).size.width,
-                  child: Map(
+                  child: GoogleMapPage(
+                    boundNe: {},
+                    boundSw: {},
                     destricption: "",
-                    destinationLoaction:
+                    dropOffLocation:
                         LatLng(widget.dropoffLat, widget.dropoffLon),
-                    sourceLoaction: LatLng(widget.pickupLat, widget.pickupLon),
-                    polyCoordinates: [
-                      LatLng(widget.dropoffLat, widget.dropoffLon),
-                      LatLng(widget.pickupLat, widget.pickupLon),
-                    ],
+                    pickUpLocation: LatLng(widget.pickupLat, widget.pickupLon),
+                    polyCoordinates: [],
                   ))),
 
           Positioned(
@@ -163,7 +162,7 @@ class _MeunScreenState extends State<MeunScreen> {
                                           borderRadius:
                                               BorderRadius.circular(10))),
                                   onPressed: () {
-                                         Get.to(() => ComleteTaskDetail(
+                                    Get.to(() => ComleteTaskDetail(
                                           name: widget.name,
                                           size: widget.size,
                                           weight: widget.weight,
@@ -173,9 +172,6 @@ class _MeunScreenState extends State<MeunScreen> {
                                           distance: widget.distance,
                                           dropOffAdress: widget.dropOffAdress,
                                         ));
-
-
-
                                   },
                                   child: const Text("Details",
                                       style: TextStyle(

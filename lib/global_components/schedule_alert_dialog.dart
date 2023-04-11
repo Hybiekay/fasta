@@ -1,15 +1,28 @@
 import 'package:get/get.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
-import 'package:ziklogistics/views/send_package_1/getlocation.dart';
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 class ScheduleAlertDialog extends StatefulWidget {
   final String size, width, userName, pickupAdrress, dropoffAdress, discription;
   final bool isSchedule;
+  final int weight, height;
+  final double pickupLat;
+  final double pickupLon;
+  final double dropoffLat;
+  final double dropoffLon;
+  final String distance;
+  final String time;
+  final String price;
+  final boundNe;
+  final boundSw;
+  final polyLine;
 
   const ScheduleAlertDialog({
     super.key,
+    required this.boundNe,
+    required this.boundSw,
+    required this.polyLine,
     required this.size,
     required this.width,
     required this.userName,
@@ -17,6 +30,15 @@ class ScheduleAlertDialog extends StatefulWidget {
     required this.dropoffAdress,
     required this.discription,
     required this.isSchedule,
+    required this.weight,
+    required this.height,
+    required this.distance,
+    required this.time,
+    required this.price,
+    required this.pickupLat,
+    required this.pickupLon,
+    required this.dropoffLat,
+    required this.dropoffLon,
   });
 
   @override
@@ -113,63 +135,41 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
           ),
           GestureDetector(
             onTap: () async {
-              var _pickUpcoordinates =
-                  await GoogleApi.getLocation(adress: widget.pickupAdrress);
-              var dropOffcoordinates =
-                  await GoogleApi.getLocation(adress: widget.dropoffAdress);
-
-              double distance = await GoogleApi.getdistane(
-                  startLat: _pickUpcoordinates!.last.latitude,
-                  startLng: _pickUpcoordinates.last.longitude,
-                  endLat: dropOffcoordinates!.last.latitude,
-                  endLng: dropOffcoordinates.last.longitude);
-              double kg = distance / 1000;
-              double price = (int.parse(widget.size) * kg * 15);
-
-              double time = 60 * kg / 60;
-              int totalPrice;
-              if (price < 500) {
-                totalPrice = 500;
-              } else {
-                totalPrice = price.toInt();
-              }
               final data = await userController.createPackage(
-                  height: 10,
-                  weight: 20,
-                  distance: kg.toInt().toString(),
-                  time: "9",
+                  weight: widget.weight,
+                  height: widget.height,
+                  distance: widget.distance,
+                  time: widget.time,
                   size: int.parse(widget.size),
                   width: int.parse(widget.width),
-                  price: totalPrice.toString(),
+                  price: widget.price,
                   userName: widget.userName,
                   pickupAdrress: widget.pickupAdrress,
-                  pickupLat: _pickUpcoordinates.last.latitude.toString(),
-                  pickupLon: _pickUpcoordinates.last.longitude.toString(),
+                  pickupLat: widget.pickupLat.toString(),
+                  pickupLon: widget.pickupLon.toString(),
                   dropoffAdress: widget.dropoffAdress,
-                  dropoffLat: dropOffcoordinates.last.hashCode.toString(),
-                  dropoffLon: dropOffcoordinates.last.longitude.toString(),
+                  dropoffLat: widget.dropoffAdress.toString(),
+                  dropoffLon: widget.dropoffLon.toString(),
                   isSchedule: true,
                   discription: widget.discription,
                   scheduledTime: "${date.year}/${date.month}/${date.day} ",
                   scheduleddate: "$hour:$minute");
 
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SearchingDispatcher(
-                            // packageId: data["id"],
-                            dateTime: "${date.year}/${date.month}/${date.day} ",
-                            time: "${time.toInt()}",
-                            price: "${totalPrice.toInt()}",
-                            distance: "${kg.toInt()}",
-                            sLocation: LatLng(
-                              _pickUpcoordinates.last.latitude,
-                              _pickUpcoordinates.last.latitude,
-                            ),
-                            dLocation: LatLng(dropOffcoordinates.last.latitude,
-                                _pickUpcoordinates.last.latitude),
-                            isSchedule: true,
-                          )));
+              Get.to(() => SearchingDispatcher(
+                    discription: widget.discription,
+                    boundNe: widget.boundNe,
+                    boundSw: widget.boundSw,
+                    polyLine: widget.polyLine,
+                    packageId: data["data"]['id'],
+                    dateTime: "${date.year}/${date.month}/${date.day} ",
+                    time: widget.time,
+                    price: widget.price,
+                    distance: widget.distance,
+                    pickUpLocation: LatLng(widget.pickupLat, widget.pickupLon),
+                    dropOffLocation:
+                        LatLng(widget.dropoffLat, widget.dropoffLon),
+                    isSchedule: true,
+                  ));
             },
             child: Text(
               'Confirm',

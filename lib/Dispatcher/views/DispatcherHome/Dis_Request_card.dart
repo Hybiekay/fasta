@@ -10,7 +10,7 @@ import 'package:ziklogistics/global_components/dialog_alert.dart';
 
 // ignore_for_file: use_build_context_synchronously
 
-class dispatcherRequsetCard extends StatelessWidget {
+class DispatcherRequsetCard extends StatelessWidget {
   final String name;
   final String distance;
   final String time;
@@ -21,8 +21,8 @@ class dispatcherRequsetCard extends StatelessWidget {
   final String dropOff;
   final String scheduleTime;
   final String packAgeId;
-  bool isScahedule;
-  dispatcherRequsetCard({
+ final bool isScahedule;
+ const DispatcherRequsetCard({
     Key? key,
     required this.name,
     required this.distance,
@@ -264,7 +264,7 @@ class dispatcherRequsetCard extends StatelessWidget {
           SizedBox(
             height: 25.h,
           ),
-          botButton(isScahedule: isScahedule, packAgeId: packAgeId),
+          BotButton(isScahedule: isScahedule, packAgeId: packAgeId),
           const SizedBox(
             height: 15,
           )
@@ -274,9 +274,9 @@ class dispatcherRequsetCard extends StatelessWidget {
   }
 }
 
-class botButton extends StatelessWidget {
+class BotButton extends StatelessWidget {
   final String packAgeId;
-  const botButton({
+  const BotButton({
     Key? key,
     required this.packAgeId,
     required this.isScahedule,

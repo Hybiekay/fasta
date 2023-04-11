@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../../global_components/ziklogistics.dart';
-import 'package:ziklogistics/views/auth/verification_Screen.dart';
+import 'package:ziklogistics/views/auth/verification_screen.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 

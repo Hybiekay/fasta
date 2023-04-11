@@ -58,16 +58,15 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
               child: Container(
                   color: Colors.amber,
                   width: MediaQuery.of(context).size.width,
-                  child: Map(
-                    destricption: "",
-                    destinationLoaction:
-                        LatLng(widget.dropoffLat, widget.dropoffLon),
-                    sourceLoaction: LatLng(widget.pickupLat, widget.dropoffLon),
-                    polyCoordinates: [
-                      LatLng(widget.dropoffLat, widget.dropoffLon),
-                      LatLng(widget.pickupLat, widget.dropoffLon),
-                    ],
-                  ))),
+                  child: GoogleMapPage(
+                      boundNe: {},
+                      boundSw: {},
+                      destricption: "",
+                      dropOffLocation:
+                          LatLng(widget.dropoffLat, widget.dropoffLon),
+                      pickUpLocation:
+                          LatLng(widget.pickupLat, widget.dropoffLon),
+                      polyCoordinates: []))),
 
           Positioned(
             top: 50,
@@ -226,9 +225,7 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                                       onPressed: () async {
                                         await driverController.rejectPackage(
                                             packageId: widget.packageId);
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                                DispatcherHome.routeName);
+                                        Get.to(() => DispatcherHome.routeName);
                                       },
                                     );
                                   },

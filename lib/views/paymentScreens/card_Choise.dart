@@ -144,7 +144,7 @@ class _CardChoiceState extends State<CardChoice> {
                     },
                     value: 'Confirm Payment',
                   )
-                : inActiveButtonComp(value: 'Confirm Payment'),
+                : InActiveButtonComp(value: 'Confirm Payment'),
             const SizedBox(
               height: 20,
             )

@@ -12,7 +12,7 @@ class TripController extends GetxController {
     endLocationLon: 0.0,
     distance: "",
     duration: "",
-    polylineDecode: [],
+    polylineDecode: '',
   ).obs;
 
   void setResponse(String jsonString) {
@@ -26,7 +26,7 @@ class TripController extends GetxController {
     final endLocationLon = decodedJson['end_location_lon'];
     final distance = decodedJson['distance'];
     final duration = decodedJson['duration'];
-    final polylineDecode = decodedJson['polyline_decode'];
+    final polylineDecode = decodedJson["polyline"];
 
     response.value = GoogleResponseModel(
       boundNE: boundNE,
@@ -39,5 +39,6 @@ class TripController extends GetxController {
       duration: duration,
       polylineDecode: polylineDecode,
     );
+    response.refresh();
   }
 }

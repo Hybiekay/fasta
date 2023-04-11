@@ -4,8 +4,6 @@ import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/global_components/headerbar.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-
-
 class Deliveryhistory extends StatelessWidget {
   static const String routeName = '/deliveryhistory';
   const Deliveryhistory({super.key});
@@ -23,7 +21,7 @@ class Deliveryhistory extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.06,
           ),
-          const ongoingComleteSwicth(),
+          const OngoingComleteSwicth(),
         ]),
       ),
     );

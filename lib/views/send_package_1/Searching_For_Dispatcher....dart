@@ -4,23 +4,31 @@ class SearchingDispatcher extends StatefulWidget {
   final String price;
   final String time;
   final String distance;
-  final LatLng sLocation;
-  final LatLng dLocation;
+  final String discription;
+  final LatLng pickUpLocation;
+  final LatLng dropOffLocation;
   final bool isSchedule;
   final String dateTime;
-  // final String packageId;
+  final String packageId;
+  final boundNe;
+  final boundSw;
+  final String polyLine;
   static const String routeName = '/searchingDispatcher';
 
   const SearchingDispatcher(
       {super.key,
+      required this.boundNe,
+      required this.boundSw,
+      required this.polyLine,
       required this.time,
-      // required this.packageId,
+      required this.packageId,
       required this.price,
       required this.distance,
+      required this.discription,
       this.dateTime = "not Schedele",
       this.isSchedule = false,
-      required this.sLocation,
-      required this.dLocation});
+      required this.pickUpLocation,
+      required this.dropOffLocation});
 
   @override
   State<SearchingDispatcher> createState() => _SearchingDispatcherState();
@@ -28,11 +36,6 @@ class SearchingDispatcher extends StatefulWidget {
 
 class _SearchingDispatcherState extends State<SearchingDispatcher> {
   bool isFind = false;
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +45,15 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
         children: [
           // image just for test
           Positioned(
-            child: Map(
-              destricption: "",
-                polyCoordinates: [widget.dLocation, widget.sLocation],
-                sourceLoaction: widget.sLocation,
-                destinationLoaction: widget.dLocation),
+            // child: Container(),
+            child: GoogleMapPage(
+                boundNe: widget.boundNe,
+                boundSw: widget.boundSw,
+                destricption: widget.discription,
+                polyCoordinates:
+                    PolylinePoints().decodePolyline(widget.polyLine),
+                pickUpLocation: widget.pickUpLocation,
+                dropOffLocation: widget.dropOffLocation),
           ),
           Positioned(
             top: 50,
@@ -154,7 +161,7 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                                       ));
                                 },
                                 value: "Confirm")
-                            : inActiveButtonComp(value: "Confirm"),
+                            : InActiveButtonComp(value: "Confirm"),
                       )
                     ],
                   ),

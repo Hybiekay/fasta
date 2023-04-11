@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore_for_file: sort_child_properties_last, prefer_const_constructors
 
 
-class inActiveButtonComp extends StatelessWidget {
+class InActiveButtonComp extends StatelessWidget {
   String value;
 
-  inActiveButtonComp({super.key, required this.value});
+  InActiveButtonComp({super.key, required this.value});
 
   @override
   Widget build(BuildContext context) {

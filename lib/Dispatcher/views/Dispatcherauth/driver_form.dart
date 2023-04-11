@@ -217,7 +217,7 @@ class _DriverFormState extends State<DriverForm> {
                         }
                       },
                       value: "Complete")
-                  : inActiveButtonComp(value: "Complete"),
+                  : InActiveButtonComp(value: "Complete"),
               const SizedBox(height: 20),
             ],
           ),

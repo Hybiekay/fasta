@@ -5,16 +5,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/views/DeliveryH/ongiong_list.dart';
 import 'package:ziklogistics/views/DeliveryH/ColmpletedHistoryList.dart';
 
-class ongoingComleteSwicth extends StatefulWidget {
-  const ongoingComleteSwicth({
+class OngoingComleteSwicth extends StatefulWidget {
+  const OngoingComleteSwicth({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<ongoingComleteSwicth> createState() => _ongoingComleteSwicthState();
+  State<OngoingComleteSwicth> createState() => _OngoingComleteSwicthState();
 }
 
-class _ongoingComleteSwicthState extends State<ongoingComleteSwicth> {
+class _OngoingComleteSwicthState extends State<OngoingComleteSwicth> {
   bool isComple = false;
   @override
   Widget build(BuildContext context) {

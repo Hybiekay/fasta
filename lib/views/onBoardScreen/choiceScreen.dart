@@ -6,7 +6,7 @@ import '../../controllers/controllers.dart';
 import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
-import 'package:ziklogistics/views/auth/login_Screen.dart';
+import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/components/Widget/on_boad_page_selection.dart';
