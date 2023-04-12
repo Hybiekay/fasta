@@ -320,6 +320,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "logging",
+      "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.13",
       "packageUri": "lib/",
@@ -410,6 +416,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "socket_io_client",
+      "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/socket_io_client-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "socket_io_common",
+      "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/socket_io_common-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/source_span-1.9.1",
       "packageUri": "lib/",
@@ -482,7 +500,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-11T14:37:52.465937Z",
+  "generated": "2023-04-12T10:58:18.518311Z",
   "generator": "pub",
   "generatorVersion": "2.19.5"
 }

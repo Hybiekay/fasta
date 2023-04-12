@@ -54,13 +54,13 @@ class _MeunScreenState extends State<MeunScreen> {
                   color: Colors.amber,
                   width: MediaQuery.of(context).size.width,
                   child: GoogleMapPage(
-                    boundNe: {},
-                    boundSw: {},
+                    boundNe: const {},
+                    boundSw: const {},
                     destricption: "",
                     dropOffLocation:
                         LatLng(widget.dropoffLat, widget.dropoffLon),
                     pickUpLocation: LatLng(widget.pickupLat, widget.pickupLon),
-                    polyCoordinates: [],
+                    polyCoordinates: const [],
                   ))),
 
           Positioned(

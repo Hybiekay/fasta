@@ -7,6 +7,6 @@ class SendPackage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Body();
+    return const Body();
   }
 }

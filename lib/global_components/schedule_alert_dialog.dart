@@ -136,6 +136,8 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
           GestureDetector(
             onTap: () async {
               final data = await userController.createPackage(
+                  boundNe: widget.boundNe,
+                  boundSw: widget.boundSw,
                   weight: widget.weight,
                   height: widget.height,
                   distance: widget.distance,

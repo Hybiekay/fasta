@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 
 class GoogleMapPage extends StatefulWidget {
   GoogleMapPage({
@@ -80,7 +82,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
           Marker(
             markerId: const MarkerId("Drop Off"),
             position: widget.dropOffLocation,
-            infoWindow: InfoWindow(title: "Drop Off"),
+            infoWindow: const InfoWindow(title: "Drop Off"),
           ),
         },
       ),

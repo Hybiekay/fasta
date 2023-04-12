@@ -79,11 +79,15 @@ class CustomerController extends GetxController {
     required String dropoffLon,
     required String time,
     required bool isSchedule,
+    required boundNe,
+    required boundSw,
     String scheduledTime = "isNotSchedule",
     String scheduleddate = "isNotSchedule",
   }) async {
     try {
       final package = await _apiController.sendAPackage(
+          boundNe: boundNe,
+          boundSw: boundSw,
           height: height,
           weight: weight,
           distance: distance,

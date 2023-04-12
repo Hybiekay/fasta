@@ -146,6 +146,8 @@ class UserApiController extends GetxController {
     required String scheduledTime,
     required String month,
     required String year,
+    required boundNe,
+    required boundSw,
   }) async {
     print(request.toJson());
     final createPackageUrl =
@@ -160,6 +162,7 @@ class UserApiController extends GetxController {
       "pickup_lat": pickupLat,
       "pickup_lon": pickupLon,
       "pickup_address": pickupAdrress,
+      "pickup_object": {"boundNe": boundNe, "boundSw": boundSw},
       "dropoff_lat": dropoffLat,
       "dropoff_lon": dropoffLon,
       "dropoff_address": dropoffAdress,

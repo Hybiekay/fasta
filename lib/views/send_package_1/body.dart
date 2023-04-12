@@ -1,11 +1,9 @@
 import 'dart:ui';
 import 'package:get/get.dart';
 import '../../Apis/google_api.dart';
-import 'package:get/instance_manager.dart';
 import 'package:ziklogistics/models/customers_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
-import 'package:ziklogistics/controllers/get_location_detail.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 // ignore_for_file: use_build_context_synchronously
@@ -20,7 +18,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  final TripController _tripController = Get.put(TripController());
   final approxSizeController = TextEditingController();
   final approxWeightController = TextEditingController();
   final pickUpController = TextEditingController();
@@ -283,7 +280,6 @@ class Btubutton extends StatelessWidget {
                 sigmaY: 2.0,
               ),
               child: ScheduleAlertDialog(
-                
                 boundNe: boundNe,
                 boundSw: boundSw,
                 polyLine: polyLine,
@@ -329,6 +325,8 @@ class Btubutton extends StatelessWidget {
           }
 
           var package = await userController.createPackage(
+            boundNe: boundNe,
+            boundSw: boundSw,
             weight: int.parse(approxWeightController.text),
             height: int.parse(heightController.text),
             size: int.parse(approxSizeController.text),

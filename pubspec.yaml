@@ -51,6 +51,7 @@ dependencies:
   http_interceptor: ^1.0.2
   intl: ^0.17.0
   flutter_paystack: ^1.0.7
+  socket_io_client: ^2.0.1
 
 
 dev_dependencies:

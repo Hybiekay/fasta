@@ -5,13 +5,13 @@ import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 
 class HistoryCard extends StatelessWidget {
-  String name;
-  DateTime time;
-  String track;
-  VoidCallback trackPressed;
-  VoidCallback chatPressed;
+  final String name;
+  final DateTime time;
+  final String track;
+  final VoidCallback trackPressed;
+  final VoidCallback chatPressed;
 
-  HistoryCard({
+ const HistoryCard({
     Key? key,
     required this.name,
     required this.time,

@@ -27,7 +27,9 @@ class Ongoinglist extends StatelessWidget {
             return const NodataCard(content: "You don't Have Ongoing Request");
           } else if (snapshot.hasData &&
               (snapshot.data["data"] as List).isNotEmpty) {
-            print(snapshot.data);
+            if (kDebugMode) {
+              print(snapshot.data);
+            }
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {

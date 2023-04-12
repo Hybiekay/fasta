@@ -1,4 +1,6 @@
+import 'package:get/get.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
+import 'package:ziklogistics/controllers/costomer_controller.dart';
 
 class SearchingDispatcher extends StatefulWidget {
   final String price;
@@ -35,7 +37,10 @@ class SearchingDispatcher extends StatefulWidget {
 }
 
 class _SearchingDispatcherState extends State<SearchingDispatcher> {
+  final CustomerController userController = Get.put(CustomerController());
   bool isFind = false;
+
+  Future getDriver() async {}
 
   @override
   Widget build(BuildContext context) {
