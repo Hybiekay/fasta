@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
+// ignore_for_file: use_build_context_synchronously
+
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 class ScheduleAlertDialog extends StatefulWidget {
@@ -12,11 +16,13 @@ class ScheduleAlertDialog extends StatefulWidget {
   final double dropoffLat;
   final double dropoffLon;
   final String distance;
+  final String email;
   final String time;
   final String price;
+  final String token;
   final boundNe;
   final boundSw;
-  final polyLine;
+  final String polyLine;
 
   const ScheduleAlertDialog({
     super.key,
@@ -39,6 +45,8 @@ class ScheduleAlertDialog extends StatefulWidget {
     required this.pickupLon,
     required this.dropoffLat,
     required this.dropoffLon,
+    required this.email,
+    required this.token,
   });
 
   @override
@@ -48,7 +56,7 @@ class ScheduleAlertDialog extends StatefulWidget {
 class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
   final CustomerController userController = Get.put(CustomerController());
 
-  DateTime date = DateTime(2023, 2, 23, 10, 30);
+  DateTime date = DateTime.now();
 
   bool isSelected = false;
 
@@ -105,7 +113,13 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
                       ),
                       isSelected
                           ? Text(
-                              "${date.year}/${date.month}/${date.day}  $hour:$minute")
+                              "${date.year}/${date.month}/${date.day}  $hour:$minute",
+                              style: GoogleFonts.dmSans(
+                                color: AppColor.whiteColor,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
                           : Text(
                               'Select A Time & Date',
                               style: GoogleFonts.dmSans(
@@ -136,6 +150,7 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
           GestureDetector(
             onTap: () async {
               final data = await userController.createPackage(
+                  polyLine: widget.polyLine,
                   boundNe: widget.boundNe,
                   boundSw: widget.boundSw,
                   weight: widget.weight,
@@ -150,7 +165,7 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
                   pickupLat: widget.pickupLat.toString(),
                   pickupLon: widget.pickupLon.toString(),
                   dropoffAdress: widget.dropoffAdress,
-                  dropoffLat: widget.dropoffAdress.toString(),
+                  dropoffLat: widget.dropoffLat.toString(),
                   dropoffLon: widget.dropoffLon.toString(),
                   isSchedule: true,
                   discription: widget.discription,
@@ -158,12 +173,16 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
                   scheduleddate: "$hour:$minute");
 
               Get.to(() => SearchingDispatcher(
+                    token: widget.token,
+                    email: widget.email,
+                    name: widget.userName,
                     discription: widget.discription,
                     boundNe: widget.boundNe,
                     boundSw: widget.boundSw,
                     polyLine: widget.polyLine,
                     packageId: data["data"]['id'],
-                    dateTime: "${date.year}/${date.month}/${date.day} ",
+                    dateTime:
+                        "${date.year}/${date.month}/${date.day}  $hour:$minute",
                     time: widget.time,
                     price: widget.price,
                     distance: widget.distance,

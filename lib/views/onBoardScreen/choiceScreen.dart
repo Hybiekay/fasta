@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import '../../models/models.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/components/Widget/on_boad_page_selection.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 // ignore_for_file: file_names
@@ -71,20 +73,23 @@ class ChoiceScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
-                          // Get.to(() => const LoginScreen());
-                          final data = await Storage.getData();
-                          custormerName = json.decode(data);
-                          // Get.to(() => const CostomerHome());
-                          print(CustomersUserModel.name);
-                          if (CustomersUserModel.name == null &&
-                              CustomersModel.token == null) {
-                            Get.to(() => const OnBoardPages());
-                          }
-                          if (CustomersModel.token == null &&
-                              CustomersUserModel.name != null) {
-                            Get.to(() => const LoginScreen());
+                          String? allData = await Storage.getData();
+                          if (allData != null) {
+                            custormerName = json.decode(allData);
+
+                            log(CustomersUserModel.name!);
+                            if (CustomersUserModel.name == null &&
+                                CustomersModel.token == null) {
+                              Get.to(() => const OnBoardPages());
+                            } else if (CustomersModel.token != null &&
+                                CustomersUserModel.name == null) {
+                              Get.to(() => const LoginScreen());
+                            } else if (CustomersModel.token != null &&
+                                CustomersUserModel.name != null) {
+                              Get.to(() => const CostomerHome());
+                            }
                           } else {
-                            Get.to(() => const CostomerHome());
+                            Get.to(() => const OnBoardPages());
                           }
                         },
                         child: const Text(
@@ -115,24 +120,26 @@ class ChoiceScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
-                          Get.to(() => const DispatcherLoginScreen());
+                       
+                          var allData = await DStorage.getDriverData();
+                          if (allData != null) {
+                            log('Secure storage has data: $allData');
+                            driverData = json.decode(allData);
 
-                          final data = await DStorage.getDriverData();
-                          print("this is   $data");
-                          driverData = json.decode(data);
-                          print("this is   $data");
-                          // if (DriverUserModel.name == null) {
-                          //   print("DriverUserModel.name is null login in");
-                          //   Get.to(() => const DispatcherOnBoardPages());
-                          // } else if (DriverUserModel.name != null &&
-                          //     DriverUserModel.nin != null &&
-                          //     DriverModel().token == null) {
-                          //   print("DriverUserModel. is null login in");
-
-                          //   Get.to(() => const DispatcherLoginScreen());
-                          // } else {
-                          //   Get.to(() => const DispatcherHome());
-                          // }
+                            if (DriverUserModel.email != null &&
+                                DriverUserModel.name != null &&
+                                DriverUserModel.bvn != null &&
+                                DriverModel().token == null) {
+                              Get.to(() => const DispatcherLoginScreen());
+                            } else if (DriverUserModel.nin != null &&
+                                DriverUserModel.name != null &&
+                                DriverUserModel.bvn != null) {
+                              Get.to(() => const DispatcherHome());
+                            }
+                          } else {
+                            log('Secure storage is empty');
+                            Get.to(() => const DispatcherOnBoardPages());
+                          }
                         },
                         child: const Text(
                           'Sign up as a Dispatcher',

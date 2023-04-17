@@ -2,28 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore_for_file: must_be_immutable
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 class InputPackagedetails extends StatelessWidget {
-  String img1;
-  String desc1;
-  String textField1;
-  String textField3;
-  String textField4;
-  String img2;
-  String desc2;
-  String textField2;
-  bool isSize;
-  TextEditingController val1;
-  TextEditingController val2;
-  TextEditingController val3;
-
-  TextEditingController val4;
-  VoidCallback onPressed;
+  TextInputType keyboardType;
+  final String img1;
+  final String desc1;
+  final String textField1;
+  final String textField3;
+  final String textField4;
+  final String img2;
+  final String desc2;
+  final String textField2;
+  final bool isSize;
+  final TextEditingController val1;
+  final TextEditingController val2;
+  final TextEditingController val3;
+  final TextEditingController val4;
+  final VoidCallback onPressed;
   InputPackagedetails({
     Key? key,
+    this.keyboardType = TextInputType.name,
     required this.onPressed,
     required this.isSize,
     required this.img1,
@@ -69,6 +72,7 @@ class InputPackagedetails extends StatelessWidget {
                         SizedBox(
                           width: isSize ? 100.w : 200.w,
                           child: TextFormField(
+                              keyboardType: keyboardType,
                               controller: val1,
                               expands: false,
                               textAlign: TextAlign.justify,
@@ -96,6 +100,7 @@ class InputPackagedetails extends StatelessWidget {
                                   SizedBox(
                                     width: 100.w,
                                     child: TextFormField(
+                                        keyboardType: keyboardType,
                                         controller: val2,
                                         expands: false,
                                         textAlign: TextAlign.justify,
@@ -151,7 +156,7 @@ class InputPackagedetails extends StatelessWidget {
                         SizedBox(
                           width: isSize ? 100.w : 200.w,
                           child: TextFormField(
-                            
+                              keyboardType: keyboardType,
                               controller: val3,
                               expands: false,
                               onEditingComplete: onPressed,
@@ -177,6 +182,7 @@ class InputPackagedetails extends StatelessWidget {
                                   SizedBox(
                                     width: 100.w,
                                     child: TextFormField(
+                                        keyboardType: keyboardType,
                                         controller: val4,
                                         expands: false,
                                         textAlign: TextAlign.justify,

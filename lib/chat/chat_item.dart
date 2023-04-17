@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../global_components/ziklogistics.dart';
 
 class SingleChat extends StatelessWidget {
@@ -31,7 +29,7 @@ class SingleChat extends StatelessWidget {
                       topLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
                       bottomRight: Radius.circular(12)),
-              color: isMe ? AppColor.mainColor : Colors.grey.shade700),
+              color: isMe ? const Color.fromARGB(255, 9, 236, 100) : Colors.white),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -44,11 +42,11 @@ class SingleChat extends StatelessWidget {
                 ),
                 Text(
                   message,
-                  style: GoogleFonts.notoSerif(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0,
-                  ),
+                  style: GoogleFonts.dmSans(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 1.0,
+                      color: isMe ? AppColor.whiteColor : Colors.black),
                 ),
                 if (isMe) ProfileCard(isMe: isMe),
                 if (isMe) const SizedBox(width: 10),

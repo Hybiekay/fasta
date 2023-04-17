@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../models/customers_model.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +35,7 @@ class ChoicePayment extends StatelessWidget {
         color: AppColor.mainColor,
         child: Column(
           children: [
-            HeaderWidget(subTitle: "Payment"),
+            const HeaderWidget(subTitle: "Payment"),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.09,
             ),
@@ -54,19 +56,20 @@ class ChoicePayment extends StatelessWidget {
             ButtonComp(
                 onPressed: () async {
                   final data = await Storage.getData();
-                  custormerName = json.decode(data);
+                  if (data != null) {
+                    custormerName = json.decode(data);
+                    Get.to(
+                      () => CardChoice(
+                          distants: distants,
+                          amount: amount,
+                          time: time,
+                          userName: CustomersUserModel.name!,
+                          email: CustomersUserModel.email!,
+                          packageId: packageId),
+                    );
+                  }
 
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CardChoice(
-                            distants: distants,
-                            amount: amount,
-                            time: time,
-                            userName: CustomersUserModel.name!,
-                            email: CustomersUserModel.email!,
-                            packageId: packageId),
-                      ));
+                  log(CustomersUserModel.name!);
                 },
                 value: "Pay with Card "),
             SizedBox(

@@ -2,8 +2,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Storage {
   static const FlutterSecureStorage _secureStorage = FlutterSecureStorage();
-  static const _keyValue = "token";
-  static const _keydata = "data";
+  static const _keyValue = "Ctoken";
+  static const _keydata = "Cdata";
+  static const _keyname = "Cname";
   static const _keyStatus = "401";
   static const _keyOtp = "4001";
 
@@ -22,9 +23,20 @@ class Storage {
     await _secureStorage.write(key: _keydata, value: response);
   }
 
-  static Future getData() async {
+  static Future<String?> getData() async {
     var res = await _secureStorage.read(
       key: _keydata,
+    );
+    return res;
+  }
+
+  static Future savename(String response) async {
+    await _secureStorage.write(key: _keyname, value: response);
+  }
+
+  static Future<String?> getname() async {
+    var res = await _secureStorage.read(
+      key: _keyname,
     );
     return res;
   }

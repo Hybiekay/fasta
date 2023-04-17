@@ -3,38 +3,52 @@ import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_detail_screen.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 
 class DispatcherMeunScreen extends StatefulWidget {
   static const String routeName = '/DispatchermeunScreen';
-  final String packageId;
-  final String time;
-  final String name;
-  final String pickUpAdress;
-  final String dropOffAdress;
   final String price;
+  final String time;
   final String distance;
-  final double pickupLat;
-  final double pickupLon;
-  final double dropoffLat;
-  final double dropoffLon;
+  final String discription;
+  final LatLng pickUpLocation;
+  final LatLng dropOffLocation;
+  final bool isSchedule;
+  final String dateTime;
+  final String packageId;
+  final boundNe;
+  final boundSw;
+  final String polyLine;
+  final String name;
   final String size;
   final String weight;
+  final String pickUpAddress;
+  final String dropOffAddress;
+  final String width;
+  final String height;
 
   const DispatcherMeunScreen({
     Key? key,
-    required this.packageId,
-    required this.time,
-    required this.name,
-    required this.pickUpAdress,
-    required this.dropOffAdress,
+    required this.boundNe,
+    required this.boundSw,
     required this.price,
+    required this.time,
     required this.distance,
-    required this.pickupLat,
-    required this.pickupLon,
-    required this.dropoffLat,
-    required this.dropoffLon,
+    required this.discription,
+    required this.pickUpLocation,
+    required this.dropOffLocation,
+    required this.isSchedule,
+    required this.dateTime,
+    required this.packageId,
+    required this.polyLine,
+    required this.name,
     required this.size,
     required this.weight,
+    required this.pickUpAddress,
+    required this.dropOffAddress,
+    required this.width,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -44,7 +58,7 @@ class DispatcherMeunScreen extends StatefulWidget {
 class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
   DriverController driverController = Get.put(DriverController());
 
-  String dropDownvalue = "Haven't started yet";
+  String dropDownvalue = "PENDING";
 
   @override
   Widget build(BuildContext context) {
@@ -59,14 +73,14 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                   color: Colors.amber,
                   width: MediaQuery.of(context).size.width,
                   child: GoogleMapPage(
-                      boundNe: const {},
-                      boundSw: const {},
-                      destricption: "",
-                      dropOffLocation:
-                          LatLng(widget.dropoffLat, widget.dropoffLon),
-                      pickUpLocation:
-                          LatLng(widget.pickupLat, widget.dropoffLon),
-                      polyCoordinates: const []))),
+                    boundNe: widget.boundNe,
+                    boundSw: widget.boundNe,
+                    destricption: widget.distance,
+                    dropOffLocation: widget.dropOffLocation,
+                    pickUpLocation: widget.pickUpLocation,
+                    polyCoordinates:
+                        PolylinePoints().decodePolyline(widget.polyLine),
+                  ))),
 
           Positioned(
             top: 50,
@@ -125,7 +139,7 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                               dropdownColor: AppColor.mainSecondryColor,
                               items: [
                                 DropdownMenuItem(
-                                  value: "Haven't started yet",
+                                  value: "PENDING",
                                   onTap: (() {
                                     setState(() {});
                                   }),
@@ -143,7 +157,7 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                                   ),
                                 ),
                                 const DropdownMenuItem(
-                                  value: "Started and on it's way for pickup",
+                                  value: "ACCEPTED",
                                   child: Center(
                                     child: Text(
                                       "Started and on it's way for pickup",
@@ -158,8 +172,7 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                                   ),
                                 ),
                                 const DropdownMenuItem(
-                                  value:
-                                      "Pickup done and on it's way for delivery",
+                                  value: "PICKUP",
                                   child: Center(
                                     child: Text(
                                       " Pickup done and on it's way for delivery",
@@ -174,7 +187,7 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                                   ),
                                 ),
                                 const DropdownMenuItem(
-                                  value: "Delivery done, request completed",
+                                  value: "COMPLETED",
                                   child: Center(
                                     child: Text(
                                       " Delivery done, request completed",
@@ -213,9 +226,8 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Visibility(
-                              visible: dropDownvalue == "Haven't started yet" ||
-                                  dropDownvalue ==
-                                      "Started and on it's way for pickup",
+                              visible: dropDownvalue == "PENDING" ||
+                                  dropDownvalue == "ACCEPTED",
                               child: TextButton(
                                   onPressed: () {
                                     mainshowDialod(
@@ -254,14 +266,16 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                                               BorderRadius.circular(10))),
                                   onPressed: () {
                                     Get.to(() => DispatcherComleteTaskDetail(
+                                          height: widget.height,
+                                          width: widget.width,
                                           name: widget.name,
                                           size: widget.size,
                                           weight: widget.weight,
                                           time: widget.time,
                                           price: widget.price,
-                                          pickUpAdress: widget.pickUpAdress,
+                                          pickUpAdress: widget.pickUpAddress,
                                           distance: widget.distance,
-                                          dropOffAdress: widget.dropOffAdress,
+                                          dropOffAdress: widget.dropOffAddress,
                                         ));
                                   },
                                   child: const Text("Details",

@@ -28,10 +28,7 @@ class Location {
       // "polyline_decode": PolylinePoints()
       //     .decodePolyline(data["routes"][0]["overview_polyline"]["points"])
     };
-    var endCode = json.encode(result);
 
-    //  TripController().setResponse(endCode);
-    print(result);
     return result;
   }
 }

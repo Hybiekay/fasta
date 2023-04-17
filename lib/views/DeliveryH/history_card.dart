@@ -8,11 +8,15 @@ class HistoryCard extends StatelessWidget {
   final String name;
   final DateTime time;
   final String track;
+  final bool isPaid;
   final VoidCallback trackPressed;
   final VoidCallback chatPressed;
+  final VoidCallback continuePressed;
 
- const HistoryCard({
+  const HistoryCard({
     Key? key,
+    this.isPaid = false,
+    required this.continuePressed,
     required this.name,
     required this.time,
     required this.track,
@@ -38,7 +42,7 @@ class HistoryCard extends StatelessWidget {
                 child: CircleAvatar(),
               ),
               const SizedBox(
-                width: 10,
+                width: 5,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -75,17 +79,50 @@ class HistoryCard extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 7),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                          onTap: chatPressed,
-                          child: Image.asset(AppImages.messageICon)),
-                      const SizedBox(
-                        width: 5,
+                child: Column(
+                  children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                              onTap: chatPressed,
+                              child: Image.asset(AppImages.messageICon)),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Image.asset(AppImages.callICon),
+                        ]),
+                    const SizedBox(height: 20),
+                    Container(
+                      height: 30,
+                      decoration: BoxDecoration(
+                          color: AppColor.mainColor,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: GestureDetector(
+                          onTap: continuePressed,
+                          child: isPaid
+                              ? const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Done',
+                                    style:
+                                        TextStyle(color: AppColor.whiteColor),
+                                  ),
+                                )
+                              : const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Continue',
+                                    style:
+                                        TextStyle(color: AppColor.whiteColor),
+                                  ),
+                                ),
+                        ),
                       ),
-                      Image.asset(AppImages.callICon),
-                    ]),
+                    )
+                  ],
+                ),
               )
             ],
           )),

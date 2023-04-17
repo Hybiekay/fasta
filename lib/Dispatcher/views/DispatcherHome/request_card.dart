@@ -112,7 +112,7 @@ class RequestCard extends StatelessWidget {
                                     height: 10,
                                   ),
                                   Text(
-                                    '$time Min',
+                                    '$time ',
                                     textAlign: TextAlign.left,
                                     style: GoogleFonts.dmSans(
                                         fontWeight: FontWeight.w500,

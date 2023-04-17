@@ -1,9 +1,11 @@
+import 'dart:convert';
 import 'package:get/get.dart';
 import '../../../chat/chat_screen.dart';
-import '../../../controllers/drivers_controller.dart';
-import 'package:ziklogistics/views/DeliveryH/history_card.dart';
+import 'package:ziklogistics/models/driver_model.dart';
+import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/meun_screen.dart';
+import 'package:ziklogistics/Dispatcher/views/DispatcherH/history_card.dart';
 
 class DispatcherOngoinglist extends StatelessWidget {
   const DispatcherOngoinglist({
@@ -27,33 +29,57 @@ class DispatcherOngoinglist extends StatelessWidget {
           } else if (snapshot.hasData &&
               (snapshot.data["data"] as List).isNotEmpty) {
             return ListView.builder(
+              reverse: true,
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
                 final data = snapshot.data['data'][index];
 
-                return HistoryCard(
-                  chatPressed: () {
+                return DispatcherHistoryCard(
+                  continuePressed: () {},
+                  chatPressed: () async {
+                    final driverdata = await DStorage.getDriverData();
+                    final token = await DStorage.getDriverToken();
+                    if (driverdata != null) {
+                      driverData = json.decode(driverdata);
+                    }
+
                     Get.to(() => ChatScreen(
-                          friendName: data["name"],
-                          userName: "my name",
-                          uid: data["userId"],
+                          receiverEmail: data['user']['email'],
+                          receiverName: data['user']['name'],
+                          senderEmail: DriverUserModel.email ??
+                              data["AcceptedDriver"]['email'],
+                          senderName: DriverUserModel.name ??
+                              data["AcceptedDriver"]['name'],
+                          token: token,
                         ));
                   },
                   trackPressed: () {
                     Get.to(() => DispatcherMeunScreen(
+                          height: "${data["height"]}",
+                          width: "${data["width"]}",
+                          pickUpAddress: data["pickup_address"],
+                          dropOffAddress: data["dropoff_address"],
+                          weight: "${data["weight"]}",
+                          size: "${data["size"]}",
+                          boundNe: data["pickup_object"]["boundNe"],
+                          polyLine: data["pickup_object"]["polyLine"] ?? '',
+                          boundSw: data["pickup_object"]["boundSw"],
                           name: data["name"],
-                          size: data["size"].toString(),
-                          weight: data["weight"].toString(),
-                          dropOffAdress: data["dropoff_address"],
-                          pickUpAdress: data["pickup_address"],
-                          distance: data["dropoff_object"],
+                          distance: data["distance"],
                           packageId: data["id"],
                           price: data["price"],
-                          time: data["pickup_object"],
-                          pickupLon: double.parse(data["pickup_lon"]),
-                          pickupLat: double.parse(data["pickup_lat"]),
-                          dropoffLon: double.parse(data["dropoff_lon"]),
-                          dropoffLat: double.parse(data["dropoff_lat"]),
+                          time: data["duration"],
+                          dropOffLocation: LatLng(
+                              double.parse(data["dropoff_lat"]),
+                              double.parse(data["dropoff_lon"])),
+                          pickUpLocation: LatLng(
+                            double.parse(data["pickup_lat"]),
+                            double.parse(data["pickup_lon"]),
+                          ),
+                          discription: data["description"],
+                          isSchedule: data["isScheduled"],
+                          dateTime:
+                              "${data["scheduled_date"]} ${data["scheduled_time"]}",
                         ));
                   },
                   name: data['name'],

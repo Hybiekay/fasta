@@ -58,7 +58,6 @@ class DriverApiController extends GetxController {
   }
 
   Future updateDriverName({
-    required String token,
     required String name,
     required String phoneNumber,
     required String accountName,
@@ -66,6 +65,7 @@ class DriverApiController extends GetxController {
     required String bankNam,
     required String paymentOption,
   }) async {
+    String token = await DStorage.getDriverToken();
     final updateCostumerNameUrl =
         Uri.parse("${AppApis.endPoint}auth/update-name-customer");
     final response = await http.post(updateCostumerNameUrl, headers: {
@@ -81,7 +81,6 @@ class DriverApiController extends GetxController {
   }
 
   Future driverUpload({
-    required String token,
     required String bvn,
     required String nin,
     required String name,
@@ -89,7 +88,9 @@ class DriverApiController extends GetxController {
     required File ninImage,
     required File driverLicenseImage,
   }) async {
+    String token = await DStorage.getDriverToken();
     print("the tokon is $token");
+
     final url =
         Uri.parse("${AppApis.endPoint}driver/complete-driver-registration");
     final response = http.MultipartRequest("POST", url);
@@ -108,14 +109,13 @@ class DriverApiController extends GetxController {
     final resultData = await result.stream.toBytes();
     final data = String.fromCharCodes(resultData);
 
-    DStorage.saveDriverData(data);
+    DStorage.saveCompleteData(data);
     print(data);
     return json.decode(data);
   }
 
-  Future getAllRequt({
-    required String token,
-  }) async {
+  Future getAllRequt() async {
+    String token = await DStorage.getDriverToken();
     final getAllRequtOtpUrl =
         Uri.parse("${AppApis.endPoint}driver/get-dispatch-requests");
     final response = await http.get(
@@ -134,9 +134,9 @@ class DriverApiController extends GetxController {
   }
 
   Future getSingleRequt({
-    required String token,
     required String packageId,
   }) async {
+    String token = await DStorage.getDriverToken();
     final getAllRequtOtpUrl =
         Uri.parse("${AppApis.endPoint}driver/get-dispatch-request/$packageId");
     final response = await http.get(
@@ -153,9 +153,9 @@ class DriverApiController extends GetxController {
   }
 
   Future acceptPackage({
-    required String token,
     required String packageId,
   }) async {
+    String token = await DStorage.getDriverToken();
     final url =
         Uri.parse("${AppApis.endPoint}driver/accept-package/$packageId");
     final response = await http.post(
@@ -173,9 +173,9 @@ class DriverApiController extends GetxController {
   }
 
   Future rejectPackage({
-    required String token,
     required String packageId,
   }) async {
+    String token = await DStorage.getDriverToken();
     final url =
         Uri.parse("${AppApis.endPoint}driver/reject-package/$packageId");
     final response = await http.post(
@@ -190,10 +190,10 @@ class DriverApiController extends GetxController {
   }
 
   Future changePackageStatus({
-    required String token,
     required String packageId,
     required String status,
   }) async {
+    String token = await DStorage.getDriverToken();
     final url =
         Uri.parse("${AppApis.endPoint}driver/change-package-status$packageId");
     final response = await http.post(url, headers: {
@@ -211,9 +211,9 @@ class DriverApiController extends GetxController {
   }
 
   Future getHistory({
-    required String token,
     required String status,
   }) async {
+    String token = await DStorage.getDriverToken();
     final url =
         Uri.parse("${AppApis.endPoint}driver/history-grouped?status=$status");
     final response = await http.get(

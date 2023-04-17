@@ -2,10 +2,12 @@ import 'package:ziklogistics/chat/chat_screen.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class UserCard extends StatelessWidget {
-  String name;
+ final String name;
+ final VoidCallback chatPressed;
 
-  UserCard({
+ const UserCard({
     Key? key,
+    required this.chatPressed,
     required this.name,
   }) : super(key: key);
 
@@ -50,7 +52,9 @@ class UserCard extends StatelessWidget {
                             Navigator.of(context)
                                 .pushNamed(ChatScreen.routeName);
                           },
-                          child: Image.asset(AppImages.messageICon)),
+                          child: GestureDetector(
+                              onTap: chatPressed,
+                              child: Image.asset(AppImages.messageICon))),
                       Image.asset(AppImages.callICon),
                     ]),
               )

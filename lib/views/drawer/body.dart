@@ -5,13 +5,30 @@ import '../../constants/app_images.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/views/drawer/btn_comp.dart';
 import 'package:ziklogistics/models/customers_model.dart';
+import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/views/DeliveryH/delivery_history.dart';
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({super.key});
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  String? name;
+  @override
+  void initState() {
+    getName();
+    super.initState();
+  }
+
+  getName() async {
+    name = await Storage.getname();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +59,7 @@ class Body extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      CustomersUserModel.name ?? "Login Again",
+                      CustomersUserModel.name ?? name ?? "Login Again",
                       style: GoogleFonts.dmSans(
                         color: AppColor.mainColor,
                         fontSize: 20.sp,
@@ -63,11 +80,9 @@ class Body extends StatelessWidget {
                   height: 35.h,
                 ),
                 BtnComp(onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Deliveryhistory(),
-                      ));
+                  Get.off(
+                    () => const Deliveryhistory(),
+                  );
                 })
               ],
             ),

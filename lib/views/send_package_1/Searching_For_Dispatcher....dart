@@ -1,6 +1,11 @@
+import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:ziklogistics/chat/chat_screen.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
+
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 
 class SearchingDispatcher extends StatefulWidget {
   final String price;
@@ -11,6 +16,9 @@ class SearchingDispatcher extends StatefulWidget {
   final LatLng dropOffLocation;
   final bool isSchedule;
   final String dateTime;
+  final String token;
+  final String email;
+  final String name;
   final String packageId;
   final boundNe;
   final boundSw;
@@ -30,7 +38,7 @@ class SearchingDispatcher extends StatefulWidget {
       this.dateTime = "not Schedele",
       this.isSchedule = false,
       required this.pickUpLocation,
-      required this.dropOffLocation});
+      required this.dropOffLocation, required this.token, required this.email, required this.name});
 
   @override
   State<SearchingDispatcher> createState() => _SearchingDispatcherState();
@@ -38,9 +46,62 @@ class SearchingDispatcher extends StatefulWidget {
 
 class _SearchingDispatcherState extends State<SearchingDispatcher> {
   final CustomerController userController = Get.put(CustomerController());
+  late Timer _timer;
   bool isFind = false;
+  String driverName = '';
+  String driverId = '';
+  String driverEmail = '';
+  String driverPhone = '';
+  String driver = '';
 
-  Future getDriver() async {}
+  @override
+  void initState() {
+    startListeningToChanges();
+
+    super.initState();
+  }
+
+// Start the periodic timer to send subsequent requests
+  void startListeningToChanges() {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) async {
+      try {
+        final res =
+            await userController.getPackage(packageId: widget.packageId);
+
+        log("${res["acceptedDriverId"]}} has data");
+        if (res["acceptedDriverId"] != null) {
+          log("${res["acceptedDriverId"]} has data");
+          setState(() {
+            driverName = res["AcceptedDriver"]["name"];
+            driverId = res["AcceptedDriver"]["id"];
+            driverPhone = res["AcceptedDriver"]["phone"];
+            driverEmail = res["AcceptedDriver"]["email"];
+            isFind = true;
+            _timer.cancel();
+          });
+        } else {
+          log("${res["acceptedDriverId"]} has Nodata");
+        }
+      } catch (e) {
+        // Handle any errors or exceptions that may occur during the API request
+        log('Error: $e');
+      }
+    });
+  }
+
+// Stop listening for changes by cancelling the timer
+  void stopListeningToChanges() {
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    stopListeningToChanges();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +138,7 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                   color: AppColor.whiteColor,
                 ),
                 onPressed: () {
+                  _timer.cancel();
                   Navigator.pop(context);
                 },
               )),
@@ -106,7 +168,18 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                           ? Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
-                              child: UserCard(name: "Opeyemi Akinyemi"),
+                              child: UserCard(
+                                name: driverName,
+                                chatPressed: () {
+                                  Get.to(() => ChatScreen(
+                                        receiverEmail: driverEmail,
+                                        receiverName: driverName,
+                                        senderName: widget.name,
+                                        senderEmail:widget.email,
+                                        token: widget.token,
+                                      ));
+                                },
+                              ),
                             )
                           : Column(
                               children: const [
@@ -158,7 +231,7 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => ChoicePayment(
-                                          packageId: " widget.packageId",
+                                          packageId: widget.packageId,
                                           distants: widget.distance,
                                           amount: widget.price,
                                           time: widget.time,
@@ -166,7 +239,7 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                                       ));
                                 },
                                 value: "Confirm")
-                            : InActiveButtonComp(value: "Confirm"),
+                            : const InActiveButtonComp(value: "Confirm"),
                       )
                     ],
                   ),

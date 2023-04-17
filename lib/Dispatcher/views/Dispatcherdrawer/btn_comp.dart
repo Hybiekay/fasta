@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class DisBtnComp extends StatelessWidget {
-  VoidCallback onPressed;
-  DisBtnComp({
+ final VoidCallback onPressed;
+  const DisBtnComp({
     super.key,
     required this.onPressed,
   });

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:ziklogistics/views/home/home.dart';
@@ -195,7 +196,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
                                 code = nevalue;
                               });
-                              print("this is code$code");
+                              log("this is code$code");
 
                               if (otp != code) {
                                 setState(() {
@@ -212,23 +213,23 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
                               statusCode = await Storage.getStatusCode();
                               final data = await Storage.getData();
-                              custormerName = json.decode(data);
+                              if (data != null) {
+                                custormerName = json.decode(data);
+                              }
                               if (statusCode == '201' &&
                                       CustomersUserModel.name == "name" ||
-                                  CustomersUserModel.name == '') {
+                                  CustomersUserModel.name == null) {
                                 Get.to(() => CustomerRegisterScreen(
                                       phonenum: widget.phoneNumber,
                                     ));
-                              } else if (CustomersUserModel.name != "name" &&
+                              } else if (CustomersUserModel.name != null &&
                                   statusCode == "201") {
                                 Get.offAll(() => const CostomerHome(),
                                     arguments: {CustomersUserModel});
-                              } else {
-                                if (statusCode == "403") {
-                                  setState(() {
-                                    isInCorrect = true;
-                                  });
-                                }
+                              } else if (statusCode == "403") {
+                                setState(() {
+                                  isInCorrect = true;
+                                });
                               }
 
                               if (code == "") {}

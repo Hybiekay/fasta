@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 
-class Bank_history_card extends StatelessWidget {
-  String bankName;
-  String cardNum;
-  Widget bankImage;
-  Widget radio;
+class BankHistoryCard extends StatelessWidget {
+  final String bankName;
+  final String cardNum;
+  final Widget bankImage;
+  final Widget radio;
 
-  Bank_history_card({
+  const BankHistoryCard({
     required this.bankName,
     required this.cardNum,
     required this.bankImage,
@@ -31,16 +31,11 @@ class Bank_history_card extends StatelessWidget {
         minVerticalPadding: 2,
         minLeadingWidth: 4,
         leading: bankImage,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(bankName),
-            Expanded(
-              child: Text(cardNum,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.dmSans(fontWeight: FontWeight.w500)),
-            ),
-          ],
+        title: Text(bankName),
+        subtitle: Expanded(
+          child: Text(cardNum,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.dmSans(fontWeight: FontWeight.w500)),
         ),
         trailing: SizedBox(width: 30, child: radio),
       ),

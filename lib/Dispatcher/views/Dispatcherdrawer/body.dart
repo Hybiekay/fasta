@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/constants/app_color.dart';
@@ -17,6 +18,7 @@ class DispatcherBody extends StatefulWidget {
 }
 
 class _DispatcherBodyState extends State<DispatcherBody> {
+  bool isAprroved = true;
   @override
   void initState() {
     getData();
@@ -63,6 +65,20 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      height: 18,
+                      width: 48,
+                      decoration: BoxDecoration(
+                          color: isAprroved
+                              ? AppColor.mainColor
+                              : AppColor.errorColor),
+                      child: Text(
+                        isAprroved ? "Approved" : "Disapproved",
+                        style: GoogleFonts.dmSans(
+                            fontSize: 8.h, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                     const Spacer(),
                     Container(
                       width: 63,
@@ -73,15 +89,27 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                     )
                   ],
                 ),
+                Row(
+                  children: [
+                    Text(
+                      "Total Amount Made: ",
+                      style: GoogleFonts.dmSans(
+                          fontSize: 15.h, color: AppColor.mainColor),
+                    ),
+                    Text(
+                      "00:00",
+                      style: GoogleFonts.dmSans(
+                          fontSize: 15.h, color: AppColor.errorColor),
+                    ),
+                  ],
+                ),
                 SizedBox(
-                  height: 35.h,
+                  height: 32.h,
                 ),
                 DisBtnComp(onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DispatcherDeliveryhistory(),
-                      ));
+                  Get.off(
+                    () => const DispatcherDeliveryhistory(),
+                  );
                 })
               ],
             ),

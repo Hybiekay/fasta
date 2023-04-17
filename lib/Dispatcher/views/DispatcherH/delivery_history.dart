@@ -20,7 +20,7 @@ class DispatcherDeliveryhistory extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         color: AppColor.mainColor,
         child: Column(children: [
-          HeaderWidget(subTitle: 'Delivery History'),
+          const HeaderWidget(subTitle: 'Delivery History'),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.06,
           ),

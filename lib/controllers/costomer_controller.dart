@@ -1,22 +1,12 @@
 import 'package:get/get.dart';
 import 'package:ziklogistics/Apis/bank_api.dart';
 import 'package:ziklogistics/Apis/auth_service.dart';
-import 'package:ziklogistics/controllers/storage.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 // ignore: unused_import
 
 class CustomerController extends GetxController {
-  late final UserApiController _apiController;
+  final UserApiController _apiController = UserApiController();
 
-  late String otoken;
-  @override
-  void onInit() async {
-    otoken = await Storage.getToken();
-    _apiController = UserApiController();
-
-    super.onInit();
-    print("Init $otoken");
-  }
 
   Future<void> loginUser(String email, String phoneNumber) async {
     try {
@@ -52,7 +42,6 @@ class CustomerController extends GetxController {
       final data = await _apiController.updateCostumerName(
         phoneNumber: phoneNumber,
         name: name,
-        token: otoken,
       );
       return data;
     } catch (e) {
@@ -81,18 +70,19 @@ class CustomerController extends GetxController {
     required bool isSchedule,
     required boundNe,
     required boundSw,
+    required String polyLine,
     String scheduledTime = "isNotSchedule",
     String scheduleddate = "isNotSchedule",
   }) async {
     try {
       final package = await _apiController.sendAPackage(
+       polyLine:polyLine ,
           boundNe: boundNe,
           boundSw: boundSw,
           height: height,
           weight: weight,
           distance: distance,
           time: time,
-          token: otoken,
           userName: userName,
           discription: discription,
           size: size,
@@ -111,7 +101,9 @@ class CustomerController extends GetxController {
           year: "${DateTime.now().year}");
       return package;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -119,7 +111,6 @@ class CustomerController extends GetxController {
     try {
       final data = await _apiController.getCustomerHistory(
         status: status,
-        token: otoken,
       );
       return data;
     } catch (e) {
@@ -133,7 +124,6 @@ class CustomerController extends GetxController {
     try {
       final data = await _apiController.getCustomerGetPackage(
         packageId: packageId,
-        token: otoken,
       );
       return data;
     } catch (e) {
@@ -147,7 +137,6 @@ class CustomerController extends GetxController {
     try {
       final data = await _apiController.getCustomerListOfDelivery(
         status: status,
-        token: otoken,
       );
       return data as List;
     } catch (e) {
@@ -160,9 +149,7 @@ class CustomerController extends GetxController {
 
   Future getCardDelivery({required String status}) async {
     try {
-      final data = await BankApi.getCards(
-        token: otoken,
-      );
+      final data = await BankApi.getCards();
       return data;
     } catch (e) {
       if (kDebugMode) {

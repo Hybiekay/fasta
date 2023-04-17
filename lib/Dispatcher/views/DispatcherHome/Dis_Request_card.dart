@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../meun_screen/meun_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../controllers/drivers_controller.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/global_components/dialog_alert.dart';
+import 'package:ziklogistics/views/DeliveryH/delivery_history.dart';
+import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 
 // ignore_for_file: use_build_context_synchronously
 
@@ -21,8 +22,8 @@ class DispatcherRequsetCard extends StatelessWidget {
   final String dropOff;
   final String scheduleTime;
   final String packAgeId;
- final bool isScahedule;
- const DispatcherRequsetCard({
+  final bool isScahedule;
+  const DispatcherRequsetCard({
     Key? key,
     required this.name,
     required this.distance,
@@ -105,7 +106,7 @@ class DispatcherRequsetCard extends StatelessWidget {
                                   height: 9.h,
                                 ),
                                 Text(
-                                  "$distance km",
+                                  distance,
                                   style: GoogleFonts.dmSans(
                                     color: AppColor.whiteColor,
                                     fontSize: 15.sp,
@@ -131,7 +132,7 @@ class DispatcherRequsetCard extends StatelessWidget {
                                   height: 9.h,
                                 ),
                                 Text(
-                                  "$time Min",
+                                  time,
                                   style: GoogleFonts.dmSans(
                                     color: AppColor.whiteColor,
                                     fontSize: 15.sp,
@@ -189,6 +190,8 @@ class DispatcherRequsetCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: AppColor.mainColor),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -226,14 +229,11 @@ class DispatcherRequsetCard extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      TextPreviwe(
-                        type: "Pick-up location",
-                        value: pickUp,
+                      AdressPreview(v: "Pick-up location", details: pickUp),
+                      const SizedBox(
+                        height: 15,
                       ),
-                      TextPreviwe(
-                        type: "Drop-off location",
-                        value: dropOff,
-                      ),
+                      AdressPreview(v: "Drop-off location", details: dropOff),
                       const SizedBox(
                         height: 10,
                       ),
@@ -274,6 +274,43 @@ class DispatcherRequsetCard extends StatelessWidget {
   }
 }
 
+class AdressPreview extends StatelessWidget {
+  const AdressPreview({super.key, required this.details, required this.v});
+
+  final String details;
+  final String v;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          v,
+          style: GoogleFonts.dmSans(
+            fontSize: 11.w,
+            fontWeight: FontWeight.w500,
+            color: AppColor.whiteColor,
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          details,
+          overflow: TextOverflow.clip,
+          style: GoogleFonts.dmSans(
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: AppColor.whiteColor,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class BotButton extends StatelessWidget {
   final String packAgeId;
   const BotButton({
@@ -301,7 +338,9 @@ class BotButton extends StatelessWidget {
                   context: context,
                   value:
                       'You have cancelled this dispatch request. Await another request.',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const DispatcherHome());
+                  },
                 );
               },
               child: const Text(
@@ -333,7 +372,7 @@ class BotButton extends StatelessWidget {
                         ? "You have confirmed to deliver this sheduled package. Go for pickup at the time scheduled"
                         : "You have confirmed to deliver this package. Go for pickup in 5 mins.",
                     onPressed: () {
-                      Get.offAllNamed(DispatcherMeunScreen.routeName);
+                      Get.off(() => const Deliveryhistory());
                     },
                   );
                 },
@@ -352,9 +391,9 @@ class BotButton extends StatelessWidget {
 }
 
 class TextPreviwe extends StatelessWidget {
-  String type;
-  String value;
-  TextPreviwe({
+  final String type;
+  final String value;
+  const TextPreviwe({
     required this.type,
     required this.value,
     Key? key,
@@ -383,6 +422,7 @@ class TextPreviwe extends StatelessWidget {
               ),
               Text(
                 value,
+                overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.dmSans(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,

@@ -27,4 +27,6 @@ class AppImages {
   static const String successAlertImage = 'assets/images/successmark.png';
   static const String failedAlertImage = 'assets/images/Failed.png';
   static const String uploadIcon = 'assets/images/uploadIcon.png';
+  static const String pickUpMaker = 'assets/images/pickupMaker.png';
+  static const String dropOffMaker = 'assets/images/dropoff.png';
 }

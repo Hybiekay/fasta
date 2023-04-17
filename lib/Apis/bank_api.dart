@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../controllers/storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
@@ -6,7 +7,7 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class BankApi {
-  Future paymentInit({
+  static Future paymentInit({
     required String email,
     required String packageId,
     required String amount,
@@ -35,9 +36,8 @@ class BankApi {
     return data;
   }
 
-  static Future getCards({
-    required String token,
-  }) async {
+  static Future getCards() async {
+    String token = await Storage.getToken();
     final url = Uri.parse("${AppApis.endPoint}payment/get-cards");
     final response = await http.get(
       url,
@@ -75,6 +75,17 @@ class MakePayment {
     await paystack.initialize(publicKey: AppApis.payStackApiKey);
   }
 
+  // String _getReference() {
+  //   String platform;
+  //   if (Platform.isIOS) {
+  //     platform = 'iOS';
+  //   } else {
+  //     platform = 'Android';
+  //   }
+
+  //   return 'ChargedFrom${platform}_${DateTime.now().millisecondsSinceEpoch}';
+  // }
+
   ///method Charging card
 
   chargeCardAndMakeMethothd() async {
@@ -82,33 +93,35 @@ class MakePayment {
       Charge charge = Charge()
         ..amount = price * 100
         ..email = email
-        ..reference = refrenceCode
         ..accessCode = accessCode
+        ..reference = refrenceCode
         ..card = getCardUi();
 
-      CheckoutResponse response = await paystack.checkout(context,
-          charge: charge,
-          method: CheckoutMethod.card,
-          fullscreen: false,
-          logo: Image.asset(AppImages.logo),
-          
-          
-          );
-
-
-      
+      CheckoutResponse response = await paystack.checkout(
+        context,
+        charge: charge,
+        method: CheckoutMethod.card,
+        fullscreen: false,
+        logo: Image.asset(AppImages.logo),
+      );
 
       if (response.status == true) {
-        print("Transation Succesfull");
-        print("Respose $response");
+        if (kDebugMode) {
+          print("Transation Succesfull");
+        }
+        if (kDebugMode) {
+          print("Respose $response");
+        }
 
         BankApi.paymentVerify(reference: refrenceCode, accessCode: accessCode);
       } else {
-        print("Trasation Unseccsfull");
-         failedShowDialod(
-            context: context,
-            value: "Your transcation Is Uns ",
-            onPressed: () {});
+        if (kDebugMode) {
+          print("Trasation Unseccsfull");
+        }
+        // failedShowDialod(
+        //     context: context,
+        //     value: "Your transcation Is Uns ",
+        //     onPressed: () {});
       }
     });
   }

@@ -1,24 +1,29 @@
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'ChatModel/message.dart';
 import 'package:flutter/material.dart';
 import 'package:ziklogistics/chat/chat_item.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/chat/chat_controller.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class ChatScreen extends StatefulWidget {
   static const String routeName = '/chatScreen';
-  final String uid;
-  final String userName;
-  final String friendName;
+  final String receiverName;
+  final String receiverEmail;
+  final String senderName;
+  final String senderEmail;
+  final String token;
 
   const ChatScreen({
     Key? key,
-    required this.uid,
-    required this.userName,
-    required this.friendName,
+    required this.receiverName,
+    required this.receiverEmail,
+    required this.senderName,
+    required this.senderEmail,
+    required this.token,
   }) : super(key: key);
 
   @override
@@ -28,37 +33,56 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   ChatController chatController = ChatController();
   TextEditingController messageController = TextEditingController();
-  late IO.Socket socket;
+  late io.Socket socket;
 
   @override
   void initState() {
-    socket = IO.io(
-        'http://localhost:3000',
-        IO.OptionBuilder()
-            .setTransports(["websocket"])
-            .setQuery({})
-            .disableAutoConnect()
-            .build());
+    log(widget.token);
+    socket = io.io(
+        'ws://e6c0-102-89-47-32.ngrok-free.app',
+        io.OptionBuilder().setTransports(["websocket"]).setExtraHeaders(
+            {'Authorization': 'Bearer ${widget.token}'}).build());
     _connectSocket();
     socket.connect();
+    setUpSockecketListener();
+    getMessage();
     super.initState();
   }
 
   _connectSocket() {
-    socket.onConnect((data) => print("Connected"));
-    socket.onConnectError((data) => print("error in connection $data"));
-    socket.onDisconnect((data) => print("Socket io is disconnected"));
-    socket.on('message', (_) => print(_));
+    log(widget.token);
+    socket.onConnect((data) => log("Connected"));
+    socket.onConnectError((data) => log("error in connection $data"));
+    socket.onDisconnect((data) => log("Socket io is disconnected"));
   }
 
-  sendMessage() {
-    socket.emit("message",
-        {"message": messageController.text.trim(), "senderId": widget.uid});
+  sendMessage(String message) {
+    socket.emit("sendMessage", {
+      "message": message,
+      "sender": widget.senderName,
+      "room": "nn",
+      "roomId": "dhdhf",
+      "senderEmail": widget.senderEmail,
+      "receiver": widget.receiverName,
+      "receiverEmail": widget.receiverEmail
+    });
   }
 
   setUpSockecketListener() {
-    socket.on('message', (data) {
-      chatController.chatMessages.add(Message.fromJson(data));
+    socket.on('recieveMessage', (data) {
+      log(data.toString());
+      if (data['payload']['receiverEmail'] == widget.receiverEmail) {
+        chatController.chatMessages.add(Message.fromJson(data['data']));
+      }
+    });
+  }
+
+  getMessage() {
+    socket.emitWithAck("getMessage", {
+      "senderEmail": widget.senderEmail,
+      "receiverEmail": widget.receiverEmail
+    }, ack: (data) {
+      log(data.toString());
     });
   }
 
@@ -75,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: const Icon(Icons.arrow_back_ios)),
           backgroundColor: AppColor.mainColor,
           title: Text(
-            widget.friendName,
+            widget.receiverName,
           ),
           actions: const [
             Icon(Icons.search),
@@ -143,7 +167,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: GestureDetector(
                       onTap: () {
                         if (messageController.text.trim().isNotEmpty) {
-                          sendMessage();
+                          sendMessage(messageController.text);
                         }
                       },
                       child: const Icon(

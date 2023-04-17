@@ -94,19 +94,19 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: AppColor.whiteColor),
-                      onPressed: () {
-                        userController.updateName(
+                      onPressed: () async {
+                        var response = await userController.updateName(
                             name: nameController.text,
                             phoneNumber: widget.phonenum);
 
-                        if (CustomersUserModel.name != null) {
+                        if (response == 201) {
                           if (kDebugMode) {
-                            print(CustomersUserModel.name);
+                           
                           }
                           Get.to(() => const CostomerHome(),
                               arguments: {CustomersUserModel});
                         } else {
-                  
+                          Get.snackbar("error", "Aninternal error occured");
                         }
                       },
                       child: const Text(

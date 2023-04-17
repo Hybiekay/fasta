@@ -4,6 +4,8 @@ import '../../Apis/google_api.dart';
 import 'package:ziklogistics/models/customers_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 // ignore_for_file: use_build_context_synchronously
@@ -29,9 +31,9 @@ class _BodyState extends State<Body> {
   var distance = '';
   var duration = '';
   var time = '';
-  var boundNe;
-  var boundSw;
-  var polyLine;
+  var boundNe = {};
+  var boundSw  = {};
+  var polyLine = '';
   var startLocationLat = 0.0;
   var startLocationLng = 0.0;
   var endLocationLat = 0.0;
@@ -45,7 +47,9 @@ class _BodyState extends State<Body> {
     double payment =
         (int.parse(approxWeightController.text) * double.parse(distanceInt)) *
             20;
-    print("this is endlat ${res["end_location_lat"]}");
+    if (kDebugMode) {
+      print("this is endlat ${res["end_location_lat"]}");
+    }
     if (payment < 500) {
       setState(() {
         amount = 500;
@@ -68,7 +72,9 @@ class _BodyState extends State<Body> {
       boundSw = res["bound_sw"];
     });
 
-    print("this startLat $startLocationLat");
+    if (kDebugMode) {
+      print("this startLat $startLocationLat");
+    }
   }
 
   @override
@@ -101,6 +107,7 @@ class _BodyState extends State<Body> {
                         height: 5,
                       ),
                       InputPackagedetails(
+                        keyboardType: TextInputType.number,
                         onPressed: () {},
                         isSize: true,
                         val4: widtController,
@@ -131,7 +138,7 @@ class _BodyState extends State<Body> {
                         height: 10.h,
                       ),
                       InputPackagedetails(
-                          onPressed: () {},
+                          onPressed: getd,
                           textField3: "Drop-off location for the package",
                           textField4: "",
                           val3: dropOffController,
@@ -150,7 +157,9 @@ class _BodyState extends State<Body> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          print(time);
+                          if (kDebugMode) {
+                            print(time);
+                          }
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width,
@@ -179,7 +188,9 @@ class _BodyState extends State<Body> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          print(time);
+                          if (kDebugMode) {
+                            print(time);
+                          }
                         },
                         child: TotalItemBar(
                           amount: " $amount",
@@ -228,9 +239,9 @@ class Btubutton extends StatelessWidget {
   final int amount;
   final String distance;
   final String duration;
-  var boundNe;
-  var boundSw;
-  var polyLine;
+  final boundNe;
+  final boundSw;
+  final String polyLine;
   final double startLocationLat;
   final double startLocationLon;
   final double endLocationLat;
@@ -269,7 +280,8 @@ class Btubutton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(children: [
       GestureDetector(
-        onTap: () {
+        onTap: () async {
+          String token = await Storage.getToken();
           showDialog(
             barrierColor: AppColor.whiteColor.withOpacity(0.2),
             barrierDismissible: false,
@@ -280,6 +292,8 @@ class Btubutton extends StatelessWidget {
                 sigmaY: 2.0,
               ),
               child: ScheduleAlertDialog(
+                token: token,
+                email: CustomersUserModel.email!,
                 boundNe: boundNe,
                 boundSw: boundSw,
                 polyLine: polyLine,
@@ -315,16 +329,10 @@ class Btubutton extends StatelessWidget {
       Spacer(),
       GestureDetector(
         onTap: () async {
-          if (kDebugMode) {
-            print(startLocationLat);
-            print(endLocationLon);
-            print(endLocationLat);
-            print(duration);
-            print(amount);
-            print(duration);
-          }
+          String token = await Storage.getToken();
 
           var package = await userController.createPackage(
+            polyLine: polyLine,
             boundNe: boundNe,
             boundSw: boundSw,
             weight: int.parse(approxWeightController.text),
@@ -345,8 +353,13 @@ class Btubutton extends StatelessWidget {
             discription: discriptionController.text,
           );
           final String id = package['data']['id'];
-          print("packageID $id");
+          if (kDebugMode) {
+            print("packageID $id");
+          }
           Get.to(() => SearchingDispatcher(
+                token: token,
+                name: CustomersUserModel.name!,
+                email: CustomersUserModel.name!,
                 discription: discriptionController.text,
                 boundNe: boundNe,
                 boundSw: boundSw,
@@ -358,6 +371,14 @@ class Btubutton extends StatelessWidget {
                 dropOffLocation: LatLng(endLocationLat, endLocationLon),
                 pickUpLocation: LatLng(startLocationLat, startLocationLon),
               ));
+          if (kDebugMode) {
+            print(startLocationLat);
+            print(endLocationLon);
+            print(endLocationLat);
+            print(duration);
+            print(amount);
+            print(duration);
+          }
         },
         child: Container(
           height: 45.h,

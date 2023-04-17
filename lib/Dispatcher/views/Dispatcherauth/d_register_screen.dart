@@ -175,14 +175,13 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                             driverAccNum: acountNumCon.text,
                             driverBank: bankNameCon.text,
                             paymentOption: dropDownvalue);
-                        acountNameCon.clear();
-                        acountNumCon.clear();
-                        bankNameCon.clear();
-                        fullNameCon.clear();
-                        Get.to(() => const DriverForm());
+                        
+                        Get.to(() =>  DriverForm(
+                          name:fullNameCon.text
+                        ));
                       },
                       value: "Complete")
-                  : InActiveButtonComp(value: "Complete"),
+                  : const InActiveButtonComp(value: "Complete"),
               const SizedBox(height: 20),
             ],
           ),

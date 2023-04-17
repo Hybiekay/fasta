@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/extensions/custom_extension.dart';
 
 class HeaderWidget extends StatelessWidget {
-  String subTitle;
-  HeaderWidget({Key? key, required this.subTitle}) : super(key: key);
+  final String subTitle;
+ const HeaderWidget({Key? key, required this.subTitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

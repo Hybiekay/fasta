@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-35:/values-as/values-as.xml",
+            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-36:/values-as/values-as.xml",
             "map": [
                 {
                     "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5252bc4c096b081fd364ea19211d0826\\transformed\\appcompat-1.5.0\\res\\values-as\\values-as.xml",

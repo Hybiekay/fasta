@@ -7,6 +7,8 @@ MERGED from [:geolocator_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogis
 MERGED from [:geolocator_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-17:19
 MERGED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-19:19
 MERGED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-19:19
+MERGED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-32:19
+MERGED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-32:19
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\eulogia\.gradle\caches\transforms-3\9bc0cac43801ee17c622b85c2c3e76af\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\eulogia\.gradle\caches\transforms-3\9bc0cac43801ee17c622b85c2c3e76af\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\abbe8d43d794a560648121c18ec97f40\transformed\constraintlayout-2.0.1\AndroidManifest.xml:9:5-20
@@ -49,6 +51,7 @@ MERGED from [:google_maps_flutter_android] C:\Users\eulogia\Desktop\Ziklogistics
 MERGED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:geocoding_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-34:12
 MERGED from [:path_provider_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_secure_storage] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_secure_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\eulogia\.gradle\caches\transforms-3\9bc0cac43801ee17c622b85c2c3e76af\transformed\material-1.7.0\AndroidManifest.xml:17:1-26:12
@@ -70,6 +73,7 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] C:\Users\eulogia\.gra
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] C:\Users\eulogia\.gradle\caches\transforms-3\15750e62ad940a5485db403f60888c47\transformed\jetified-lifecycle-viewmodel-savedstate-2.5.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\006d93cd422dbc43e89591147c2de572\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.media:media:1.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\13f29b4003f18f53249d90821a7f80a9\transformed\media-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\fe6b5add7ec73032a23eba92468f91f4\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\eulogia\.gradle\caches\transforms-3\834184c5d51b1fc76592fd43f53cc930\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.transition:transition:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\94e8469fc26c39023dc99dc98d6883c7\transformed\transition-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -133,6 +137,8 @@ MERGED from [:flutter_plugin_android_lifecycle] C:\Users\eulogia\Desktop\Ziklogi
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geocoding_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geocoding_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_secure_storage] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_secure_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-9:53
@@ -175,6 +181,8 @@ MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\eulogia\.gradle\
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\006d93cd422dbc43e89591147c2de572\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\13f29b4003f18f53249d90821a7f80a9\transformed\media-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\13f29b4003f18f53249d90821a7f80a9\transformed\media-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\fe6b5add7ec73032a23eba92468f91f4\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\fe6b5add7ec73032a23eba92468f91f4\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\eulogia\.gradle\caches\transforms-3\834184c5d51b1fc76592fd43f53cc930\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
@@ -287,6 +295,62 @@ ADDED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogi
 		ADDED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
 	android:name
 		ADDED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-66
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-63
+uses-permission#android.permission.USE_FULL_SCREEN_INTENT
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.SCHEDULE_EXACT_ALARM
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-76
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-77
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-74
+receiver#com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-18:40
+	android:exported
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-91
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-21:40
+	android:exported
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-97
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-31:20
+	android:exported
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-101
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-30:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-79
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:25-76
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-84
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-81
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:28:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:28:25-79
+action#com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:29:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:29:25-79
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:5-79
 	android:name

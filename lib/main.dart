@@ -24,9 +24,10 @@ class MyApp extends StatelessWidget {
               title: 'ZikLogistics',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(),
-              initialRoute: ChoiceScreen.routeName,
-              routes: routes,
-              // home: MyWidget()
+             initialRoute: ChoiceScreen.routeName,
+             routes: routes,
+              //home: ChatScreen()
+              //MyWidget()
               //     // CostomerHome()
               //     DispatcherHome()
               // // DRegisterScreen(phoneNum: ""),

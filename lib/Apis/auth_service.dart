@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/storage.dart';
-import 'package:ziklogistics/models/create_package.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
@@ -58,7 +57,6 @@ class UserApiController extends GetxController {
 
       final data = json.decode(response.body);
       Storage.saveToken(data["token"]);
-      print(data['token']);
       return data;
     } else {
       if (kDebugMode) {
@@ -71,10 +69,10 @@ class UserApiController extends GetxController {
   }
 
   Future updateCostumerName({
-    required String token,
     required String name,
     required String phoneNumber,
   }) async {
+    String token = await Storage.getToken();
     final updateCostumerNameUrl =
         Uri.parse("${AppApis.endPoint}auth/update-name-customer");
     if (kDebugMode) {
@@ -93,8 +91,11 @@ class UserApiController extends GetxController {
         print(response.statusCode);
       }
       final data = json.decode(response.body);
-      Storage.saveData(response.body);
-      return data;
+
+      final name = data["name"];
+      Storage.savename(name);
+
+      return response.statusCode;
     } else {
       if (kDebugMode) {
         print("error Occur");
@@ -102,54 +103,32 @@ class UserApiController extends GetxController {
     }
   }
 
-  CreatePackageRequest request = CreatePackageRequest(
-      name: "Ademola ibukun",
-      description: "This is description",
-      size: 10,
-      weight: 10,
-      width: 10,
-      height: 10,
-      pickupLat: "437843784",
-      pickupLon: "7832721",
-      pickupAddress: "sg",
-      dropoffLat: "string",
-      dropoffLon: "string",
-      dropoffAddress: "string",
-      scheduledDate: "string",
-      scheduledTime: "string",
-      isScheduled: true,
-      price: "1000",
-      distance: "102",
-      duration: "10",
-      month: "string",
-      year: "string");
+  Future sendAPackage(
+      {required String userName,
+      required String discription,
+      required int size,
+      required int width,
+      required int weight,
+      required int height,
+      required String price,
+      required String pickupLat,
+      required String pickupLon,
+      required String pickupAdrress,
+      required String dropoffLat,
+      required String dropoffLon,
+      required String dropoffAdress,
+      required String distance,
+      required String time,
+      required bool isSchedule,
+      required String scheduleddate,
+      required String scheduledTime,
+      required String month,
+      required String year,
+      required boundNe,
+      required boundSw,
+      required String polyLine}) async {
+    String token = await Storage.getToken();
 
-  Future sendAPackage({
-    required String token,
-    required String userName,
-    required String discription,
-    required int size,
-    required int width,
-    required int weight,
-    required int height,
-    required String price,
-    required String pickupLat,
-    required String pickupLon,
-    required String pickupAdrress,
-    required String dropoffLat,
-    required String dropoffLon,
-    required String dropoffAdress,
-    required String distance,
-    required String time,
-    required bool isSchedule,
-    required String scheduleddate,
-    required String scheduledTime,
-    required String month,
-    required String year,
-    required boundNe,
-    required boundSw,
-  }) async {
-    print(request.toJson());
     final createPackageUrl =
         Uri.parse("${AppApis.endPoint}customer/create-package");
     final body = {
@@ -162,7 +141,11 @@ class UserApiController extends GetxController {
       "pickup_lat": pickupLat,
       "pickup_lon": pickupLon,
       "pickup_address": pickupAdrress,
-      "pickup_object": {"boundNe": boundNe, "boundSw": boundSw},
+      "pickup_object": {
+        "boundNe": boundNe,
+        "boundSw": boundSw,
+        "polyLine": polyLine
+      },
       "dropoff_lat": dropoffLat,
       "dropoff_lon": dropoffLon,
       "dropoff_address": dropoffAdress,
@@ -187,25 +170,23 @@ class UserApiController extends GetxController {
       );
 
       if (response.statusCode == 201) {
-        print('POST request success! Response: ${response.body}');
         // Do something with the response
         final data = json.decode(response.body);
         // print("this  is data ${data["data"]["id"]}");
         return data;
       } else {
-        print('POST request failed. Status code: ${response.body}');
         // Handle the error
       }
     } catch (e) {
-      print('Error sending POST request: $e');
       // Handle the exception
     }
   }
 
   Future getCustomerHistory({
-    required String token,
     required String status,
   }) async {
+    String token = await Storage.getToken();
+
     final url =
         Uri.parse("${AppApis.endPoint}customer/history-grouped?status=$status");
     final response = await http.get(
@@ -224,10 +205,11 @@ class UserApiController extends GetxController {
   }
 
   Future getCustomerGetPackage({
-    required String token,
     required String packageId,
   }) async {
-    final url = Uri.parse("${AppApis.endPoint}customer/history");
+    String token = await Storage.getToken();
+
+    final url = Uri.parse("${AppApis.endPoint}customer/get-package");
     final response = await http.post(url, headers: {
       'Authorization': 'Bearer $token',
     }, body: {
@@ -239,11 +221,13 @@ class UserApiController extends GetxController {
     if (response.statusCode == 401) {
       Get.to(() => const LoginScreen());
     }
-    return json.decode(response.body);
+    final data = json.decode(response.body)['data'];
+    return data;
   }
 
-  Future getCustomerListOfDelivery(
-      {required String token, required String status}) async {
+  Future getCustomerListOfDelivery({required String status}) async {
+    String token = await Storage.getToken();
+
     if (kDebugMode) {
       print(token);
     }
@@ -265,9 +249,10 @@ class UserApiController extends GetxController {
   }
 
   Future getGetPackage({
-    required String token,
     required String packageId,
   }) async {
+    String token = await Storage.getToken();
+
     final url =
         Uri.parse("${AppApis.endPoint}/customer/get-package/$packageId");
     final response = await http.get(

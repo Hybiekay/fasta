@@ -12,7 +12,8 @@ class ComleteTaskDetail extends StatelessWidget {
   final String weight;
   final String pickUpAdress;
   final String dropOffAdress;
-
+  final String width;
+  final String height;
   const ComleteTaskDetail({
     Key? key,
     required this.name,
@@ -22,7 +23,7 @@ class ComleteTaskDetail extends StatelessWidget {
     required this.size,
     required this.weight,
     required this.pickUpAdress,
-    required this.dropOffAdress,
+    required this.dropOffAdress, required this.width, required this.height,
   }) : super(key: key);
 
   @override
@@ -85,6 +86,8 @@ class ComleteTaskDetail extends StatelessWidget {
                     PackagedetailsSize(
                       val1: size,
                       val2: weight,
+                      val3: height,
+                      val4: width,
                     ),
                     const SizedBox(
                       height: 20,

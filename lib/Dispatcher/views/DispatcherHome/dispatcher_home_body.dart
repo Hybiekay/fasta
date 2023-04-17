@@ -95,6 +95,7 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                   return const NodataCard(content: "You have No Request \nyet");
                 } else if (snapshot.hasData && snapshot.data.length >= 1) {
                   return ListView.builder(
+                    reverse: true,
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
                       final item = snapshot.data![index];
@@ -103,13 +104,13 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                           Get.to(() => PrivewHome(
                                 name: item["name"].toString(),
                                 price: item["price"].toString(),
-                                time: item["dropoff_object"].toString(),
-                                distance: item["dropoff_object"].toString(),
+                                time: item["duration"].toString(),
+                                distance: item["distance"].toString(),
                                 size: item["size"].toString(),
                                 withe: item["width"].toString(),
                                 pickUp: item["pickup_address"],
                                 dropOff: item["dropoff_address"],
-                                isScahedule: false,
+                                isScahedule: item["isScheduled"],
                                 scheduleTime:
                                     "${item["scheduled_date"]} ${item["scheduled_time"]}",
                                 packageId: item["id"],
@@ -118,8 +119,8 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                         child: RequestCard(
                           name: item["name"],
                           price: item["price"],
-                          time: item["dropoff_object"] ?? '20',
-                          distance: item["dropoff_object"] ?? "82",
+                          time: item["duration"],
+                          distance: item["distance"],
                         ),
                       );
                     },

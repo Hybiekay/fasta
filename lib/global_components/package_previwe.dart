@@ -3,14 +3,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class PackagedetailsSize extends StatelessWidget {
   final String val1;
   final String val2;
+  final String val3;
+  final String val4;
   const PackagedetailsSize({
     Key? key,
     required this.val1,
     required this.val2,
+    required this.val3,
+    required this.val4,
   }) : super(key: key);
 
   @override
@@ -45,16 +50,30 @@ class PackagedetailsSize extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      SizedBox(
-                          width: 100.w,
-                          child: Text(
-                            val1,
-                            style: TextStyle(
-                                fontFamily: 'CerebriSansPro-Regular',
-                                color: AppColor.mainColor,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w400),
-                          )),
+                      Row(
+                        children: [
+                          SizedBox(
+                              width: 100.w,
+                              child: Text(
+                                val1,
+                                style: TextStyle(
+                                    fontFamily: 'CerebriSansPro-Regular',
+                                    color: AppColor.mainColor,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w400),
+                              )),
+                          SizedBox(
+                              width: 100.w,
+                              child: Text(
+                                val2,
+                                style: TextStyle(
+                                    fontFamily: 'CerebriSansPro-Regular',
+                                    color: AppColor.mainColor,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w400),
+                              )),
+                        ],
+                      ),
                     ],
                   )
                 ]),
@@ -83,19 +102,30 @@ class PackagedetailsSize extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                      Row(
+                        children: [
+                          SizedBox(
+                              width: 100.w,
+                              child: Text(
+                                val2,
+                                style: TextStyle(
+                                    fontFamily: 'CerebriSansPro-Regular',
+                                    color: AppColor.mainColor,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w400),
+                              )),
+                          SizedBox(
+                              width: 100.w,
+                              child: Text(
+                                val4,
+                                style: TextStyle(
+                                    fontFamily: 'CerebriSansPro-Regular',
+                                    color: AppColor.mainColor,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w400),
+                              )),
+                        ],
                       ),
-                      SizedBox(
-                          width: 100.w,
-                          child: Text(
-                            val2,
-                            style: TextStyle(
-                                fontFamily: 'CerebriSansPro-Regular',
-                                color: AppColor.mainColor,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w400),
-                          )),
                       const SizedBox(
                         height: 20,
                       ),
@@ -152,15 +182,14 @@ class Packagedetailslocation extends StatelessWidget {
                         height: 15,
                       ),
                       SizedBox(
-                          width: 100.w,
                           child: Text(
-                            val1,
-                            style: TextStyle(
-                                fontFamily: 'CerebriSansPro-Regular',
-                                color: AppColor.mainColor,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w400),
-                          )),
+                        val1,
+                        style: TextStyle(
+                            fontFamily: 'CerebriSansPro-Regular',
+                            color: AppColor.mainColor,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w400),
+                      )),
                     ],
                   )
                 ]),
@@ -193,15 +222,14 @@ class Packagedetailslocation extends StatelessWidget {
                         height: 20,
                       ),
                       SizedBox(
-                          width: 100.w,
                           child: Text(
-                            val2,
-                            style: TextStyle(
-                                fontFamily: 'CerebriSansPro-Regular',
-                                color: AppColor.mainColor,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w400),
-                          )),
+                        val2,
+                        style: TextStyle(
+                            fontFamily: 'CerebriSansPro-Regular',
+                            color: AppColor.mainColor,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w400),
+                      )),
                       const SizedBox(
                         height: 20,
                       ),

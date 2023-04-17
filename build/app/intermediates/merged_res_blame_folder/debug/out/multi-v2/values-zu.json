@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-35:/values-zu/values-zu.xml",
+            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-36:/values-zu/values-zu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\24bd5ae211488322aa8c48f41a7bee4d\\transformed\\jetified-play-services-base-18.1.0\\res\\values-zu\\values.xml",

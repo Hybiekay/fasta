@@ -2,10 +2,14 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class DStorage {
   static const FlutterSecureStorage _secureStorage = FlutterSecureStorage();
-  static const _keyValue = "token";
-  static const _keydata = "data";
+  static const _keyValue = "Dtoken";
+  static const _keydata = "Ddata";
+  static const _keyComp = "Dcomplete";
   static const _keyStatus = "401";
-  static const _keyOtp = "4010";
+  static const _keyOtp = "4080";
+  static Future clear(String token) async {
+    await _secureStorage.deleteAll();
+  }
 
   static Future saveDriverToken(String token) async {
     await _secureStorage.write(key: _keyValue, value: token);
@@ -22,11 +26,22 @@ class DStorage {
     await _secureStorage.write(key: _keydata, value: data);
   }
 
-  static Future<String> getDriverData() async {
+  static Future<String?> getDriverData() async {
     String? res = await _secureStorage.read(
       key: _keydata,
     );
-    return res!;
+    return res;
+  }
+
+  static Future saveCompleteData(String data) async {
+    await _secureStorage.write(key: _keyComp, value: data);
+  }
+
+  static Future<String?> getCompleteData() async {
+    String? res = await _secureStorage.read(
+      key: _keyComp,
+    );
+    return res;
   }
 
   static Future saveDriverStatusCode(String statusCode) async {

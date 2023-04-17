@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-35:/values-iw/values-iw.xml",
+            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-36:/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\9bc0cac43801ee17c622b85c2c3e76af\\transformed\\material-1.7.0\\res\\values-iw\\values-iw.xml",

@@ -2,7 +2,7 @@ export 'input_package_details_comp.dart';
 export './button_component.dart';
 export './dialog_alert.dart';
 export './headerbar.dart';
-export 'in_active-Buttom.dart';
+export 'in_active_buttom.dart';
 export './map.dart';
 export './package_previwe.dart';
 export './schedule_alert_dialog.dart';

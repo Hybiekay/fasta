@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-35:/values-ldltr-v21/values-ldltr-v21.xml",
+            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-36:/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {
                     "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5252bc4c096b081fd364ea19211d0826\\transformed\\appcompat-1.5.0\\res\\values-ldltr-v21\\values-ldltr-v21.xml",

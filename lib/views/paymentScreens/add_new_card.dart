@@ -3,54 +3,8 @@ import 'package:flutter/services.dart';
 import '../../constants/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/global_components/button_component.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
-
-class AddnewcardBotton extends StatefulWidget {
-  const AddnewcardBotton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<AddnewcardBotton> createState() => _AddnewcardBottonState();
-}
-
-class _AddnewcardBottonState extends State<AddnewcardBotton> {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        showBottomSheet(
-          context: context,
-          builder: (context) => const SingleChildScrollView(
-            child: BottomCard(),
-          ),
-        );
-      },
-      child: Row(
-        children: [
-          const SizedBox(
-            width: 20,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: AppColor.mainSecondryColor,
-            ),
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          Text('Add new card',
-              style: GoogleFonts.dmSans(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: AppColor.whiteColor))
-        ],
-      ),
-    );
-  }
-}
 
 class BottomCard extends StatefulWidget {
   const BottomCard({

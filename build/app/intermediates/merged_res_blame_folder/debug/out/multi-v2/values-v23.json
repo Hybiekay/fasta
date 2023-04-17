@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-35:/values-v23/values-v23.xml",
+            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-36:/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\1f7b83d5c525c90d815c2843766b14c4\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",

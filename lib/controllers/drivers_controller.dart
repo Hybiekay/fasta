@@ -1,21 +1,13 @@
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:ziklogistics/Apis/drivers_api.dart';
-import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class DriverController extends GetxController {
-  late final DriverApiController _apiController;
+  final DriverApiController _apiController = DriverApiController();
+  
 
-  late String otoken;
-  @override
-  void onInit() async {
-    otoken = await DStorage.getDriverToken();
-    otoken = await DStorage.getDriverToken();
-    super.onInit();
-    _apiController = DriverApiController();
-  }
-
+  
   Future loginUser(String email, String phoneNumber) async {
     try {
       final result = await DriverApiController.signInDriver(
@@ -55,21 +47,17 @@ class DriverController extends GetxController {
     paymentOption,
   }) async {
     try {
-      if (kDebugMode) {
-        print("Teken: $otoken");
-      }
+    
       await _apiController.updateDriverName(
         phoneNumber: phoneNumber,
         name: name,
-        token: otoken,
+  
         accountName: driverAccName,
         accountNumber: driverAccNum,
         bankNam: driverBank,
         paymentOption: paymentOption,
       );
-      if (kDebugMode) {
-        print("Teken: $otoken");
-      }
+   
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
@@ -89,7 +77,7 @@ class DriverController extends GetxController {
       final data = await _apiController.driverUpload(
         bvn: bvn,
         name: name,
-        token: otoken,
+     
         nin: nin,
         driverLicenseImage: bvnImage,
         ninImage: ninImage,
@@ -105,7 +93,7 @@ class DriverController extends GetxController {
 
   Future<List<dynamic>> getAllRequest() async {
     try {
-      final data = await _apiController.getAllRequt(token: otoken);
+      final data = await _apiController.getAllRequt();
       // final stream = Stream.fromFuture(data);
       // print("this is the body ${stream}");
       return data as List;
@@ -117,7 +105,7 @@ class DriverController extends GetxController {
   Future getSingleRequest(String packageId) async {
     try {
       final data = await _apiController.getSingleRequt(
-          token: otoken, packageId: packageId);
+           packageId: packageId);
       return data;
     } catch (e) {
       if (kDebugMode) {
@@ -129,7 +117,7 @@ class DriverController extends GetxController {
   Future acceptPackage({required String packageId}) async {
     try {
       final data = await _apiController.acceptPackage(
-          token: otoken, packageId: packageId);
+        packageId: packageId);
       return data;
     } catch (e) {
       if (kDebugMode) {
@@ -141,7 +129,7 @@ class DriverController extends GetxController {
   Future rejectPackage({required String packageId}) async {
     try {
       final data = await _apiController.rejectPackage(
-          token: otoken, packageId: packageId);
+          packageId: packageId);
       return data;
     } catch (e) {
       if (kDebugMode) {
@@ -154,7 +142,7 @@ class DriverController extends GetxController {
       {required String packageId, required String status}) async {
     try {
       final data = await _apiController.changePackageStatus(
-          token: otoken, packageId: packageId, status: status);
+          packageId: packageId, status: status);
       return data;
     } catch (e) {
       if (kDebugMode) {
@@ -166,7 +154,7 @@ class DriverController extends GetxController {
   Future getHistory(String status) async {
     try {
       final data =
-          await _apiController.getHistory(token: otoken, status: status);
+          await _apiController.getHistory( status: status);
       return data;
     } catch (e) {
       if (kDebugMode) {
@@ -179,9 +167,9 @@ class DriverController extends GetxController {
   Future getTwoHistory(String status, status2) async {
     try {
       final data =
-          await _apiController.getHistory(token: otoken, status: status);
+          await _apiController.getHistory( status: status);
       final data2 =
-          await _apiController.getHistory(token: otoken, status: status2);
+          await _apiController.getHistory( status: status2);
       final total = data + data2;
       return total;
     } catch (e) {

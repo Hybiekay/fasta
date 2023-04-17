@@ -7,7 +7,6 @@ import 'package:ziklogistics/views/onBoardScreen/choiceScreen.dart';
 import 'package:ziklogistics/views/send_package_1/send_package_1.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherdrawer/drawer.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherH/delivery_history.dart';
 
@@ -23,5 +22,5 @@ final Map<String, WidgetBuilder> routes = {
   DispatcherDrawerScreen.routeName: (context) => const DispatcherDrawerScreen(),
   DispatcherDeliveryhistory.routeName: (context) =>
       const DispatcherDeliveryhistory(),
-  DriverForm.routeName: (context) => const DriverForm(),
+  
 };

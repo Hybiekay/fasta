@@ -7,7 +7,9 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/d_register_screen.dart';
+// ignore_for_file: must_be_immutable
 
+// ignore_for_file: use_build_context_synchronously
 
 
 class DispatcherVerificationScreen extends StatefulWidget {
@@ -231,10 +233,10 @@ class _DispatcherVerificationScreenState
                                   print(" this is your number");
                                 }
 
-                                driverData = json.decode(data);
+                                driverData = json.decode(data!);
                                 if (kDebugMode) {
                                   print(
-                                    " this is your number${driverData["user"]["phone"]}");
+                                      " this is your number${driverData["user"]["phone"]}");
                                 }
                                 if (statusCode == '201' &&
                                         DriverUserModel.accountNumber == null ||
@@ -242,12 +244,13 @@ class _DispatcherVerificationScreenState
                                   Get.to(() => DRegisterScreen(
                                         phoneNum: widget.phoneNumber,
                                       ));
-                                }
-                                else if (DriverUserModel.isCompletedRegistration ==
+                                } else if (DriverUserModel
+                                            .isCompletedRegistration ==
                                         false ||
                                     DriverUserModel.bvn == null) {
                                   Get.to(
-                                    () => const DriverForm(),
+                                    () =>
+                                        DriverForm(name: DriverUserModel.name!),
                                   );
                                 } else {
                                   Get.to(() => const DispatcherHome(),
@@ -263,10 +266,9 @@ class _DispatcherVerificationScreenState
                                     setState(() {
                                       isInCorrect = false;
                                     });
-                                  } else if (value.isEmpty ||
-                                      con4.value == '') {
+                                  } else if (value.isEmpty 
+                                      ) {
                                     FocusScope.of(context).previousFocus();
-                                 
                                   }
                                 }
                               }
