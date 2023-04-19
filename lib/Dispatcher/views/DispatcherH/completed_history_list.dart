@@ -30,25 +30,25 @@ class DispatcherCompletedlist extends StatelessWidget {
               print(snapshot.data);
             }
             return ListView.builder(
-              reverse: true,
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
                 final data = snapshot.data['data'][index];
                 return DispatcherHistoryCard(
+                  isPaid: data["paymentStatus"] == "PAID",
                   continuePressed: () {},
                   chatPressed: () {},
                   trackPressed: () {
                     Get.to(() => DispatcherComleteTaskDetail(
-                          height: data["height"],
-                          width: data["width"],
+                          height: data["height"].toString(),
+                          width: data["width"].toString(),
                           name: data["name"],
                           size: data["size"].toString(),
                           weight: data["weight"].toString(),
                           dropOffAdress: data["dropoff_address"],
                           pickUpAdress: data["pickup_address"],
-                          distance: data["dropoff_object"],
+                          distance: data["distance"],
                           price: data["price"],
-                          time: data["pickup_object"],
+                          time: data["duration"],
                         ));
                   },
                   name: data['name'],

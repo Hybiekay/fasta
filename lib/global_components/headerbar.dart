@@ -3,10 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/extensions/custom_extension.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 
 class HeaderWidget extends StatelessWidget {
   final String subTitle;
- const HeaderWidget({Key? key, required this.subTitle}) : super(key: key);
+  final VoidCallback onPressed;
+  const HeaderWidget({
+    Key? key,
+    required this.subTitle,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +38,7 @@ class HeaderWidget extends StatelessWidget {
                       Icons.arrow_back_ios,
                       size: 17,
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed: onPressed
                   ).center,
                 ),
               ),

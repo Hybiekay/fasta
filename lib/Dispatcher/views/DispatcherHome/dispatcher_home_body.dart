@@ -88,8 +88,8 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
             child: Container(
           height: MediaQuery.of(context).size.height * 0.68.h,
           color: AppColor.mainColor,
-          child: FutureBuilder<List<dynamic>>(
-              future: driverController.getAllRequest(),
+          child:StreamBuilder<List<dynamic>>(
+              stream: driverController.getAllRequest(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData && snapshot.data.length < 1) {
                   return const NodataCard(content: "You have No Request \nyet");

@@ -1,11 +1,8 @@
-import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import '../../controllers/controllers.dart';
+import '../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
-import 'package:ziklogistics/global_components/no_data_card.dart';
 import 'package:ziklogistics/views/meun_screen/comletes_detail_screen.dart';
-
 
 class Completedlist extends StatelessWidget {
   const Completedlist({
@@ -26,36 +23,49 @@ class Completedlist extends StatelessWidget {
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData && (snapshot.data["data"] as List).isEmpty) {
-            return const NodataCard(
-                content: "You don't Have Completed Request");
+            return const NodataCard(content: "You don't Have Ongoing Request");
           } else if (snapshot.hasData &&
               (snapshot.data["data"] as List).isNotEmpty) {
-            log(snapshot.data);
+            if (kDebugMode) {
+              print(snapshot.data);
+            }
             return ListView.builder(
-              reverse: true,
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
                 final data = snapshot.data['data'][index];
+
                 return HistoryCard(
-                  continuePressed: () {},
+                  isPaid: data["acceptedDriverId"] != null ||
+                      data["paymentStatus"] == "PAID",
+                  continuePressed: () async {},
                   chatPressed: () {},
                   trackPressed: () {
                     Get.to(() => ComleteTaskDetail(
-                          height: "${data["height"]}",
+                          // status: data["status"],
+                          // discription: data["description"],
+                          // boundNe: data["pickup_object"]["boundNe"],
+                          // boundSw: data["pickup_object"]["boundSw"],
+                          // polyLine: data["pickup_object"]['polyLine'] ?? '',
                           width: "${data["width"]}",
+                          height: "${data["height"]}",
                           name: data["name"],
                           size: data["size"].toString(),
                           weight: data["weight"].toString(),
                           dropOffAdress: data["dropoff_address"],
                           pickUpAdress: data["pickup_address"],
-                          distance: data["dropoff_object"],
+                          distance: data["distance"],
+                          // packageId: data["id"],
                           price: data["price"],
-                          time: data["pickup_object"],
+                          time: data["duration"],
+                          // pickupLon: double.parse(data["pickup_lon"]),
+                          // pickupLat: double.parse(data["pickup_lat"]),
+                          // dropoffLon: double.parse(data["dropoff_lon"]),
+                          // dropoffLat: double.parse(data["dropoff_lat"]),
                         ));
                   },
-                  name: data["name"],
+                  name: data['name'],
                   time: DateTime.parse(data['createdAt']),
-                  track: "Completed Progress",
+                  track: "Update Ongoing Progress",
                 );
               },
             );

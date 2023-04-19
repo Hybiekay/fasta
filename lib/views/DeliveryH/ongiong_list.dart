@@ -31,12 +31,13 @@ class Ongoinglist extends StatelessWidget {
               print(snapshot.data);
             }
             return ListView.builder(
-              reverse: true,
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
                 final data = snapshot.data['data'][index];
 
                 return HistoryCard(
+                  isPaid: data["acceptedDriverId"] != null ||
+                      data["paymentStatus"] == "PAID",
                   continuePressed: () async {
                     if (data["acceptedDriverId"] == null) {
                       String token = await Storage.getToken();

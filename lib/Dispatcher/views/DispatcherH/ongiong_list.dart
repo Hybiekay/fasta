@@ -29,12 +29,12 @@ class DispatcherOngoinglist extends StatelessWidget {
           } else if (snapshot.hasData &&
               (snapshot.data["data"] as List).isNotEmpty) {
             return ListView.builder(
-              reverse: true,
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
                 final data = snapshot.data['data'][index];
 
                 return DispatcherHistoryCard(
+                  isPaid: data["paymentStatus"] == "PAID",
                   continuePressed: () {},
                   chatPressed: () async {
                     final driverdata = await DStorage.getDriverData();

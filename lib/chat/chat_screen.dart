@@ -36,15 +36,16 @@ class _ChatScreenState extends State<ChatScreen> {
   late io.Socket socket;
 
   @override
+  @override
   void initState() {
     log(widget.token);
     socket = io.io(
-        'ws://e6c0-102-89-47-32.ngrok-free.app',
+        'https://test-ki3c.onrender.com',
         io.OptionBuilder().setTransports(["websocket"]).setExtraHeaders(
             {'Authorization': 'Bearer ${widget.token}'}).build());
     _connectSocket();
     socket.connect();
-    setUpSockecketListener();
+    receiveMessages();
     getMessage();
     super.initState();
   }
@@ -57,6 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   sendMessage(String message) {
+    log('send message');
     socket.emit("sendMessage", {
       "message": message,
       "sender": widget.senderName,
@@ -68,11 +70,13 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  setUpSockecketListener() {
-    socket.on('recieveMessage', (data) {
-      log(data.toString());
+  receiveMessages() {
+    log('receiveMessage');
+    socket.on('receiveMessage', (data) {
+      log('receiveMessage');
+
       if (data['payload']['receiverEmail'] == widget.receiverEmail) {
-        chatController.chatMessages.add(Message.fromJson(data['data']));
+        log(data.toString());
       }
     });
   }
@@ -82,6 +86,10 @@ class _ChatScreenState extends State<ChatScreen> {
       "senderEmail": widget.senderEmail,
       "receiverEmail": widget.receiverEmail
     }, ack: (data) {
+      for (var element in data) {
+        chatController.addMessage(Message.fromJson(element));
+      }
+      // chatController.chatMessages.add(Message.fromJson(data));
       log(data.toString());
     });
   }
@@ -118,8 +126,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   itemBuilder: (context, index) {
                     var currentItem = chatController.chatMessages[index];
                     return SingleChat(
-                      type: currentItem.messageType.toString(),
-                      isMe: currentItem.isMe,
+                      time: currentItem.createdAt,
+                      isMe: currentItem.senderEmail == widget.senderEmail,
                       message: currentItem.message,
                     );
                   },

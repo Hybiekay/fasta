@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-36:/values-port/values-port.xml",
+            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-40:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5252bc4c096b081fd364ea19211d0826\\transformed\\appcompat-1.5.0\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\dd7933181bcd1a44ab10530c6cc929bb\\transformed\\appcompat-1.5.1\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

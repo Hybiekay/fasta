@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:ziklogistics/Apis/bank_api.dart';
 import '../../global_components/ziklogistics.dart';
-import 'package:ziklogistics/views/meun_screen/meun_screen.dart';
 import 'package:ziklogistics/views/paymentScreens/bank_history_card.dart';
 
 // ignore_for_file: prefer_typing_uninitialized_variables
@@ -66,7 +65,11 @@ class _CardChoiceState extends State<CardChoice> {
           color: AppColor.mainColor,
           child: Column(
             children: [
-              const HeaderWidget(subTitle: "Payment"),
+              HeaderWidget(
+                  subTitle: "Payment",
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
@@ -197,21 +200,13 @@ class _CardChoiceState extends State<CardChoice> {
               isSelected
                   ? ButtonComp(
                       onPressed: () {
-                        successShowDialod(
-                            context: context,
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                              Navigator.of(context).canPop();
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                              Navigator.of(context).pushNamed(
-                                MeunScreen.routeName,
-                              );
-                            },
-                            value:
-                                "Both the payment and delivery have \nbeen confirmed. Dispatcher would \ncome for pickup in 5 mins.");
+                        MakePayment(
+                                email: widget.email,
+                                price: int.parse(widget.amount),
+                                accessCode: accessCode,
+                                context: context,
+                                refrenceCode: reference)
+                            .chargeCardAndMakeMethothd();
                       },
                       value: 'Confirm Payment',
                     )

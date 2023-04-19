@@ -66,17 +66,22 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: 18,
-                      width: 48,
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
                           color: isAprroved
                               ? AppColor.mainColor
                               : AppColor.errorColor),
-                      child: Text(
-                        isAprroved ? "Approved" : "Disapproved",
-                        style: GoogleFonts.dmSans(
-                            fontSize: 8.h, fontWeight: FontWeight.bold),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Center(
+                          child: Text(
+                            "Approved",
+                            style: GoogleFonts.dmSans(
+                                fontSize: 12.h,
+                                fontWeight: FontWeight.bold,
+                                color: AppColor.whiteColor),
+                          ),
+                        ),
                       ),
                     ),
                     const Spacer(),

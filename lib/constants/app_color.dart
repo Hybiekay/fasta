@@ -9,5 +9,6 @@ class AppColor {
 
   static const Color whiteColor = Color(0xffFFFFFF);
   static const Color backgroundsecondary = Color(0xffD9FFE8);
+  static const Color isMecolor = Color(0xff82C09A);
   static const Color thinLineColor = Color(0xffEFEFF4);
 }

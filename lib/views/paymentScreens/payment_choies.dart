@@ -35,7 +35,12 @@ class ChoicePayment extends StatelessWidget {
         color: AppColor.mainColor,
         child: Column(
           children: [
-            const HeaderWidget(subTitle: "Payment"),
+            HeaderWidget(
+              subTitle: "Payment",
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.09,
             ),

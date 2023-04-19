@@ -195,11 +195,11 @@ class DriverApiController extends GetxController {
   }) async {
     String token = await DStorage.getDriverToken();
     final url =
-        Uri.parse("${AppApis.endPoint}driver/change-package-status$packageId");
+        Uri.parse("${AppApis.endPoint}driver/change-package-status/$packageId");
     final response = await http.post(url, headers: {
       'Authorization': 'Bearer $token',
     }, body: {
-      "status": {status}
+      "status": status
     });
     print(response.body);
     print(response.statusCode);

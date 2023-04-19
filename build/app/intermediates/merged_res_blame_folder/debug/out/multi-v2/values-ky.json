@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-36:/values-ky/values-ky.xml",
+            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-40:/values-ky/values-ky.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5252bc4c096b081fd364ea19211d0826\\transformed\\appcompat-1.5.0\\res\\values-ky\\values-ky.xml",
+                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\dd7933181bcd1a44ab10530c6cc929bb\\transformed\\appcompat-1.5.1\\res\\values-ky\\values-ky.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
