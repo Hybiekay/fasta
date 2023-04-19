@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ziklogistics">
+    package="com.fasta.ziklogistics">
    <application
         android:label="ziklogistics"
         android:name="${applicationName}"

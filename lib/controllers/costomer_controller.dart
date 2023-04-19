@@ -134,6 +134,7 @@ class CustomerController extends GetxController {
   }
 
   Future<List> getListOfDelivery({required String status}) async {
+    
     try {
       final data = await _apiController.getCustomerListOfDelivery(
         status: status,

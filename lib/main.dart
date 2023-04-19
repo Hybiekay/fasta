@@ -1,10 +1,24 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'views/onBoardScreen/choiceScreen.dart';
 import 'package:ziklogistics/routes/routes.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/global_components/ziklogistics.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
+
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  AwesomeNotifications().initialize(null, [
+    NotificationChannel(
+        channelKey: "channelKey",
+        channelName: "Fasta",
+        channelDescription: "Fasta Description",
+        defaultColor: AppColor.mainColor,
+        ledColor: AppColor.whiteColor,
+        channelShowBadge: true,
+        playSound: true,
+
+        )
+  ]);
   runApp(const MyApp());
 }
 
@@ -21,17 +35,17 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
-              title: 'ZikLogistics',
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(),
-             initialRoute: ChoiceScreen.routeName,
-             routes: routes,
-              //home: ChatScreen()
-              //MyWidget()
-              //     // CostomerHome()
-              //     DispatcherHome()
-              // // DRegisterScreen(phoneNum: ""),
-              );
+            title: 'Fasta',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(),
+            initialRoute: ChoiceScreen.routeName,
+            routes: routes,
+            //home: ChatScreen()
+            //MyWidget()
+            //     // CostomerHome()
+            //     DispatcherHome()
+            // // DRegisterScreen(phoneNum: ""),
+          );
         });
   }
 }

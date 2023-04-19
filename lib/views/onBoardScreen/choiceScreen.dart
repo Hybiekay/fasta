@@ -9,14 +9,37 @@ import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/global_components/ziklogistics.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/components/Widget/on_boad_page_selection.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 // ignore_for_file: file_names
 
-class ChoiceScreen extends StatelessWidget {
+class ChoiceScreen extends StatefulWidget {
   static const String routeName = '/ChioceScreen';
   const ChoiceScreen({super.key});
+
+  @override
+  State<ChoiceScreen> createState() => _ChoiceScreenState();
+}
+
+class _ChoiceScreenState extends State<ChoiceScreen> {
+  @override
+  void initState() {
+    super.initState();
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        mainshowDialod(
+            context: context,
+            onPressed: () => AwesomeNotifications()
+                .requestPermissionToSendNotifications()
+                .then((value) => Navigator.pop(context)),
+            value:
+                "To use notification on this app, you need to allow the notifications press the Botton below to Allow!");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +143,6 @@ class ChoiceScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
-                       
                           var allData = await DStorage.getDriverData();
                           if (allData != null) {
                             log('Secure storage has data: $allData');

@@ -1,4 +1,4 @@
-package com.example.ziklogistics
+package com.fasta.ziklogistics
 
 import io.flutter.embedding.android.FlutterActivity
 
