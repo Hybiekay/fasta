@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.example.ziklogistics",
+  "applicationId": "com.fasta.ziklogistics",
   "variantName": "release",
   "elements": [
     {

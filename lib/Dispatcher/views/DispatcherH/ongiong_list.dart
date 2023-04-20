@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../chat/chat_screen.dart';
 import 'package:ziklogistics/models/driver_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
+import 'package:ziklogistics/notification/notification.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/meun_screen.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherH/history_card.dart';
@@ -15,12 +16,13 @@ class DispatcherOngoinglist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DriverController driverController = Get.put(DriverController());
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.72,
       width: MediaQuery.of(context).size.width * 0.85,
       child: FutureBuilder(
         future: driverController.getHistory(
-          "ongoing",
+          status: "ongoing",
         ),
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -31,8 +33,26 @@ class DispatcherOngoinglist extends StatelessWidget {
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
-                final data = snapshot.data['data'][index];
+                List<dynamic> dataList = snapshot.data['data'];
 
+                dataList.sort((a, b) {
+                  DateTime timeA = DateTime.parse(a['createdAt']);
+                  DateTime timeB = DateTime.parse(b['createdAt']);
+                  return timeB.compareTo(timeA);
+                });
+                final data = dataList[index];
+                // String? paid;
+                // if (data["paymentStatus"] == "PAID" &&
+                //     data["paymentStatus"] != paid) {
+                //   Notify.sendNotice(
+                //       title: "Payment successful.",
+                //       body:
+                //           "The payment was successful. You can now chat with the customer for further updates.");
+
+                //   // Update the acceptedDriverId variable with the new value
+
+                //   paid = data["paymentStatus"];
+                // }
                 return DispatcherHistoryCard(
                   isPaid: data["paymentStatus"] == "PAID",
                   continuePressed: () {},

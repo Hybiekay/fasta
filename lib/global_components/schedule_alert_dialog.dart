@@ -172,7 +172,7 @@ class _ScheduleAlertDialogState extends State<ScheduleAlertDialog> {
                   scheduledTime: "${date.year}/${date.month}/${date.day} ",
                   scheduleddate: "$hour:$minute");
 
-              Get.to(() => SearchingDispatcher(
+              Get.off(() => SearchingDispatcher(
                     token: widget.token,
                     email: widget.email,
                     name: widget.userName,

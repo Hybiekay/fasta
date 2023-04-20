@@ -77,7 +77,7 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                           child: Text(
                             "Approved",
                             style: GoogleFonts.dmSans(
-                                fontSize: 12.h,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.bold,
                                 color: AppColor.whiteColor),
                           ),

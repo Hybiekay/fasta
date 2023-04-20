@@ -195,11 +195,8 @@ class UserApiController extends GetxController {
         'Authorization': 'Bearer $token',
       },
     );
-    if (kDebugMode) {
-      print(response.body);
-      if (response.statusCode == 401) {
-        Get.to(() => const LoginScreen());
-      }
+    if (response.statusCode == 401) {
+      Get.to(() => const LoginScreen());
     }
     return json.decode(response.body);
   }
@@ -215,9 +212,7 @@ class UserApiController extends GetxController {
     }, body: {
       "id": packageId
     });
-    if (kDebugMode) {
-      print(response.body);
-    }
+
     if (response.statusCode == 401) {
       Get.to(() => const LoginScreen());
     }
@@ -239,9 +234,9 @@ class UserApiController extends GetxController {
         'Authorization': 'Bearer $token',
       },
     );
-    if (kDebugMode) {
-      print(response.body);
-    }
+    // if (kDebugMode) {
+    //   print(response.body);
+    // }
     if (response.statusCode == 401) {
       Get.to(() => const LoginScreen());
     }

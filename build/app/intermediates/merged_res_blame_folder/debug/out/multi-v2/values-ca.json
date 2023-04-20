@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-40:/values-ca/values-ca.xml",
+            "outputFile": "com.fasta.ziklogistics.app-mergeDebugResources-40:/values-ca/values-ca.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\24bd5ae211488322aa8c48f41a7bee4d\\transformed\\jetified-play-services-base-18.1.0\\res\\values-ca\\values.xml",
+                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5f80b20db3afa86c72a9766b008d752d\\transformed\\core-1.9.0\\res\\values-ca\\values-ca.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "109",
+                        "startColumns": "4",
+                        "startOffsets": "10075",
+                        "endColumns": "100",
+                        "endOffsets": "10171"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\082fa8f1e076fd76c98f4d760b4e67b1\\transformed\\jetified-play-services-base-18.0.1\\res\\values-ca\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\f46b9773282b7a3d38863a46e0e0b5d1\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-ca\\values.xml",
+                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5ff4a353de7064fc161fb566343d6916\\transformed\\jetified-play-services-basement-18.0.0\\res\\values-ca\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -35,23 +52,6 @@
                         "startOffsets": "4451",
                         "endColumns": "134",
                         "endOffsets": "4581"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5f80b20db3afa86c72a9766b008d752d\\transformed\\core-1.9.0\\res\\values-ca\\values-ca.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "109",
-                        "startColumns": "4",
-                        "startOffsets": "10075",
-                        "endColumns": "100",
-                        "endOffsets": "10171"
                     }
                 },
                 {

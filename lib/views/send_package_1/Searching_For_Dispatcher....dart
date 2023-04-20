@@ -6,7 +6,6 @@ import 'package:ziklogistics/controllers/costomer_controller.dart';
 
 // ignore_for_file: prefer_typing_uninitialized_variables
 
-
 class SearchingDispatcher extends StatefulWidget {
   final String price;
   final String time;
@@ -38,7 +37,10 @@ class SearchingDispatcher extends StatefulWidget {
       this.dateTime = "not Schedele",
       this.isSchedule = false,
       required this.pickUpLocation,
-      required this.dropOffLocation, required this.token, required this.email, required this.name});
+      required this.dropOffLocation,
+      required this.token,
+      required this.email,
+      required this.name});
 
   @override
   State<SearchingDispatcher> createState() => _SearchingDispatcherState();
@@ -175,24 +177,19 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                                         receiverEmail: driverEmail,
                                         receiverName: driverName,
                                         senderName: widget.name,
-                                        senderEmail:widget.email,
+                                        senderEmail: widget.email,
                                         token: widget.token,
                                       ));
                                 },
                               ),
                             )
                           : Column(
-                              children: const [
-                                Text(
-                                  "Searching for dispatcher...",
-                                  style: TextStyle(
-                                      color: AppColor.mainSecondryColor,
-                                      fontFamily: 'DMSans',
-                                      fontSize: 18,
-                                      letterSpacing: 0,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.5),
-                                ),
+                              children: [
+                                Text("Searching for dispatcher...",
+                                    style: GoogleFonts.dmSans(
+                                        color: AppColor.mainSecondryColor,
+                                        fontSize: 16.h,
+                                        fontWeight: FontWeight.w500)),
                               ],
                             ),
                       const SizedBox(

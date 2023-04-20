@@ -62,7 +62,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
 
   void getCustomMapPin() async {
     final pinLocatio = await BitmapDescriptor.fromAssetImage(
-        const ImageConfiguration(devicePixelRatio: 2.5), AppImages.pickUpMaker);
+         ImageConfiguration(devicePixelRatio: 2.5.r), AppImages.pickUpMaker);
     setState(() {
       pinLocationIcon1 = pinLocatio;
     });
@@ -89,8 +89,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
           _controller.complete(controller);
         },
         initialCameraPosition: CameraPosition(
-          bearing: 2,
-          target: widget.dropOffLocation,
+          target: widget.pickUpLocation,
           zoom: 10,
         ),
         polylines: _polyLine,

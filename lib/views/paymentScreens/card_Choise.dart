@@ -106,7 +106,6 @@ class _CardChoiceState extends State<CardChoice> {
                                           final data = snapshot.data[index];
                                           return Column(
                                             children: [
-                                              const SizedBox(height: 20),
                                               BankHistoryCard(
                                                 bankName: data["bank"],
                                                 cardNum:
@@ -183,7 +182,7 @@ class _CardChoiceState extends State<CardChoice> {
                                 ),
                                 Text('Pay with new card',
                                     style: GoogleFonts.dmSans(
-                                        fontSize: 18,
+                                        fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
                                         color: AppColor.whiteColor))
                               ],

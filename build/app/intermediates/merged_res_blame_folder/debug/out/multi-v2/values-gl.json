@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-40:/values-gl/values-gl.xml",
+            "outputFile": "com.fasta.ziklogistics.app-mergeDebugResources-40:/values-gl/values-gl.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\f46b9773282b7a3d38863a46e0e0b5d1\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-gl\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "129",
-                        "endOffsets": "324"
-                    },
-                    "to": {
-                        "startLines": "45",
-                        "startColumns": "4",
-                        "startOffsets": "4503",
-                        "endColumns": "133",
-                        "endOffsets": "4632"
-                    }
-                },
                 {
                     "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\9bc0cac43801ee17c622b85c2c3e76af\\transformed\\material-1.7.0\\res\\values-gl\\values-gl.xml",
                     "from": {
@@ -74,7 +57,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\24bd5ae211488322aa8c48f41a7bee4d\\transformed\\jetified-play-services-base-18.1.0\\res\\values-gl\\values.xml",
+                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\082fa8f1e076fd76c98f4d760b4e67b1\\transformed\\jetified-play-services-base-18.0.1\\res\\values-gl\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -88,6 +71,23 @@
                         "startOffsets": "3478,3584,3747,3876,3984,4143,4275,4394,4637,4808,4917,5086,5221,5386,5538,5605,5674",
                         "endColumns": "105,162,128,107,158,131,118,108,170,108,168,134,164,151,66,68,84",
                         "endOffsets": "3579,3742,3871,3979,4138,4270,4389,4498,4803,4912,5081,5216,5381,5533,5600,5669,5754"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\eulogia\\.gradle\\caches\\transforms-3\\5ff4a353de7064fc161fb566343d6916\\transformed\\jetified-play-services-basement-18.0.0\\res\\values-gl\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "129",
+                        "endOffsets": "324"
+                    },
+                    "to": {
+                        "startLines": "45",
+                        "startColumns": "4",
+                        "startOffsets": "4503",
+                        "endColumns": "133",
+                        "endOffsets": "4632"
                     }
                 }
             ]

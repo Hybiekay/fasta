@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'ChatModel/message.dart';
 import 'package:get_storage/get_storage.dart';
 
+
+
 class ChatController extends GetxController {
   final _box = GetStorage();
 
@@ -19,7 +21,9 @@ class ChatController extends GetxController {
   void fetchMessages() {
     final savedMessages = _box.read<List>('messages');
     if (savedMessages != null) {
-      chatMessages.addAll(savedMessages.map((json) => Message.fromJson(json)));
+      for (var element in savedMessages) {
+        chatMessages.add(element);
+      }
     }
   }
 }

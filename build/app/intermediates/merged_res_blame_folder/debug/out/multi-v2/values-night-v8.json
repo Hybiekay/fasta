@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ziklogistics.app-mergeDebugResources-40:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.fasta.ziklogistics.app-mergeDebugResources-40:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "C:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\android\\app\\src\\main\\res\\values-night\\styles.xml",

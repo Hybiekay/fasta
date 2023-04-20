@@ -2,13 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import '../../models/models.dart';
-import 'package:flutter/material.dart';
 import '../../controllers/controllers.dart';
 import 'package:ziklogistics/views/home/home.dart';
-import 'package:ziklogistics/constants/app_color.dart';
-import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/notification/notification.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
@@ -96,6 +93,9 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
+                          Notify.sendNotice(
+                              title: "Welcome",
+                              body: "Wecome to Fasta Logistic App ");
                           String? allData = await Storage.getData();
                           if (allData != null) {
                             custormerName = json.decode(allData);
@@ -109,7 +109,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                               Get.to(() => const LoginScreen());
                             } else if (CustomersModel.token != null &&
                                 CustomersUserModel.name != null) {
-                              Get.to(() => const CostomerHome());
+                              Get.offAll(() => const CostomerHome());
                             }
                           } else {
                             Get.to(() => const OnBoardPages());
@@ -156,11 +156,11 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                             } else if (DriverUserModel.nin != null &&
                                 DriverUserModel.name != null &&
                                 DriverUserModel.bvn != null) {
-                              Get.to(() => const DispatcherHome());
+                              Get.offAll(() => const DispatcherHome());
                             }
                           } else {
                             log('Secure storage is empty');
-                            Get.to(() => const DispatcherOnBoardPages());
+                            Get.offAll(() => const DispatcherOnBoardPages());
                           }
                         },
                         child: const Text(

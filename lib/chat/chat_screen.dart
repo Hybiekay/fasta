@@ -1,11 +1,10 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'ChatModel/message.dart';
-import 'package:flutter/material.dart';
 import 'package:ziklogistics/chat/chat_item.dart';
-import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/chat/chat_controller.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
+import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
@@ -32,12 +31,16 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   ChatController chatController = ChatController();
-  TextEditingController messageController = TextEditingController();
+  final ScrollController _scrollController =
+      ScrollController(keepScrollOffset: true);
+  TextEditingController _messageController = TextEditingController();
   late io.Socket socket;
 
   @override
   @override
   void initState() {
+    // chatController.fetchMessages();
+    log("this is driver Email${widget.senderEmail}");
     log(widget.token);
     socket = io.io(
         'https://test-ki3c.onrender.com',
@@ -45,8 +48,9 @@ class _ChatScreenState extends State<ChatScreen> {
             {'Authorization': 'Bearer ${widget.token}'}).build());
     _connectSocket();
     socket.connect();
-    receiveMessages();
     getMessage();
+    receiveMessages();
+
     super.initState();
   }
 
@@ -55,6 +59,14 @@ class _ChatScreenState extends State<ChatScreen> {
     socket.onConnect((data) => log("Connected"));
     socket.onConnectError((data) => log("error in connection $data"));
     socket.onDisconnect((data) => log("Socket io is disconnected"));
+  }
+
+  scrollToEnd() {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeOut,
+    );
   }
 
   sendMessage(String message) {
@@ -74,22 +86,47 @@ class _ChatScreenState extends State<ChatScreen> {
     log('receiveMessage');
     socket.on('receiveMessage', (data) {
       log('receiveMessage');
+      log("this is the payload${data.toString()}");
 
       if (data['payload']['receiverEmail'] == widget.receiverEmail) {
-        log(data.toString());
+        log("this is the payload${data.toString()}");
+        Message message = Message(
+          id: data['"data"']["id"],
+          createdAt: data["data"]["createdAt"],
+          updatedAt: data["data"]["updatedAt"],
+          message: data['payload']["message"],
+          sender: data['payload']["sender"],
+          receiver: data['payload']["receiver"],
+          senderEmail: data['payload']["senderEmail"],
+          receiverEmail: data['payload']["receiverEmail"],
+          messageID: data["data"]["messageID"],
+        );
+        chatController.addMessage(message);
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeOut,
+        );
       }
     });
   }
 
   getMessage() {
+    log("GetMEssage");
+    log("this is driver Email ${widget.senderEmail}, ${widget.senderName}");
     socket.emitWithAck("getMessage", {
       "senderEmail": widget.senderEmail,
       "receiverEmail": widget.receiverEmail
     }, ack: (data) {
       for (var element in data) {
         chatController.addMessage(Message.fromJson(element));
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeOut,
+        );
       }
-      // chatController.chatMessages.add(Message.fromJson(data));
+
       log(data.toString());
     });
   }
@@ -122,8 +159,15 @@ class _ChatScreenState extends State<ChatScreen> {
             Expanded(
               child: Obx(() {
                 return ListView.builder(
-                  itemCount: chatController.chatMessages.length,
+                  shrinkWrap: true,
+                  controller: _scrollController,
+                  itemCount: chatController.chatMessages.length + 1,
                   itemBuilder: (context, index) {
+                    if (index == chatController.chatMessages.length) {
+                      return Container(
+                        height: 70,
+                      );
+                    }
                     var currentItem = chatController.chatMessages[index];
                     return SingleChat(
                       time: currentItem.createdAt,
@@ -161,7 +205,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: TextField(
-                            controller: messageController,
+                            controller: _messageController,
                             maxLines: 3,
                             minLines: 1,
                             decoration: const InputDecoration(
@@ -174,8 +218,25 @@ class _ChatScreenState extends State<ChatScreen> {
                     padding: const EdgeInsets.all(15.0),
                     child: GestureDetector(
                       onTap: () {
-                        if (messageController.text.trim().isNotEmpty) {
-                          sendMessage(messageController.text);
+                        if (_messageController.text.trim().isNotEmpty) {
+                          sendMessage(_messageController.text);
+                          Message message = Message(
+                              id: "",
+                              createdAt: DateTime.now(),
+                              updatedAt: DateTime.now(),
+                              message: _messageController.text,
+                              sender: widget.senderName,
+                              receiver: widget.receiverName,
+                              senderEmail: widget.senderEmail,
+                              receiverEmail: widget.receiverName,
+                              messageID: "");
+                          chatController.addMessage(message);
+                          _messageController.clear();
+                          _scrollController.animateTo(
+                            _scrollController.position.maxScrollExtent,
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.easeOut,
+                          );
                         }
                       },
                       child: const Icon(

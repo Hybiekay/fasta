@@ -21,8 +21,8 @@ class RequestCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-          width: 315,
-          height: isScheduled ? 220 : 180,
+          margin: EdgeInsets.symmetric(horizontal: 20),
+          height: isScheduled ? 175.h : 140.h,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: AppColor.whiteColor),
@@ -53,7 +53,7 @@ class RequestCard extends StatelessWidget {
                             name,
                             textAlign: TextAlign.left,
                             style: GoogleFonts.dmSans(
-                              fontSize: 18,
+                              fontSize: 20.sp,
                               color: AppColor.whiteColor,
                               fontWeight: FontWeight.w700,
                             ),
@@ -67,83 +67,86 @@ class RequestCard extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 22.h,
+                        height: 10.h,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: Row(
-                          children: <Widget>[
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    'Distance',
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.dmSans(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 10.h,
-                                        color: AppColor.whiteColor),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    distance,
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.dmSans(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16.h,
-                                        color: AppColor.whiteColor),
-                                  ),
-                                ]),
-                            const SizedBox(width: 30),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Time',
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.dmSans(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 10.h,
-                                        color: AppColor.whiteColor),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    '$time ',
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.dmSans(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15.h,
-                                        color: AppColor.whiteColor),
-                                  ),
-                                ]),
-                            const SizedBox(width: 30),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    'Price',
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.dmSans(
-                                        fontSize: 10.h,
-                                        color: AppColor.whiteColor),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    price,
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.dmSans(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15.h,
-                                        color: AppColor.whiteColor),
-                                  ),
-                                ]),
-                          ],
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            children: <Widget>[
+                              Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'Distance',
+                                      textAlign: TextAlign.left,
+                                      style: GoogleFonts.dmSans(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 12.sp,
+                                          color: AppColor.whiteColor),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      distance,
+                                      textAlign: TextAlign.left,
+                                      style: GoogleFonts.dmSans(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.sp,
+                                          color: AppColor.whiteColor),
+                                    ),
+                                  ]),
+                              const SizedBox(width: 30),
+                              Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Time',
+                                      textAlign: TextAlign.left,
+                                      style: GoogleFonts.dmSans(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 12.sp,
+                                          color: AppColor.whiteColor),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      '$time ',
+                                      textAlign: TextAlign.left,
+                                      style: GoogleFonts.dmSans(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.sp,
+                                          color: AppColor.whiteColor),
+                                    ),
+                                  ]),
+                              const SizedBox(width: 30),
+                              Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'Price',
+                                      textAlign: TextAlign.left,
+                                      style: GoogleFonts.dmSans(
+                                          fontSize: 12.sp,
+                                          color: AppColor.whiteColor),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "N$price.00",
+                                      textAlign: TextAlign.left,
+                                      style: GoogleFonts.dmSans(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.sp,
+                                          color: AppColor.whiteColor),
+                                    ),
+                                  ]),
+                            ],
+                          ),
                         ),
                       ),
                       isScheduled
@@ -160,7 +163,7 @@ class RequestCard extends StatelessWidget {
                                       textAlign: TextAlign.left,
                                       style: GoogleFonts.dmSans(
                                           fontWeight: FontWeight.w700,
-                                          fontSize: 10.h,
+                                          fontSize: 12.sp,
                                           color: AppColor.whiteColor),
                                     ),
                                     const SizedBox(
@@ -170,7 +173,7 @@ class RequestCard extends StatelessWidget {
                                       datetime,
                                       textAlign: TextAlign.left,
                                       style: GoogleFonts.dmSans(
-                                          fontSize: 15.h,
+                                          fontSize: 15.sp,
                                           color: AppColor.whiteColor),
                                     ),
                                   ]),

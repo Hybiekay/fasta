@@ -38,22 +38,6 @@ class PrivewHome extends StatefulWidget {
 
 class _PrivewHomeState extends State<PrivewHome> {
   DriverController driverController = Get.put(DriverController());
-  bool isrequested = false;
-
-  @override
-  void initState() {
-    super.initState();
-    requs();
-  }
-
-//Texting pupose the Screen need to wait for 5seconds before moving to another screen if not the Screen is going to crash
-  requs() {
-    Future.delayed(const Duration(seconds: 5), () {
-      setState(() {
-        isrequested = true;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +58,6 @@ class _PrivewHomeState extends State<PrivewHome> {
                     GestureDetector(
                       onTap: () {
                         Get.to(() => const DispatcherDrawerScreen());
-                        //   Navigator.of(context)
-                        //       .pushNamed(DispatcherDrawerScreen.routeName);
                       },
                       child: Image.asset(
                         AppImages.menuBar,

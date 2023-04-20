@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../constants/app_color.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/global_components/button_component.dart';
+import 'package:ziklogistics/global_components/ziklogistics.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 
@@ -45,7 +42,7 @@ class _BottomCardState extends State<BottomCard> {
             Text(
               "Add a new card",
               style: GoogleFonts.dmSans(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColor.whiteColor,
               ),

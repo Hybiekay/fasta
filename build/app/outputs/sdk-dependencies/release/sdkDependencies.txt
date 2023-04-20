@@ -740,54 +740,6 @@ library {
 }
 library {
   maven_library {
-    groupId: "com.google.android.gms"
-    artifactId: "play-services-location"
-    version: "21.0.1"
-  }
-  digests {
-    sha256: "\274\211\361\246\021\211e!kEC\236~\223`\246\362\005FT\344\2023Tv\216x\204\373;k\f"
-  }
-  repo_index {
-  }
-}
-library {
-  maven_library {
-    groupId: "com.google.android.gms"
-    artifactId: "play-services-base"
-    version: "18.1.0"
-  }
-  digests {
-    sha256: "N\312V\316\354\3242Z7l\330C\257V7~#v\316(M\fo\005\245\320\250/L\033\370\315"
-  }
-  repo_index {
-  }
-}
-library {
-  maven_library {
-    groupId: "com.google.android.gms"
-    artifactId: "play-services-basement"
-    version: "18.1.0"
-  }
-  digests {
-    sha256: "\003\272\025\363\206\317&\v\336r\374@\020\373\211\250 \304}Q\316c\274\t)~\253\346\314\340\233\335"
-  }
-  repo_index {
-  }
-}
-library {
-  maven_library {
-    groupId: "com.google.android.gms"
-    artifactId: "play-services-tasks"
-    version: "18.0.2"
-  }
-  digests {
-    sha256: "\003F\\\3656\200\332#\323\324\243\231\\\003)\267\367;!\0358y\036\3136\345\221\376\273\211fd"
-  }
-  repo_index {
-  }
-}
-library {
-  maven_library {
     groupId: "me.carda"
     artifactId: "androidcore"
     version: "0.7.7"
@@ -966,6 +918,42 @@ library {
 }
 library {
   maven_library {
+    groupId: "com.google.android.gms"
+    artifactId: "play-services-base"
+    version: "18.0.1"
+  }
+  digests {
+    sha256: "(\226\327oC+\345!g)[\271\316E\255\342\\1\n\357\374\004\322\214\370\333j\025\206\216\203\336"
+  }
+  repo_index {
+  }
+}
+library {
+  maven_library {
+    groupId: "com.google.android.gms"
+    artifactId: "play-services-basement"
+    version: "18.0.0"
+  }
+  digests {
+    sha256: "U\301wtg\220\032-9\2372R8LIv(J\243_\335\375Y\225Fm\276\254\264\237\235\326"
+  }
+  repo_index {
+  }
+}
+library {
+  maven_library {
+    groupId: "com.google.android.gms"
+    artifactId: "play-services-tasks"
+    version: "18.0.1"
+  }
+  digests {
+    sha256: "\361\006\333H\306\314\372\216\023\025\247\255\304J\354\320/\3675^\263\372}\315\313\250\302\203\250\353\026\201"
+  }
+  repo_index {
+  }
+}
+library {
+  maven_library {
     groupId: "androidx.exifinterface"
     artifactId: "exifinterface"
     version: "1.3.6"
@@ -1042,7 +1030,7 @@ library {
 }
 library {
   digests {
-    sha256: "\274[x\251\302\207\223\352\220\215!\027s\332\210X}W\343{\3505\347\235\315\333\254\267\3160\321\022"
+    sha256: "\035\354\264\245\237E\001\330f[^$\330D\031f\203\035\216\262\355\303\300j\353\274\222|\307W\251\310"
   }
 }
 library_dependencies {
@@ -1426,112 +1414,105 @@ library_dependencies {
   library_index: 61
   library_dep_index: 62
   library_dep_index: 63
-  library_dep_index: 64
-}
-library_dependencies {
-  library_index: 62
-  library_dep_index: 9
-  library_dep_index: 10
-  library_dep_index: 41
-  library_dep_index: 63
-  library_dep_index: 64
-}
-library_dependencies {
-  library_index: 63
-  library_dep_index: 9
-  library_dep_index: 10
-  library_dep_index: 41
-}
-library_dependencies {
-  library_index: 64
-  library_dep_index: 63
-}
-library_dependencies {
-  library_index: 65
-  library_dep_index: 66
-  library_dep_index: 67
-  library_dep_index: 73
+  library_dep_index: 69
   library_dep_index: 6
   library_dep_index: 7
-  library_dep_index: 74
+  library_dep_index: 70
   library_dep_index: 53
   library_dep_index: 21
   library_dep_index: 44
   library_dep_index: 14
   library_dep_index: 22
   library_dep_index: 18
-  library_dep_index: 75
-  library_dep_index: 38
-  library_dep_index: 76
-}
-library_dependencies {
-  library_index: 67
-  library_dep_index: 68
-  library_dep_index: 13
-  library_dep_index: 69
-  library_dep_index: 70
   library_dep_index: 71
+  library_dep_index: 38
   library_dep_index: 72
 }
 library_dependencies {
-  library_index: 74
+  library_index: 63
+  library_dep_index: 64
+  library_dep_index: 13
+  library_dep_index: 65
+  library_dep_index: 66
+  library_dep_index: 67
+  library_dep_index: 68
+}
+library_dependencies {
+  library_index: 70
   library_dep_index: 6
   library_dep_index: 9
   library_dep_index: 10
 }
 library_dependencies {
-  library_index: 75
+  library_index: 71
   library_dep_index: 14
 }
 library_dependencies {
-  library_index: 76
+  library_index: 72
   library_dep_index: 6
   library_dep_index: 15
   library_dep_index: 17
   library_dep_index: 44
   library_dep_index: 14
+  library_dep_index: 73
+}
+library_dependencies {
+  library_index: 74
+  library_dep_index: 41
+  library_dep_index: 75
+  library_dep_index: 76
+}
+library_dependencies {
+  library_index: 75
+  library_dep_index: 9
+  library_dep_index: 10
+  library_dep_index: 41
+  library_dep_index: 76
   library_dep_index: 77
 }
 library_dependencies {
-  library_index: 78
+  library_index: 76
+  library_dep_index: 9
+  library_dep_index: 10
   library_dep_index: 41
-  library_dep_index: 62
-  library_dep_index: 63
+}
+library_dependencies {
+  library_index: 77
+  library_dep_index: 76
+}
+library_dependencies {
+  library_index: 78
+  library_dep_index: 6
 }
 library_dependencies {
   library_index: 79
   library_dep_index: 6
+  library_dep_index: 6
+  library_dep_index: 9
+  library_dep_index: 80
 }
 library_dependencies {
   library_index: 80
-  library_dep_index: 6
-  library_dep_index: 6
-  library_dep_index: 9
-  library_dep_index: 81
-}
-library_dependencies {
-  library_index: 81
-  library_dep_index: 66
+  library_dep_index: 62
 }
 module_dependencies {
   module_name: "base"
   dependency_index: 4
+  dependency_index: 81
   dependency_index: 82
   dependency_index: 83
-  dependency_index: 84
   dependency_index: 0
   dependency_index: 5
   dependency_index: 58
-  dependency_index: 61
-  dependency_index: 10
   dependency_index: 6
-  dependency_index: 65
-  dependency_index: 67
+  dependency_index: 61
+  dependency_index: 63
+  dependency_index: 74
+  dependency_index: 10
   dependency_index: 78
-  dependency_index: 79
   dependency_index: 8
-  dependency_index: 80
-  dependency_index: 85
+  dependency_index: 79
+  dependency_index: 84
 }
 repositories {
   maven_repo {
@@ -1571,26 +1552,6 @@ repositories {
 repositories {
   maven_repo {
     url: "https://dl.google.com/dl/android/maven2/"
-  }
-}
-repositories {
-  maven_repo {
-    url: "https://dl.google.com/dl/android/maven2/"
-  }
-}
-repositories {
-  maven_repo {
-    url: "https://repo.maven.apache.org/maven2/"
-  }
-}
-repositories {
-  maven_repo {
-    url: "https://dl.google.com/dl/android/maven2/"
-  }
-}
-repositories {
-  maven_repo {
-    url: "https://repo.maven.apache.org/maven2/"
   }
 }
 repositories {

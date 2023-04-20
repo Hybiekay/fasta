@@ -28,10 +28,10 @@ class NodataCard extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
             child: Text(
-             content,
+              content,
               textAlign: TextAlign.center,
               style: GoogleFonts.dmSans(
-                fontSize: 30,
+                fontSize: 32.sp,
                 color: AppColor.whiteColor,
                 fontWeight: FontWeight.w700,
               ),

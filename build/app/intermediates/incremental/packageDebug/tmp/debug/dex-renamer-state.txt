@@ -1,11 +1,11 @@
-#Wed Apr 19 15:46:04 WAT 2023
-path.4=5/classes.dex
+#Thu Apr 20 19:01:41 WAT 2023
+path.4=6/classes.dex
 path.3=1/classes.dex
 path.2=0/classes.dex
 path.1=0/classes.dex
 path.5=classes2.dex
 path.0=classes.dex
-base.4=C\:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+base.4=C\:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
 base.3=C\:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
 base.2=C\:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.1=C\:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex

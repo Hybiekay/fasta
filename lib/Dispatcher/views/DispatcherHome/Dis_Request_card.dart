@@ -339,7 +339,7 @@ class BotButton extends StatelessWidget {
                   value:
                       'You have cancelled this dispatch request. Await another request.',
                   onPressed: () {
-                    Get.to(() => const DispatcherHome());
+                    Get.offAll(() => const DispatcherHome());
                   },
                 );
               },
@@ -372,7 +372,7 @@ class BotButton extends StatelessWidget {
                         ? "You have confirmed to deliver this sheduled package. Go for pickup at the time scheduled"
                         : "You have confirmed to deliver this package. Go for pickup in 5 mins.",
                     onPressed: () {
-                      Get.off(() => const Deliveryhistory());
+                      Get.offAll(() => const Deliveryhistory());
                     },
                   );
                 },

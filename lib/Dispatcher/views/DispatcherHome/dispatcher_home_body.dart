@@ -88,17 +88,24 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
             child: Container(
           height: MediaQuery.of(context).size.height * 0.68.h,
           color: AppColor.mainColor,
-          child:StreamBuilder<List<dynamic>>(
+          child: StreamBuilder<List<dynamic>>(
               stream: driverController.getAllRequest(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData && snapshot.data.length < 1) {
                   return const NodataCard(content: "You have No Request \nyet");
                 } else if (snapshot.hasData && snapshot.data.length >= 1) {
                   return ListView.builder(
-                    reverse: true,
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
-                      final item = snapshot.data![index];
+                      List<dynamic> dataList = snapshot.data;
+
+                      dataList.sort((a, b) {
+                        DateTime timeA = DateTime.parse(a['createdAt']);
+                        DateTime timeB = DateTime.parse(b['createdAt']);
+                        return timeB.compareTo(timeA);
+                      });
+
+                      final item = dataList[index];
                       return GestureDetector(
                         onTap: () {
                           Get.to(() => PrivewHome(
@@ -121,6 +128,9 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                           price: item["price"],
                           time: item["duration"],
                           distance: item["distance"],
+                          isScheduled: item["isScheduled"],
+                          datetime:
+                              "${item["scheduled_date"]} ${item["scheduled_time"]}",
                         ),
                       );
                     },

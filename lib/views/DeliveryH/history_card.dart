@@ -1,8 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ziklogistics/constants/app_color.dart';
-import 'package:ziklogistics/constants/app_images.dart';
+import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class HistoryCard extends StatelessWidget {
   final String name;
@@ -32,34 +29,37 @@ class HistoryCard extends StatelessWidget {
           decoration: BoxDecoration(
               color: AppColor.whiteColor,
               borderRadius: BorderRadius.circular(12)),
-          height: 100,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: CircleAvatar(),
               ),
-              const SizedBox(
-                width: 5,
-              ),
+              SizedBox(width: 3.w),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     name,
                     style: GoogleFonts.dmSans(
                         color: AppColor.mainColor,
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: 5,
                   ),
                   Text(
                     DateFormat('yyyy-MM-dd HH:mm:ss').format(time),
                     style: GoogleFonts.dmSans(
                         color: AppColor.mainColor,
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
@@ -71,7 +71,7 @@ class HistoryCard extends StatelessWidget {
                       track,
                       style: GoogleFonts.dmSans(
                           color: AppColor.mainSecondryColor,
-                          fontSize: 14,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w500),
                     ),
                   )
@@ -86,15 +86,16 @@ class HistoryCard extends StatelessWidget {
                         children: [
                           GestureDetector(
                               onTap: chatPressed,
-                              child: Image.asset(AppImages.messageICon)),
-                          const SizedBox(
-                            width: 5,
+                              child: Image.asset(AppImages.messageICon,
+                                  scale: 0.8.h)),
+                          SizedBox(
+                            width: 5.w,
                           ),
-                          Image.asset(AppImages.callICon),
+                          Image.asset(AppImages.callICon, scale: 0.8.h),
                         ]),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 10.h),
                     Container(
-                      height: 30,
+                      height: 30.h,
                       decoration: BoxDecoration(
                           color: AppColor.mainColor,
                           borderRadius: BorderRadius.circular(5)),
@@ -102,21 +103,20 @@ class HistoryCard extends StatelessWidget {
                         child: GestureDetector(
                           onTap: continuePressed,
                           child: isPaid
-                              ? const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Done',
-                                    style:
-                                        TextStyle(color: AppColor.whiteColor),
-                                  ),
+                              ? Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('Done',
+                                      style: GoogleFonts.dmSans(
+                                          color: AppColor.mainSecondryColor,
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w500)),
                                 )
-                              : const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Continue',
-                                    style:
-                                        TextStyle(color: AppColor.whiteColor),
-                                  ),
+                              : Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('Continue',
+                                      style: GoogleFonts.dmSans(
+                                          color: AppColor.mainSecondryColor,
+                                          fontWeight: FontWeight.w500)),
                                 ),
                         ),
                       ),

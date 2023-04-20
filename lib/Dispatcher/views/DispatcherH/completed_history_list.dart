@@ -16,7 +16,7 @@ class DispatcherCompletedlist extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.72,
       width: MediaQuery.of(context).size.width * 0.85,
       child: FutureBuilder(
-        future: driverController.getHistory(
+        future: driverController.getHistory(status: 
           "completed",
         ),
         // initialData: InitialData,
@@ -32,7 +32,14 @@ class DispatcherCompletedlist extends StatelessWidget {
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
-                final data = snapshot.data['data'][index];
+                List<dynamic> dataList = snapshot.data['data'];
+
+                dataList.sort((a, b) {
+                  DateTime timeA = DateTime.parse(a['createdAt']);
+                  DateTime timeB = DateTime.parse(b['createdAt']);
+                  return timeB.compareTo(timeA);
+                });
+                final data = dataList[index];
                 return DispatcherHistoryCard(
                   isPaid: data["paymentStatus"] == "PAID",
                   continuePressed: () {},

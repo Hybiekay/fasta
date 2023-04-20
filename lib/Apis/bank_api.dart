@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import '../controllers/storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:ziklogistics/views/home/home.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/DeliveryH/delivery_history.dart';
@@ -131,10 +132,13 @@ class MakePayment {
           print("Trasation Unseccsfull");
         }
 
-        // failedShowDialod(
-        //     context: context,
-        //     value: "Your transcation Is Uns ",
-        //     onPressed: () {});
+        failedShowDialod(
+
+            context: context,
+            value: "Your transcation Is Uns ",
+            onPressed: () {
+                Get.to(() => const CostomerHome());
+            });
       }
     });
   }

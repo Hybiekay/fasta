@@ -5,15 +5,21 @@ import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
 import 'package:ziklogistics/views/meun_screen/meun_screen.dart';
 
-class Ongoinglist extends StatelessWidget {
+class Ongoinglist extends StatefulWidget {
   const Ongoinglist({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final CustomerController userController = Get.put(CustomerController());
+  State<Ongoinglist> createState() => _OngoinglistState();
+}
 
+class _OngoinglistState extends State<Ongoinglist> {
+  final CustomerController userController = Get.put(CustomerController());
+
+  String? acceptedDriverId;
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.72,
       width: MediaQuery.of(context).size.width * 0.85,
@@ -27,16 +33,49 @@ class Ongoinglist extends StatelessWidget {
             return const NodataCard(content: "You don't Have Ongoing Request");
           } else if (snapshot.hasData &&
               (snapshot.data["data"] as List).isNotEmpty) {
-            if (kDebugMode) {
-              print(snapshot.data);
-            }
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
-                final data = snapshot.data['data'][index];
+                List<dynamic> dataList = snapshot.data['data'];
+
+                dataList.sort((a, b) {
+                  DateTime timeA = DateTime.parse(a['createdAt']);
+                  DateTime timeB = DateTime.parse(b['createdAt']);
+                  return timeB.compareTo(timeA);
+                });
+                final data = dataList[index];
+
+                // if (data["acceptedDriverId"] != null &&
+                //     data["acceptedDriverId"] != acceptedDriverId) {
+                //   Notify.sendNotice(
+                //       title:
+                //           "Your package has been accecpted by${data["AcceptedDriver"]['name']}",
+                //       body:
+                //           "I have accepted to pick up your Goods kindly process to Pay, Or Now Chat with me for Updates");
+
+                //   // Update the acceptedDriverId variable with the new value
+                //   WidgetsBinding.instance.addPostFrameCallback((_) {
+                //     setState(() {
+                //       acceptedDriverId = data["acceptedDriverId"];
+                //     });
+                //     print(acceptedDriverId);
+                //   });
+                // } else if (data["acceptedDriverId"] == null &&
+                //     acceptedDriverId != null) {
+                //   Notify.sendNotice(
+                //       title: "Sorry You Package Is Rejected By The Driver",
+                //       body:
+                //           "This happened because a technical issue occurred.  Await a new Dr");
+
+                //   WidgetsBinding.instance.addPostFrameCallback((_) {
+                //     setState(() {
+                //       acceptedDriverId = null;
+                //     });
+                //   });
+                // }
 
                 return HistoryCard(
-                  isPaid: data["acceptedDriverId"] != null ||
+                  isPaid: data["acceptedDriverId"] != null &&
                       data["paymentStatus"] == "PAID",
                   continuePressed: () async {
                     if (data["acceptedDriverId"] == null) {

@@ -158,7 +158,14 @@ class DriverController extends GetxController {
     }
   }
 
-  Future getHistory(String status) async {
+
+
+
+
+
+
+
+  Future getHistory({required String status}) async {
     try {
       final data = await _apiController.getHistory(status: status);
       return data;
@@ -167,19 +174,6 @@ class DriverController extends GetxController {
         print(e.toString());
       }
       rethrow;
-    }
-  }
-
-  Future getTwoHistory(String status, status2) async {
-    try {
-      final data = await _apiController.getHistory(status: status);
-      final data2 = await _apiController.getHistory(status: status2);
-      final total = data + data2;
-      return total;
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
     }
   }
 }

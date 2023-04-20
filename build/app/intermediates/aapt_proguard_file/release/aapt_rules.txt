@@ -2,7 +2,6 @@
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
 -keep class androidx.startup.InitializationProvider { <init>(); }
 -keep class co.paystack.flutterpaystack.AuthActivity { <init>(); }
--keep class com.baseflow.geolocator.GeolocatorLocationService { <init>(); }
 -keep class com.fasta.ziklogistics.MainActivity { <init>(); }
 -keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
 -keep class io.flutter.plugins.imagepicker.ImagePickerFileProvider { <init>(); }

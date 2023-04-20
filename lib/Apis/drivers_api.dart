@@ -222,7 +222,7 @@ class DriverApiController extends GetxController {
         'Authorization': 'Bearer $token',
       },
     );
-    print(response.body);
+    // print(response.body);
     if (response.statusCode == 401) {
       Get.to(() => const DispatcherLoginScreen());
     }

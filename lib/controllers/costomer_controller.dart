@@ -1,12 +1,13 @@
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:ziklogistics/Apis/bank_api.dart';
 import 'package:ziklogistics/Apis/auth_service.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
+
 // ignore: unused_import
 
 class CustomerController extends GetxController {
   final UserApiController _apiController = UserApiController();
-
 
   Future<void> loginUser(String email, String phoneNumber) async {
     try {
@@ -76,7 +77,7 @@ class CustomerController extends GetxController {
   }) async {
     try {
       final package = await _apiController.sendAPackage(
-       polyLine:polyLine ,
+          polyLine: polyLine,
           boundNe: boundNe,
           boundSw: boundSw,
           height: height,
@@ -107,18 +108,36 @@ class CustomerController extends GetxController {
     }
   }
 
-  Future getHistory({required String status}) async {
-    try {
-      final data = await _apiController.getCustomerHistory(
-        status: status,
-      );
-      return data;
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
+// Start the periodic timer to send subsequent requests
+  Future<void> startListeningToChanges(String status) async {
+    bool isAcceptedDriverFound = false;
+    while (!isAcceptedDriverFound) {
+      try {
+        final data = await _apiController.getCustomerHistory(status: status);
+        if (data["acceptedDriverId"] != null) {
+          log("${data["acceptedDriverId"]} has data");
+          isAcceptedDriverFound = true;
+        } else {
+          log("${data["acceptedDriverId"]} has Nodata");
+        }
+      } catch (e) {
+        // Handle any errors or exceptions that may occur during the API request
+        log('Error: $e');
       }
+      await Future.delayed(Duration(seconds: 3));
     }
   }
+
+  Future getHistory({required String status}) async {
+    try {
+      final data = await _apiController.getCustomerHistory(status: status);
+      return data; // Add the new data to the stream
+    } catch (e) {
+      // Add any errors to the stream
+    }
+  }
+
+  // Fetch data initially
 
   Future getPackage({required String packageId}) async {
     try {
@@ -134,7 +153,6 @@ class CustomerController extends GetxController {
   }
 
   Future<List> getListOfDelivery({required String status}) async {
-    
     try {
       final data = await _apiController.getCustomerListOfDelivery(
         status: status,

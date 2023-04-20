@@ -4,20 +4,18 @@ import 'package:ziklogistics/routes/routes.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   AwesomeNotifications().initialize(null, [
     NotificationChannel(
-        channelKey: "channelKey",
+        channelKey: "fasta_key",
         channelName: "Fasta",
-        channelDescription: "Fasta Description",
+        channelDescription: "Fasta Notification",
         defaultColor: AppColor.mainColor,
         ledColor: AppColor.whiteColor,
         channelShowBadge: true,
         playSound: true,
-
-        )
+        importance: NotificationImportance.High)
   ]);
   runApp(const MyApp());
 }

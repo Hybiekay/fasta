@@ -5,7 +5,6 @@ import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_detail_screen.dart';
 // ignore_for_file: prefer_typing_uninitialized_variables
 
-
 class DispatcherMeunScreen extends StatefulWidget {
   static const String routeName = '/DispatchermeunScreen';
   final String price;
@@ -214,10 +213,13 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      TotalItemBar(
-                        amount: widget.price,
-                        distants: widget.distance,
-                        time: widget.time,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: TotalItemBar(
+                          amount: widget.price,
+                          distants: widget.distance,
+                          time: widget.time,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(

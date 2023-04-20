@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../../controllers/controllers.dart';
 import '../../global_components/ziklogistics.dart';
+import 'package:ziklogistics/notification/notification.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
 import 'package:ziklogistics/views/meun_screen/comletes_detail_screen.dart';
 
@@ -32,7 +33,14 @@ class Completedlist extends StatelessWidget {
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {
-                final data = snapshot.data['data'][index];
+                List<dynamic> dataList = snapshot.data['data'];
+
+                dataList.sort((a, b) {
+                  DateTime timeA = DateTime.parse(a['createdAt']);
+                  DateTime timeB = DateTime.parse(b['createdAt']);
+                  return timeB.compareTo(timeA);
+                });
+                final data = dataList[index];
 
                 return HistoryCard(
                   isPaid: data["acceptedDriverId"] != null ||
