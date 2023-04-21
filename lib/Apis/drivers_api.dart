@@ -124,7 +124,6 @@ class DriverApiController extends GetxController {
         'Authorization': 'Bearer $token',
       },
     );
-    print("this is the body ${response.body}");
 
     final data = json.decode(response.body) as List;
     if (response.statusCode == 401) {
@@ -148,7 +147,7 @@ class DriverApiController extends GetxController {
     if (response.statusCode == 401) {
       Get.to(() => const DispatcherLoginScreen());
     }
-    print(response.body);
+
     return json.decode(response.body);
   }
 
@@ -164,7 +163,7 @@ class DriverApiController extends GetxController {
         'Authorization': 'Bearer $token',
       },
     );
-    print(response.body);
+
     if (response.statusCode == 401) {
       Get.to(() => const DispatcherLoginScreen());
     }
@@ -201,7 +200,7 @@ class DriverApiController extends GetxController {
     }, body: {
       "status": status
     });
-    print(response.body);
+
     print(response.statusCode);
     if (response.statusCode == 401) {
       Get.to(() => const DispatcherLoginScreen());

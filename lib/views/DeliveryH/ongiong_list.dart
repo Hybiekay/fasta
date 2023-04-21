@@ -141,6 +141,8 @@ class _OngoinglistState extends State<Ongoinglist> {
                     String token = await Storage.getToken();
                     if (data["acceptedDriverId"] != null) {
                       Get.to(() => ChatScreen(
+                            email: data["user"]["email"],
+                            packageId: data["id"],
                             senderEmail: data["user"]["email"],
                             senderName: data["name"],
                             receiverEmail: data["AcceptedDriver"]["email"],

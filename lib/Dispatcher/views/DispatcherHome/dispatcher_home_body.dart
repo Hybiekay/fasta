@@ -1,6 +1,11 @@
+import 'dart:developer';
 import 'request_card.dart';
 import 'package:get/get.dart';
 import '../../../controllers/controllers.dart';
+import 'package:ziklogistics/models/models.dart';
+import 'package:ziklogistics/chat/ChatModel/message.dart';
+import 'package:ziklogistics/notification/notification.dart';
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherdrawer/drawer.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home_preview.dart';
@@ -14,21 +19,71 @@ class DispatcherHomeBody extends StatefulWidget {
 
 class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
   DriverController driverController = Get.put(DriverController());
-  bool isrequested = false;
+
+  late io.Socket socket;
+  String token = '';
 
   @override
   void initState() {
+    gettoken();
+    // chatController.fetchMessages();
+    log("this is driver Email${DriverUserModel.email ?? token}");
+    log(DriverModel.token!);
+    socket = io.io(
+        'https://test-ki3c.onrender.com',
+        io.OptionBuilder().setTransports(["websocket"]).setExtraHeaders(
+            {'Authorization': 'Bearer ${DriverModel.token ?? token}'}).build());
+
+    socket.connect();
+    receiveMessages();
+    _connectSocket();
+
     super.initState();
-    requs();
   }
 
-//Texting pupose the Screen need to wait for 5seconds before moving to another screen if not the Screen is going to crash
-  requs() {
-    Future.delayed(const Duration(seconds: 5), () {
-      setState(() {
-        isrequested = true;
-      });
+  gettoken() async {
+    token = await DStorage.getDriverToken();
+    setState(() {});
+  }
+
+  receiveMessages() {
+    log('receiveMessage');
+    socket.on('receiveMessage', (data) {
+      log('receiveMessage');
+
+      if (data['payload']["receiverEmail"] == CustomersUserModel.email) {
+        log("adding Message");
+        Message message = Message(
+          id: "uju",
+          createdAt: DateTime.parse(data["data"]["createdAt"]),
+          updatedAt: DateTime.parse(data["data"]["updatedAt"]),
+          message: data['payload']["message"],
+          sender: data['payload']["sender"],
+          receiver: data['payload']["receiver"],
+          senderEmail: data['payload']["senderEmail"],
+          receiverEmail: data['payload']["receiverEmail"],
+          messageID: data["data"]["messageID"],
+        );
+        Notify.sendNotice(
+            title: "${data['payload']["receiver"]}",
+            body: "${data['payload']["message"]}");
+        // chatController.addMessage(message);
+        //     _scrollController.animateTo(
+        //       _scrollController.position.maxScrollExtent,
+        //       duration: Duration(milliseconds: 500),
+        //       curve: Curves.easeOut,
+        //     );
+        //   }
+        // });
+      }
     });
+  }
+
+  _connectSocket() {
+    log("");
+    socket.onConnect((data) => log("Connected"));
+    socket.onConnectError((data) => log("error in connection $data"));
+    socket.onDisconnect((data) => log("Socket io is disconnected"));
   }
 
   @override
@@ -49,8 +104,6 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                   GestureDetector(
                     onTap: () {
                       Get.to(() => const DispatcherDrawerScreen());
-                      //   Navigator.of(context)
-                      //       .pushNamed(DispatcherDrawerScreen.routeName);
                     },
                     child: Image.asset(
                       AppImages.menuBar,

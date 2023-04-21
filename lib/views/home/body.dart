@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:get/get.dart';
 import '../drawer/drawer.dart';
 import 'package:flutter/material.dart';
@@ -5,11 +6,79 @@ import '../../constants/app_color.dart';
 import '../../constants/app_images.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../global_components/button_component.dart';
+import 'package:ziklogistics/chat/ChatModel/message.dart';
+import 'package:ziklogistics/models/customers_model.dart';
+import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/notification/notification.dart';
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:ziklogistics/views/send_package_1/send_package_1.dart';
 
-class CostomerHomeBody extends StatelessWidget {
+class CostomerHomeBody extends StatefulWidget {
   const CostomerHomeBody({super.key});
+
+  @override
+  State<CostomerHomeBody> createState() => _CostomerHomeBodyState();
+}
+
+class _CostomerHomeBodyState extends State<CostomerHomeBody> {
+  late io.Socket socket;
+
+  @override
+  void initState() {
+    // chatController.fetchMessages();
+    log("this is Costomer Email${CustomersUserModel.email}");
+    log(CustomersModel.token!);
+    socket = io.io(
+        'https://test-ki3c.onrender.com',
+        io.OptionBuilder().setTransports(["websocket"]).setExtraHeaders(
+            {'Authorization': 'Bearer ${CustomersModel.token}'}).build());
+
+    socket.connect();
+    _connectSocket();
+    receiveMessages();
+    super.initState();
+  }
+
+  receiveMessages() {
+    log('receiveMessage');
+    socket.on('receiveMessage', (data) {
+      log('receiveMessage');
+
+      if (data['payload']["receiverEmail"] == CustomersUserModel.email) {
+        log("adding Message");
+        Message message = Message(
+          id: "uju",
+          createdAt: DateTime.parse(data["data"]["createdAt"]),
+          updatedAt: DateTime.parse(data["data"]["updatedAt"]),
+          message: data['payload']["message"],
+          sender: data['payload']["sender"],
+          receiver: data['payload']["receiver"],
+          senderEmail: data['payload']["senderEmail"],
+          receiverEmail: data['payload']["receiverEmail"],
+          messageID: data["data"]["messageID"],
+        );
+        Notify.sendNotice(
+            title: "${data['payload']["receiver"]}",
+            body: "${data['payload']["message"]}");
+        // chatController.addMessage(message);
+        //     _scrollController.animateTo(
+        //       _scrollController.position.maxScrollExtent,
+        //       duration: Duration(milliseconds: 500),
+        //       curve: Curves.easeOut,
+        //     );
+        //   }
+        // });
+      }
+    });
+  }
+
+  _connectSocket() {
+    log(CustomersModel.token!);
+    socket.onConnect((data) => log("Connected"));
+    socket.onConnectError((data) => log("error in connection $data"));
+    socket.onDisconnect((data) => log("Socket io is disconnected"));
+  }
 
   @override
   Widget build(BuildContext context) {

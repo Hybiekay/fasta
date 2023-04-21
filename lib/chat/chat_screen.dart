@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'ChatModel/message.dart';
 import 'package:ziklogistics/chat/chat_item.dart';
 import 'package:ziklogistics/chat/chat_controller.dart';
+import 'package:ziklogistics/notification/notification.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
@@ -14,16 +15,20 @@ class ChatScreen extends StatefulWidget {
   final String receiverEmail;
   final String senderName;
   final String senderEmail;
+  final String packageId;
   final String token;
+  final String email;
 
-  const ChatScreen({
-    Key? key,
-    required this.receiverName,
-    required this.receiverEmail,
-    required this.senderName,
-    required this.senderEmail,
-    required this.token,
-  }) : super(key: key);
+  const ChatScreen(
+      {Key? key,
+      required this.packageId,
+      required this.receiverName,
+      required this.receiverEmail,
+      required this.senderName,
+      required this.senderEmail,
+      required this.token,
+      required this.email})
+      : super(key: key);
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -72,6 +77,7 @@ class _ChatScreenState extends State<ChatScreen> {
   sendMessage(String message) {
     log('send message');
     socket.emit("sendMessage", {
+      "packageId": widget.packageId,
       "message": message,
       "sender": widget.senderName,
       "room": "nn",
@@ -86,14 +92,15 @@ class _ChatScreenState extends State<ChatScreen> {
     log('receiveMessage');
     socket.on('receiveMessage', (data) {
       log('receiveMessage');
-      log("this is the payload${data.toString()}");
-
-      if (data['payload']['receiverEmail'] == widget.receiverEmail) {
-        log("this is the payload${data.toString()}");
+      log(widget.email);
+      log(widget.senderEmail);
+      log(widget.receiverEmail.toString());
+      if (data['payload']["receiverEmail"] == widget.senderEmail) {
+        log("adding Message");
         Message message = Message(
-          id: data['"data"']["id"],
-          createdAt: data["data"]["createdAt"],
-          updatedAt: data["data"]["updatedAt"],
+          id: "uju",
+          createdAt: DateTime.parse(data["data"]["createdAt"]),
+          updatedAt: DateTime.parse(data["data"]["updatedAt"]),
           message: data['payload']["message"],
           sender: data['payload']["sender"],
           receiver: data['payload']["receiver"],
@@ -101,6 +108,9 @@ class _ChatScreenState extends State<ChatScreen> {
           receiverEmail: data['payload']["receiverEmail"],
           messageID: data["data"]["messageID"],
         );
+        Notify.sendNotice(
+            title: "${data['payload']["receiver"]}",
+            body: "${data['payload']["message"]}");
         chatController.addMessage(message);
         _scrollController.animateTo(
           _scrollController.position.maxScrollExtent,
@@ -113,10 +123,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   getMessage() {
     log("GetMEssage");
-    log("this is driver Email ${widget.senderEmail}, ${widget.senderName}");
+    log("this is driver Email ${widget.senderEmail}, ${widget.packageId}");
     socket.emitWithAck("getMessage", {
-      "senderEmail": widget.senderEmail,
-      "receiverEmail": widget.receiverEmail
+      "packageId": widget.packageId,
     }, ack: (data) {
       for (var element in data) {
         chatController.addMessage(Message.fromJson(element));

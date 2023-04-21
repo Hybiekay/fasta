@@ -17,7 +17,7 @@ class SingleChat extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5)
-          .copyWith(left: 70),
+          .copyWith(left: isMe ? 70 : 0, right: isMe ? 0 : 70),
       child: Row(
         mainAxisAlignment:
             isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
@@ -32,7 +32,7 @@ class SingleChat extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                   margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5)
-                      .copyWith(left: 70),
+                      .copyWith(left: isMe ? 70 : 0, right: isMe ? 0 : 70),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12).copyWith(
                           bottomRight: Radius.circular(isMe ? 0 : 12),

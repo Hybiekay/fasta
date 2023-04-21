@@ -33,11 +33,10 @@ class HistoryCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+              Padding(
+                padding: EdgeInsets.all(8.0).copyWith(top: 20),
                 child: CircleAvatar(),
               ),
-              SizedBox(width: 3.w),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,

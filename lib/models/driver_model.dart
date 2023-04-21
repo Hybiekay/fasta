@@ -1,10 +1,8 @@
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// ignore: prefer_typing_uninitialized_variables
 var driverData;
 
 class DriverModel {
-  String? token = driverData['token'];
+  static String? token = driverData["token"];
 }
 
 class DriverUserModel {

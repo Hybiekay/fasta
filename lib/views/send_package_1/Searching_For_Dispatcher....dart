@@ -174,6 +174,8 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                                 name: driverName,
                                 chatPressed: () {
                                   Get.to(() => ChatScreen(
+                                        email: widget.email,
+                                        packageId: widget.packageId,
                                         receiverEmail: driverEmail,
                                         receiverName: driverName,
                                         senderName: widget.name,

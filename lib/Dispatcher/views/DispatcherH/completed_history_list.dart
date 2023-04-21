@@ -16,8 +16,8 @@ class DispatcherCompletedlist extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.72,
       width: MediaQuery.of(context).size.width * 0.85,
       child: FutureBuilder(
-        future: driverController.getHistory(status: 
-          "completed",
+        future: driverController.getHistory(
+          status: "completed",
         ),
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -26,9 +26,6 @@ class DispatcherCompletedlist extends StatelessWidget {
                 content: "You don't Have Completed Request");
           } else if (snapshot.hasData &&
               (snapshot.data["data"] as List).isNotEmpty) {
-            if (kDebugMode) {
-              print(snapshot.data);
-            }
             return ListView.builder(
               itemCount: (snapshot.data["data"] as List).length,
               itemBuilder: (context, index) {

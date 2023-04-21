@@ -151,7 +151,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                             if (DriverUserModel.email != null &&
                                 DriverUserModel.name != null &&
                                 DriverUserModel.bvn != null &&
-                                DriverModel().token == null) {
+                                DriverModel.token == null) {
                               Get.to(() => const DispatcherLoginScreen());
                             } else if (DriverUserModel.nin != null &&
                                 DriverUserModel.name != null &&

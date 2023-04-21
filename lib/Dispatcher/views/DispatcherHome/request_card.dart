@@ -21,14 +21,15 @@ class RequestCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          height: isScheduled ? 175.h : 140.h,
+          padding: EdgeInsets.symmetric(vertical: 5),
+          margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: AppColor.whiteColor),
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Container(
+                padding: EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   boxShadow: const [

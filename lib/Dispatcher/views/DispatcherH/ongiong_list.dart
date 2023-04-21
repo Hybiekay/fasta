@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import '../../../chat/chat_screen.dart';
 import 'package:ziklogistics/models/driver_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
-import 'package:ziklogistics/notification/notification.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/meun_screen.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherH/history_card.dart';
+
 
 class DispatcherOngoinglist extends StatelessWidget {
   const DispatcherOngoinglist({
@@ -64,6 +64,9 @@ class DispatcherOngoinglist extends StatelessWidget {
                     }
 
                     Get.to(() => ChatScreen(
+                      email: DriverUserModel.email ??
+                              data["AcceptedDriver"]['email'],
+                            packageId: data["id"],
                           receiverEmail: data['user']['email'],
                           receiverName: data['user']['name'],
                           senderEmail: DriverUserModel.email ??

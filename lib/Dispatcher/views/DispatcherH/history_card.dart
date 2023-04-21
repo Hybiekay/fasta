@@ -33,12 +33,9 @@ class DispatcherHistoryCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+              Padding(
+                padding: EdgeInsets.all(8.0).copyWith(top: 20),
                 child: CircleAvatar(),
-              ),
-              const SizedBox(
-                width: 5,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
