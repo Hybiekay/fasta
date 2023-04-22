@@ -3,16 +3,14 @@ import '../../components/Widget/slider.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 
-
 class OnboardingScreen2 extends StatelessWidget {
   const OnboardingScreen2({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.mainColor,
       body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
             color: AppColor.mainColor,
           ),

@@ -129,56 +129,64 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
             child: Container(
           height: MediaQuery.of(context).size.height * 0.68.h,
           color: AppColor.mainColor,
-          child: StreamBuilder<List<dynamic>>(
-              stream: driverController.getAllRequest(),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData && snapshot.data.length < 1) {
-                  return const NodataCard(content: "You have No Request \nyet");
-                } else if (snapshot.hasData && snapshot.data.length >= 1) {
-                  return ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      List<dynamic> dataList = snapshot.data;
+          child: DriverUserModel.status == "PENDING"
+              ? SingleChildScrollView(
+                  child: NodataCard(
+                      content:
+                          "Currently, you are unable to accept requests as you have not yet been approved by the administrator."),
+                )
+              : StreamBuilder<List<dynamic>>(
+                  stream: driverController.getAllRequest(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData && snapshot.data.length < 1) {
+                      return const NodataCard(
+                          content: "You have No Request \nyet");
+                    } else if (snapshot.hasData && snapshot.data.length >= 1) {
+                      return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          List<dynamic> dataList = snapshot.data;
 
-                      dataList.sort((a, b) {
-                        DateTime timeA = DateTime.parse(a['createdAt']);
-                        DateTime timeB = DateTime.parse(b['createdAt']);
-                        return timeB.compareTo(timeA);
-                      });
+                          dataList.sort((a, b) {
+                            DateTime timeA = DateTime.parse(a['createdAt']);
+                            DateTime timeB = DateTime.parse(b['createdAt']);
+                            return timeB.compareTo(timeA);
+                          });
 
-                      final item = dataList[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Get.to(() => PrivewHome(
-                                name: item["name"].toString(),
-                                price: item["price"].toString(),
-                                time: item["duration"].toString(),
-                                distance: item["distance"].toString(),
-                                size: item["size"].toString(),
-                                withe: item["width"].toString(),
-                                pickUp: item["pickup_address"],
-                                dropOff: item["dropoff_address"],
-                                isScahedule: item["isScheduled"],
-                                scheduleTime:
-                                    "${item["scheduled_date"]} ${item["scheduled_time"]}",
-                                packageId: item["id"],
-                              ));
+                          final item = dataList[index];
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(() => PrivewHome(
+                                    name: item["name"].toString(),
+                                    price: item["price"].toString(),
+                                    time: item["duration"].toString(),
+                                    distance: item["distance"].toString(),
+                                    size: item["size"].toString(),
+                                    withe: item["width"].toString(),
+                                    pickUp: item["pickup_address"],
+                                    dropOff: item["dropoff_address"],
+                                    isScahedule: item["isScheduled"],
+                                    scheduleTime:
+                                        "${item["scheduled_date"]} ${item["scheduled_time"]}",
+                                    packageId: item["id"],
+                                  ));
+                            },
+                            child: RequestCard(
+                              name: item["name"],
+                              price: item["price"],
+                              time: item["duration"],
+                              distance: item["distance"],
+                              isScheduled: item["isScheduled"],
+                              datetime:
+                                  "${item["scheduled_date"]} ${item["scheduled_time"]}",
+                            ),
+                          );
                         },
-                        child: RequestCard(
-                          name: item["name"],
-                          price: item["price"],
-                          time: item["duration"],
-                          distance: item["distance"],
-                          isScheduled: item["isScheduled"],
-                          datetime:
-                              "${item["scheduled_date"]} ${item["scheduled_time"]}",
-                        ),
                       );
-                    },
-                  );
-                }
-                return const NodataCard(content: "You have No Request \nyet");
-              }),
+                    }
+                    return const NodataCard(
+                        content: "You have No Request \nyet");
+                  }),
         ))
       ],
     );

@@ -4,16 +4,14 @@ import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.mainColor,
       body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
             color: AppColor.mainColor,
           ),

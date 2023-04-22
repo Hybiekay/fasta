@@ -41,6 +41,8 @@ class DriverApiController extends GetxController {
       "phone": phoneNumber,
       "code": code,
     });
+    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 201) {
       final data = json.decode(response.body);
       final token = data["token"];

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/form_field.dart';
+import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 
 class DispatcherLoginScreen extends StatefulWidget {
@@ -56,7 +57,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
             )
           : SingleChildScrollView(
               child: Container(
-                  padding: const EdgeInsets.only(right: 20, left: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   decoration: const BoxDecoration(
@@ -84,14 +85,14 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
-                          height: 45,
+                          height: 40.h,
                           child: Row(
                             children: [
                               GestureDetector(
                                 onTap: () {},
                                 child: Container(
                                   width: 80,
-                                  height: 45,
+                                  height: 40.h,
                                   decoration: BoxDecoration(
                                       color: AppColor.whiteColor,
                                       borderRadius: BorderRadius.circular(10)),
@@ -112,8 +113,9 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                                 width: MediaQuery.of(context).size.width * 0.02,
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width * 0.64,
-                                height: 45,
+                                width: MediaQuery.of(context).size.height *
+                                    0.277.w,
+                                height: 40.h,
                                 decoration: BoxDecoration(
                                     color: AppColor.whiteColor,
                                     borderRadius: BorderRadius.circular(10)),
@@ -125,9 +127,10 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                                         keyboardType: TextInputType.phone,
                                         decoration: InputDecoration(
                                             hintText: 'Mobile Number',
+                                            hintStyle: GoogleFonts.dmSans(),
                                             prefixIcon: SizedBox(
                                               width: 60,
-                                              height: 45,
+                                              height: 40.h,
                                               child: Center(
                                                 child: Text(
                                                     countryCode?.dialCode ??
@@ -153,12 +156,12 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: inCorrect
-                                ? const Text(
+                                ?  Text(
                                     "Wrong mobile number inputed",
                                     style: TextStyle(
                                         fontFamily: 'DMSans',
                                         color: AppColor.errorColor,
-                                        fontSize: 15,
+                                        fontSize: 15.sp,
                                         letterSpacing: 0,
                                         fontWeight: FontWeight.normal,
                                         height: 1.5),
@@ -169,7 +172,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 45,
+                          height: 45.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: AppColor.whiteColor,

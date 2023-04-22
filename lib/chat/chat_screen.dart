@@ -109,7 +109,7 @@ class _ChatScreenState extends State<ChatScreen> {
           messageID: data["data"]["messageID"],
         );
         Notify.sendNotice(
-            title: "${data['payload']["receiver"]}",
+            title: "${data['payload']["sender"]}",
             body: "${data['payload']["message"]}");
         chatController.addMessage(message);
         _scrollController.animateTo(

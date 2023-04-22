@@ -47,16 +47,19 @@ class RequestCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Padding(
-                            padding: EdgeInsets.only(left: 10, top: 10),
+                            padding:
+                                EdgeInsets.only(left: 10, top: 10, right: 7),
                             child: CircleAvatar(),
                           ),
-                          Text(
-                            name,
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.dmSans(
-                              fontSize: 20.sp,
-                              color: AppColor.whiteColor,
-                              fontWeight: FontWeight.w700,
+                          Expanded(
+                            child: Text(
+                              name,
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.dmSans(
+                                fontSize: 20.sp,
+                                color: AppColor.whiteColor,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                           Padding(

@@ -22,7 +22,7 @@ class CustomerController extends GetxController {
     } catch (e) {
       Get.snackbar(
         'Error',
-        e.toString(),
+        "Email has ben used by Another User Kindly check your Email Or Change to another email",
         snackPosition: SnackPosition.BOTTOM,
       );
     }

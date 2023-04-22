@@ -15,23 +15,25 @@ class DispatcherDeliveryhistory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.mainColor,
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: AppColor.mainColor,
-        child: Column(children: [
-          HeaderWidget(
-            subTitle: 'Delivery History',
-            onPressed: () {
-              Get.offAll(() => const DispatcherHome());
-            },
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.06,
-          ),
-          const DispatcherongoingComleteSwicth(),
-        ]),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: AppColor.mainColor,
+          child: Column(children: [
+            HeaderWidget(
+              subTitle: 'Delivery History',
+              onPressed: () {
+                Get.offAll(() => const DispatcherHome());
+              },
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.06,
+            ),
+            const DispatcherongoingComleteSwicth(),
+          ]),
+        ),
       ),
     );
   }

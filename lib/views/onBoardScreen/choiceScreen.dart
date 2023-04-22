@@ -164,7 +164,6 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
-                          Get.to(() => const DispatcherLoginScreen());
                           var allData = await DStorage.getDriverData();
                           if (allData != null) {
                             log('Secure storage has data: $allData');
@@ -183,7 +182,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                             }
                           } else {
                             log('Secure storage is empty');
-                            Get.offAll(() => const DispatcherOnBoardPages());
+                            Get.to(() => const DispatcherOnBoardPages());
                           }
                         },
                         child: const Text(

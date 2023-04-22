@@ -53,13 +53,13 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      height: 45,
+                      height: 40.h,
                       child: Row(
                         children: [
                           Container(
                             padding: const EdgeInsets.only(right: 20),
                             width: MediaQuery.of(context).size.width * 0.85,
-                            height: 45,
+                            height: 40.h,
                             decoration: BoxDecoration(
                                 color: AppColor.whiteColor,
                                 borderRadius: BorderRadius.circular(10)),
@@ -71,7 +71,8 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                                     child: TextField(
                                       controller: nameController,
                                       keyboardType: TextInputType.name,
-                                      decoration: const InputDecoration(
+                                      decoration: InputDecoration(
+                                          hintStyle: GoogleFonts.dmSans(),
                                           hintText: 'Full Name',
                                           border: InputBorder.none),
                                     ),

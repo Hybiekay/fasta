@@ -21,6 +21,11 @@ class DriverController extends GetxController {
         e.toString(),
         snackPosition: SnackPosition.BOTTOM,
       );
+      Get.snackbar(
+        'Error',
+        "Email has ben used by Another User Kindly check your Email Or Change to another email",
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
@@ -62,6 +67,11 @@ class DriverController extends GetxController {
         state = false;
         print(e.toString());
       }
+      Get.snackbar(
+        'Error',
+        "Error Occurr",
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 

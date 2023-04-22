@@ -372,7 +372,7 @@ class BotButton extends StatelessWidget {
                         ? "You have confirmed to deliver this sheduled package. Go for pickup at the time scheduled"
                         : "You have confirmed to deliver this package. Go for pickup in 5 mins.",
                     onPressed: () {
-                      Get.offAll(() => const Deliveryhistory());
+                      Get.offAll(() => const DispatcherHome());
                     },
                   );
                 },

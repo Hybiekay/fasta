@@ -68,7 +68,7 @@ class _DriverFormState extends State<DriverForm> {
                     Text(
                       "Your Name",
                       style: GoogleFonts.dmSans(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColor.whiteColor,
                       ),
@@ -215,7 +215,7 @@ class _DriverFormState extends State<DriverForm> {
                                   isloading = true;
                                 });
                                 await driverController.uplold(
-                                    name: fullNameCon.text,
+                                    name: widget.name,
                                     nin: ninCon.text,
                                     bvn: bvNumCon.text,
                                     bvnImage: dImg,

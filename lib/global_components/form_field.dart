@@ -18,7 +18,7 @@ class Formfied extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(right: 20),
       width: MediaQuery.of(context).size.width * 0.85,
-      height: 45,
+      height: 40.h,
       decoration: BoxDecoration(
           color: AppColor.whiteColor, borderRadius: BorderRadius.circular(10)),
       child: Padding(
@@ -28,6 +28,7 @@ class Formfied extends StatelessWidget {
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hintText,
+            hintStyle: GoogleFonts.dmSans(),
             border: InputBorder.none,
           ),
         ),

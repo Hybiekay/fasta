@@ -233,6 +233,10 @@ class _DispatcherVerificationScreenState
                                       print(
                                           "$otp is the otp, $code is your input");
                                     }
+                                    final res = await driverController.getOtp(
+                                        code: code!,
+                                        phoneNumber: widget.phoneNumber);
+                                    print("this from here to user$res");
 
                                     driverData = await DStorage.getDriverData();
                                     var storage =
@@ -244,6 +248,9 @@ class _DispatcherVerificationScreenState
                                       log("this the Storate$storage");
                                       log("this the ate${data}");
                                       if (data["user"]["name"] == null) {
+                                        setState(() {
+                                          isLoading = false;
+                                        });
                                         Get.off(() => DRegisterScreen(
                                               phoneNum: widget.phoneNumber,
                                             ));
