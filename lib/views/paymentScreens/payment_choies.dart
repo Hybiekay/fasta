@@ -62,7 +62,7 @@ class ChoicePayment extends StatelessWidget {
                 onPressed: () async {
                   final data = await Storage.getData();
                   if (data != null) {
-                    custormerName = json.decode(data);
+                    custormerData = json.decode(data);
                     Get.to(
                       () => CardChoice(
                           distants: distants,

@@ -5,6 +5,7 @@ import 'package:ziklogistics/global_components/button_component.dart';
 successShowDialod({
   required BuildContext context,
   required String value,
+  String bottonValue = "Done",
   required VoidCallback onPressed,
 }) {
   showDialog(
@@ -22,7 +23,7 @@ successShowDialod({
           value,
           textAlign: TextAlign.center,
         ),
-        actions: [ButtonComp(onPressed: onPressed, value: "Done")],
+        actions: [ButtonComp(onPressed: onPressed, value: bottonValue)],
       );
     },
   );

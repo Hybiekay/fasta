@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/controllers.dart';
+import 'package:ziklogistics/controllers/global_token.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 
@@ -40,16 +41,14 @@ class DriverApiController extends GetxController {
       "phone": phoneNumber,
       "code": code,
     });
-    final data = json.decode(response.body);
-    final token = data["token"];
-    DStorage.saveDriverData(response.body);
-    DStorage.saveDriverToken(token);
-    print(response.statusCode);
-    print(response.body);
     if (response.statusCode == 201) {
+      final data = json.decode(response.body);
+      final token = data["token"];
+      DStorage.saveDriverData(response.body);
+      DStorage.saveDriverToken(token);
       print(response.statusCode);
       print(response.body);
-      final data = json.decode(response.body);
+      GlobalStorage.saveToken(token);
 
       return data;
     } else {
@@ -62,22 +61,37 @@ class DriverApiController extends GetxController {
     required String phoneNumber,
     required String accountName,
     required String accountNumber,
-    required String bankNam,
+    required String bankName,
     required String paymentOption,
   }) async {
     String token = await DStorage.getDriverToken();
-    final updateCostumerNameUrl =
-        Uri.parse("${AppApis.endPoint}auth/update-name-customer");
-    final response = await http.post(updateCostumerNameUrl, headers: {
-      'Authorization': 'Bearer $token',
-    }, body: {
-      "name": name,
-      "phone": phoneNumber,
-    });
-    print(response.statusCode);
-    print(response.body);
-    DStorage.saveDriverData(response.body);
-    return json.decode(response.body);
+
+    final updateDriverNameUrl =
+        Uri.parse("${AppApis.endPoint}auth/update-profile-driver");
+    final response = await http.post(
+      updateDriverNameUrl,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      body: {
+        "name": name,
+        "accountName": accountName,
+        "accountNumber": accountNumber,
+        "bankName": bankName,
+        "paymentOption": paymentOption,
+        "phone": phoneNumber,
+      },
+    );
+    if (response.statusCode == 201) {
+      print(response.body);
+
+      final data = json.decode(response.body);
+      return data;
+    } else {
+      print(response.body);
+      print(response.statusCode);
+      throw Exception();
+    }
   }
 
   Future driverUpload({

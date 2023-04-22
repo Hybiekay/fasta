@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import '../../Apis/google_api.dart';
 import 'package:ziklogistics/models/customers_model.dart';
@@ -19,6 +21,9 @@ class Body extends StatefulWidget {
   State<Body> createState() => _BodyState();
 }
 
+final CustomerController userController = Get.put(CustomerController());
+String? name;
+
 class _BodyState extends State<Body> {
   final approxSizeController = TextEditingController();
   final approxWeightController = TextEditingController();
@@ -32,13 +37,20 @@ class _BodyState extends State<Body> {
   var duration = '';
   var time = '';
   var boundNe = {};
-  var boundSw  = {};
+  var boundSw = {};
   var polyLine = '';
   var startLocationLat = 0.0;
   var startLocationLng = 0.0;
   var endLocationLat = 0.0;
   var endLocationLng = 0.0;
   var amount = 0;
+
+  @override
+  void initState() {
+    getName();
+    super.initState();
+  }
+
   getd() async {
     var res = await Location.getdirection(
         origin: pickUpController.text, destination: dropOffController.text);
@@ -77,330 +89,355 @@ class _BodyState extends State<Body> {
     }
   }
 
+  getName() async {
+    name = await Storage.getname();
+    var data = await Storage.getData();
+    if (data != null) custormerData = json.decode(data);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.mainColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.85,
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      HeaderWidget(subTitle: 'Send A Package', onPressed: () {
-                        
-                      },),
-                      SizedBox(height: 10.h),
-                      Text(
-                        'Input package details',
-                        style: GoogleFonts.dmSans(
-                          color: AppColor.whiteColor,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w400,
+      body: userController.state
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.85,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeaderWidget(
+                              subTitle: 'Send A Package',
+                              onPressed: () {},
+                            ),
+                            SizedBox(height: 10.h),
+                            Text(
+                              'Input package details',
+                              style: GoogleFonts.dmSans(
+                                color: AppColor.whiteColor,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            InputPackagedetails(
+                              keyboardType: TextInputType.number,
+                              onPressed: () {},
+                              isSize: true,
+                              val4: widtController,
+                              val3: heightController,
+                              val1: approxSizeController,
+                              val2: approxWeightController,
+                              desc1: 'Approx. Size',
+                              textField3: "Height of the package",
+                              textField4: "Width of the package",
+                              img1: AppImages.packageImg,
+                              textField1: 'Size of the package',
+                              desc2: 'Approx. Weight',
+                              img2: AppImages.packageImg,
+                              textField2: 'Weight of the package',
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Input location details',
+                              style: GoogleFonts.dmSans(
+                                color: AppColor.whiteColor,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            InputPackagedetails(
+                                onPressed: getd,
+                                textField3: "Drop-off location for the package",
+                                textField4: "",
+                                val3: dropOffController,
+                                val4: dropOffController,
+                                isSize: false,
+                                val1: pickUpController,
+                                val2: pickUpController,
+                                desc1: 'Pickup',
+                                img1: AppImages.pickUp,
+                                textField1: 'Pickup location for the package',
+                                desc2: 'Drop-off',
+                                img2: AppImages.locatnImg,
+                                textField2:
+                                    'Drop-off location for the package'),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                if (kDebugMode) {
+                                  print(time);
+                                }
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    color: AppColor.whiteColor,
+                                    borderRadius: BorderRadius.circular(10)),
+                                padding: const EdgeInsets.only(left: 12),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextFormField(
+                                    onTap: getd,
+                                    autocorrect: true,
+                                    controller: disController,
+                                    maxLength: 1000,
+                                    maxLines: 4,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: const InputDecoration(
+                                        hintText: 'Description ',
+                                        border: InputBorder.none),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                if (kDebugMode) {
+                                  print(time);
+                                }
+                              },
+                              child: TotalItemBar(
+                                amount: " $amount",
+                                distants: distance,
+                                time: duration,
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      InputPackagedetails(
-                        keyboardType: TextInputType.number,
-                        onPressed: () {},
-                        isSize: true,
-                        val4: widtController,
-                        val3: heightController,
-                        val1: approxSizeController,
-                        val2: approxWeightController,
-                        desc1: 'Approx. Size',
-                        textField3: "Height of the package",
-                        textField4: "Width of the package",
-                        img1: AppImages.packageImg,
-                        textField1: 'Size of the package',
-                        desc2: 'Approx. Weight',
-                        img2: AppImages.packageImg,
-                        textField2: 'Weight of the package',
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Input location details',
-                        style: GoogleFonts.dmSans(
-                          color: AppColor.whiteColor,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      InputPackagedetails(
-                          onPressed: getd,
-                          textField3: "Drop-off location for the package",
-                          textField4: "",
-                          val3: dropOffController,
-                          val4: dropOffController,
-                          isSize: false,
-                          val1: pickUpController,
-                          val2: pickUpController,
-                          desc1: 'Pickup',
-                          img1: AppImages.pickUp,
-                          textField1: 'Pickup location for the package',
-                          desc2: 'Drop-off',
-                          img2: AppImages.locatnImg,
-                          textField2: 'Drop-off location for the package'),
-                      SizedBox(
-                        height: 8.h,
-                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Row(children: [
                       GestureDetector(
-                        onTap: () {
-                          if (kDebugMode) {
-                            print(time);
+                        onTap: () async {
+                          var name = await Storage.getname();
+
+                          var data = await Storage.getData();
+                    
+                          log(data.toString());
+                          if (approxSizeController.text.isEmpty) {
+                            Get.snackbar("Size", "Input Size is requied");
+                          } else if (approxWeightController.text.isEmpty) {
+                            Get.snackbar("Weight", "Input Size is requied");
+                          } else if (heightController.text.isEmpty) {
+                            Get.snackbar("Height", "Input height is requied");
+                          } else if (widtController.text.isEmpty) {
+                            Get.snackbar("Width", "Width Size is requied");
+                          } else if (pickUpController.text.isEmpty) {
+                            Get.snackbar("Pick Up Location",
+                                "Input Pick Up Location is requied");
+                          } else if (dropOffController.text.isEmpty) {
+                            Get.snackbar("Drop off Location",
+                                "Input Drop off Location is requied");
+                          } else if (dropOffController.text.isEmpty) {
+                            Get.snackbar("Description ",
+                                "Write Short description about the package, pickUp Address Or drop off adrress");
+                          } else if (CustomersUserModel.name == null &&
+                              name == null) {
+                            Get.snackbar("User Name ",
+                                "You name is not on this App try and relog in");
+                          } else {
+                            String token = await Storage.getToken();
+
+                            print("all done");
+                            print(CustomersUserModel.name ?? name);
+
+                            showDialog(
+                              barrierColor:
+                                  AppColor.whiteColor.withOpacity(0.2),
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (ctx) => BackdropFilter(
+                                filter: ImageFilter.blur(
+                                  sigmaX: 2.0,
+                                  sigmaY: 2.0,
+                                ),
+                                child: ScheduleAlertDialog(
+                                  token: token,
+                                  email: CustomersUserModel.email!,
+                                  boundNe: boundNe,
+                                  boundSw: boundSw,
+                                  polyLine: polyLine,
+                                  weight:
+                                      int.parse(approxWeightController.text),
+                                  height: int.parse(heightController.text),
+                                  distance: distance,
+                                  time: duration,
+                                  size: approxSizeController.text,
+                                  width: widtController.text,
+                                  price: amount.toString(),
+                                  userName:
+                                      CustomersUserModel.name ?? name ?? "",
+                                  pickupAdrress: pickUpController.text,
+                                  pickupLat: startLocationLat,
+                                  pickupLon: startLocationLat,
+                                  dropoffAdress: dropOffController.text,
+                                  dropoffLat: endLocationLat,
+                                  dropoffLon: endLocationLat,
+                                  isSchedule: false,
+                                  discription: disController.text,
+                                ),
+                              ),
+                            );
                           }
                         },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                              color: AppColor.whiteColor,
-                              borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.only(left: 12),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              onTap: getd,
-                              autocorrect: true,
-                              controller: disController,
-                              maxLength: 1000,
-                              maxLines: 4,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: const InputDecoration(
-                                  hintText: 'Description ',
-                                  border: InputBorder.none),
-                            ),
+                        child: Text(
+                          'Schedule',
+                          style: GoogleFonts.dmSans(
+                            color: AppColor.whiteColor,
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
+                      Spacer(),
                       GestureDetector(
-                        onTap: () {
-                          if (kDebugMode) {
-                            print(time);
+                        onTap: () async {
+                          String? Iname = await Storage.getname();
+
+                          var data = await Storage.getData();
+                          if (data != null) custormerData = json.decode(data);
+                          log(data.toString());
+                          if (approxSizeController.text.isEmpty) {
+                            Get.snackbar("Size", "Input Size is requied");
+                          } else if (approxWeightController.text.isEmpty) {
+                            Get.snackbar("Weight", "Input Size is requied");
+                          } else if (heightController.text.isEmpty) {
+                            Get.snackbar("Height", "Input height is requied");
+                          } else if (widtController.text.isEmpty) {
+                            Get.snackbar("Width", "Width Size is requied");
+                          } else if (pickUpController.text.isEmpty) {
+                            Get.snackbar("Pick Up Location",
+                                "Input Pick Up Location is requied");
+                          } else if (dropOffController.text.isEmpty) {
+                            Get.snackbar("Drop off Location",
+                                "Input Drop off Location is requied");
+                          } else if (disController.text.isEmpty) {
+                            Get.snackbar("Description ",
+                                "Write Short description about the package, pickUp Address Or drop off adrress");
+                          } else if (CustomersUserModel.name == null &&
+                              Iname == null) {
+                            Get.snackbar("User Name ",
+                                "You name is not on this App try and relog in");
+                          } else {
+                            print("all done");
+                            print(CustomersUserModel.name ?? name);
+                            print(CustomersUserModel.email!);
+                            setState(() {
+                              userController.state = true;
+                            });
+                            String token = await Storage.getToken();
+
+                            var package = await userController.createPackage(
+                              polyLine: polyLine,
+                              boundNe: boundNe,
+                              boundSw: boundSw,
+                              weight: int.parse(approxWeightController.text),
+                              height: int.parse(heightController.text),
+                              size: int.parse(approxSizeController.text),
+                              width: int.parse(widtController.text),
+                              price: amount.toString(),
+                              distance: distance,
+                              time: duration,
+                              userName: "${CustomersUserModel.name ?? name}",
+                              pickupAdrress: pickUpController.text,
+                              pickupLat: startLocationLat.toString(),
+                              pickupLon: startLocationLng.toString(),
+                              dropoffAdress: dropOffController.text,
+                              dropoffLat: endLocationLat.toString(),
+                              dropoffLon: endLocationLng.toString(),
+                              isSchedule: false,
+                              discription: disController.text,
+                            );
+                            final String id = package['data']['id'];
+                            setState(() {
+                              userController.state = false;
+                            });
+
+                            if (kDebugMode) {
+                              print("packageID $id");
+                            }
+                            Get.to(() => SearchingDispatcher(
+                                  token: token,
+                                  name: CustomersUserModel.name ?? Iname ?? "",
+                                  email: CustomersUserModel.email!,
+                                  discription: disController.text,
+                                  boundNe: boundNe,
+                                  boundSw: boundSw,
+                                  polyLine: polyLine,
+                                  packageId: id,
+                                  distance: distance,
+                                  price: amount.toString(),
+                                  time: duration,
+                                  dropOffLocation:
+                                      LatLng(endLocationLat, endLocationLng),
+                                  pickUpLocation: LatLng(
+                                      startLocationLat, startLocationLng),
+                                ));
                           }
                         },
-                        child: TotalItemBar(
-                          amount: " $amount",
-                          distants: distance,
-                          time: duration,
+
+                        // if (kDebugMode) {
+                        //   print(startLocationLat);
+                        //   print(endLocationLon);
+                        //   print(endLocationLat);
+                        //   print(duration);
+                        //   print(amount);
+                        //   print(duration);
+                        // }
+
+                        child: Container(
+                          height: 45.h,
+                          width: 202.w,
+                          decoration: BoxDecoration(
+                            color: AppColor.whiteColor,
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Confirm',
+                              style: GoogleFonts.dmSans(
+                                color: AppColor.mainColor,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
                         ),
                       )
-                    ],
-                  ),
+                    ]),
+                    SizedBox(
+                      height: 20.h,
+                    )
+                  ],
                 ),
               ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Btubutton(
-                heightController: heightController,
-                widthController: widtController,
-                amount: amount,
-                polyLine: polyLine,
-                boundNe: boundNe,
-                boundSw: boundSw,
-                distance: distance,
-                duration: duration,
-                startLocationLat: startLocationLat,
-                startLocationLon: startLocationLng,
-                endLocationLat: endLocationLat,
-                endLocationLon: endLocationLng,
-                approxSizeController: approxSizeController,
-                approxWeightController: approxWeightController,
-                pickUpController: pickUpController,
-                dropOffController: dropOffController,
-                discriptionController: disController,
-              ),
-              SizedBox(
-                height: 20.h,
-              )
-            ],
-          ),
-        ),
-      ),
+            ),
     );
-  }
-}
-
-class Btubutton extends StatelessWidget {
-  final int amount;
-  final String distance;
-  final String duration;
-  final boundNe;
-  final boundSw;
-  final String polyLine;
-  final double startLocationLat;
-  final double startLocationLon;
-  final double endLocationLat;
-  final double endLocationLon;
-  final TextEditingController approxSizeController;
-  final TextEditingController approxWeightController;
-  final TextEditingController heightController;
-  final TextEditingController widthController;
-  final TextEditingController pickUpController;
-  final TextEditingController dropOffController;
-  final TextEditingController discriptionController;
-  Btubutton({
-    Key? key,
-    required this.heightController,
-    required this.widthController,
-    required this.amount,
-    required this.distance,
-    required this.duration,
-    required this.boundNe,
-    required this.boundSw,
-    required this.polyLine,
-    required this.startLocationLat,
-    required this.startLocationLon,
-    required this.endLocationLat,
-    required this.endLocationLon,
-    required this.approxSizeController,
-    required this.approxWeightController,
-    required this.pickUpController,
-    required this.dropOffController,
-    required this.discriptionController,
-  }) : super(key: key);
-
-  final CustomerController userController = Get.put(CustomerController());
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(children: [
-      GestureDetector(
-        onTap: () async {
-          String token = await Storage.getToken();
-          showDialog(
-            barrierColor: AppColor.whiteColor.withOpacity(0.2),
-            barrierDismissible: false,
-            context: context,
-            builder: (ctx) => BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: 2.0,
-                sigmaY: 2.0,
-              ),
-              child: ScheduleAlertDialog(
-                token: token,
-                email: CustomersUserModel.email!,
-                boundNe: boundNe,
-                boundSw: boundSw,
-                polyLine: polyLine,
-                weight: int.parse(approxWeightController.text),
-                height: int.parse(heightController.text),
-                distance: distance,
-                time: duration,
-                size: approxSizeController.text,
-                width: widthController.text,
-                price: amount.toString(),
-                userName: CustomersUserModel.name!,
-                pickupAdrress: pickUpController.text,
-                pickupLat: startLocationLat,
-                pickupLon: startLocationLon,
-                dropoffAdress: dropOffController.text,
-                dropoffLat: endLocationLat,
-                dropoffLon: endLocationLon,
-                isSchedule: false,
-                discription: discriptionController.text,
-              ),
-            ),
-          );
-        },
-        child: Text(
-          'Schedule',
-          style: GoogleFonts.dmSans(
-            color: AppColor.whiteColor,
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ),
-      Spacer(),
-      GestureDetector(
-        onTap: () async {
-          String token = await Storage.getToken();
-
-          var package = await userController.createPackage(
-            polyLine: polyLine,
-            boundNe: boundNe,
-            boundSw: boundSw,
-            weight: int.parse(approxWeightController.text),
-            height: int.parse(heightController.text),
-            size: int.parse(approxSizeController.text),
-            width: int.parse(widthController.text),
-            price: amount.toString(),
-            distance: distance,
-            time: duration,
-            userName: CustomersUserModel.name!,
-            pickupAdrress: pickUpController.text,
-            pickupLat: startLocationLat.toString(),
-            pickupLon: startLocationLon.toString(),
-            dropoffAdress: dropOffController.text,
-            dropoffLat: endLocationLat.toString(),
-            dropoffLon: endLocationLon.toString(),
-            isSchedule: false,
-            discription: discriptionController.text,
-          );
-          final String id = package['data']['id'];
-          if (kDebugMode) {
-            print("packageID $id");
-          }
-          Get.to(() => SearchingDispatcher(
-                token: token,
-                name: CustomersUserModel.name!,
-                email: CustomersUserModel.name!,
-                discription: discriptionController.text,
-                boundNe: boundNe,
-                boundSw: boundSw,
-                polyLine: polyLine,
-                packageId: id,
-                distance: distance,
-                price: amount.toString(),
-                time: duration,
-                dropOffLocation: LatLng(endLocationLat, endLocationLon),
-                pickUpLocation: LatLng(startLocationLat, startLocationLon),
-              ));
-          if (kDebugMode) {
-            print(startLocationLat);
-            print(endLocationLon);
-            print(endLocationLat);
-            print(duration);
-            print(amount);
-            print(duration);
-          }
-        },
-        child: Container(
-          height: 45.h,
-          width: 202.w,
-          decoration: BoxDecoration(
-            color: AppColor.whiteColor,
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Center(
-            child: Text(
-              'Confirm',
-              style: GoogleFonts.dmSans(
-                color: AppColor.mainColor,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-        ),
-      )
-    ]);
   }
 }

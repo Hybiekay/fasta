@@ -8,6 +8,11 @@ class Storage {
   static const _keyStatus = "401";
   static const _keyOtp = "4001";
 
+  static Future CustomerlogOut() async {
+    await _secureStorage.delete(key: _keydata);
+    await _secureStorage.delete(key: _keyname);
+  }
+
   static Future saveToken(String token) async {
     await _secureStorage.write(key: _keyValue, value: token);
   }

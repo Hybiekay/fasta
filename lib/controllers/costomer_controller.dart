@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:ziklogistics/Apis/bank_api.dart';
@@ -8,18 +9,21 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class CustomerController extends GetxController {
   final UserApiController _apiController = UserApiController();
+  bool state = false;
 
   Future<void> loginUser(String email, String phoneNumber) async {
     try {
-      await _apiController.signUCostumer(
+      var data = await _apiController.signUCostumer(
           email: email,
           phoneNumber: phoneNumber,
           month: "${DateTime.now().month}",
           year: "${DateTime.now().year}");
+      return data;
     } catch (e) {
+      final eror = json.decode(e.toString());
       Get.snackbar(
         'Error',
-        e.toString(),
+        eror["message"],
         snackPosition: SnackPosition.BOTTOM,
       );
     }
@@ -27,14 +31,14 @@ class CustomerController extends GetxController {
 
   Future getOtp({required String code, required String phoneNumber}) async {
     try {
-      await _apiController.verifyOtp(phoneNumber: phoneNumber, code: code);
+      final user =
+          await _apiController.verifyOtp(phoneNumber: phoneNumber, code: code);
       if (kDebugMode) {
         print("contoller: $code");
       }
+      return user;
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+      Get.snackbar(e.toString(), e.toString());
     }
   }
 
@@ -75,6 +79,7 @@ class CustomerController extends GetxController {
     String scheduledTime = "isNotSchedule",
     String scheduleddate = "isNotSchedule",
   }) async {
+    state = true;
     try {
       final package = await _apiController.sendAPackage(
           polyLine: polyLine,
@@ -100,8 +105,11 @@ class CustomerController extends GetxController {
           scheduledTime: scheduledTime,
           month: "${DateTime.now().month}",
           year: "${DateTime.now().year}");
+      state = false;
       return package;
     } catch (e) {
+      state = false;
+
       if (kDebugMode) {
         print(e);
       }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import '../../models/models.dart';
 import '../../controllers/controllers.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:ziklogistics/notification/notification.dart';
@@ -93,14 +94,31 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
+                          String yourToken = await Storage.getToken();
+                          Map<String, dynamic> decodedToken =
+                              JwtDecoder.decode(yourToken);
+                          log(decodedToken.toString());
+
+                          /*
+  If the token has a valid format, you will get a Map<String, dynamic>
+  Your decoded token can look like:
+  {
+     "sub": "1234567890",
+     "name": "Gustavo",
+     "iat": 1516239022,
+     "exp": 1516239022,
+     "randomKey": "something else"
+  }
+  */
+
                           Notify.sendNotice(
                               title: "Welcome",
                               body: "Wecome to Fasta Logistic App ");
                           String? allData = await Storage.getData();
                           if (allData != null) {
-                            custormerName = json.decode(allData);
+                            log('Secure storage has data: $allData');
+                            custormerData = json.decode(allData);
 
-                            log(CustomersUserModel.name!);
                             if (CustomersUserModel.name == null &&
                                 CustomersModel.token == null) {
                               Get.to(() => const OnBoardPages());
@@ -143,15 +161,17 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
+                          Get.to(() => const DispatcherLoginScreen());
                           var allData = await DStorage.getDriverData();
                           if (allData != null) {
                             log('Secure storage has data: $allData');
+                            DispatcherLoginScreen();
                             driverData = json.decode(allData);
 
-                            if (DriverUserModel.email != null &&
-                                DriverUserModel.name != null &&
-                                DriverUserModel.bvn != null &&
-                                DriverModel.token == null) {
+                            if (DriverUserModel.email == null &&
+                                DriverUserModel.name == null &&
+                                DriverUserModel.bvn == null &&
+                                DriverModel.token != null) {
                               Get.to(() => const DispatcherLoginScreen());
                             } else if (DriverUserModel.nin != null &&
                                 DriverUserModel.name != null &&

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/storage.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
+import 'package:ziklogistics/controllers/global_token.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 // ignore_for_file: file_names
@@ -32,7 +33,7 @@ class UserApiController extends GetxController {
       Storage.saveCustomerOtp(otp);
       return data;
     } else {
-      throw Exception('Failed to login user');
+      throw response.body;
     }
   }
 
@@ -45,7 +46,6 @@ class UserApiController extends GetxController {
       "phone": phoneNumber,
       "code": code,
     });
-    Storage.saveData(response.body);
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
@@ -57,6 +57,7 @@ class UserApiController extends GetxController {
 
       final data = json.decode(response.body);
       Storage.saveToken(data["token"]);
+      GlobalStorage.saveToken(data["token"]);
       return data;
     } else {
       if (kDebugMode) {
@@ -64,7 +65,7 @@ class UserApiController extends GetxController {
         print(response.body);
       }
 
-      throw Exception('Failed to login user');
+      throw Exception();
     }
   }
 
@@ -90,16 +91,18 @@ class UserApiController extends GetxController {
         print(response.body);
         print(response.statusCode);
       }
+     
       final data = json.decode(response.body);
-
       final name = data["name"];
       Storage.savename(name);
 
-      return response.statusCode;
+      return data;
     } else {
       if (kDebugMode) {
         print("error Occur");
       }
+
+      throw Exception();
     }
   }
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../constants/app_color.dart';
@@ -9,6 +11,7 @@ import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/views/DeliveryH/delivery_history.dart';
+
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 class Body extends StatefulWidget {
@@ -28,6 +31,13 @@ class _BodyState extends State<Body> {
 
   getName() async {
     name = await Storage.getname();
+    var data = await Storage.getData();
+    log("this is Drawer data $data");
+    if (data != null) {
+      var ndata = json.decode(data);
+      final auth = AuthResponse.fromJson(ndata);
+      log(auth.user.name);
+    }
   }
 
   @override
@@ -131,7 +141,8 @@ class _BodyState extends State<Body> {
                 ),
               ),
               ListTile(
-                onTap: () {
+                onTap: () async {
+                  await Storage.CustomerlogOut();
                   Get.offAll(() => const LoginScreen());
                 },
                 leading: Image.asset(

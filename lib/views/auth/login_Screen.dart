@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../controllers/storage.dart';
 import '../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/auth/verification_screen.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
@@ -25,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
+    Storage.CustomerlogOut();
     final favoriteCountries = ['NG', "US", 'CA'];
     countryPicker = FlCountryCodePicker(
       favorites: favoriteCountries,
@@ -33,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
         color: AppColor.mainColor,
       ),
     );
+
     super.initState();
   }
 

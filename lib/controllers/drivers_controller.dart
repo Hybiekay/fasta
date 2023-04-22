@@ -5,6 +5,7 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class DriverController extends GetxController {
   final DriverApiController _apiController = DriverApiController();
+  bool state = false;
 
   Future loginUser(String email, String phoneNumber) async {
     try {
@@ -39,22 +40,26 @@ class DriverController extends GetxController {
   Future updateName({
     required String name,
     required String phoneNumber,
-    driverAccName,
-    driverAccNum,
-    driverBank,
-    paymentOption,
+    required String driverAccName,
+    required String driverAccNum,
+    required String driverBank,
+    required String paymentOption,
   }) async {
+    state = true;
     try {
-      await _apiController.updateDriverName(
+      final data = await _apiController.updateDriverName(
         phoneNumber: phoneNumber,
         name: name,
         accountName: driverAccName,
         accountNumber: driverAccNum,
-        bankNam: driverBank,
+        bankName: driverBank,
         paymentOption: paymentOption,
       );
+      state = false;
+      return data;
     } catch (e) {
       if (kDebugMode) {
+        state = false;
         print(e.toString());
       }
     }
@@ -68,6 +73,7 @@ class DriverController extends GetxController {
     required File ninImage,
     required File dobImage,
   }) async {
+    state = true;
     try {
       final data = await _apiController.driverUpload(
         bvn: bvn,
@@ -157,13 +163,6 @@ class DriverController extends GetxController {
       }
     }
   }
-
-
-
-
-
-
-
 
   Future getHistory({required String status}) async {
     try {

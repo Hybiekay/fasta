@@ -302,6 +302,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "jwt_decoder",
+      "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/jwt_decoder-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "logging",
       "rootUri": "file:///C:/Users/eulogia/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.1.1",
       "packageUri": "lib/",
@@ -506,7 +512,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-19T18:36:36.092278Z",
+  "generated": "2023-04-21T09:12:58.864062Z",
   "generator": "pub",
   "generatorVersion": "2.19.5"
 }

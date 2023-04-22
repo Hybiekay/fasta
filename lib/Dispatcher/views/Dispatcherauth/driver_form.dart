@@ -5,6 +5,7 @@ import '../../../controllers/drivers_controller.dart';
 import '../../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/components/pick_image.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 
 class DriverForm extends StatefulWidget {
   final String name;
@@ -213,7 +214,7 @@ class _DriverFormState extends State<DriverForm> {
                                 setState(() {
                                   isloading = true;
                                 });
-                                await driverController.uplold(
+                                final data = await driverController.uplold(
                                     name: fullNameCon.text,
                                     nin: ninCon.text,
                                     bvn: bvNumCon.text,
@@ -223,8 +224,14 @@ class _DriverFormState extends State<DriverForm> {
                                 setState(() {
                                   isloading = false;
                                 });
-                                Get.to(() => const DispatcherHome(),
-                                    arguments: {DriverUserModel});
+                                successShowDialod(
+                                    context: context,
+                                    onPressed: () {
+                                      Get.offAll(() => DispatcherLoginScreen());
+                                    },
+                                    value:
+                                        'Your registration is now complete, and you can proceed to log in as a Dispatcher.',
+                                    bottonValue: "Login");
                               }
                             },
                             value: "Complete")

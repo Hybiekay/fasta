@@ -6,9 +6,7 @@ import '../../constants/app_color.dart';
 import '../../constants/app_images.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../global_components/button_component.dart';
-import 'package:ziklogistics/chat/ChatModel/message.dart';
 import 'package:ziklogistics/models/customers_model.dart';
-import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/notification/notification.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
@@ -47,17 +45,6 @@ class _CostomerHomeBodyState extends State<CostomerHomeBody> {
 
       if (data['payload']["receiverEmail"] == CustomersUserModel.email) {
         log("adding Message");
-        Message message = Message(
-          id: "uju",
-          createdAt: DateTime.parse(data["data"]["createdAt"]),
-          updatedAt: DateTime.parse(data["data"]["updatedAt"]),
-          message: data['payload']["message"],
-          sender: data['payload']["sender"],
-          receiver: data['payload']["receiver"],
-          senderEmail: data['payload']["senderEmail"],
-          receiverEmail: data['payload']["receiverEmail"],
-          messageID: data["data"]["messageID"],
-        );
         Notify.sendNotice(
             title: "${data['payload']["receiver"]}",
             body: "${data['payload']["message"]}");

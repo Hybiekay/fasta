@@ -7,6 +7,7 @@ import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherdrawer/btn_comp.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherH/delivery_history.dart';
 // inore_for_file: prefer_const_literals_to_create_immutables
 
@@ -168,6 +169,10 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                   width: 20.w,
                   height: 20.h,
                 ),
+                onTap: () {
+                  DStorage.driverlogOut();
+                  Get.offAll(() => DispatcherLoginScreen());
+                },
                 title: Text(
                   'Sign Out',
                   style: GoogleFonts.dmSans(

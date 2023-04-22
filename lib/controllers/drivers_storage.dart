@@ -7,8 +7,9 @@ class DStorage {
   static const _keyComp = "Dcomplete";
   static const _keyStatus = "401";
   static const _keyOtp = "4080";
-  static Future clear(String token) async {
-    await _secureStorage.deleteAll();
+
+  static Future driverlogOut() async {
+    await _secureStorage.delete(key: _keydata);
   }
 
   static Future saveDriverToken(String token) async {

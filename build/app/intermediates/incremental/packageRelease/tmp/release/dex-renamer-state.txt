@@ -1,4 +1,4 @@
-#Thu Apr 20 23:32:07 WAT 2023
+#Fri Apr 21 01:17:27 WAT 2023
 base.0=C\:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

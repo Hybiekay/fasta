@@ -3,7 +3,6 @@ import 'request_card.dart';
 import 'package:get/get.dart';
 import '../../../controllers/controllers.dart';
 import 'package:ziklogistics/models/models.dart';
-import 'package:ziklogistics/chat/ChatModel/message.dart';
 import 'package:ziklogistics/notification/notification.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:ziklogistics/global_components/ziklogistics.dart';
@@ -53,17 +52,6 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
 
       if (data['payload']["receiverEmail"] == CustomersUserModel.email) {
         log("adding Message");
-        Message message = Message(
-          id: "uju",
-          createdAt: DateTime.parse(data["data"]["createdAt"]),
-          updatedAt: DateTime.parse(data["data"]["updatedAt"]),
-          message: data['payload']["message"],
-          sender: data['payload']["sender"],
-          receiver: data['payload']["receiver"],
-          senderEmail: data['payload']["senderEmail"],
-          receiverEmail: data['payload']["receiverEmail"],
-          messageID: data["data"]["messageID"],
-        );
         Notify.sendNotice(
             title: "${data['payload']["receiver"]}",
             body: "${data['payload']["message"]}");

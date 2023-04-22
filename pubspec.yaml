@@ -43,6 +43,7 @@ dependencies:
   socket_io_client: ^2.0.1
   get_storage: ^2.1.1
   awesome_notifications: ^0.7.4+1
+  jwt_decoder: ^2.0.1
 
 
 dev_dependencies:
