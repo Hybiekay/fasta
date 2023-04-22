@@ -23,6 +23,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
   String? phoneNumber;
   CountryCode? countryCode;
   bool inCorrect = false;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -49,7 +50,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.mainColor,
-      body: driverController.state
+      body: isLoading
           ? Center(
               child: CircularProgressIndicator(),
             )
@@ -167,7 +168,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                           height: MediaQuery.of(context).size.height * 0.10,
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.85,
+                          width: MediaQuery.of(context).size.width,
                           height: 45,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -192,13 +193,13 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                                   });
 
                                   setState(() {
-                                    driverController.state = true;
+                                    isLoading = true;
                                   });
                                   driverController.loginUser(
                                       emailController.text,
                                       formattedPhoneNumber!);
                                   setState(() {
-                                    driverController.state = false;
+                                    isLoading = false;
                                   });
 
                                   Get.to(() => DispatcherVerificationScreen(

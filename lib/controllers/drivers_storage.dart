@@ -8,6 +8,10 @@ class DStorage {
   static const _keyStatus = "401";
   static const _keyOtp = "4080";
 
+  static Future logALLOut() async {
+    await _secureStorage.deleteAll();
+  }
+
   static Future driverlogOut() async {
     await _secureStorage.delete(key: _keydata);
   }

@@ -13,17 +13,16 @@ class CustomerController extends GetxController {
 
   Future<void> loginUser(String email, String phoneNumber) async {
     try {
-      var data = await _apiController.signUCostumer(
+      var data = await _apiController.signUpCostumer(
           email: email,
           phoneNumber: phoneNumber,
           month: "${DateTime.now().month}",
           year: "${DateTime.now().year}");
       return data;
     } catch (e) {
-      final eror = json.decode(e.toString());
       Get.snackbar(
         'Error',
-        eror["message"],
+        e.toString(),
         snackPosition: SnackPosition.BOTTOM,
       );
     }

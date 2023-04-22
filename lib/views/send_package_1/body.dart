@@ -237,9 +237,7 @@ class _BodyState extends State<Body> {
                         onTap: () async {
                           var name = await Storage.getname();
 
-                          var data = await Storage.getData();
-                    
-                          log(data.toString());
+                          log("${CustomersUserModel.name}");
                           if (approxSizeController.text.isEmpty) {
                             Get.snackbar("Size", "Input Size is requied");
                           } else if (approxWeightController.text.isEmpty) {
@@ -262,7 +260,7 @@ class _BodyState extends State<Body> {
                             Get.snackbar("User Name ",
                                 "You name is not on this App try and relog in");
                           } else {
-                            String token = await Storage.getToken();
+                            var token = await Storage.getToken();
 
                             print("all done");
                             print(CustomersUserModel.name ?? name);
@@ -278,7 +276,7 @@ class _BodyState extends State<Body> {
                                   sigmaY: 2.0,
                                 ),
                                 child: ScheduleAlertDialog(
-                                  token: token,
+                                  token: token ?? "",
                                   email: CustomersUserModel.email!,
                                   boundNe: boundNe,
                                   boundSw: boundSw,
@@ -319,10 +317,8 @@ class _BodyState extends State<Body> {
                       GestureDetector(
                         onTap: () async {
                           String? Iname = await Storage.getname();
+                          log("${CustomersUserModel.name}");
 
-                          var data = await Storage.getData();
-                          if (data != null) custormerData = json.decode(data);
-                          log(data.toString());
                           if (approxSizeController.text.isEmpty) {
                             Get.snackbar("Size", "Input Size is requied");
                           } else if (approxWeightController.text.isEmpty) {
@@ -351,7 +347,7 @@ class _BodyState extends State<Body> {
                             setState(() {
                               userController.state = true;
                             });
-                            String token = await Storage.getToken();
+                            var token = await Storage.getToken();
 
                             var package = await userController.createPackage(
                               polyLine: polyLine,
@@ -383,7 +379,7 @@ class _BodyState extends State<Body> {
                               print("packageID $id");
                             }
                             Get.to(() => SearchingDispatcher(
-                                  token: token,
+                                  token: token ?? '',
                                   name: CustomersUserModel.name ?? Iname ?? "",
                                   email: CustomersUserModel.email!,
                                   discription: disController.text,

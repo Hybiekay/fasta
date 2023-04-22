@@ -94,12 +94,13 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.whiteColor),
                         onPressed: () async {
-                          String yourToken = await Storage.getToken();
-                          Map<String, dynamic> decodedToken =
-                              JwtDecoder.decode(yourToken);
-                          log(decodedToken.toString());
+                          var yourToken = await Storage.getToken();
+                          if (yourToken != null) {
+                            Map<String, dynamic> decodedToken =
+                                JwtDecoder.decode(yourToken);
+                            log(decodedToken.toString());
 
-                          /*
+                            /*
   If the token has a valid format, you will get a Map<String, dynamic>
   Your decoded token can look like:
   {
@@ -111,27 +112,29 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
   }
   */
 
-                          Notify.sendNotice(
-                              title: "Welcome",
-                              body: "Wecome to Fasta Logistic App ");
-                          String? allData = await Storage.getData();
-                          if (allData != null) {
-                            log('Secure storage has data: $allData');
-                            custormerData = json.decode(allData);
+                            Notify.sendNotice(
+                                title: "Welcome",
+                                body: "Wecome to Fasta Logistic App ");
+                            String? allData = await Storage.getData();
+                            if (allData != null) {
+                              log('Secure storage has data: $allData');
+                              custormerData = json.decode(allData);
 
-                            if (CustomersUserModel.name == null &&
-                                CustomersModel.token == null) {
+                              if (CustomersUserModel.name == null &&
+                                  CustomersModel.token == null) {
+                                Get.to(() => const OnBoardPages());
+                              } else if (CustomersModel.token != null &&
+                                  CustomersUserModel.name == null) {
+                                Get.to(() => const LoginScreen());
+                              } else if (CustomersModel.token != null &&
+                                  CustomersUserModel.name != null) {
+                                Get.offAll(() => const CostomerHome());
+                              }
+                            } else {
                               Get.to(() => const OnBoardPages());
-                            } else if (CustomersModel.token != null &&
-                                CustomersUserModel.name == null) {
-                              Get.to(() => const LoginScreen());
-                            } else if (CustomersModel.token != null &&
-                                CustomersUserModel.name != null) {
-                              Get.offAll(() => const CostomerHome());
                             }
-                          } else {
-                            Get.to(() => const OnBoardPages());
                           }
+                          Get.to(() => const OnBoardPages());
                         },
                         child: const Text(
                           'Sign up as a Customer',
@@ -165,8 +168,8 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                           var allData = await DStorage.getDriverData();
                           if (allData != null) {
                             log('Secure storage has data: $allData');
-                            DispatcherLoginScreen();
-                            driverData = json.decode(allData);
+
+                            driverData = allData;
 
                             if (DriverUserModel.email == null &&
                                 DriverUserModel.name == null &&

@@ -18,7 +18,7 @@ class DriverApiController extends GetxController {
     final singnInUrl = Uri.parse("${AppApis.endPoint}auth/signin-driver");
     final response = await http.post(singnInUrl, body: {
       "phone": phoneNumber,
-      "email": email,
+      "email": email.toLowerCase(),
       "month": month,
       "year": year
     });

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
@@ -55,8 +54,8 @@ class _MyAppState extends State<MyApp> {
           var allData = await DStorage.getDriverData();
           if (allData != null) {
             log('Secure storage has data: $allData');
-            DispatcherLoginScreen();
-            driverData = json.decode(allData);
+
+            driverData = allData;
 
             if (DriverUserModel.name == null && DriverUserModel.bvn == null) {
               Get.to(() => const DispatcherLoginScreen());
@@ -70,26 +69,27 @@ class _MyAppState extends State<MyApp> {
             Get.offAll(() => const DispatcherOnBoardPages());
           }
         } else if (decodedToken["role"] == "customer") {
-          String yourToken = await Storage.getToken();
-          Map<String, dynamic> decodedToken = JwtDecoder.decode(yourToken);
-          log(decodedToken.toString());
+          var yourToken = await Storage.getToken();
+          if (yourToken != null) {
+            Map<String, dynamic> decodedToken = JwtDecoder.decode(yourToken);
+            log(decodedToken.toString());
 
-          Notify.sendNotice(
-              title: "Welcome", body: "Wecome to Fasta Logistic App ");
-          String? allData = await Storage.getData();
-          log('Secure storage has data: $allData');
-          if (allData != null) {
-            log('Secure storage has data: $allData');
-            custormerData = json.decode(allData);
+            Notify.sendNotice(
+                title: "Welcome", body: "Wecome to Fasta Logistic App ");
 
-            if (CustomersUserModel.name != null &&
-                CustomersUserModel.email != null) {
-              Get.to(() => const CostomerHome());
+            custormerData = await Storage.getData();
+            if (custormerData != null) {
+              log('Secure storage has data: is not null $custormerData');
+
+              if (CustomersUserModel.name != null &&
+                  CustomersUserModel.email != null) {
+                Get.to(() => const CostomerHome());
+              } else {
+                Get.to(() => const LoginScreen());
+              }
             } else {
               Get.to(() => const LoginScreen());
             }
-          } else {
-            Get.to(() => const LoginScreen());
           }
         }
       } else {
@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
       }
     } else {
       log("you Have not Login");
-      Get.to(() => OnBoardPages());
+      Get.to(() => ChoiceScreen());
     }
   }
 
@@ -122,6 +122,7 @@ class _MyAppState extends State<MyApp> {
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
+            color: AppColor.mainColor,
             title: 'Fasta',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(),

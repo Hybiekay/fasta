@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
+import 'package:ziklogistics/models/driver_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
@@ -181,6 +182,9 @@ class _DispatcherVerificationScreenState
                                   } else {
                                     if (value.isEmpty) {
                                       FocusScope.of(context).previousFocus();
+                                      setState(() {
+                                        isInCorrect = false;
+                                      });
                                     }
                                   }
                                 },
@@ -230,10 +234,7 @@ class _DispatcherVerificationScreenState
                                           "$otp is the otp, $code is your input");
                                     }
 
-                                    final res = await driverController.getOtp(
-                                        code: code!,
-                                        phoneNumber: widget.phoneNumber);
-                                    print("this from here to user$res");
+                                    driverData = await DStorage.getDriverData();
                                     var storage =
                                         await DStorage.getDriverData();
 
@@ -241,7 +242,7 @@ class _DispatcherVerificationScreenState
                                     if (storage != null) {
                                       var data = json.decode(storage);
                                       log("this the Storate$storage");
-                                      log("this the Storate${data}");
+                                      log("this the ate${data}");
                                       if (data["user"]["name"] == null) {
                                         Get.off(() => DRegisterScreen(
                                               phoneNum: widget.phoneNumber,
@@ -322,13 +323,12 @@ class _DispatcherVerificationScreenState
                               con3.clear();
                               con4.clear();
                               setState(() {
-                                driverController.state = true;
+                                isLoading = true;
                               });
-
                               await driverController.loginUser(
                                   widget.email, widget.phoneNumber);
                               setState(() {
-                                driverController.state = false;
+                                isLoading = false;
                               });
                             },
                             child: const Text(

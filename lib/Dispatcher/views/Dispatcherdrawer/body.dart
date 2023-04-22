@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,9 +7,11 @@ import 'package:ziklogistics/models/driver_model.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/views/onBoardScreen/choiceScreen.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherdrawer/btn_comp.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherH/delivery_history.dart';
+
 // inore_for_file: prefer_const_literals_to_create_immutables
 
 class DispatcherBody extends StatefulWidget {
@@ -26,8 +29,8 @@ class _DispatcherBodyState extends State<DispatcherBody> {
     super.initState();
   }
 
-  getData() {
-    driverData = DStorage.getDriverData();
+  getData() async {
+    log(driverData);
   }
 
   @override
@@ -69,14 +72,16 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: isAprroved
-                              ? AppColor.mainColor
-                              : AppColor.errorColor),
+                          color: DriverUserModel.status == "PENDING"
+                              ? AppColor.errorColor
+                              : AppColor.mainColor),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Center(
                           child: Text(
-                            "Approved",
+                            DriverUserModel.status == "PENDING"
+                                ? "PENDING"
+                                : "Approved",
                             style: GoogleFonts.dmSans(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.bold,
@@ -175,6 +180,25 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                 },
                 title: Text(
                   'Sign Out',
+                  style: GoogleFonts.dmSans(
+                    color: AppColor.whiteColor,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Image.asset(
+                  AppImages.referAFriendImg,
+                  width: 20.w,
+                  height: 20.h,
+                ),
+                onTap: () {
+                  DStorage.logALLOut();
+                  Get.offAll(() => ChoiceScreen());
+                },
+                title: Text(
+                  'Sign Out And Log As Customer',
                   style: GoogleFonts.dmSans(
                     color: AppColor.whiteColor,
                     fontSize: 15.sp,

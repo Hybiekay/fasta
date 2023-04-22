@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../constants/app_color.dart';
@@ -10,6 +8,7 @@ import 'package:ziklogistics/models/customers_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ziklogistics/views/onBoardScreen/choiceScreen.dart';
 import 'package:ziklogistics/views/DeliveryH/delivery_history.dart';
 
 // ignore_for_file: prefer_const_literals_to_create_immutables
@@ -29,16 +28,7 @@ class _BodyState extends State<Body> {
     super.initState();
   }
 
-  getName() async {
-    name = await Storage.getname();
-    var data = await Storage.getData();
-    log("this is Drawer data $data");
-    if (data != null) {
-      var ndata = json.decode(data);
-      final auth = AuthResponse.fromJson(ndata);
-      log(auth.user.name);
-    }
-  }
+  getName() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +142,25 @@ class _BodyState extends State<Body> {
                 ),
                 title: Text(
                   'Log Out',
+                  style: GoogleFonts.dmSans(
+                    color: AppColor.whiteColor,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () async {
+                  await DStorage.logALLOut();
+                  Get.offAll(() => const ChoiceScreen());
+                },
+                leading: Image.asset(
+                  AppImages.referAFriendImg,
+                  width: 20.w,
+                  height: 20.h,
+                ),
+                title: Text(
+                  'Log Out And Login As Dispatcher',
                   style: GoogleFonts.dmSans(
                     color: AppColor.whiteColor,
                     fontSize: 15.sp,

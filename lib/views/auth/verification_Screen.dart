@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/controllers/storage.dart';
+import 'package:ziklogistics/models/customers_model.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/auth/registration_Screen.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
@@ -220,13 +221,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                         code: code,
                                         phoneNumber: widget.phoneNumber);
                                     print("this from here to user$res");
-                                    var storage = await Storage.getData();
+                                  custormerData= await Storage.getData();
 
-                                    print("this from here to user$storage");
-                                    if (storage != null) {
-                                      var data = json.decode(storage);
-                                      log("this the Storate$storage");
-                                      log("this the Storate${data}");
+                                    print("this from here to user$custormerData");
+                                    if (custormerData != null) {
+                                      var data = json.decode(custormerData);
+                                      log("this the Storate$custormerData");
+                                      log("this the decoded${data}");
                                       if (data["user"]["name"] == null) {
                                         Get.off(() => CustomerRegisterScreen(
                                               phonenum: widget.phoneNumber,

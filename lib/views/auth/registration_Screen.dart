@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:ziklogistics/models/models.dart';
-import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
@@ -108,11 +106,10 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                             print("This is ul response $response");
 
                             if (response["name"] != null) {
-                              // Storage.savename(response["name"]);
                               successShowDialod(
                                   context: context,
                                   onPressed: () {
-                                    Get.offAll(() => LoginScreen());
+                                    Get.off(() => LoginScreen());
                                   },
                                   value:
                                       ' "Your registration has been successfully completed, and you may now log in as a customer."',

@@ -17,11 +17,11 @@ class Storage {
     await _secureStorage.write(key: _keyValue, value: token);
   }
 
-  static Future<String> getToken() async {
+  static Future<String?> getToken() async {
     String? res = await _secureStorage.read(
       key: _keyValue,
     );
-    return res!;
+    return res;
   }
 
   static Future saveData(String response) async {

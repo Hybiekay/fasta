@@ -1,31 +1,33 @@
+import 'dart:convert';
 
 var driverData;
 
+var data = json.decode(driverData);
+
 class DriverModel {
-  static String? token = driverData["token"];
+  static String? token = data["token"];
 }
 
 class DriverUserModel {
-  static String id = driverData["user"]["id"];
-  static String? name = driverData["user"]["name"];
-  static String? email = driverData["user"]["email"];
-  static String? status = driverData["user"]["status"];
-  static String? phone = driverData["user"]["phone"];
-  static double? latitude = driverData["user"]["state"];
-  static double? longitude = driverData["user"]["id"];
-  static String? role = driverData["user"]["id"];
-  static String? accountNumber = driverData["user"]["accountNumber"];
-  static String? bankName = driverData["user"]["bankName"];
-  static String? accountName = driverData["user"]["accountName"];
-  static String? paymentOption = driverData["user"]["paymentOption"];
-  static String? bvn = driverData["user"]["bvn"];
-  static String? nin = driverData["user"]["nin"];
-  static String? dobImage = driverData["user"]["dobImage"];
-  static String? dobImageId = driverData["user"]["dobImageId"];
-  static String? ninImage = driverData["user"]["ninImage"];
-  static String? ninImageId = driverData["user"]["driverLicenseImage"];
-  static String? driverLicenseImage =
-      driverData["user"]["driverLicenseImageId"];
+  static String id = data["user"]["id"];
+  static String? name = data["user"]["name"];
+  static String? email = data["user"]["email"];
+  static String? status = data["user"]["status"];
+  static String? phone = data["user"]["phone"];
+  static double? latitude = data["user"]["state"];
+  static double? longitude = data["user"]["id"];
+  static String? role = data["user"]["id"];
+  static String? accountNumber = data["user"]["accountNumber"];
+  static String? bankName = data["user"]["bankName"];
+  static String? accountName = data["user"]["accountName"];
+  static String? paymentOption = data["user"]["paymentOption"];
+  static String? bvn = data["user"]["bvn"];
+  static String? nin = data["user"]["nin"];
+  static String? dobImage = data["user"]["dobImage"];
+  static String? dobImageId = data["user"]["dobImageId"];
+  static String? ninImage = data["user"]["ninImage"];
+  static String? ninImageId = data["user"]["driverLicenseImage"];
+  static String? driverLicenseImage = data["user"]["driverLicenseImageId"];
   static bool? isCompletedRegistration =
-      driverData["user"]["isCompletedRegistration"];
+      data["user"]["isCompletedRegistration"];
 }

@@ -42,7 +42,7 @@ class BankApi {
   }
 
   static Future getCards() async {
-    String token = await Storage.getToken();
+    var token = await Storage.getToken();
     final url = Uri.parse("${AppApis.endPoint}payment/get-cards");
     final response = await http.get(
       url,

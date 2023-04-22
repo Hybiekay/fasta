@@ -214,7 +214,7 @@ class _DriverFormState extends State<DriverForm> {
                                 setState(() {
                                   isloading = true;
                                 });
-                                final data = await driverController.uplold(
+                                await driverController.uplold(
                                     name: fullNameCon.text,
                                     nin: ninCon.text,
                                     bvn: bvNumCon.text,

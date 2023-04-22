@@ -9,7 +9,7 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 // ignore_for_file: file_names
 
 class UserApiController extends GetxController {
-  Future signUCostumer({
+  Future signUpCostumer({
     required String year,
     required String month,
     required String phoneNumber,
@@ -29,7 +29,7 @@ class UserApiController extends GetxController {
         print(response.statusCode);
         print(data["otp"]['data']['data']['token']);
       }
-      String otp = data["otp"]['data']['data']['token'];
+      var otp = data["otp"]['data']['data']['token'];
       Storage.saveCustomerOtp(otp);
       return data;
     } else {
@@ -73,7 +73,7 @@ class UserApiController extends GetxController {
     required String name,
     required String phoneNumber,
   }) async {
-    String token = await Storage.getToken();
+    var token = await Storage.getToken();
     final updateCostumerNameUrl =
         Uri.parse("${AppApis.endPoint}auth/update-name-customer");
     if (kDebugMode) {
@@ -130,7 +130,7 @@ class UserApiController extends GetxController {
       required boundNe,
       required boundSw,
       required String polyLine}) async {
-    String token = await Storage.getToken();
+    var token = await Storage.getToken();
 
     final createPackageUrl =
         Uri.parse("${AppApis.endPoint}customer/create-package");
@@ -188,7 +188,7 @@ class UserApiController extends GetxController {
   Future getCustomerHistory({
     required String status,
   }) async {
-    String token = await Storage.getToken();
+    var token = await Storage.getToken();
 
     final url =
         Uri.parse("${AppApis.endPoint}customer/history-grouped?status=$status");
@@ -207,7 +207,7 @@ class UserApiController extends GetxController {
   Future getCustomerGetPackage({
     required String packageId,
   }) async {
-    String token = await Storage.getToken();
+    var token = await Storage.getToken();
 
     final url = Uri.parse("${AppApis.endPoint}customer/get-package");
     final response = await http.post(url, headers: {
@@ -224,7 +224,7 @@ class UserApiController extends GetxController {
   }
 
   Future getCustomerListOfDelivery({required String status}) async {
-    String token = await Storage.getToken();
+    var token = await Storage.getToken();
 
     if (kDebugMode) {
       print(token);
@@ -249,7 +249,7 @@ class UserApiController extends GetxController {
   Future getGetPackage({
     required String packageId,
   }) async {
-    String token = await Storage.getToken();
+    var token = await Storage.getToken();
 
     final url =
         Uri.parse("${AppApis.endPoint}/customer/get-package/$packageId");

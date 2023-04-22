@@ -79,9 +79,9 @@ class _OngoinglistState extends State<Ongoinglist> {
                       data["paymentStatus"] == "PAID",
                   continuePressed: () async {
                     if (data["acceptedDriverId"] == null) {
-                      String token = await Storage.getToken();
+                      var token = await Storage.getToken();
                       Get.to(() => SearchingDispatcher(
-                            token: token,
+                            token: token ?? '',
                             name: data["name"],
                             email: data["user"]["email"],
                             boundNe: data["pickup_object"]["boundNe"],
@@ -103,29 +103,31 @@ class _OngoinglistState extends State<Ongoinglist> {
                             isSchedule: data["isScheduled"],
                           ));
                     } else if (data["paymentStatus"] == "PENDING") {
-                      String token = await Storage.getToken();
-                      Get.to(() => SearchingDispatcher(
-                            token: token,
-                            name: data["name"],
-                            email: data["name"],
-                            boundNe: data["pickup_object"]["boundNe"],
-                            boundSw: data["pickup_object"]["boundSw"],
-                            discription: data["description"],
-                            distance: data["distance"],
-                            packageId: data["id"],
-                            dropOffLocation: LatLng(
-                                double.parse(data["dropoff_lat"]),
-                                double.parse(data["dropoff_lon"])),
-                            pickUpLocation: LatLng(
-                                double.parse(data["pickup_lat"]),
-                                double.parse(data["pickup_lon"])),
-                            polyLine: data["pickup_object"]["polyLine"] ?? '',
-                            price: data["price"],
-                            time: data["duration"],
-                            dateTime:
-                                " ${data["scheduled_date"]} ${data["scheduled_time"]}",
-                            isSchedule: data["isScheduled"],
-                          ));
+                      var token = await Storage.getToken();
+                      if (token != null) {
+                        Get.to(() => SearchingDispatcher(
+                              token: token,
+                              name: data["name"],
+                              email: data["name"],
+                              boundNe: data["pickup_object"]["boundNe"],
+                              boundSw: data["pickup_object"]["boundSw"],
+                              discription: data["description"],
+                              distance: data["distance"],
+                              packageId: data["id"],
+                              dropOffLocation: LatLng(
+                                  double.parse(data["dropoff_lat"]),
+                                  double.parse(data["dropoff_lon"])),
+                              pickUpLocation: LatLng(
+                                  double.parse(data["pickup_lat"]),
+                                  double.parse(data["pickup_lon"])),
+                              polyLine: data["pickup_object"]["polyLine"] ?? '',
+                              price: data["price"],
+                              time: data["duration"],
+                              dateTime:
+                                  " ${data["scheduled_date"]} ${data["scheduled_time"]}",
+                              isSchedule: data["isScheduled"],
+                            ));
+                      }
 
                       // Get.off(() => CardChoice(
                       //       amount: data["price"],
@@ -138,7 +140,7 @@ class _OngoinglistState extends State<Ongoinglist> {
                     }
                   },
                   chatPressed: () async {
-                    String token = await Storage.getToken();
+                    var token = await Storage.getToken();
                     if (data["acceptedDriverId"] != null) {
                       Get.to(() => ChatScreen(
                             email: data["user"]["email"],
@@ -147,7 +149,7 @@ class _OngoinglistState extends State<Ongoinglist> {
                             senderName: data["name"],
                             receiverEmail: data["AcceptedDriver"]["email"],
                             receiverName: "${data["AcceptedDriver"]["name"]}",
-                            token: token,
+                            token: token ?? '',
                           ));
                     } else {
                       Get.snackbar("Notice", "Get Driver first!");
