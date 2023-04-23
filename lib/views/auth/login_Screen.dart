@@ -65,12 +65,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.2,
                     ),
-                    const Text(
+                    Text(
                       'Enter your mobile number',
                       style: TextStyle(
                         color: AppColor.whiteColor,
                         fontFamily: 'DM Sans',
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         letterSpacing: 0,
                         fontWeight: FontWeight.w700,
                         height: 1.1,
@@ -81,14 +81,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      height: 40.h,
+                      height: 45,
                       child: Row(
                         children: [
                           GestureDetector(
                             onTap: () {},
                             child: Container(
                               width: 80,
-                              height: 40.h,
+                              height: 45,
                               decoration: BoxDecoration(
                                   color: AppColor.whiteColor,
                                   borderRadius: BorderRadius.circular(10)),
@@ -109,8 +109,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: MediaQuery.of(context).size.width * 0.02,
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.height * 0.275.w,
-                            height: 40.h,
+                            width: MediaQuery.of(context).size.height * 0.303,
+                            height: 45,
                             decoration: BoxDecoration(
                                 color: AppColor.whiteColor,
                                 borderRadius: BorderRadius.circular(10)),
@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         hintStyle: GoogleFonts.dmSans(),
                                         prefixIcon: SizedBox(
                                           width: 60,
-                                          height: 40.h,
+                                          height: 45,
                                           child: Center(
                                             child: Text(
                                                 countryCode?.dialCode ?? '+1'),
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 20),
                     Container(
-                      height: 40.h,
+                      height: 45,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: AppColor.whiteColor,
@@ -162,12 +162,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: inCorrect
-                            ? const Text(
+                            ? Text(
                                 "Wrong mobile number inputed",
                                 style: TextStyle(
                                     fontFamily: 'DMSans',
                                     color: AppColor.errorColor,
-                                    fontSize: 15,
+                                    fontSize: 15.sp,
                                     letterSpacing: 0,
                                     fontWeight: FontWeight.normal,
                                     height: 1.5),
@@ -218,13 +218,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             }
                           },
-                          child: const Text(
+                          child: Text(
                             'Next',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: AppColor.mainColor,
                                 fontFamily: 'DMSans',
-                                fontSize: 20,
+                                fontSize: 20.sp,
                                 letterSpacing: 0,
                                 fontWeight: FontWeight.bold,
                                 height: 1.5),

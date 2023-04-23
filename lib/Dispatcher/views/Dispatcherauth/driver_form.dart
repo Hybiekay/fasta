@@ -4,7 +4,7 @@ import 'package:ziklogistics/models/models.dart';
 import '../../../controllers/drivers_controller.dart';
 import '../../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/components/pick_image.dart';
-import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
+import 'package:ziklogistics/controllers/drivers_storage.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 
 class DriverForm extends StatefulWidget {
@@ -35,6 +35,8 @@ class _DriverFormState extends State<DriverForm> {
     fullNameCon.dispose();
     ninCon.dispose();
     bvNumCon.dispose();
+    DStorage.driverlogOut();
+
 
     super.dispose();
   }
@@ -59,7 +61,7 @@ class _DriverFormState extends State<DriverForm> {
                     Text(
                       "Please enter the right data in the box.",
                       style: GoogleFonts.dmSans(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
                         color: AppColor.whiteColor,
                       ),

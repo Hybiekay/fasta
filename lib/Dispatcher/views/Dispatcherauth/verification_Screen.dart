@@ -74,10 +74,10 @@ class _DispatcherVerificationScreenState
                     ),
                     Text(
                       'Enter the 4-digit code sent to you at \n${widget.phoneNumber} ',
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppColor.whiteColor,
                         fontFamily: 'DM Sans',
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         letterSpacing: 0,
                         fontWeight: FontWeight.w600,
                       ),
@@ -303,12 +303,12 @@ class _DispatcherVerificationScreenState
                     Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: isInCorrect
-                            ? const Text(
+                            ? Text(
                                 "Wrong 4-digit code inputed",
                                 style: TextStyle(
                                     fontFamily: 'DMSans',
                                     color: AppColor.errorColor,
-                                    fontSize: 15,
+                                    fontSize: 15.sp,
                                     letterSpacing: 0,
                                     fontWeight: FontWeight.normal,
                                     height: 1.5),
@@ -338,13 +338,13 @@ class _DispatcherVerificationScreenState
                                 isLoading = false;
                               });
                             },
-                            child: const Text(
+                            child: Text(
                               'I didn’t recive a code',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: AppColor.mainColor,
                                   fontFamily: 'DMSans',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   letterSpacing: 0,
                                   fontWeight: FontWeight.bold,
                                   height: 1.5),
@@ -358,13 +358,13 @@ class _DispatcherVerificationScreenState
                                     borderRadius: BorderRadius.circular(20)),
                                 backgroundColor: AppColor.mainSecondryColor),
                             onPressed: () {},
-                            child: const Text(
+                            child: Text(
                               'Go back!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: AppColor.whiteColor,
                                   fontFamily: 'DMSans',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   letterSpacing: 0,
                                   fontWeight: FontWeight.bold,
                                   height: 1.5),

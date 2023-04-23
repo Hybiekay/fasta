@@ -1,9 +1,6 @@
 import 'package:get/get.dart';
 import 'verification_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
-import 'package:ziklogistics/global_components/form_field.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 
@@ -69,12 +66,12 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.2,
                         ),
-                        const Text(
+                        Text(
                           'Enter your mobile number',
                           style: TextStyle(
                             color: AppColor.whiteColor,
                             fontFamily: 'DM Sans',
-                            fontSize: 20,
+                            fontSize: 20.sp,
                             letterSpacing: 0,
                             fontWeight: FontWeight.w700,
                             height: 1.1,
@@ -85,14 +82,14 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
-                          height: 40.h,
+                          height: 45,
                           child: Row(
                             children: [
                               GestureDetector(
                                 onTap: () {},
                                 child: Container(
                                   width: 80,
-                                  height: 40.h,
+                                  height: 45,
                                   decoration: BoxDecoration(
                                       color: AppColor.whiteColor,
                                       borderRadius: BorderRadius.circular(10)),
@@ -113,9 +110,9 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                                 width: MediaQuery.of(context).size.width * 0.02,
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.height *
-                                    0.277.w,
-                                height: 40.h,
+                                width:
+                                    MediaQuery.of(context).size.height * 0.302,
+                                height: 45,
                                 decoration: BoxDecoration(
                                     color: AppColor.whiteColor,
                                     borderRadius: BorderRadius.circular(10)),
@@ -130,7 +127,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                                             hintStyle: GoogleFonts.dmSans(),
                                             prefixIcon: SizedBox(
                                               width: 60,
-                                              height: 40.h,
+                                              height: 45,
                                               child: Center(
                                                 child: Text(
                                                     countryCode?.dialCode ??
@@ -156,7 +153,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: inCorrect
-                                ?  Text(
+                                ? Text(
                                     "Wrong mobile number inputed",
                                     style: TextStyle(
                                         fontFamily: 'DMSans',
@@ -172,7 +169,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 45.h,
+                          height: 40.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: AppColor.whiteColor,
@@ -214,13 +211,13 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                                   });
                                 }
                               },
-                              child: const Text(
+                              child:  Text(
                                 'Next',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: AppColor.mainColor,
                                     fontFamily: 'DMSans',
-                                    fontSize: 20,
+                                    fontSize: 20.sp,
                                     letterSpacing: 0,
                                     fontWeight: FontWeight.bold,
                                     height: 1.5),
@@ -229,14 +226,14 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,
                         ),
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
                             'By continuing you may recive an SMS for \nverification. Message and data rates may apply.',
                             style: TextStyle(
                               color: AppColor.whiteColor,
                               fontFamily: 'DMSans',
-                              fontSize: 15,
+                              fontSize: 15.sp,
                               letterSpacing: 0,
                               fontWeight: FontWeight.normal,
                               height: 1.1,

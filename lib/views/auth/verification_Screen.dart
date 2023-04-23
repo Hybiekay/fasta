@@ -30,6 +30,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   String accessCode = "1255";
   @override
   void initState() {
+    Storage.CustomerlogOut();
     isInCorrect = false;
 
     super.initState();
@@ -66,10 +67,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                     Text(
                       'Enter the 4-digit code sent to you at \n${widget.phoneNumber} ',
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppColor.whiteColor,
                         fontFamily: 'DM Sans',
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         letterSpacing: 0,
                         fontWeight: FontWeight.w600,
                       ),
@@ -221,9 +222,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                         code: code,
                                         phoneNumber: widget.phoneNumber);
                                     print("this from here to user$res");
-                                  custormerData= await Storage.getData();
+                                    custormerData = await Storage.getData();
 
-                                    print("this from here to user$custormerData");
+                                    print(
+                                        "this from here to user$custormerData");
                                     if (custormerData != null) {
                                       var data = json.decode(custormerData);
                                       log("this the Storate$custormerData");
@@ -314,13 +316,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                 isLoading = false;
                               });
                             },
-                            child: const Text(
+                            child: Text(
                               'I didn’t recive a code',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: AppColor.mainColor,
                                   fontFamily: 'DMSans',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   letterSpacing: 0,
                                   fontWeight: FontWeight.bold,
                                   height: 1.5),
@@ -336,13 +338,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text(
+                            child: Text(
                               'Go back!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: AppColor.whiteColor,
                                   fontFamily: 'DMSans',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   letterSpacing: 0,
                                   fontWeight: FontWeight.bold,
                                   height: 1.5),

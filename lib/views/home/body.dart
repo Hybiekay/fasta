@@ -95,7 +95,7 @@ class _CostomerHomeBodyState extends State<CostomerHomeBody> {
                   height: 30.h,
                 ),
                 Text(
-                  'Send packages with Ziklogistics',
+                  'Send packages with Fasta',
                   style: GoogleFonts.dmSans(
                     color: AppColor.mainColor,
                     fontSize: 35.sp,

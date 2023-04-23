@@ -20,6 +20,13 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
   bool isComplete = false;
   String dropDownvalue = "Monthly";
   @override
+  void initState() {
+    DStorage.driverlogOut();
+
+    super.initState();
+    
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.mainColor,
@@ -37,7 +44,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                     Text(
                       "Please enter the right data in the box.",
                       style: GoogleFonts.dmSans(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
                         color: AppColor.whiteColor,
                       ),
@@ -46,7 +53,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                     Text(
                       "Enter your full name",
                       style: GoogleFonts.dmSans(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColor.whiteColor,
                       ),
@@ -59,7 +66,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                     Text(
                       "Bank Name",
                       style: GoogleFonts.dmSans(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColor.whiteColor,
                       ),
@@ -72,7 +79,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                     Text(
                       "Account Number",
                       style: GoogleFonts.dmSans(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColor.whiteColor,
                       ),
@@ -86,7 +93,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                     Text(
                       "Account Name",
                       style: GoogleFonts.dmSans(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColor.whiteColor,
                       ),
@@ -116,7 +123,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                                 const InputDecoration(border: InputBorder.none),
                             icon: const Icon(Icons.arrow_drop_down_outlined),
                             dropdownColor: AppColor.mainSecondryColor,
-                            items: const [
+                            items:  [
                               DropdownMenuItem(
                                 value: "Weekly",
                                 child: Center(
@@ -125,7 +132,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                                     style: TextStyle(
                                         color: AppColor.whiteColor,
                                         fontFamily: 'DMSans',
-                                        fontSize: 18,
+                                        fontSize: 18.sp,
                                         letterSpacing: 0,
                                         fontWeight: FontWeight.w700,
                                         height: 1.5),
@@ -140,7 +147,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                                     style: TextStyle(
                                         color: AppColor.whiteColor,
                                         fontFamily: 'DMSans',
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         letterSpacing: 0,
                                         fontWeight: FontWeight.w700,
                                         height: 1.5),

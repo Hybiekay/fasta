@@ -61,12 +61,15 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                 ),
                 Row(
                   children: [
-                    Text(
-                      DriverUserModel.name ?? "Login",
-                      style: GoogleFonts.dmSans(
-                        color: AppColor.mainColor,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
+                    SizedBox(
+                      width: 170.w,
+                      child: Text(
+                        DriverUserModel.name ?? "Login",
+                        style: GoogleFonts.dmSans(
+                          color: AppColor.mainColor,
+                          fontSize: 19.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                     Container(

@@ -38,12 +38,12 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.25,
                     ),
-                    const Text(
+                    Text(
                       'What\'s your full name',
                       style: TextStyle(
                         color: AppColor.whiteColor,
                         fontFamily: 'DM Sans',
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         letterSpacing: 0,
                         fontWeight: FontWeight.w700,
                       ),
@@ -53,13 +53,13 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      height: 40.h,
+                      height: 45,
                       child: Row(
                         children: [
                           Container(
                             padding: const EdgeInsets.only(right: 20),
                             width: MediaQuery.of(context).size.width * 0.85,
-                            height: 40.h,
+                            height: 45,
                             decoration: BoxDecoration(
                                 color: AppColor.whiteColor,
                                 borderRadius: BorderRadius.circular(10)),
@@ -89,7 +89,7 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.85,
-                      height: 45,
+                      height: 40.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: AppColor.whiteColor,
@@ -123,13 +123,13 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                               isLoading = false;
                             });
                           },
-                          child: const Text(
+                          child: Text(
                             'Complete',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: AppColor.mainColor,
                                 fontFamily: 'DMSans',
-                                fontSize: 20,
+                                fontSize: 20.sp,
                                 letterSpacing: 0,
                                 fontWeight: FontWeight.bold,
                                 height: 1.5),
