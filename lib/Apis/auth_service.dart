@@ -10,8 +10,6 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 
 class UserApiController extends GetxController {
   Future signUpCostumer({
-    required String year,
-    required String month,
     required String phoneNumber,
     required String email,
   }) async {
@@ -19,8 +17,6 @@ class UserApiController extends GetxController {
     final response = await http.post(singnInUrl, body: {
       "phone": phoneNumber,
       "email": email,
-      "month": month,
-      "year": year
     });
 
     if (response.statusCode == 201) {
@@ -91,7 +87,7 @@ class UserApiController extends GetxController {
         print(response.body);
         print(response.statusCode);
       }
-     
+
       final data = json.decode(response.body);
       final name = data["name"];
       Storage.savename(name);
@@ -125,8 +121,6 @@ class UserApiController extends GetxController {
       required bool isSchedule,
       required String scheduleddate,
       required String scheduledTime,
-      required String month,
-      required String year,
       required boundNe,
       required boundSw,
       required String polyLine}) async {
@@ -158,8 +152,6 @@ class UserApiController extends GetxController {
       "price": price,
       "distance": distance,
       "duration": time,
-      "month": month,
-      "year": year
     };
 
     try {

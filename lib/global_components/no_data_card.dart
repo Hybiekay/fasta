@@ -23,7 +23,7 @@ class NodataCard extends StatelessWidget {
           filterQuality: FilterQuality.high,
         ),
         SizedBox(
-          height: 25.h,
+          height: 15.h,
         ),
         Padding(
             padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),

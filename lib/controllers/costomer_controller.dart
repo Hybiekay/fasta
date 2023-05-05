@@ -13,10 +13,9 @@ class CustomerController extends GetxController {
   Future<void> loginUser(String email, String phoneNumber) async {
     try {
       var data = await _apiController.signUpCostumer(
-          email: email,
-          phoneNumber: phoneNumber,
-          month: "${DateTime.now().month}",
-          year: "${DateTime.now().year}");
+        email: email,
+        phoneNumber: phoneNumber,
+      );
       return data;
     } catch (e) {
       Get.snackbar(
@@ -80,29 +79,28 @@ class CustomerController extends GetxController {
     state = true;
     try {
       final package = await _apiController.sendAPackage(
-          polyLine: polyLine,
-          boundNe: boundNe,
-          boundSw: boundSw,
-          height: height,
-          weight: weight,
-          distance: distance,
-          time: time,
-          userName: userName,
-          discription: discription,
-          size: size,
-          width: width,
-          price: price,
-          pickupAdrress: pickupAdrress,
-          pickupLat: pickupLat,
-          pickupLon: pickupLon,
-          dropoffAdress: dropoffAdress,
-          dropoffLat: dropoffLat,
-          dropoffLon: dropoffLon,
-          isSchedule: isSchedule,
-          scheduleddate: scheduleddate,
-          scheduledTime: scheduledTime,
-          month: "${DateTime.now().month}",
-          year: "${DateTime.now().year}");
+        polyLine: polyLine,
+        boundNe: boundNe,
+        boundSw: boundSw,
+        height: height,
+        weight: weight,
+        distance: distance,
+        time: time,
+        userName: userName,
+        discription: discription,
+        size: size,
+        width: width,
+        price: price,
+        pickupAdrress: pickupAdrress,
+        pickupLat: pickupLat,
+        pickupLon: pickupLon,
+        dropoffAdress: dropoffAdress,
+        dropoffLat: dropoffLat,
+        dropoffLon: dropoffLon,
+        isSchedule: isSchedule,
+        scheduleddate: scheduleddate,
+        scheduledTime: scheduledTime,
+      );
       state = false;
       return package;
     } catch (e) {
@@ -111,6 +109,18 @@ class CustomerController extends GetxController {
       if (kDebugMode) {
         print(e);
       }
+    }
+  }
+
+  Stream<dynamic> fetchHistoryPeriodically({required String status}) async* {
+    while (true) {
+      try {
+        final data = await _apiController.getCustomerHistory(status: status);
+        yield data;
+      } catch (e) {
+        yield e;
+      }
+      await Future.delayed(Duration(seconds: 2));
     }
   }
 

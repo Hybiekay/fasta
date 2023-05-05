@@ -8,6 +8,7 @@ import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_detail_screen
 class DispatcherMeunScreen extends StatefulWidget {
   static const String routeName = '/DispatchermeunScreen';
   final String price;
+  final String status;
   final String time;
   final String distance;
   final String discription;
@@ -29,6 +30,7 @@ class DispatcherMeunScreen extends StatefulWidget {
 
   const DispatcherMeunScreen({
     Key? key,
+    required this.status,
     required this.boundNe,
     required this.boundSw,
     required this.price,
@@ -56,8 +58,13 @@ class DispatcherMeunScreen extends StatefulWidget {
 
 class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
   DriverController driverController = Get.put(DriverController());
+  late String dropDownvalue;
 
-  String dropDownvalue = "PENDING";
+  @override
+  void initState() {
+    dropDownvalue = widget.status;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +193,7 @@ class _DispatcherMeunScreenState extends State<DispatcherMeunScreen> {
                                   ),
                                 ),
                                 const DropdownMenuItem(
-                                  value: "COMPLETED",
+                                  value: "DELIVERED",
                                   child: Center(
                                     child: Text(
                                       " Delivery done, request completed",

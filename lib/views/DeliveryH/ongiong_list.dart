@@ -23,8 +23,8 @@ class _OngoinglistState extends State<Ongoinglist> {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.72,
       width: MediaQuery.of(context).size.width * 0.85,
-      child: FutureBuilder(
-        future: userController.getHistory(
+      child: StreamBuilder(
+        stream: userController.fetchHistoryPeriodically(
           status: "ongoing",
         ),
         // initialData: InitialData,
@@ -81,6 +81,7 @@ class _OngoinglistState extends State<Ongoinglist> {
                     if (data["acceptedDriverId"] == null) {
                       var token = await Storage.getToken();
                       Get.to(() => SearchingDispatcher(
+                        
                             token: token ?? '',
                             name: data["name"],
                             email: data["user"]["email"],

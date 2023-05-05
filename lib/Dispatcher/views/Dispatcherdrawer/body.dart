@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,16 +21,16 @@ class DispatcherBody extends StatefulWidget {
 }
 
 class _DispatcherBodyState extends State<DispatcherBody> {
+  DriverController driverController = Get.put(DriverController());
   bool isAprroved = true;
+ 
   @override
   void initState() {
-    getData();
+  
     super.initState();
   }
 
-  getData() async {
-    log(driverData);
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +61,7 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                 Row(
                   children: [
                     SizedBox(
-                      width: 170.w,
+                      width: 165.w,
                       child: Text(
                         DriverUserModel.name ?? "Login",
                         style: GoogleFonts.dmSans(
@@ -75,7 +74,8 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: DriverUserModel.status == "PENDING"
+                          color: DriverUserModel.status == "PENDING" ||
+                                  DriverUserModel.status == "DISAPPROVED"
                               ? AppColor.errorColor
                               : AppColor.mainColor),
                       child: Padding(
@@ -84,9 +84,14 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                           child: Text(
                             DriverUserModel.status == "PENDING"
                                 ? "PENDING"
-                                : "Approved",
+                                : DriverUserModel.status == "DISAPPROVED"
+                                    ? "Disapproved"
+                                    : "Approved",
                             style: GoogleFonts.dmSans(
-                                fontSize: 12.sp,
+                                fontSize:
+                                    DriverUserModel.status == "DISAPPROVED"
+                                        ? 10.sp
+                                        : 12.sp,
                                 fontWeight: FontWeight.bold,
                                 color: AppColor.whiteColor),
                           ),
@@ -111,7 +116,7 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                           fontSize: 15.h, color: AppColor.mainColor),
                     ),
                     Text(
-                      "00:00",
+                      "${DriverUserModel.totalRevenue}",
                       style: GoogleFonts.dmSans(
                           fontSize: 15.h, color: AppColor.errorColor),
                     ),

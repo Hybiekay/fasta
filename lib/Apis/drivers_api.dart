@@ -19,8 +19,6 @@ class DriverApiController extends GetxController {
     final response = await http.post(singnInUrl, body: {
       "phone": phoneNumber,
       "email": email.toLowerCase(),
-      "month": month,
-      "year": year
     });
     print(response.statusCode);
     print(response.body);
@@ -41,6 +39,7 @@ class DriverApiController extends GetxController {
       "phone": phoneNumber,
       "code": code,
     });
+    print(response.body);
     print(response.statusCode);
     print(response.body);
     if (response.statusCode == 201) {
@@ -231,6 +230,23 @@ class DriverApiController extends GetxController {
     String token = await DStorage.getDriverToken();
     final url =
         Uri.parse("${AppApis.endPoint}driver/history-grouped?status=$status");
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+    // print(response.body);
+    if (response.statusCode == 401) {
+      Get.to(() => const DispatcherLoginScreen());
+    }
+    final data = json.decode(response.body);
+    return data;
+  }
+
+  Future getDriverDetials() async {
+    String token = await DStorage.getDriverToken();
+    final url = Uri.parse("${AppApis.endPoint}driver/profile");
     final response = await http.get(
       url,
       headers: {

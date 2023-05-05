@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ziklogistics/chat/chat_screen.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/controllers/costomer_controller.dart';
+import 'package:ziklogistics/views/DeliveryH/delivery_history.dart';
 
 // ignore_for_file: prefer_typing_uninitialized_variables
 
@@ -222,24 +223,31 @@ class _SearchingDispatcherState extends State<SearchingDispatcher> {
                         height: 15,
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
-                        child: isFind
-                            ? ButtonComp(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => ChoicePayment(
-                                          packageId: widget.packageId,
-                                          distants: widget.distance,
-                                          amount: widget.price,
-                                          time: widget.time,
-                                        ),
-                                      ));
-                                },
-                                value: "Confirm")
-                            : const InActiveButtonComp(value: "Confirm"),
-                      )
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: isFind
+                              ? ButtonComp(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ChoicePayment(
+                                            packageId: widget.packageId,
+                                            distants: widget.distance,
+                                            amount: widget.price,
+                                            time: widget.time,
+                                          ),
+                                        ));
+                                  },
+                                  value: "Confirm")
+                              : ButtonComp(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Deliveryhistory()));
+                                  },
+                                  value: "Wait For Dispatcher"))
                     ],
                   ),
                 ),

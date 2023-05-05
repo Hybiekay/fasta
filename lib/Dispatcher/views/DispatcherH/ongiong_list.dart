@@ -7,7 +7,6 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/meun_screen/meun_screen.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherH/history_card.dart';
 
-
 class DispatcherOngoinglist extends StatelessWidget {
   const DispatcherOngoinglist({
     Key? key,
@@ -20,8 +19,8 @@ class DispatcherOngoinglist extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.72,
       width: MediaQuery.of(context).size.width * 0.85,
-      child: FutureBuilder(
-        future: driverController.getHistory(
+      child: StreamBuilder(
+        stream: driverController.fetchHistoryPeriodically(
           status: "ongoing",
         ),
         // initialData: InitialData,
@@ -64,9 +63,9 @@ class DispatcherOngoinglist extends StatelessWidget {
                     }
 
                     Get.to(() => ChatScreen(
-                      email: DriverUserModel.email ??
+                          email: DriverUserModel.email ??
                               data["AcceptedDriver"]['email'],
-                            packageId: data["id"],
+                          packageId: data["id"],
                           receiverEmail: data['user']['email'],
                           receiverName: data['user']['name'],
                           senderEmail: DriverUserModel.email ??
@@ -78,6 +77,7 @@ class DispatcherOngoinglist extends StatelessWidget {
                   },
                   trackPressed: () {
                     Get.to(() => DispatcherMeunScreen(
+                          status: data["status"],
                           height: "${data["height"]}",
                           width: "${data["width"]}",
                           pickUpAddress: data["pickup_address"],
@@ -90,7 +90,7 @@ class DispatcherOngoinglist extends StatelessWidget {
                           name: data["name"],
                           distance: data["distance"],
                           packageId: data["id"],
-                          price: data["price"],
+                          price: data["driverPrice"],
                           time: data["duration"],
                           dropOffLocation: LatLng(
                               double.parse(data["dropoff_lat"]),

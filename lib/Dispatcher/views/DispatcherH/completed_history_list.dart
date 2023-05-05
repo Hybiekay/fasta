@@ -51,7 +51,7 @@ class DispatcherCompletedlist extends StatelessWidget {
                           dropOffAdress: data["dropoff_address"],
                           pickUpAdress: data["pickup_address"],
                           distance: data["distance"],
-                          price: data["price"],
+                          price: data["driverPrice"],
                           time: data["duration"],
                         ));
                   },

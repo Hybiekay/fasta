@@ -158,7 +158,7 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                             onTap: () {
                               Get.to(() => PrivewHome(
                                     name: item["name"].toString(),
-                                    price: item["price"].toString(),
+                                    price: item["driverPrice"].toString(),
                                     time: item["duration"].toString(),
                                     distance: item["distance"].toString(),
                                     size: item["size"].toString(),
@@ -173,7 +173,7 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                             },
                             child: RequestCard(
                               name: item["name"],
-                              price: item["price"],
+                              price: item["driverPrice"],
                               time: item["duration"],
                               distance: item["distance"],
                               isScheduled: item["isScheduled"],

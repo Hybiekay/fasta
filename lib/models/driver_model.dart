@@ -30,4 +30,5 @@ class DriverUserModel {
   static String? driverLicenseImage = data["user"]["driverLicenseImageId"];
   static bool? isCompletedRegistration =
       data["user"]["isCompletedRegistration"];
+  static String? totalRevenue = data["totalRevenue"].toString();
 }

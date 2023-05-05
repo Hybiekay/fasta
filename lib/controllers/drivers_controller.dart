@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:ziklogistics/Apis/drivers_api.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
@@ -174,9 +175,36 @@ class DriverController extends GetxController {
     }
   }
 
+
+  
+Stream<dynamic> fetchHistoryPeriodically({required String status}) async* {
+  while (true) {
+    try {
+      final data = await _apiController.getHistory(status: status);
+      yield data;
+    } catch (e) {
+      yield e;
+    }
+    await Future.delayed(Duration(seconds: 5));
+  }
+}
+
   Future getHistory({required String status}) async {
     try {
       final data = await _apiController.getHistory(status: status);
+      return data;
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+      rethrow;
+    }
+  }
+
+  Future getDriverDetails() async {
+    try {
+      final data = await _apiController.getDriverDetials();
+      log(data.toString());
       return data;
     } catch (e) {
       if (kDebugMode) {

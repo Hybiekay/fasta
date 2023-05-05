@@ -173,7 +173,7 @@
 92-->C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android\app\src\main\AndroidManifest.xml:33:14-34:73
 93            android:name="com.google.android.geo.API_KEY"
 93-->C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android\app\src\main\AndroidManifest.xml:33:25-70
-94            android:value="AIzaSyD_voMGhyyWw5v56_3EzE6IQPtNnor1rDs" />
+94            android:value="AIzaSyBoveyXiSEAlTpcAeuVxxvUZfR-ShaWues" />
 94-->C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android\app\src\main\AndroidManifest.xml:34:16-71
 95
 96        <activity

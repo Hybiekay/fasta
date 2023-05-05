@@ -1,9 +1,11 @@
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:ziklogistics/views/home/home.dart';
+import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/meun_screen/comletes_detail_screen.dart';
-// ignore_for_file: prefer_typing_uninitialized_variables
 
+// ignore_for_file: prefer_typing_uninitialized_variables
 
 class MeunScreen extends StatefulWidget {
   static const String routeName = '/meunScreen';
@@ -27,35 +29,83 @@ class MeunScreen extends StatefulWidget {
   final String polyLine;
   final String discription;
   final String status;
-  const MeunScreen({
-    Key? key,
-    required this.packageId,
-    required this.time,
-    required this.name,
-    required this.pickUpAdress,
-    required this.dropOffAdress,
-    required this.price,
-    required this.distance,
-    required this.pickupLat,
-    required this.pickupLon,
-    required this.dropoffLat,
-    required this.dropoffLon,
-    required this.size,
-    required this.weight,
-    required this.width,
-    required this.height,
-    required this.polyLine,
-    required this.discription,
-    this.boundNe,
-    this.boundSw,
-    this.status = "PENDING,"
-  }) : super(key: key);
+  const MeunScreen(
+      {Key? key,
+      required this.packageId,
+      required this.time,
+      required this.name,
+      required this.pickUpAdress,
+      required this.dropOffAdress,
+      required this.price,
+      required this.distance,
+      required this.pickupLat,
+      required this.pickupLon,
+      required this.dropoffLat,
+      required this.dropoffLon,
+      required this.size,
+      required this.weight,
+      required this.width,
+      required this.height,
+      required this.polyLine,
+      required this.discription,
+      this.boundNe,
+      this.boundSw,
+      this.status = "PENDING,"})
+      : super(key: key);
 
   @override
   State<MeunScreen> createState() => _MeunScreenState();
 }
 
 class _MeunScreenState extends State<MeunScreen> {
+  final CustomerController userController = Get.put(CustomerController());
+  late Timer _timer;
+  var status2;
+
+  @override
+  void initState() {
+    startListeningToChanges();
+
+    super.initState();
+  }
+
+  void startListeningToChanges() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) async {
+      try {
+        final res =
+            await userController.getPackage(packageId: widget.packageId);
+
+        if (res["status"] != "DELIVERED") {
+          log("${res["acceptedDriverId"]} has data");
+          setState(() {
+            status2 = res["status"];
+            print(status2);
+            // isFind = true;
+          });
+        } else {
+          _timer.cancel();
+          log("${res["acceptedDriverId"]} has Nodata");
+        }
+      } catch (e) {
+        // Handle any errors or exceptions that may occur during the API request
+        log('Error: $e');
+      }
+    });
+  }
+
+  void stopListeningToChanges() {
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    stopListeningToChanges();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,6 +146,7 @@ class _MeunScreenState extends State<MeunScreen> {
                   color: AppColor.whiteColor,
                 ),
                 onPressed: () {
+                  stopListeningToChanges();
                   Navigator.of(context).pop();
                 },
               )),
@@ -120,13 +171,13 @@ class _MeunScreenState extends State<MeunScreen> {
                         height: 10,
                       ),
                       Text(
-                        widget.status == "PENDING"
+                        status2 == "PENDING"
                             ? "Haven't started yet"
-                            : widget.status == "ACCEPTED"
+                            : status2 == "ACCEPTED"
                                 ? "Started and on it's way for pickup"
-                                : widget.status == "PICKUP"
+                                : status2 == "PICKUP"
                                     ? "Pickup done and on it's way for delivery"
-                                    : 'Delivery done, request completed',
+                                    : status2 == "PICKUP" ?'Delivery done, request completed': "loading........",
                         style: const TextStyle(
                             color: AppColor.mainSecondryColor,
                             fontFamily: 'DMSans',
@@ -152,8 +203,8 @@ class _MeunScreenState extends State<MeunScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Visibility(
-                              visible: widget.status != "PICKUP" &&
-                                  widget.status != "DELIVERED",
+                              visible:
+                                  status2 != "PICKUP" && status2 != "DELIVERED",
                               child: TextButton(
                                   onPressed: () {
                                     mainshowDialod(

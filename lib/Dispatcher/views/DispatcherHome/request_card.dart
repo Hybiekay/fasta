@@ -141,7 +141,7 @@ class RequestCard extends StatelessWidget {
                                       height: 10,
                                     ),
                                     Text(
-                                      "N$price.00",
+                                      "N$price",
                                       textAlign: TextAlign.left,
                                       style: GoogleFonts.dmSans(
                                           fontWeight: FontWeight.w500,

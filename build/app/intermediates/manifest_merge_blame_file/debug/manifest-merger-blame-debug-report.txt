@@ -152,7 +152,7 @@
 96            android:value="2" />
 97        <meta-data
 98            android:name="com.google.android.geo.API_KEY"
-99            android:value="AIzaSyD_voMGhyyWw5v56_3EzE6IQPtNnor1rDs" />
+99            android:value="AIzaSyBoveyXiSEAlTpcAeuVxxvUZfR-ShaWues" />
 100
 101        <activity
 101-->[:flutter_paystack] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_paystack\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-12:54
