@@ -1030,7 +1030,7 @@ library {
 }
 library {
   digests {
-    sha256: "@\314\250S\331J\252b\303;\325\356*J1\2041\366\332^#\301M\r\225\024x \247d*\226"
+    sha256: "\033\031NS\207\241\023\b\350&l\223\326\367\313\236\036\301u\t:\355\256\025\336\235\";\347\232\346]"
   }
 }
 library_dependencies {
@@ -1552,6 +1552,16 @@ repositories {
 repositories {
   maven_repo {
     url: "https://dl.google.com/dl/android/maven2/"
+  }
+}
+repositories {
+  maven_repo {
+    url: "https://dl.google.com/dl/android/maven2/"
+  }
+}
+repositories {
+  maven_repo {
+    url: "https://repo.maven.apache.org/maven2/"
   }
 }
 repositories {

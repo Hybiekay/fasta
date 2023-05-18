@@ -32,3 +32,6 @@ class DriverUserModel {
       data["user"]["isCompletedRegistration"];
   static String? totalRevenue = data["totalRevenue"].toString();
 }
+
+
+

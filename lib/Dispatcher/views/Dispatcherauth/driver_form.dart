@@ -1,11 +1,16 @@
 import 'dart:io';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:ziklogistics/models/models.dart';
 import '../../../controllers/drivers_controller.dart';
 import '../../../global_components/ziklogistics.dart';
+import 'package:ziklogistics/views/webviwe/webview.dart';
 import 'package:ziklogistics/components/pick_image.dart';
 import 'package:ziklogistics/controllers/drivers_storage.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
+// import 'package:url_launcher/url_launcher.dart';
+
+final Uri _url = Uri.parse('https://www.fasta-smata.com/terms&condition');
 
 class DriverForm extends StatefulWidget {
   final String name;
@@ -36,7 +41,6 @@ class _DriverFormState extends State<DriverForm> {
     ninCon.dispose();
     bvNumCon.dispose();
     DStorage.driverlogOut();
-
 
     super.dispose();
   }
@@ -78,7 +82,7 @@ class _DriverFormState extends State<DriverForm> {
                     Formfied(
                         emailController: fullNameCon,
                         hintText: "Full Name",
-                        keyboardType: TextInputType.number),
+                        keyboardType: TextInputType.name),
                     const SizedBox(height: 20),
                     Text(
                       "Enter your BVN",
@@ -189,12 +193,20 @@ class _DriverFormState extends State<DriverForm> {
                               }
                             }),
                         Expanded(
-                          child: Text(
-                            "Please be aware that you are not eligible to receive any dispatcher requests until you have received admin approval. If you are approved, the null-tag will become approved, and if you are rejected, it will become disapproved.",
-                            style: GoogleFonts.dmSans(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColor.whiteColor,
+                          child: InkWell(
+                            onTap: 
+                           launchUr,
+                            // Get.to(() => WebView(
+                            //       url: AppApis.termsCondition,
+                            //     ));
+                            //  } ,
+                            child: Text(
+                              "Please be aware that you are not eligible to receive any dispatcher requests until you have received admin approval. If you are approved, the null-tag will become approved, and if you are rejected, it will become disapproved. Read terms and conditions to Continue",
+                              style: GoogleFonts.dmSans(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: AppColor.whiteColor,
+                              ),
                             ),
                           ),
                         )
@@ -244,6 +256,12 @@ class _DriverFormState extends State<DriverForm> {
               ),
             ),
     );
+  }
+
+  Future<void> launchUr() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 }
 

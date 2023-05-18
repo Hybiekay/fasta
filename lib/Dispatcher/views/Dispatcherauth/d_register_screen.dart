@@ -42,7 +42,7 @@ class _DRegisterScreenState extends State<DRegisterScreen> {
                   children: [
                     const SizedBox(height: 70),
                     Text(
-                      "Please enter the right data in the box.",
+                      "Please enter correct information in the box",
                       style: GoogleFonts.dmSans(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w700,

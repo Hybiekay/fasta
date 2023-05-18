@@ -5,13 +5,15 @@ import 'package:ziklogistics/constants/app_images.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
+  final bool isDriver;
+  const OnboardingScreen({super.key, this.isDriver = false});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.mainColor,
       body: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
           decoration: const BoxDecoration(
             color: AppColor.mainColor,
           ),
@@ -38,9 +40,9 @@ class OnboardingScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          const Center(
+                          Center(
                             child: Text(
-                              'Make A Request',
+                              isDriver ? "Get a request" : 'Make A Request',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color.fromRGBO(255, 255, 255, 1),
@@ -51,8 +53,10 @@ class OnboardingScreen extends StatelessWidget {
                                   height: 1.5),
                             ),
                           ),
-                          const Text(
-                            'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit. ',
+                          Text(
+                            isDriver
+                                ? "By signing up as dispatcher you are eligible to get a request. As a dispatcher get a request by receiving a shipping for package. "
+                                : 'By signing up as customer, you are eligible to make a request. \nAs a customer make a request by creating a package ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: AppColor.whiteColor,

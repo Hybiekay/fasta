@@ -1,12 +1,7 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import '../../models/models.dart';
 import '../../controllers/controllers.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:ziklogistics/views/home/home.dart';
-import 'package:ziklogistics/views/auth/login_screen.dart';
-import 'package:ziklogistics/notification/notification.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
@@ -82,74 +77,74 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.07,
                 ),
-                Center(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 40.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColor.whiteColor,
-                    ),
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColor.whiteColor),
-                        onPressed: () async {
+  //               Center(
+  //                 child: Container(
+  //                   width: MediaQuery.of(context).size.width * 0.8,
+  //                   height: 40.h,
+  //                   decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(10),
+  //                     color: AppColor.whiteColor,
+  //                   ),
+  //                   child: ElevatedButton(
+  //                       style: ElevatedButton.styleFrom(
+  //                           backgroundColor: AppColor.whiteColor),
+  //                       onPressed: () async {
                          
-                          var yourToken = await Storage.getToken();
-                          if (yourToken != null) {
-                            Map<String, dynamic> decodedToken =
-                                JwtDecoder.decode(yourToken);
-                            log(decodedToken.toString());
+  //                         var yourToken = await Storage.getToken();
+  //                         if (yourToken != null) {
+  //                           Map<String, dynamic> decodedToken =
+  //                               JwtDecoder.decode(yourToken);
+  //                           log(decodedToken.toString());
 
-                            /*
-  If the token has a valid format, you will get a Map<String, dynamic>
-  Your decoded token can look like:
-  {
-     "sub": "1234567890",
-     "name": "Gustavo",
-     "iat": 1516239022,
-     "exp": 1516239022,
-     "randomKey": "something else"
-  }
-  */
+  //                           /*
+  // If the token has a valid format, you will get a Map<String, dynamic>
+  // Your decoded token can look like:
+  // {
+  //    "sub": "1234567890",
+  //    "name": "Gustavo",
+  //    "iat": 1516239022,
+  //    "exp": 1516239022,
+  //    "randomKey": "something else"
+  // }
+  // */
 
-                            Notify.sendNotice(
-                                title: "Welcome",
-                                body: "Wecome to Fasta Logistic App ");
-                            String? allData = await Storage.getData();
-                            if (allData != null) {
-                              log('Secure storage has data: $allData');
-                              custormerData = json.decode(allData);
+  //                           Notify.sendNotice(
+  //                               title: "Welcome",
+  //                               body: "Wecome to Fasta Logistic App ");
+  //                           String? allData = await Storage.getData();
+  //                           if (allData != null) {
+  //                             log('Secure storage has data: $allData');
+  //                             custormerData = json.decode(allData);
 
-                              if (CustomersUserModel.name == null &&
-                                  CustomersModel.token == null) {
-                                Get.to(() => const OnBoardPages());
-                              } else if (CustomersModel.token != null &&
-                                  CustomersUserModel.name == null) {
-                                Get.to(() => const LoginScreen());
-                              } else if (CustomersModel.token != null &&
-                                  CustomersUserModel.name != null) {
-                                Get.offAll(() => const CostomerHome());
-                              }
-                            } else {
-                              Get.to(() => const OnBoardPages());
-                            }
-                          }
-                          Get.to(() => const OnBoardPages());
-                        },
-                        child: const Text(
-                          'Sign up as a Customer',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: AppColor.mainColor,
-                              fontFamily: 'DMSans',
-                              fontSize: 20,
-                              letterSpacing: 0,
-                              fontWeight: FontWeight.bold,
-                              height: 1.5),
-                        )),
-                  ),
-                ),
+  //                             if (CustomersUserModel.name == null &&
+  //                                 CustomersModel.token == null) {
+  //                               Get.to(() => const OnBoardPages());
+  //                             } else if (CustomersModel.token != null &&
+  //                                 CustomersUserModel.name == null) {
+  //                               Get.to(() => const LoginScreen());
+  //                             } else if (CustomersModel.token != null &&
+  //                                 CustomersUserModel.name != null) {
+  //                               Get.offAll(() => const CostomerHome());
+  //                             }
+  //                           } else {
+  //                             Get.to(() => const OnBoardPages());
+  //                           }
+  //                         }
+  //                         Get.to(() => const OnBoardPages());
+  //                       },
+  //                       child: const Text(
+  //                         'Sign up as a Customer',
+  //                         textAlign: TextAlign.center,
+  //                         style: TextStyle(
+  //                             color: AppColor.mainColor,
+  //                             fontFamily: 'DMSans',
+  //                             fontSize: 20,
+  //                             letterSpacing: 0,
+  //                             fontWeight: FontWeight.bold,
+  //                             height: 1.5),
+  //                       )),
+  //                 ),
+  //               ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),

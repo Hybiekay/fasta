@@ -122,7 +122,7 @@ class _BodyState extends State<Body> {
                             ),
                             SizedBox(height: 10.h),
                             Text(
-                              'Input package details',
+                              'Enter your package details',
                               style: GoogleFonts.dmSans(
                                 color: AppColor.whiteColor,
                                 fontSize: 20.sp,
@@ -153,7 +153,7 @@ class _BodyState extends State<Body> {
                               height: 10,
                             ),
                             Text(
-                              'Input location details',
+                              'Enter your package location details',
                               style: GoogleFonts.dmSans(
                                 color: AppColor.whiteColor,
                                 fontSize: 20.sp,

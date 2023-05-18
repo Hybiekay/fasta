@@ -1,35 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-merged_res-42:\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-main-36:\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-merged_res-42:\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-main-36:\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-merged_res-42:\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-main-36:\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-merged_res-42:\\drawable-v21_launch_background.xml.flat",
-        "source": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-main-36:\\drawable-v21\\launch_background.xml"
-    },
-    {
         "merged": "com.fasta.ziklogistics.app-merged_res-42:/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "com.fasta.ziklogistics.app-main-36:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
         "merged": "com.fasta.ziklogistics.app-merged_res-42:/mipmap-hdpi_ic_launcher.png.flat",
         "source": "com.fasta.ziklogistics.app-main-36:/mipmap-hdpi/ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-merged_res-42:\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-main-36:\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-merged_res-42:\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\eulogia\\.gradle\\daemon\\7.5\\com.fasta.ziklogistics.app-main-36:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
         "merged": "com.fasta.ziklogistics.app-merged_res-42:/mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -42,5 +18,9 @@
     {
         "merged": "com.fasta.ziklogistics.app-merged_res-42:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.fasta.ziklogistics.app-main-36:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.fasta.ziklogistics.app-merged_res-42:/drawable-v21_launch_background.xml.flat",
+        "source": "com.fasta.ziklogistics.app-main-36:/drawable-v21/launch_background.xml"
     }
 ]

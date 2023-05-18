@@ -5,6 +5,7 @@ import 'views/onBoardScreen/choiceScreen.dart';
 import 'package:ziklogistics/routes/routes.dart';
 import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/models/driver_model.dart';
+import 'package:ziklogistics/views/webviwe/webview.dart';
 import 'package:ziklogistics/models/customers_model.dart';
 import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
@@ -14,6 +15,7 @@ import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
 import 'package:ziklogistics/components/Widget/on_boad_page_selection.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
 
 void main() {
@@ -40,7 +42,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
+ // This widget is the root of your application.
 
   getRoute() async {
     var globalToken = await GlobalStorage.getToken();
@@ -59,6 +61,12 @@ class _MyAppState extends State<MyApp> {
 
             if (DriverUserModel.name == null && DriverUserModel.bvn == null) {
               Get.to(() => const DispatcherLoginScreen());
+            } else if (DriverUserModel.nin == null &&
+                DriverUserModel.name != null &&
+                DriverUserModel.bvn == null) {
+              Get.offAll(() => DriverForm(
+                    name: DriverUserModel.name ?? '',
+                  ));
             } else if (DriverUserModel.nin != null &&
                 DriverUserModel.name != null &&
                 DriverUserModel.bvn != null) {
@@ -128,7 +136,7 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(),
             initialRoute: ChoiceScreen.routeName,
             routes: routes,
-            //home: ChatScreen()
+            //home: WebView(url: "",)
             //MyWidget()
             //     // CostomerHome()
             //     DispatcherHome()

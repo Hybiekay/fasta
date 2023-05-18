@@ -5,15 +5,16 @@ import 'package:ziklogistics/constants/app_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-
 class OnboardingScreen3 extends StatelessWidget {
-  const OnboardingScreen3({super.key});
+  final bool isDriver;
+  const OnboardingScreen3({super.key, this.isDriver = false});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(color: AppColor.mainColor),
@@ -40,9 +41,11 @@ class OnboardingScreen3 extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            const Center(
+                            Center(
                               child: Text(
-                                'Track Your Delivery',
+                                isDriver
+                                    ? "Update Ongoing Process"
+                                    : 'Track Your Delivery',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: AppColor.whiteColor,
@@ -53,8 +56,10 @@ class OnboardingScreen3 extends StatelessWidget {
                                     height: 1.5),
                               ),
                             ),
-                            const Text(
-                              'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit. ',
+                            Text(
+                              isDriver
+                                  ? " Update your ongoing process by selecting the ongoing progress for any ongoing package. "
+                                  : 'Track your delivery by viewing the ongoing progress for your package. ',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: AppColor.whiteColor,

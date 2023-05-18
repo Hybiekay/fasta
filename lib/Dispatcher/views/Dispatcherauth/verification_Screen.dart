@@ -6,6 +6,7 @@ import 'package:ziklogistics/models/driver_model.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
 import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/d_register_screen.dart';
 // ignore_for_file: must_be_immutable
 
@@ -254,9 +255,24 @@ class _DispatcherVerificationScreenState
                                         Get.off(() => DRegisterScreen(
                                               phoneNum: widget.phoneNumber,
                                             ));
+                                      } else if (data["user"]["ninImage"] !=
+                                                  null &&
+                                              data["user"]["dobImageId"] ==
+                                                  null ||
+                                          data["user"]["nin"] == null ||
+                                          data["user"]["bvn"] == null) {
+                                        setState(() {
+                                          isLoading = false;
+                                        });
+                                        Get.offAll(
+                                            () => DriverForm(
+                                                name: data["user"]["name"]),
+                                            arguments: {data});
                                       } else if (data["user"]["email"] !=
                                               null &&
-                                          data["user"]["name"] != null) {
+                                          data["user"]["name"] != null &&
+                                          data["user"]["dobImageId"] != null &&
+                                          data["user"]["nin"] != null) {
                                         setState(() {
                                           isLoading = false;
                                         });

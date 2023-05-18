@@ -28,7 +28,7 @@ class _CostomerHomeBodyState extends State<CostomerHomeBody> {
     log("this is Costomer Email${CustomersUserModel.email}");
     log(CustomersModel.token!);
     socket = io.io(
-        'https://test-ki3c.onrender.com',
+        'https://api.fasta-smata.com/ws',
         io.OptionBuilder().setTransports(["websocket"]).setExtraHeaders(
             {'Authorization': 'Bearer ${CustomersModel.token}'}).build());
 
@@ -106,7 +106,7 @@ class _CostomerHomeBodyState extends State<CostomerHomeBody> {
                   height: 30.h,
                 ),
                 Text(
-                  'Get it delivered in the time it takes to drive there!',
+                  'Get package delivered with speed and on time!',
                   style: GoogleFonts.dmSans(
                     color: AppColor.mainColor,
                     fontSize: 20.sp,

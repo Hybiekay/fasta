@@ -173,7 +173,7 @@
 92-->C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android\app\src\main\AndroidManifest.xml:33:14-34:73
 93            android:name="com.google.android.geo.API_KEY"
 93-->C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android\app\src\main\AndroidManifest.xml:33:25-70
-94            android:value="AIzaSyBoveyXiSEAlTpcAeuVxxvUZfR-ShaWues" />
+94            android:value="AIzaSyCZnNZ9-uHBg0rj8YHKHQC25jHWqXP9Yoc" />
 94-->C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android\app\src\main\AndroidManifest.xml:34:16-71
 95
 96        <activity
@@ -272,65 +272,74 @@
 142-->[:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:47:13-37
 143            android:foregroundServiceType="phoneCall"
 143-->[:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:48:13-54
-144            android:stopWithTask="true" /> <!-- Needs to be explicitly declared on P+ -->
+144            android:stopWithTask="true" />
 144-->[:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:49:13-40
-145        <uses-library
-145-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
-146            android:name="org.apache.http.legacy"
-146-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
-147            android:required="false" />
-147-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
-148
-149        <activity
-149-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-150            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-150-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-151            android:exported="false"
-151-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-152            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-152-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+145
+146        <activity
+146-->[:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-13:74
+147            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+147-->[:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-74
+148            android:exported="false"
+148-->[:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-37
+149            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" /> <!-- Needs to be explicitly declared on P+ -->
+149-->[:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-71
+150        <uses-library
+150-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+151            android:name="org.apache.http.legacy"
+151-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+152            android:required="false" />
+152-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
 153
-154        <meta-data
-154-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\eulogia\.gradle\caches\transforms-3\5ff4a353de7064fc161fb566343d6916\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
-155            android:name="com.google.android.gms.version"
-155-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\eulogia\.gradle\caches\transforms-3\5ff4a353de7064fc161fb566343d6916\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
-156            android:value="@integer/google_play_services_version" />
-156-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\eulogia\.gradle\caches\transforms-3\5ff4a353de7064fc161fb566343d6916\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
-157
-158        <uses-library
-158-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-159            android:name="androidx.window.extensions"
-159-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-160            android:required="false" />
-160-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-161        <uses-library
-161-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-162            android:name="androidx.window.sidecar"
-162-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-163            android:required="false" />
-163-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-164
-165        <provider
-165-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-166            android:name="androidx.startup.InitializationProvider"
-166-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
-167            android:authorities="com.fasta.ziklogistics.androidx-startup"
-167-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
-168            android:exported="false" >
-168-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
-169            <meta-data
-169-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-170                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-170-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
-171                android:value="androidx.startup" />
-171-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
-172            <meta-data
-172-->[androidx.lifecycle:lifecycle-process:2.5.1] C:\Users\eulogia\.gradle\caches\transforms-3\d207ace530c63d39a791fe758c2906a5\transformed\jetified-lifecycle-process-2.5.1\AndroidManifest.xml:31:13-33:52
-173                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-173-->[androidx.lifecycle:lifecycle-process:2.5.1] C:\Users\eulogia\.gradle\caches\transforms-3\d207ace530c63d39a791fe758c2906a5\transformed\jetified-lifecycle-process-2.5.1\AndroidManifest.xml:32:17-78
-174                android:value="androidx.startup" />
-174-->[androidx.lifecycle:lifecycle-process:2.5.1] C:\Users\eulogia\.gradle\caches\transforms-3\d207ace530c63d39a791fe758c2906a5\transformed\jetified-lifecycle-process-2.5.1\AndroidManifest.xml:33:17-49
-175        </provider>
-176    </application>
-177
-178</manifest>
+154        <activity
+154-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+155            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+155-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+156            android:exported="false"
+156-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+157            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+157-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\eulogia\.gradle\caches\transforms-3\082fa8f1e076fd76c98f4d760b4e67b1\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+158
+159        <meta-data
+159-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\eulogia\.gradle\caches\transforms-3\5ff4a353de7064fc161fb566343d6916\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+160            android:name="com.google.android.gms.version"
+160-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\eulogia\.gradle\caches\transforms-3\5ff4a353de7064fc161fb566343d6916\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+161            android:value="@integer/google_play_services_version" />
+161-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\eulogia\.gradle\caches\transforms-3\5ff4a353de7064fc161fb566343d6916\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+162
+163        <uses-library
+163-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+164            android:name="androidx.window.extensions"
+164-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+165            android:required="false" />
+165-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+166        <uses-library
+166-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+167            android:name="androidx.window.sidecar"
+167-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+168            android:required="false" />
+168-->[androidx.window:window:1.0.0-beta04] C:\Users\eulogia\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+169
+170        <provider
+170-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+171            android:name="androidx.startup.InitializationProvider"
+171-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+172            android:authorities="com.fasta.ziklogistics.androidx-startup"
+172-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+173            android:exported="false" >
+173-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+174            <meta-data
+174-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+175                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+175-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+176                android:value="androidx.startup" />
+176-->[androidx.emoji2:emoji2:1.2.0] C:\Users\eulogia\.gradle\caches\transforms-3\f3da131123e9b4eccc244f6ad91f009f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+177            <meta-data
+177-->[androidx.lifecycle:lifecycle-process:2.5.1] C:\Users\eulogia\.gradle\caches\transforms-3\d207ace530c63d39a791fe758c2906a5\transformed\jetified-lifecycle-process-2.5.1\AndroidManifest.xml:31:13-33:52
+178                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+178-->[androidx.lifecycle:lifecycle-process:2.5.1] C:\Users\eulogia\.gradle\caches\transforms-3\d207ace530c63d39a791fe758c2906a5\transformed\jetified-lifecycle-process-2.5.1\AndroidManifest.xml:32:17-78
+179                android:value="androidx.startup" />
+179-->[androidx.lifecycle:lifecycle-process:2.5.1] C:\Users\eulogia\.gradle\caches\transforms-3\d207ace530c63d39a791fe758c2906a5\transformed\jetified-lifecycle-process-2.5.1\AndroidManifest.xml:33:17-49
+180        </provider>
+181    </application>
+182
+183</manifest>

@@ -29,7 +29,7 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
     log("this is driver Email${DriverUserModel.email ?? token}");
     log(DriverModel.token!);
     socket = io.io(
-        'https://test-ki3c.onrender.com',
+        'https://api.fasta-smata.com/ws',
         io.OptionBuilder().setTransports(["websocket"]).setExtraHeaders(
             {'Authorization': 'Bearer ${DriverModel.token ?? token}'}).build());
 
@@ -113,7 +113,7 @@ class _DispatcherHomeBodyState extends State<DispatcherHomeBody> {
                     height: 8.h,
                   ),
                   Text(
-                    'Get it delivered in the time it takes to drive there!',
+                    'Get package delivered with speed and on time!',
                     style: GoogleFonts.dmSans(
                       color: AppColor.mainColor,
                       fontSize: 20.sp,

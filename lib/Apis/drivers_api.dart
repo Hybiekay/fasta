@@ -260,4 +260,5 @@ class DriverApiController extends GetxController {
     final data = json.decode(response.body);
     return data;
   }
+
 }

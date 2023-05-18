@@ -22,15 +22,11 @@ class DispatcherBody extends StatefulWidget {
 
 class _DispatcherBodyState extends State<DispatcherBody> {
   DriverController driverController = Get.put(DriverController());
-  bool isAprroved = true;
- 
+
   @override
   void initState() {
-  
     super.initState();
   }
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +59,7 @@ class _DispatcherBodyState extends State<DispatcherBody> {
                     SizedBox(
                       width: 165.w,
                       child: Text(
-                        DriverUserModel.name ?? "Login",
+                        DriverUserModel.name ?? '',
                         style: GoogleFonts.dmSans(
                           color: AppColor.mainColor,
                           fontSize: 19.sp,

@@ -43,6 +43,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android@@:url_launcher_android::release"
+      jars="C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\.transforms\e8e13845dc1f5a014aef25e40e3ad019\transformed\out\jars\classes.jar"
+      resolved="io.flutter.plugins.urllauncher:url_launcher_android:unspecified"
+      folder="C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\.transforms\e8e13845dc1f5a014aef25e40e3ad019\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\android@@:path_provider_android::release"
       jars="C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\path_provider_android\.transforms\c782795b01de14223e3d16f2a46eb88f\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"

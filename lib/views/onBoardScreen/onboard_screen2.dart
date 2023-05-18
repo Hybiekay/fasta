@@ -4,13 +4,15 @@ import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 
 class OnboardingScreen2 extends StatelessWidget {
-  const OnboardingScreen2({super.key});
+  final bool isDriver;
+  const OnboardingScreen2({super.key, this.isDriver = false});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.mainColor,
       body: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
           decoration: const BoxDecoration(
             color: AppColor.mainColor,
           ),
@@ -37,9 +39,11 @@ class OnboardingScreen2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          const Center(
+                          Center(
                             child: Text(
-                              'Confirm Your Dispatcher',
+                              isDriver
+                                  ? "Confirm Your Dispatch"
+                                  : 'Confirm Your Dispatcher',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: AppColor.whiteColor,
@@ -50,8 +54,10 @@ class OnboardingScreen2 extends StatelessWidget {
                                   height: 1.5),
                             ),
                           ),
-                          const Text(
-                            'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit. ',
+                          Text(
+                            isDriver
+                                ? " By confirming your dispatch be assured that your dispatch request was provided based on your location."
+                                : 'By confirming your dispatcher be assured that your package has been linked to a right and nearby dispatcher ready for pickup.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: AppColor.whiteColor,

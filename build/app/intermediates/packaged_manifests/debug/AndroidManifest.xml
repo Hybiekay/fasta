@@ -96,7 +96,7 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBoveyXiSEAlTpcAeuVxxvUZfR-ShaWues" />
+            android:value="AIzaSyCZnNZ9-uHBg0rj8YHKHQC25jHWqXP9Yoc" />
 
         <activity
             android:name="co.paystack.flutterpaystack.AuthActivity"
@@ -146,7 +146,12 @@
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="phoneCall"
-            android:stopWithTask="true" /> <!-- Needs to be explicitly declared on P+ -->
+            android:stopWithTask="true" />
+
+        <activity
+            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" /> <!-- Needs to be explicitly declared on P+ -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

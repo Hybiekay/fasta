@@ -7,6 +7,8 @@ MERGED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklog
 MERGED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-19:19
 MERGED from [:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:14:5-50:19
 MERGED from [:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:14:5-50:19
+MERGED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-14:19
+MERGED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-14:19
 MERGED from [me.carda:androidcore:0.7.7] C:\Users\eulogia\.gradle\caches\transforms-3\503b8adc86448ed7f9e2d99c4bd35ccf\transformed\jetified-androidcore-0.7.7\AndroidManifest.xml:9:5-16:19
 MERGED from [me.carda:androidcore:0.7.7] C:\Users\eulogia\.gradle\caches\transforms-3\503b8adc86448ed7f9e2d99c4bd35ccf\transformed\jetified-androidcore-0.7.7\AndroidManifest.xml:9:5-16:19
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\eulogia\.gradle\caches\transforms-3\9bc0cac43801ee17c622b85c2c3e76af\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
@@ -52,6 +54,7 @@ MERGED from [:google_maps_flutter_android] C:\Users\eulogia\Desktop\Ziklogistics
 MERGED from [:image_picker_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-52:12
+MERGED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-16:12
 MERGED from [:path_provider_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_secure_storage] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_secure_storage\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-11:12
 MERGED from [me.carda:androidcore:0.7.7] C:\Users\eulogia\.gradle\caches\transforms-3\503b8adc86448ed7f9e2d99c4bd35ccf\transformed\jetified-androidcore-0.7.7\AndroidManifest.xml:2:1-18:12
@@ -138,6 +141,8 @@ MERGED from [:flutter_plugin_android_lifecycle] C:\Users\eulogia\Desktop\Ziklogi
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_secure_storage] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\flutter_secure_storage\intermediates\merged_manifest\release\AndroidManifest.xml:6:5-9:53
@@ -420,6 +425,14 @@ MERGED from [me.carda:androidcore:0.7.7] C:\Users\eulogia\.gradle\caches\transfo
 		ADDED from [:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:48:13-54
 	android:name
 		ADDED from [:awesome_notifications] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\awesome_notifications\intermediates\merged_manifest\release\AndroidManifest.xml:45:13-90
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-13:74
+	android:exported
+		ADDED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-37
+	android:theme
+		ADDED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-71
+	android:name
+		ADDED from [:url_launcher_android] C:\Users\eulogia\Desktop\Ziklogistics\ziklogistics\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-74
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\eulogia\.gradle\caches\transforms-3\a0e34175b89fa528462076cc4208822f\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:5-79
 	android:name

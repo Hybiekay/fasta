@@ -48,7 +48,7 @@ class _ChatScreenState extends State<ChatScreen> {
     log("this is driver Email${widget.senderEmail}");
     log(widget.token);
     socket = io.io(
-        'https://test-ki3c.onrender.com',
+        'https://api.fasta-smata.com',
         io.OptionBuilder().setTransports(["websocket"]).setExtraHeaders(
             {'Authorization': 'Bearer ${widget.token}'}).build());
     _connectSocket();

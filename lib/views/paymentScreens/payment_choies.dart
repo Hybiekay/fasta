@@ -47,7 +47,7 @@ class ChoicePayment extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                'Select your paymet option',
+                'Select  payment method',
                 style: GoogleFonts.dmSans(
                   color: AppColor.whiteColor,
                   fontSize: 20.sp,

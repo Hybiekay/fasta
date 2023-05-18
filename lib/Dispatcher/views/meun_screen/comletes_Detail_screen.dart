@@ -12,8 +12,8 @@ class DispatcherComleteTaskDetail extends StatelessWidget {
   final String weight;
   final String pickUpAdress;
   final String dropOffAdress;
- final String height;
- final String width;
+  final String height;
+  final String width;
 
   const DispatcherComleteTaskDetail({
     Key? key,
@@ -88,7 +88,6 @@ class DispatcherComleteTaskDetail extends StatelessWidget {
                         height: 30,
                       ),
                       PackagedetailsSize(
-                        
                         val1: size,
                         val2: weight,
                         val3: height,
@@ -121,7 +120,9 @@ class DispatcherComleteTaskDetail extends StatelessWidget {
                                   backgroundColor: AppColor.whiteColor,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
-                              onPressed: () {},
+                              onPressed: () {
+                               Navigator.of(context).pop();
+                              },
                               child: const Text("Close",
                                   style: TextStyle(
                                       color: AppColor.mainColor,

@@ -211,7 +211,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                                   });
                                 }
                               },
-                              child:  Text(
+                              child: Text(
                                 'Next',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -229,7 +229,7 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                         Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            'By continuing you may recive an SMS for \nverification. Message and data rates may apply.',
+                            'By continuing you will receive an SMS for \nverification. Data rates may apply.',
                             style: TextStyle(
                               color: AppColor.whiteColor,
                               fontFamily: 'DMSans',

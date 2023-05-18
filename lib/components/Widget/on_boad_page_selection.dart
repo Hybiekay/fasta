@@ -30,10 +30,11 @@ class DispatcherOnBoardPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
+
       children: const [
-        OnboardingScreen(),
-        OnboardingScreen2(),
-        OnboardingScreen3(),
+        OnboardingScreen(isDriver: true),
+        OnboardingScreen2(isDriver: true),
+        OnboardingScreen3(isDriver: true),
         DispatcherWelcomeScreen()
       ],
     );
