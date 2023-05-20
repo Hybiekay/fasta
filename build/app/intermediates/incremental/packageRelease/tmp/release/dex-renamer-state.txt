@@ -1,4 +1,0 @@
-#Thu May 18 03:29:16 WAT 2023
-base.0=C\:\\Users\\eulogia\\Desktop\\Ziklogistics\\ziklogistics\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
