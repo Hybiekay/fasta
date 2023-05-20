@@ -117,8 +117,8 @@ class CustomerController extends GetxController {
       try {
         final data = await _apiController.getCustomerHistory(status: status);
         yield data;
-      } catch (e) {
-        yield e;
+      } catch (error) {
+        yield error;
       }
       await Future.delayed(Duration(seconds: 2));
     }
