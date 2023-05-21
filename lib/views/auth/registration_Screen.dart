@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:ziklogistics/views/auth/login_screen.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
+import 'package:ziklogistics/views/auth/login_Screen.dart';
 
 class CustomerRegisterScreen extends StatefulWidget {
   final String phonenum;

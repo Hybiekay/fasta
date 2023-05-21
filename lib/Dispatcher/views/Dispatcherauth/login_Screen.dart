@@ -1,8 +1,8 @@
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:get/get.dart';
-import 'verification_screen.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/verification_Screen.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 
 class DispatcherLoginScreen extends StatefulWidget {
   static const String routeName = '/DispatcherloginScreen';
@@ -178,37 +178,44 @@ class _DispatcherLoginScreenState extends State<DispatcherLoginScreen> {
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColor.whiteColor),
                               onPressed: () async {
-                                if (countryCode != null &&
-                                    phoneController.text == ' ') {
-                                  setState(() {
-                                    inCorrect = true;
-                                  });
-                                }
-                                if (countryCode != null) {
-                                  setState(() {
-                                    phoneNumber = countryCode!.dialCode +
-                                        phoneController.text.trim();
-                                    formattedPhoneNumber =
-                                        phoneNumber!.substring(1);
-                                  });
-
-                                  setState(() {
-                                    isLoading = true;
-                                  });
-                                  driverController.loginUser(
-                                      emailController.text,
-                                      formattedPhoneNumber!);
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-
-                                  Get.to(() => DispatcherVerificationScreen(
-                                      phoneNumber: formattedPhoneNumber!,
-                                      email: emailController.text));
+                                if (phoneController.text.isEmpty &&
+                                    emailController.text.isEmpty &&
+                                    countryCode == null) {
+                                  Get.snackbar("Validation message",
+                                      "Kindly fill all fields");
                                 } else {
-                                  setState(() {
-                                    inCorrect = true;
-                                  });
+                                  if (countryCode != null &&
+                                      phoneController.text.isEmpty) {
+                                    setState(() {
+                                      inCorrect = true;
+                                    });
+                                  }
+                                  if (countryCode != null) {
+                                    setState(() {
+                                      phoneNumber = countryCode!.dialCode +
+                                          phoneController.text.trim();
+                                      formattedPhoneNumber =
+                                          phoneNumber!.substring(1);
+                                    });
+
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+                                    driverController.loginUser(
+                                        emailController.text,
+                                        formattedPhoneNumber!);
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+
+                                    Get.to(() => DispatcherVerificationScreen(
+                                        phoneNumber: formattedPhoneNumber!,
+                                        email: emailController.text));
+                                  } else {
+                                    setState(() {
+                                      inCorrect = true;
+                                    });
+                                  }
                                 }
                               },
                               child: Text(

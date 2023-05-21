@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/Widget/slider.dart';
+import 'package:ziklogistics/components/Widget/Slider.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
 

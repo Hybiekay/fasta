@@ -1,9 +1,10 @@
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:get/get.dart';
+import 'package:ziklogistics/controllers/costomer_controller.dart';
+import 'package:ziklogistics/views/auth/verification_Screen.dart';
+
 import '../../controllers/storage.dart';
 import '../../global_components/ziklogistics.dart';
-import 'package:ziklogistics/views/auth/verification_screen.dart';
-import 'package:ziklogistics/controllers/costomer_controller.dart';
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/loginScreen';

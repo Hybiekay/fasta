@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_Screen.dart';
 import 'package:ziklogistics/models/models.dart';
 import '../../../controllers/drivers_controller.dart';
 import '../../../global_components/ziklogistics.dart';
-import 'package:ziklogistics/views/webviwe/webview.dart';
 import 'package:ziklogistics/components/pick_image.dart';
 import 'package:ziklogistics/controllers/drivers_storage.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/login_screen.dart';
+
 // import 'package:url_launcher/url_launcher.dart';
 
 final Uri _url = Uri.parse('https://www.fasta-smata.com/terms&condition');
@@ -194,8 +194,7 @@ class _DriverFormState extends State<DriverForm> {
                             }),
                         Expanded(
                           child: InkWell(
-                            onTap: 
-                           launchUr,
+                            onTap: launchUr,
                             // Get.to(() => WebView(
                             //       url: AppApis.termsCondition,
                             //     ));

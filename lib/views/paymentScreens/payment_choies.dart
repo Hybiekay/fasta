@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:ziklogistics/views/paymentScreens/card_Choise.dart';
 import '../../models/customers_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ziklogistics/chat/chat_screen.dart';
@@ -9,7 +10,7 @@ import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ziklogistics/global_components/headerbar.dart';
-import 'package:ziklogistics/views/paymentScreens/card_choise.dart';
+
 import 'package:ziklogistics/global_components/button_component.dart';
 
 class ChoicePayment extends StatelessWidget {
