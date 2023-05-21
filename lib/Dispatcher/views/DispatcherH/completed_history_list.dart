@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
+import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_Detail_screen.dart';
 import '../../../controllers/controllers.dart';
 import '../../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherH/history_card.dart';
-import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_detail_screen.dart';
 
 class DispatcherCompletedlist extends StatelessWidget {
   const DispatcherCompletedlist({

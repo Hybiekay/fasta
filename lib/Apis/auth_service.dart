@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ziklogistics/controllers/storage.dart';
-import 'package:ziklogistics/views/auth/login_screen.dart';
+import 'package:ziklogistics/views/auth/login_Screen.dart';
 import 'package:ziklogistics/controllers/global_token.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 

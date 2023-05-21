@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ziklogistics/views/auth/login_Screen.dart';
 import '../../constants/app_color.dart';
 import 'package:ziklogistics/constants/app_images.dart';
-import 'package:ziklogistics/views/auth/login_screen.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore_for_file: file_names
-
-
 
 class CustomerWelcomeScreen extends StatelessWidget {
   const CustomerWelcomeScreen({super.key});

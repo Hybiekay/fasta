@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
-import 'package:ziklogistics/views/meun_screen/comletes_detail_screen.dart';
+import 'package:ziklogistics/views/meun_screen/comletes_Detail_screen.dart';
 
 // ignore_for_file: prefer_typing_uninitialized_variables
 
@@ -177,7 +177,9 @@ class _MeunScreenState extends State<MeunScreen> {
                                 ? "Started and on it's way for pickup"
                                 : status2 == "PICKUP"
                                     ? "Pickup done and on it's way for delivery"
-                                    : status2 == "PICKUP" ?'Delivery done, request completed': "loading........",
+                                    : status2 == "PICKUP"
+                                        ? 'Delivery done, request completed'
+                                        : "loading........",
                         style: const TextStyle(
                             color: AppColor.mainSecondryColor,
                             fontFamily: 'DMSans',
