@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
+import 'package:ziklogistics/views/meun_screen/comletes_Detail_screen.dart';
 import '../../controllers/controllers.dart';
 import '../../global_components/ziklogistics.dart';
 import 'package:ziklogistics/views/DeliveryH/history_card.dart';
-import 'package:ziklogistics/views/meun_screen/comletes_detail_screen.dart';
+
 // ignore: unused_import
 
 class Completedlist extends StatelessWidget {

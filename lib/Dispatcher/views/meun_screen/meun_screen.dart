@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
+import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_Detail_screen.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
 import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
-import 'package:ziklogistics/Dispatcher/views/meun_screen/comletes_detail_screen.dart';
+
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 class DispatcherMeunScreen extends StatefulWidget {

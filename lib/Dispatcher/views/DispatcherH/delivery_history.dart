@@ -1,4 +1,5 @@
-import 'swicht.dart';
+import 'package:ziklogistics/Dispatcher/views/DispatcherH/Swicht.dart';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:ziklogistics/constants/app_color.dart';

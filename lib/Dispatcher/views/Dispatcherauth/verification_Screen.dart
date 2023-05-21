@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:get/get.dart';
+
 import 'package:flutter/services.dart';
-import 'package:ziklogistics/models/driver_model.dart';
+import 'package:get/get.dart';
+import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/d_register_screen.dart';
+import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
 import 'package:ziklogistics/controllers/controllers.dart';
 import 'package:ziklogistics/global_components/ziklogistics.dart';
-import 'package:ziklogistics/Dispatcher/views/DispatcherHome/home.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/driver_form.dart';
-import 'package:ziklogistics/Dispatcher/views/Dispatcherauth/d_register_screen.dart';
+import 'package:ziklogistics/models/driver_model.dart';
 // ignore_for_file: must_be_immutable
 
 // ignore_for_file: use_build_context_synchronously
@@ -373,7 +374,9 @@ class _DispatcherVerificationScreenState
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
                                 backgroundColor: AppColor.mainSecondryColor),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Text(
                               'Go back!',
                               textAlign: TextAlign.center,

@@ -1,6 +1,6 @@
-import 'swicht.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:ziklogistics/views/DeliveryH/Swicht.dart';
 import 'package:ziklogistics/views/home/home.dart';
 import 'package:ziklogistics/constants/app_color.dart';
 import 'package:ziklogistics/global_components/headerbar.dart';
